@@ -1,10 +1,13 @@
-// src/components/ImageUpload.js
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Box, Typography, Paper } from "@mui/material";
+import { Box, Typography, CircularProgress, Alert } from "@mui/material"; // Afegim Alert per mostrar els missatges
+
+import CheckBackendConnection from "./CheckBackendConnection"; // Importem el component de comprovació de connexió
 
 const ImageUpload = () => {
     const [image, setImage] = useState(null);
+    const [isLoading, setIsLoading] = useState(false); // Estat per al spinner
+    const [message, setMessage] = useState(""); // Estat per al missatge d'èxit/error
 
     const handleImageUpload = (event) => {
         const file = event.target.files[0];
@@ -13,62 +16,96 @@ const ImageUpload = () => {
 
     const handleRemoveImage = () => {
         setImage(null);
+        setMessage(""); // Elimina el missatge quan es borra la imatge
     };
 
-    const handleSendImage = () => {
-        // Aquí pots afegir la funcionalitat per enviar la imatge
-        console.log("Image sent:", image.name);
+    const handleSendImage = async () => {
+        const formData = new FormData();
+        formData.append("file", image);
+
+        try {
+            setIsLoading(true); // Mostra el spinner
+            const response = await fetch("http://localhost:8080/images/upload/", {
+                method: "POST",
+                body: formData,
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                console.log("Imatge enviada:", data);
+                setMessage("Imatge pujada correctament!"); // Missatge d'èxit
+            } else {
+                setMessage("Error en pujar la imatge. Prova-ho més tard."); // Missatge d'error
+            }
+        } catch (error) {
+            console.error("Error en pujar la imatge:", error);
+            setMessage("Hi ha hagut un error al pujar la imatge.");
+        } finally {
+            setIsLoading(false); // Amaga el spinner
+        }
     };
 
     return (
         <StyledWrapper>
-            <Typography variant="h5" gutterBottom sx={{ fontFamily: "'Playfair Display', serif" }}>
+            <Typography variant="h5" gutterBottom sx={{fontFamily: "'Playfair Display', serif"}}>
                 Cerca la roba que més t'agrada
             </Typography>
-
-            <div className="container">
+            <div className="container-folder">
                 <div className="folder">
                     <div className="front-side">
-                        <div className="tip" />
-                        <div className="cover" />
+                        <div className="tip"/>
+                        <div className="cover"/>
                     </div>
-                    <div className="back-side cover" />
+                    <div className="back-side cover"/>
                 </div>
+            </div>
+            <div className="container">
                 <label className="custom-file-upload">
                     <input
                         accept="image/*"
                         type="file"
                         onChange={handleImageUpload}
                     />
-                    {image ? image.name : "Selecciona Imatge"}
+                    Selecciona Imatge
                 </label>
             </div>
 
             {image && (
-                <Box mt={2} sx={{ textAlign: 'center' }}>
-                    <Paper elevation={3} sx={{ p: 2, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                        {/* Vista prèvia de la imatge en petit */}
-                        <img
-                            src={URL.createObjectURL(image)}
-                            alt={image.name}
-                            style={{ width: '100px', height: 'auto', marginBottom: '10px' }}
-                        />
-                        <Typography variant="body1">{image.name}</Typography>
+                <Box mt={2} sx={{textAlign: 'center', alignItems: 'center'}}>
+                    {/* Vista prèvia de la imatge en petit */}
+                    <img
+                        src={URL.createObjectURL(image)}
+                        alt={image.name}
+                        style={{width: '100px', height: 'auto', marginBottom: '10px'}}
+                    />
 
-                        {/* Botons Send i Delete */}
-                        <div className="button-container">
-                            <button className="buttonDelete" onClick={handleRemoveImage}>Delete</button>
-                            <button className="buttonSend" onClick={handleSendImage}>Send</button>
-                        </div>
-                    </Paper>
-                    <Typography variant="body2" color="textSecondary">
-                    L'arxiu seleccionat es mostrarà aquí. Pots penjar-ne més si cal!
-                    </Typography>
+                    {/* Botons Send i Delete */}
+                    <div className="button-container">
+                        <button className="buttonDelete" onClick={handleRemoveImage}>Delete</button>
+                        <button className="buttonSend" onClick={handleSendImage}>Send</button>
+                    </div>
+                </Box>
+            )}
+
+            {/* Mostra el spinner si s'està carregant */}
+            {isLoading && (
+                <Box mt={2} sx={{textAlign: "center"}}>
+                    <CircularProgress/>
+                </Box>
+            )}
+
+            {/* Mostra el missatge d'èxit o error */}
+            {message && (
+                <Box mt={2} sx={{textAlign: "center"}}>
+                    <Alert severity={message.includes("correctament") ? "success" : "error"}>
+                        {message}
+                    </Alert>
                 </Box>
             )}
         </StyledWrapper>
     );
 };
+
 
 const StyledWrapper = styled.div`
     display: flex;
@@ -78,27 +115,40 @@ const StyledWrapper = styled.div`
     max-width: 500px;
 
     .container {
-        margin-top: 50px;
-        --transition: 350ms;
-        --folder-W: 120px;
-        --folder-H: 80px;
+        margin-top: 20px;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: flex-end;
-        padding: 10px;
+        padding: 4px;
         background: linear-gradient(135deg, #d2cdcd, #8c8686);
         border-radius: 15px;
         box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-        height: calc(var(--folder-H) * 1.7);
+        pading: 80px;
+        position: relative;
+        margin-bottom: 1em;
+    }
+
+    .container-folder {
+        margin-top: 50px;
+        --transition: 350ms;
+        --folder-W: 60px;
+        --folder-H: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 5px;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        pading: 40px;
         position: relative;
         margin-bottom: 1em;
     }
 
     .folder {
         position: absolute;
-        top: -20px;
-        left: calc(50% - 60px);
+        top: -10px;
+        left: calc(50% - 30px);
         animation: float 2.5s infinite ease-in-out;
         transition: transform var(--transition) ease;
     }
@@ -125,7 +175,7 @@ const StyledWrapper = styled.div`
         height: var(--folder-H);
         position: absolute;
         transform-origin: bottom center;
-        border-radius: 15px;
+        border-radius: 7.5px;
         transition: transform 350ms;
         z-index: 0;
     }
@@ -148,12 +198,12 @@ const StyledWrapper = styled.div`
 
     .folder .tip {
         background: linear-gradient(135deg, #ff9a56, #ff6f56);
-        width: 80px;
-        height: 20px;
-        border-radius: 12px 12px 0 0;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        width: 40px;
+        height: 10px;
+        border-radius: 6px 6px 0 0;
+        box-shadow: 0 2.5px 7.5px rgba(0, 0, 0, 0.2);
         position: absolute;
-        top: -10px;
+        top: -5px;
         z-index: 2;
     }
 
@@ -161,12 +211,12 @@ const StyledWrapper = styled.div`
         background: linear-gradient(135deg, #ffe563, #ffc663);
         width: var(--folder-W);
         height: var(--folder-H);
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-        border-radius: 10px;
+        box-shadow: 0 7.5px 15px rgba(0, 0, 0, 0.3);
+        border-radius: 5px;
     }
 
     .custom-file-upload {
-        font-size: 1.1em;
+        font-size: 1em;
         color: #ffffff;
         text-align: center;
         background: rgba(255, 255, 255, 0.2);
@@ -177,7 +227,7 @@ const StyledWrapper = styled.div`
         transition: background var(--transition) ease;
         display: inline-block;
         width: 100%;
-        padding: 10px 35px;
+        padding: 5px 20px;
         position: relative;
     }
 

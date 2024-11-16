@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import logo from '../images/logo_black.png'; // Ruta al logo
+import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import logo from '../images/logo_black.png'; // Ruta al logo
+import styled from 'styled-components';
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -72,30 +72,29 @@ const StyledForm = styled.form`
   }
 `;
 
-const LoginForm = () => {
+const SignUpForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate();
 
-    // Comprovar si l'usuari ja té una sessió activa (token en localStorage)
-    useEffect(() => {
-        const token = localStorage.getItem('token');
-        if (token) {
-            navigate('/dashboard'); // Si hi ha token, redirigir a la pàgina de dashboard o la pàgina principal.
-        }
-    }, [navigate]);
-
-    const handleLogin = async (e) => {
+    const handleSignUp = async (e) => {
         e.preventDefault();
 
+        if (password !== confirmPassword) {
+            setError('Passwords do not match');
+            return;
+        }
+
         try {
-            const response = await fetch("http://localhost:8080/users/login/", {
+            const response = await fetch("http://localhost:8080/users/register/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",  // Assegurem-nos que estem enviant JSON
                 },
                 body: JSON.stringify({
+                    username: email,  // Nom d'usuari
                     email: email,     // Correu electrònic
                     password: password // Contrasenya
                 })
@@ -104,22 +103,23 @@ const LoginForm = () => {
             if(response.ok()){
                 setError('Sessio creada correctament');
             }
-            // Si la resposta és correcta, desar el token i redirigir a l'usuari
+
+            // Si la creació de l'usuari és correcta, guardar el token i redirigir a login
             localStorage.setItem('token', response.data.token);
-            navigate('/'); // Redirigir a la pàgina de dashboard
+            navigate('/');
         } catch (error) {
-            setError('Invalid credentials');
+            setError('Error creating account');
         }
     };
 
     return (
         <StyledWrapper>
-            <StyledForm onSubmit={handleLogin}>
+            <StyledForm onSubmit={handleSignUp}>
                 <div className="logo_container">
                     <img src={logo} alt="Logo" style={{ width: '80px' }} />
                 </div>
-                <p className="title">Login to your Account</p>
-                {error && <p className="error">{error}</p>}
+                <p className="title">Create a New Account</p>
+                {error && <p className="error" style={{color: '#E83B46' }}>{error}</p>}
                 <div className="input_container">
                     <label htmlFor="email">Email</label>
                     <input
@@ -144,14 +144,22 @@ const LoginForm = () => {
                         required
                     />
                 </div>
-                <button type="submit" className="sign-in_btn">Login</button>
-                <div className="separator">
-                    <hr className="line" /><span>Or</span><hr className="line" />
+                <div className="input_container">
+                    <label htmlFor="confirmPassword">Confirm Password</label>
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        className="input_field"
+                        placeholder="Confirm Password"
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        required
+                    />
                 </div>
-                <button type="button" className="sign-in_btn">Login with Google</button>
+                <button type="submit" className="sign-in_btn">Sign Up</button>
             </StyledForm>
         </StyledWrapper>
     );
 };
 
-export default LoginForm;
+export default SignUpForm;

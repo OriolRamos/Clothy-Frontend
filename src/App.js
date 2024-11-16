@@ -7,7 +7,10 @@ import { Public as PublicIcon } from "@mui/icons-material";
 import ImageUpload from "./components/ImageUpload";
 import TermsAndConditions from "./components/TermsAndConditions";
 import PrivacityPolicy from "./components/PrivacityPolicy";
+import CheckBackendConnectionButton from "./components/CheckBackendConnection";
 import LoginForm from "./components/LoginForm"; // Importamos el nuevo componente de formulario de login
+import SignUpForm from "./components/SignUpForm"; // Importamos el nuevo componente de formulario de login
+
 import About from "./components/About";
 import styled from 'styled-components';
 import logo from './images/logo_black.png';
@@ -128,7 +131,7 @@ function App() {
                         <Route path="/privacy-policy" element={<PrivacityPolicy />} />
                         <Route path="/about" element={<About />} />
                         <Route path="/login" element={<LoginForm />} /> {/* Nueva ruta para login */}
-                        <Route path="/sign-up" element={<LoginForm />} /> {/* Puedes reutilizar el mismo componente */}
+                        <Route path="/sign-up" element={<SignUpForm />} /> {/* Puedes reutilizar el mismo componente */}
                     </Routes>
                 </Container>
                 <Box
