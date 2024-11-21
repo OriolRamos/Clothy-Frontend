@@ -10,6 +10,10 @@ import PrivacityPolicy from "./components/PrivacityPolicy";
 import CheckBackendConnectionButton from "./components/CheckBackendConnection";
 import LoginForm from "./components/LoginForm"; // Importamos el nuevo componente de formulario de login
 import SignUpForm from "./components/SignUpForm"; // Importamos el nuevo componente de formulario de login
+import SearchClothing from "./components/SearchClothing"; // Importamos el nuevo componente de formulario de login
+import ProtectedRoute from "./components/ProtectedRoute"; // Importamos el nuevo componente de formulario de login
+import Menu from "./components/Menu"; // Importamos el nuevo componente de formulario de login
+
 
 import About from "./components/About";
 import styled from 'styled-components';
@@ -79,8 +83,19 @@ const SignUpButton = styled(StyledIconButton)`
 
 
 function App() {
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [showNavbar, setShowNavbar] = useState(true);
     const [prevScrollPos, setPrevScrollPos] = useState(window.pageYOffset);
+
+    useEffect(() => {
+        const token = localStorage.getItem('authToken');
+        setIsAuthenticated(!!token); // Comprova si hi ha un token
+    }, []);
+
+    const handleLogout = () => {
+        localStorage.removeItem('authToken'); // Esborra el token
+        setIsAuthenticated(false); // Actualitza l'estat
+    };
 
     useEffect(() => {
         const handleScroll = () => {
@@ -100,9 +115,12 @@ function App() {
                     <AppBar position="fixed" sx={{ bgcolor: "#f5f5f5", color: "#333" }}>
                         <Toolbar sx={{ justifyContent: "space-between" }}>
                             <StyledIconButton component={Link} to="/" color="inherit">Home</StyledIconButton>
-                            <StyledIconButton component={Link} to="/about" color="inherit">About</StyledIconButton>
-                            <StyledIconButton component={Link} to="/contact" color="inherit">Contact Us</StyledIconButton>
+                            {isAuthenticated && (
+                                <>
+                                    <StyledIconButton component={Link} to="/search" color="inherit">Cerca Roba</StyledIconButton>
 
+                                </>
+                            )}
                             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexGrow: 1 }}>
                                 <img src={logo} alt="Logo" style={{ width: '40px', height: '40px', marginRight: '10px' }} />
                                 <Typography variant="h5" component="div" sx={{
@@ -114,9 +132,17 @@ function App() {
                                     Clothy
                                 </Typography>
                             </Box>
-
-                            <LoginButton component={Link} to="/login" color="inherit">Login</LoginButton>
-                            <SignUpButton component={Link} to="/sign-up" color="inherit">Sign Up</SignUpButton>
+                            {isAuthenticated && (
+                                <>
+                                    <StyledIconButton onClick={handleLogout} color="inherit">Logout</StyledIconButton>
+                                </>
+                            )}
+                            {!isAuthenticated && (
+                                <>
+                                    <LoginButton component={Link} to="/login" color="inherit">Login</LoginButton>
+                                    <SignUpButton component={Link} to="/sign-up" color="inherit">Sign Up</SignUpButton>
+                                </>
+                            )}
                             <StyledIconButton color="inherit">
                                 <PublicIcon />
                             </StyledIconButton>
@@ -126,12 +152,20 @@ function App() {
                 <Toolbar />
                 <Container component="main" sx={{ flexGrow: 1, display: "flex", flexDirection: "column", alignItems: "center", pt: 3 }}>
                     <Routes>
-                        <Route path="/" element={<ImageUpload />} />
+                        <Route path="/" element={<Menu />} />
                         <Route path="/terms" element={<TermsAndConditions />} />
                         <Route path="/privacy-policy" element={<PrivacityPolicy />} />
                         <Route path="/about" element={<About />} />
-                        <Route path="/login" element={<LoginForm />} /> {/* Nueva ruta para login */}
-                        <Route path="/sign-up" element={<SignUpForm />} /> {/* Puedes reutilizar el mismo componente */}
+                        <Route path="/login" element={<LoginForm setIsAuthenticated={setIsAuthenticated} />} />                        <Route path="/sign-up" element={<SignUpForm />} /> {/* Puedes reutilizar el mismo componente */}
+                        <Route
+                            path="/search"
+                            element={
+                                <ProtectedRoute>
+                                    <SearchClothing /> {/* Component de cerca */}
+                                </ProtectedRoute>
+                            }
+                        />
+
                     </Routes>
                 </Container>
                 <Box
@@ -153,6 +187,14 @@ function App() {
                         {" - "}
                         <Link to="/privacy-policy" style={{ color: "black", textDecoration: "underline" }}>
                             Política de Privacitat
+                        </Link>
+                        {" - "}
+                        <Link to="/about" style={{ color: "black", textDecoration: "underline" }}>
+                            About
+                        </Link>
+                        {" - "}
+                        <Link to="/contact" style={{ color: "black", textDecoration: "underline" }}>
+                            Contact
                         </Link>
                     </Typography>
                 </Box>

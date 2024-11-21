@@ -88,15 +88,15 @@ const SignUpForm = () => {
         }
 
         try {
-            const response = await fetch("http://localhost:8080/users/register/", {
+            const response = await fetch("http://localhost:8080/users/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",  // Assegurem-nos que estem enviant JSON
                 },
                 body: JSON.stringify({
-                    username: email,  // Nom d'usuari
-                    email: email,     // Correu electrònic
-                    password: password // Contrasenya
+                    username: email, // Si vols reutilitzar el correu com a nom d'usuari
+                    email: email,
+                    password: password
                 })
             });
 

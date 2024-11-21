@@ -4,16 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2a94d60-8cf2-4982-a808-96b5fc5047c7" name="Changes" comment="v1.4">
-      <change afterPath="$PROJECT_DIR$/src/components/CheckBackendConnection.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/CorrectAnimation.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ErrorAnimation.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Loader.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/SignUpForm.js" afterDir="false" />
+    <list default="true" id="e2a94d60-8cf2-4982-a808-96b5fc5047c7" name="Changes" comment="v1.5">
+      <change afterPath="$PROJECT_DIR$/src/components/Menu.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ProtectedRoute.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/SearchClothing.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/ImageUpload.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ImageUpload.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/LoginForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LoginForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SignUpForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SignUpForm.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,9 +30,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="KubernetesApiProvider"><![CDATA[{
-  "isMigrated": true
-}]]></component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -87,6 +86,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="Clothy-Frontend" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -109,6 +131,8 @@
       <workItem from="1731588650191" duration="46000" />
       <workItem from="1731663167961" duration="885000" />
       <workItem from="1731664157057" duration="17086000" />
+      <workItem from="1731786186515" duration="1564000" />
+      <workItem from="1732201602745" duration="10546000" />
     </task>
     <task id="LOCAL-00001" summary="v1.0">
       <option name="closed" value="true" />
@@ -150,7 +174,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731586727099</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="v1.5">
+      <option name="closed" value="true" />
+      <created>1731789414609</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1731789414609</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -162,6 +194,7 @@
     <MESSAGE value="v1.2" />
     <MESSAGE value="v1.3" />
     <MESSAGE value="v1.4" />
-    <option name="LAST_COMMIT_MESSAGE" value="v1.4" />
+    <MESSAGE value="v1.5" />
+    <option name="LAST_COMMIT_MESSAGE" value="v1.5" />
   </component>
 </project>

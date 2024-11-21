@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { Box, Typography, CircularProgress, Alert } from "@mui/material"; // Afegim Alert per mostrar els missatges
 
-import CheckBackendConnection from "./CheckBackendConnection"; // Importem el component de comprovació de connexió
-
 const ImageUpload = () => {
     const [image, setImage] = useState(null);
     const [isLoading, setIsLoading] = useState(false); // Estat per al spinner

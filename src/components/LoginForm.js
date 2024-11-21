@@ -72,7 +72,7 @@ const StyledForm = styled.form`
   }
 `;
 
-const LoginForm = () => {
+export default function LoginForm({ setIsAuthenticated }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
@@ -90,27 +90,31 @@ const LoginForm = () => {
         e.preventDefault();
 
         try {
-            const response = await fetch("http://localhost:8080/users/login/", {
+            const response = await fetch("http://localhost:8080/users/login", {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json",  // Assegurem-nos que estem enviant JSON
+                    "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    email: email,     // Correu electrònic
-                    password: password // Contrasenya
-                })
+                    email: email,  // Canvia "email" per "username" si cal
+                    password: password
+                }),
+                credentials: "include" // Inclou cookies en la petició
             });
 
-            if(response.ok()){
-                setError('Sessio creada correctament');
+            if (response.ok) {
+                const data = await response.json();
+                localStorage.setItem("authToken", data.token); // Emmagatzema el token
+                setIsAuthenticated(true); // Actualitza l'estat d'autenticació
+                // Redirigeix l'usuari si el login és correcte
+                navigate('/');
+            } else {
+                setError('Invalid credentials');
             }
-            // Si la resposta és correcta, desar el token i redirigir a l'usuari
-            localStorage.setItem('token', response.data.token);
-            navigate('/'); // Redirigir a la pàgina de dashboard
         } catch (error) {
-            setError('Invalid credentials');
+            setError('Error during login');
         }
-    };
+    }
 
     return (
         <StyledWrapper>
@@ -154,4 +158,3 @@ const LoginForm = () => {
     );
 };
 
-export default LoginForm;
