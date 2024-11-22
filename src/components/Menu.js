@@ -135,7 +135,7 @@ function Menu() {
                 </Typography>
             </Box>
 
-            {/* Botons */}
+            {/* Botons
             <Box sx={{ mt: 6, display: "flex", gap: 2 }}>
                 <StyledButton component={Link} to="/sign-up">
                     Registra't
@@ -143,7 +143,7 @@ function Menu() {
                 <OutlineButton component={Link} to="/login">
                     Inicia Sessió
                 </OutlineButton>
-            </Box>
+            </Box>*/}
 
             {/* Nota beta */}
             <Typography

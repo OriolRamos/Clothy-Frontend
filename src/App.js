@@ -1,7 +1,7 @@
 // src/App.js
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
-import { Box, Typography, AppBar, Toolbar, IconButton, Container, Slide } from "@mui/material";
+import { BrowserRouter , Route, Routes, Link, Navigate } from "react-router-dom";
+import { Box, Typography, AppBar, Toolbar, IconButton, Container, Slide, Snackbar, Alert  } from "@mui/material";
 import { Language as LanguageIcon } from "@mui/icons-material";
 import { Public as PublicIcon } from "@mui/icons-material";
 import ImageUpload from "./components/ImageUpload";
@@ -13,8 +13,7 @@ import SignUpForm from "./components/SignUpForm"; // Importamos el nuevo compone
 import SearchClothing from "./components/SearchClothing"; // Importamos el nuevo componente de formulario de login
 import ProtectedRoute from "./components/ProtectedRoute"; // Importamos el nuevo componente de formulario de login
 import Menu from "./components/Menu"; // Importamos el nuevo componente de formulario de login
-
-
+import { useNavigate } from 'react-router-dom'; // Important importar useNavigate
 import About from "./components/About";
 import styled from 'styled-components';
 import logo from './images/logo_black.png';
@@ -86,6 +85,7 @@ function App() {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [showNavbar, setShowNavbar] = useState(true);
     const [prevScrollPos, setPrevScrollPos] = useState(window.pageYOffset);
+    const [openSnackbar, setOpenSnackbar] = useState(false); // Estat per la Snackbar
 
     useEffect(() => {
         const token = localStorage.getItem('authToken');
@@ -95,6 +95,7 @@ function App() {
     const handleLogout = () => {
         localStorage.removeItem('authToken'); // Esborra el token
         setIsAuthenticated(false); // Actualitza l'estat
+        setOpenSnackbar(true); // Obre el missatge de Snackbar
     };
 
     useEffect(() => {
@@ -109,43 +110,84 @@ function App() {
     }, [prevScrollPos]);
 
     return (
-        <Router>
+        <BrowserRouter>
             <Box sx={{ minHeight: "100vh", display: "flex", flexDirection: "column", fontFamily: "'Roboto', sans-serif" }}>
                 <Slide in={showNavbar} direction="down">
                     <AppBar position="fixed" sx={{ bgcolor: "#f5f5f5", color: "#333" }}>
                         <Toolbar sx={{ justifyContent: "space-between" }}>
-                            <StyledIconButton component={Link} to="/" color="inherit">Home</StyledIconButton>
-                            {isAuthenticated && (
-                                <>
-                                    <StyledIconButton component={Link} to="/search" color="inherit">Cerca Roba</StyledIconButton>
-
-                                </>
-                            )}
-                            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexGrow: 1 }}>
-                                <img src={logo} alt="Logo" style={{ width: '40px', height: '40px', marginRight: '10px' }} />
-                                <Typography variant="h5" component="div" sx={{
-                                    fontFamily: "'Playfair Display', serif",
-                                    color: "#333",
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                }}>
+                            {/* Secció esquerra: botons */}
+                            <Box sx={{ display: "flex", alignItems: "center" }}>
+                                <StyledIconButton component={Link} to="/" color="inherit">Home</StyledIconButton>
+                                {isAuthenticated && (
+                                    <StyledIconButton component={Link} to="/search" color="inherit">
+                                        Cerca Roba
+                                    </StyledIconButton>
+                                )}
+                            </Box>
+                            {/* Logo centrat */}
+                            <Box
+                                sx={{
+                                    position: "absolute",
+                                    left: "50%",
+                                    transform: "translateX(-50%)",
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                }}
+                            >
+                                <img src={logo} alt="Logo" style={{ width: "40px", height: "40px", marginRight: "10px" }} />
+                                <Typography
+                                    variant="h5"
+                                    component="div"
+                                    sx={{
+                                        fontFamily: "'Playfair Display', serif",
+                                        color: "#333",
+                                        display: "flex",
+                                        alignItems: "center",
+                                    }}
+                                >
                                     Clothy
                                 </Typography>
                             </Box>
-                            {isAuthenticated && (
-                                <>
-                                    <StyledIconButton onClick={handleLogout} color="inherit">Logout</StyledIconButton>
-                                </>
-                            )}
-                            {!isAuthenticated && (
-                                <>
-                                    <LoginButton component={Link} to="/login" color="inherit">Login</LoginButton>
-                                    <SignUpButton component={Link} to="/sign-up" color="inherit">Sign Up</SignUpButton>
-                                </>
-                            )}
-                            <StyledIconButton color="inherit">
-                                <PublicIcon />
-                            </StyledIconButton>
+                            {/* Secció dreta: botons */}
+                            <Box sx={{ display: "flex", alignItems: "center" }}>
+                                {isAuthenticated ? (
+                                    <StyledIconButton onClick={handleLogout} component={Link} to="/" color="inherit">
+                                        Logout
+                                    </StyledIconButton>
+                                ) : (
+                                    <>
+                                        <LoginButton component={Link} to="/login" color="inherit">
+                                            Login
+                                        </LoginButton>
+                                        <SignUpButton component={Link} to="/sign-up" color="inherit">
+                                            Sign Up
+                                        </SignUpButton>
+                                    </>
+                                )}
+                                <Snackbar
+                                    open={openSnackbar}
+                                    autoHideDuration={3000} // Amaga automàticament
+                                    onClose={() => setOpenSnackbar(false)} // Tanca la Snackbar
+                                    anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+                                >
+                                    <Alert
+                                        severity="error"
+                                        sx={{
+                                            bgcolor: "#d4edda", // Color de fons verd suau
+                                            color: "#155724", // Color del text verd fosc
+                                            fontSize: "16px",
+                                            borderRadius: "8px",
+                                            boxShadow: "0 2px 6px rgba(0,0,0,0.2)", // Ombra lleugera per un efecte suau
+                                        }}
+                                    >
+                                        La teva sessió s'ha tancat correctament.
+                                    </Alert>
+                                </Snackbar>
+                                <StyledIconButton color="inherit">
+                                    <PublicIcon />
+                                </StyledIconButton>
+                            </Box>
                         </Toolbar>
                     </AppBar>
                 </Slide>
@@ -160,8 +202,12 @@ function App() {
                         <Route
                             path="/search"
                             element={
-                                <ProtectedRoute>
-                                    <SearchClothing /> {/* Component de cerca */}
+                                <ProtectedRoute setIsAuthenticated={setIsAuthenticated}>
+                                    {isAuthenticated && (
+                                        <>
+                                            <SearchClothing /> {/* Component de cerca */}
+                                        </>
+                                    )}
                                 </ProtectedRoute>
                             }
                         />
@@ -200,8 +246,7 @@ function App() {
                 </Box>
 
             </Box>
-        </Router>
+        </BrowserRouter>
     );
 }
-
 export default App;
