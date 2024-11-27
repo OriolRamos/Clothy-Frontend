@@ -58,8 +58,6 @@ function Menu() {
                 color: "#333",
                 px: 4,
                 py: 6,
-                backgroundImage: "url('/path-to-background-image.jpg')", // Pots afegir una imatge de fons subtil
-                backgroundSize: "cover",
                 backgroundPosition: "center",
             }}
         >
@@ -143,7 +141,7 @@ function Menu() {
                 <OutlineButton component={Link} to="/login">
                     Inicia Sessió
                 </OutlineButton>
-            </Box>*/}
+            </Box>
 
             {/* Nota beta */}
             <Typography

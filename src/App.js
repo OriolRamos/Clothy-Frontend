@@ -111,7 +111,7 @@ function App() {
 
     return (
         <BrowserRouter>
-            <Box sx={{ minHeight: "100vh", display: "flex", flexDirection: "column", fontFamily: "'Roboto', sans-serif" }}>
+            <Box sx={{  flexDirection: "column", fontFamily: "'Roboto', sans-serif" }}>
                 <Slide in={showNavbar} direction="down">
                     <AppBar position="fixed" sx={{ bgcolor: "#f5f5f5", color: "#333" }}>
                         <Toolbar sx={{ justifyContent: "space-between" }}>
@@ -192,13 +192,16 @@ function App() {
                     </AppBar>
                 </Slide>
                 <Toolbar />
-                <Container component="main" sx={{ flexGrow: 1, display: "flex", flexDirection: "column", alignItems: "center", pt: 3 }}>
+                <Container component="main"
+                           sx={{ minHeight: "100vh", p: 0, m: 0 }}
+                           maxWidth={false}>
                     <Routes>
                         <Route path="/" element={<Menu />} />
                         <Route path="/terms" element={<TermsAndConditions />} />
                         <Route path="/privacy-policy" element={<PrivacityPolicy />} />
                         <Route path="/about" element={<About />} />
-                        <Route path="/login" element={<LoginForm setIsAuthenticated={setIsAuthenticated} />} />                        <Route path="/sign-up" element={<SignUpForm />} /> {/* Puedes reutilizar el mismo componente */}
+                        <Route path="/login" element={<LoginForm setIsAuthenticated={setIsAuthenticated} />} />                        
+                        <Route path="/sign-up" element={<SignUpForm />} /> {/* Puedes reutilizar el mismo componente */}
                         <Route
                             path="/search"
                             element={
