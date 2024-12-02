@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Typography, Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { useTranslation } from "react-i18next"; // Importació d'i18n
 import logo from "../images/logo_black.png";
 
 // Botons estilitzats amb interactivitat
@@ -45,6 +46,8 @@ const OutlineButton = styled(Button)`
 `;
 
 function Menu() {
+    const { t } = useTranslation(); // Hook per a les traduccions
+
     return (
         <Box
             sx={{
@@ -70,7 +73,7 @@ function Menu() {
                     alignItems: "center",
                 }}
             >
-                <img src={logo} alt="Logo Clothy" style={{ width: "100px", marginBottom: "20px" }} />
+                <img src={logo} alt={t("menu_container.header.title")} style={{ width: "100px", marginBottom: "20px" }} />
                 <Typography
                     variant="h2"
                     sx={{
@@ -80,7 +83,7 @@ function Menu() {
                         mb: 2,
                     }}
                 >
-                    Clothy
+                    {t("menu_container.header.title")}
                 </Typography>
                 <Typography
                     variant="h6"
@@ -90,7 +93,7 @@ function Menu() {
                         maxWidth: "600px",
                     }}
                 >
-                    Redissenyant la manera de viure la moda. Simple, sostenible i personalitzat.
+                    {t("menu_container.header.subtitle")}
                 </Typography>
             </Box>
 
@@ -104,7 +107,7 @@ function Menu() {
                         mb: 4,
                     }}
                 >
-                    La nostra primera implementació
+                    {t("menu_container.main.heading")}
                 </Typography>
                 <Typography
                     variant="body1"
@@ -115,10 +118,7 @@ function Menu() {
                         mb: 4,
                     }}
                 >
-                    Amb Clothy pots carregar una imatge d’una peça de roba i la nostra intel·ligència
-                    artificial et mostrarà opcions similars de diverses marques perquè puguis adquirir-les
-                    fàcilment. Això és només el principi. Estem treballant en nous productes i serveis que
-                    et sorprendran.
+                    {t("menu_container.main.description")}
                 </Typography>
                 <Typography
                     variant="body1"
@@ -128,18 +128,17 @@ function Menu() {
                         lineHeight: "1.8",
                     }}
                 >
-                    Si tens alguna idea o vols col·laborar, contacta amb el nostre equip de suport. Nosaltres
-                    dissenyem per la comunitat, perquè volem construir un futur millor junts.
+                    {t("menu_container.main.communityNote")}
                 </Typography>
             </Box>
 
-            {/* Botons
+            {/* Botons */}
             <Box sx={{ mt: 6, display: "flex", gap: 2 }}>
                 <StyledButton component={Link} to="/sign-up">
-                    Registra't
+                    {t("menu_container.buttons.signup")}
                 </StyledButton>
                 <OutlineButton component={Link} to="/login">
-                    Inicia Sessió
+                    {t("menu_container.buttons.login")}
                 </OutlineButton>
             </Box>
 
@@ -152,7 +151,7 @@ function Menu() {
                     mt: 8,
                 }}
             >
-                Clothy està en fase beta. Prova la nostra plataforma i ajuda’ns a millorar.
+                {t("menu_container.footer.betaNotice")}
             </Typography>
         </Box>
     );

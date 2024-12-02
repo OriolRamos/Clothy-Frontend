@@ -1,7 +1,10 @@
 import React from "react";
 import { Container, Typography, Box, Link } from "@mui/material";
+import { useTranslation } from "react-i18next"; // Biblioteca d'i18n
 
 const TermsAndConditions = () => {
+    const { t } = useTranslation(); // Carreguem la funció de traducció
+
     return (
         <Container sx={{ mt: 6, mb: 6, p: 2, bgcolor: "#f9f9f9", borderRadius: 2 }}>
             <Typography
@@ -9,14 +12,16 @@ const TermsAndConditions = () => {
                 gutterBottom
                 sx={{ fontFamily: "'Playfair Display', serif", color: "#2c3e50", textAlign: "center" }}
             >
-                Termes d'Ús i Condicions
+                {t("terms.title")}
             </Typography>
             <Typography
                 variant="body1"
                 paragraph
-                sx={{ fontFamily: "'Roboto', sans-serif", color: "#555", textAlign: "justify", mb: 2 }}
+                sx={{fontFamily: "'Roboto', sans-serif", color: "#555", textAlign: "justify", mb: 2}}
             >
-                Benvingut a <strong>Clothy</strong>. Ens alegra que confiïs en nosaltres per explorar la moda d’una manera única i innovadora. Aquí trobaràs tota la informació sobre com funciona la nostra plataforma, com gestionem les teves dades i què esperem de tu com a usuari. La transparència és la nostra prioritat, i complim rigorosament amb la normativa europea vigent.
+                {t("terms.intro1")}
+                <strong>Clothy</strong>
+                {t("terms.intro2")}
             </Typography>
 
             <Box sx={{ mt: 4 }}>
@@ -25,19 +30,19 @@ const TermsAndConditions = () => {
                     gutterBottom
                     sx={{ fontFamily: "'Playfair Display', serif", color: "#34495e" }}
                 >
-                    1. Ús Acceptable
+                    {t("terms.section1.title")}
                 </Typography>
                 <Typography
                     variant="body1"
                     paragraph
                     sx={{ fontFamily: "'Roboto', sans-serif", color: "#555", textAlign: "justify" }}
                 >
-                    Clothy està dissenyada per a ús personal i no comercial. Està estrictament prohibit:
+                    {t("terms.section1.description")}
                 </Typography>
                 <ul style={{ paddingLeft: "1.5rem", fontFamily: "'Roboto', sans-serif", color: "#555" }}>
-                    <li>Copiar, distribuir o modificar cap contingut de la plataforma sense autorització escrita.</li>
-                    <li>Intentar accedir al codi font o manipular els algoritmes d’IA.</li>
-                    <li>Utilitzar la plataforma per a activitats il·lícites o que infringeixin drets de tercers.</li>
+                    <li>{t("terms.section1.item1")}</li>
+                    <li>{t("terms.section1.item2")}</li>
+                    <li>{t("terms.section1.item3")}</li>
                 </ul>
             </Box>
 
@@ -47,26 +52,31 @@ const TermsAndConditions = () => {
                     gutterBottom
                     sx={{ fontFamily: "'Playfair Display', serif", color: "#34495e" }}
                 >
-                    2. Privacitat i Protecció de Dades (GDPR)
+                    {t("terms.section2.title")}
                 </Typography>
                 <Typography
                     variant="body1"
                     paragraph
                     sx={{ fontFamily: "'Roboto', sans-serif", color: "#555", textAlign: "justify" }}
                 >
-                    A Clothy, seguim estrictament el <strong>Reglament General de Protecció de Dades (GDPR)</strong>. Les dades personals que ens proporciones s'utilitzen exclusivament per oferir-te un millor servei. A continuació, destaquem els punts principals:
+                    {t("terms.section2.description1")}
+                    <strong>{t("terms.section2.GDPR")}</strong>
+                    {t("terms.section2.description2")}
                 </Typography>
                 <ul style={{ paddingLeft: "1.5rem", fontFamily: "'Roboto', sans-serif", color: "#555" }}>
-                    <li>Només recopilem dades necessàries, com la teva imatge per buscar roba similar.</li>
-                    <li>No compartim les teves dades amb tercers sense el teu consentiment explícit.</li>
-                    <li>Pots sol·licitar accedir, modificar o eliminar les teves dades en qualsevol moment.</li>
+                    <li>{t("terms.section2.item1")}</li>
+                    <li>{t("terms.section2.item2")}</li>
+                    <li>{t("terms.section2.item3")}</li>
                 </ul>
                 <Typography
                     variant="body1"
                     paragraph
-                    sx={{ fontFamily: "'Roboto', sans-serif', color: '#555'", textAlign: "justify" }}
+                    sx={{ fontFamily: "'Roboto', sans-serif", color: "#555", textAlign: "justify" }}
                 >
-                    Consulta la nostra <Link href="/privacy-policy" sx={{ color: "#2980b9" }}>Política de Privacitat</Link> per a més informació.
+                    {t("terms.section2.privacyPolicy")}{" "}
+                    <Link href="/privacy-policy" sx={{ color: "#2980b9" }}>
+                        {t("terms.section2.privacyLink")}
+                    </Link>
                 </Typography>
             </Box>
 
@@ -76,41 +86,19 @@ const TermsAndConditions = () => {
                     gutterBottom
                     sx={{ fontFamily: "'Playfair Display', serif", color: "#34495e" }}
                 >
-                    3. Ús de les Imatges
+                    {t("terms.section3.title")}
                 </Typography>
                 <Typography
                     variant="body1"
                     paragraph
                     sx={{ fontFamily: "'Roboto', sans-serif", color: "#555", textAlign: "justify" }}
                 >
-                    Quan puges una imatge a Clothy, aquesta només s’utilitza amb la finalitat de buscar peces de roba similars i millorar el nostre algoritme d’IA. Garantim que:
+                    {t("terms.section3.description")}
                 </Typography>
                 <ul style={{ paddingLeft: "1.5rem", fontFamily: "'Roboto', sans-serif", color: "#555" }}>
-                    <li>Les teves imatges es processen de manera segura i no es comparteixen amb cap entitat externa.</li>
-                    <li>Les imatges no s'emmagatzemen indefinidament; les eliminem automàticament després d’un període definit.</li>
-                    <li>Pots sol·licitar l’eliminació immediata de qualsevol imatge pujada.</li>
-                </ul>
-            </Box>
-
-            <Box sx={{ mt: 4 }}>
-                <Typography
-                    variant="h5"
-                    gutterBottom
-                    sx={{ fontFamily: "'Playfair Display', serif", color: "#34495e" }}
-                >
-                    4. Limitació de Responsabilitat
-                </Typography>
-                <Typography
-                    variant="body1"
-                    paragraph
-                    sx={{ fontFamily: "'Roboto', sans-serif", color: "#555", textAlign: "justify" }}
-                >
-                    Tot i que fem tot el possible per mantenir un servei segur i fiable, Clothy no es fa responsable de:
-                </Typography>
-                <ul style={{ paddingLeft: "1.5rem", fontFamily: "'Roboto', sans-serif", color: "#555" }}>
-                    <li>Errors tècnics o interrupcions temporals en el servei.</li>
-                    <li>Resultats inexactes en la cerca de peces similars.</li>
-                    <li>Qualsevol mal ús de la plataforma per part dels usuaris.</li>
+                    <li>{t("terms.section3.item1")}</li>
+                    <li>{t("terms.section3.item2")}</li>
+                    <li>{t("terms.section3.item3")}</li>
                 </ul>
             </Box>
 
@@ -120,14 +108,36 @@ const TermsAndConditions = () => {
                     gutterBottom
                     sx={{ fontFamily: "'Playfair Display', serif", color: "#34495e" }}
                 >
-                    5. Modificació dels Termes
+                    {t("terms.section4.title")}
                 </Typography>
                 <Typography
                     variant="body1"
                     paragraph
                     sx={{ fontFamily: "'Roboto', sans-serif", color: "#555", textAlign: "justify" }}
                 >
-                    Ens reservem el dret de modificar aquests termes i condicions per adaptar-nos a noves necessitats legals o tecnològiques. Sempre que realitzem canvis importants, t’ho notificarem prèviament. Recomanem revisar periòdicament aquesta pàgina per estar-ne informat.
+                    {t("terms.section4.description")}
+                </Typography>
+                <ul style={{ paddingLeft: "1.5rem", fontFamily: "'Roboto', sans-serif", color: "#555" }}>
+                    <li>{t("terms.section4.item1")}</li>
+                    <li>{t("terms.section4.item2")}</li>
+                    <li>{t("terms.section4.item3")}</li>
+                </ul>
+            </Box>
+
+            <Box sx={{ mt: 4 }}>
+                <Typography
+                    variant="h5"
+                    gutterBottom
+                    sx={{ fontFamily: "'Playfair Display', serif", color: "#34495e" }}
+                >
+                    {t("terms.section5.title")}
+                </Typography>
+                <Typography
+                    variant="body1"
+                    paragraph
+                    sx={{ fontFamily: "'Roboto', sans-serif", color: "#555", textAlign: "justify" }}
+                >
+                    {t("terms.section5.description")}
                 </Typography>
             </Box>
 
@@ -137,16 +147,22 @@ const TermsAndConditions = () => {
                     gutterBottom
                     sx={{ fontFamily: "'Playfair Display', serif", color: "#34495e" }}
                 >
-                    6. Contacte i Suport
+                    {t("terms.section6.title")}
                 </Typography>
                 <Typography
                     variant="body1"
                     paragraph
                     sx={{ fontFamily: "'Roboto', sans-serif", color: "#555", textAlign: "justify" }}
                 >
-                    Si tens qualsevol dubte, preocupació o suggeriment sobre aquests termes, no dubtis a contactar-nos a través del nostre{" "}
-                    <Link href="/contact" sx={{ color: "#2980b9" }}>formulari de contacte</Link> o enviant un correu electrònic a{" "}
-                    <Link href="mailto:support@clothy.com" sx={{ color: "#2980b9" }}>support@clothy.com</Link>. Estem aquí per ajudar-te i escoltar-te!
+                    {t("terms.section6.description1")}
+                    <Link href="/contact" sx={{ color: "#2980b9" }}>
+                        formulari de contacte
+                    </Link>{" "}
+                    {t("terms.section6.description2")}
+                    <Link href="mailto:support@clothy.com" sx={{ color: "#2980b9" }}>
+                        support@clothy.com
+                    </Link>
+                    {t("terms.section6.description3")}
                 </Typography>
             </Box>
         </Container>

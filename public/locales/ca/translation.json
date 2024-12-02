@@ -1,0 +1,175 @@
+{
+  "home": "Inici",
+  "search_clothing": "Cerca Roba",
+  "logout": "Tancar Sessió",
+  "login": "Inicia Sessió",
+  "signup": "Registra't",
+  "session_closed": "La teva sessió s'ha tancat correctament.",
+  "terms_and_conditions": "Termes d'Ús",
+  "privacy_policy": "Política de Privacitat",
+  "about": "Sobre Nosaltres",
+  "contact": "Contacte",
+  "terms": {
+    "title": "Termes d'Ús i Condicions",
+    "intro1": "Benvingut a ",
+    "intro2": ". Ens alegra que confiïs en nosaltres per explorar la moda d’una manera única i innovadora. Aquí trobaràs tota la informació sobre com funciona la nostra plataforma, com gestionem les teves dades i què esperem de tu com a usuari. La transparència és la nostra prioritat, i complim rigorosament amb la normativa europea vigent.",
+    "section1": {
+      "title": "1. Ús Acceptable",
+      "description": "Clothy està dissenyada per a ús personal i no comercial. Està estrictament prohibit:",
+      "item1": "Copiar, distribuir o modificar cap contingut de la plataforma sense autorització escrita.",
+      "item2": "Intentar accedir al codi font o manipular els algoritmes d’IA.",
+      "item3": "Utilitzar la plataforma per a activitats il·lícites o que infringeixin drets de tercers."
+    },
+    "section2": {
+      "title": "2. Privacitat i Protecció de Dades (GDPR)",
+      "description1": "A Clothy, seguim estrictament el ",
+      "description2": ". Les dades personals que ens proporciones s'utilitzen exclusivament per oferir-te un millor servei. A continuació, destaquem els punts principals:",
+      "item1": "Només recopilem dades necessàries, com la teva imatge per buscar roba similar.",
+      "item2": "No compartim les teves dades amb tercers sense el teu consentiment explícit.",
+      "item3": "Pots sol·licitar accedir, modificar o eliminar les teves dades en qualsevol moment.",
+      "privacyPolicy": "Consulta la nostra",
+      "privacyLink": "Política de Privacitat",
+      "GDPR": "Reglament General de Protecció de Dades (GDPR)"
+    },
+    "section3": {
+      "title": "3. Ús de les Imatges",
+      "description": "Quan puges una imatge a Clothy, aquesta només s’utilitza amb la finalitat de buscar peces de roba similars i millorar el nostre algoritme d’IA. Garantim que:",
+      "item1": "Les teves imatges es processen de manera segura i no es comparteixen amb cap entitat externa.",
+      "item2": "Les imatges no s'emmagatzemen indefinidament; les eliminem automàticament després d’un període definit.",
+      "item3": "Pots sol·licitar l’eliminació immediata de qualsevol imatge pujada."
+    },
+    "section4": {
+      "title": "4. Limitació de Responsabilitat",
+      "description": "Tot i que fem tot el possible per mantenir un servei segur i fiable, Clothy no es fa responsable de:",
+      "item1": "Errors tècnics o interrupcions temporals en el servei.",
+      "item2": "Resultats inexactes en la cerca de peces similars.",
+      "item3": "Qualsevol mal ús de la plataforma per part dels usuaris."
+    },
+    "section5": {
+      "title": "5. Modificació dels Termes",
+      "description": "Ens reservem el dret de modificar aquests termes i condicions per adaptar-nos a noves necessitats legals o tecnològiques. Sempre que realitzem canvis importants, t’ho notificarem prèviament. Recomanem revisar periòdicament aquesta pàgina per estar-ne informat."
+    },
+    "section6": {
+      "title": "6. Contacte i Suport",
+      "description1": "Si tens qualsevol dubte, preocupació o suggeriment sobre aquests termes, no dubtis a contactar-nos a través del nostre ",
+      "description2": " o enviant un correu electrònic a ",
+      "description3": ". Estem aquí per ajudar-te i escoltar-te!"
+    }
+  },
+  "privacyPolicy": {
+    "title": "Política de Privacitat de Clothy",
+    "effectiveDate": "Data d’efectivitat: 13/03/2024",
+    "intro1": "A ",
+    "intro2": ", la teva privacitat és la nostra prioritat. Ens comprometem a protegir les teves dades personals i a complir amb el " ,
+    "intro3": ". Aquí t’expliquem com recopilem, utilitzem i protegim la teva informació.",
+    "Clothy": "Clothy",
+    "GDPR": "Reglament General de Protecció de Dades (GDPR)" ,
+    "section1": {
+      "title": "1. Quina informació recopilem i com la fem servir",
+      "description": "Recopilem informació necessària per oferir el nostre servei i millorar-lo contínuament. Això inclou:",
+      "items": [
+        {
+          "title": "Imatges penjades",
+          "description": "Les utilitzem per cercar peces similars amb la nostra IA. Aquestes imatges s’elaboren de manera anonimitzada i s’eliminen després d’un període curt."
+        },
+        {
+          "title": "Informació tècnica",
+          "description": "Com el tipus de dispositiu, sistema operatiu i dades d’ús per optimitzar la nostra plataforma."
+        }
+      ]
+    },
+    "section2": {
+      "title": "2. Base legal pel tractament de dades",
+      "description": "La base legal per tractar les teves dades es basa en:",
+      "items": [
+        "El teu consentiment explícit, quan ens autoritzes a utilitzar les teves imatges.",
+        "La necessitat de processar dades per oferir el servei que sol·licites.",
+        "L’interès legítim de millorar el rendiment de la nostra plataforma i IA."
+      ],
+      "note": "Pots retirar el teu consentiment en qualsevol moment contactant-nos."
+    },
+    "section3": {
+      "title": "3. Els teus drets segons el GDPR",
+      "description": "Segons el GDPR, tens dret a:",
+      "items": [
+        "Accedir: Pots sol·licitar veure les dades que tenim sobre tu.",
+        "Rectificar: Pots corregir dades incorrectes o incompletes.",
+        "Eliminar: Pots sol·licitar que eliminem les teves dades.",
+        "Restricció: Pots limitar com processem les teves dades en determinades circumstàncies.",
+        "Portabilitat: Tens dret a rebre les teves dades en un format electrònic."
+      ],
+      "contact": "Per exercir qualsevol d’aquests drets, envia’ns un correu a "
+    },
+    "section4": {
+      "title": "4. Privacitat de menors",
+      "description": "El nostre servei no està destinat a menors de 13 anys. Si descobreixes que un menor ens ha proporcionat dades, contacta’ns immediatament i prendrem les mesures necessàries per eliminar-les."
+    },
+    "section5": {
+      "title": "5. Galetes i tecnologies similars",
+      "description": "Utilitzem galetes per millorar la teva experiència a Clothy:",
+      "note": "Pots gestionar les galetes des de la configuració del teu navegador.",
+      "items": [
+        {
+          "title": "Galetes tècniques",
+          "description": "Necessàries per al funcionament bàsic de la plataforma."
+        },
+        {
+          "title": "Galetes analítiques",
+          "description": "Amb el teu consentiment, per analitzar l’ús i millorar els nostres serveis."
+        }
+      ]
+    },
+    "section6": {
+      "title": "6. Canvis en la Política de Privacitat",
+      "description": "Ens reservem el dret a actualitzar aquesta política en qualsevol moment. Notificarem qualsevol canvi important abans que sigui efectiu."
+    },
+    "section7": {
+      "title": "7. Contacte",
+      "description": "Per dubtes o consultes, pots escriure’ns a "
+    }
+  },
+  "about_container": {
+    "title": "Sobre Nosaltres",
+    "intro": "A <strong>Clothy</strong>, creiem que la moda no és només roba. És una manera d’expressar qui som, d’imaginar el món tal com volem que sigui i de connectar amb els altres. Amb aquest somni al cor, vam fundar Clothy: una plataforma nascuda per redissenyar el futur de la moda, fer-la més accessible, inclusiva i sostenible per a tothom.",
+    "historyTitle": "La nostra història",
+    "history": "Tot va començar amb una pregunta senzilla: *“Com podem ajudar la gent a trobar peces de roba que realment s’adaptin a la seva visió i estil?”*. Inspirats per la rapidesa amb què la tecnologia està canviant el món, vam decidir combinar la intel·ligència artificial amb la creativitat humana per construir una eina única: una que permeti als usuaris trobar roba basada en imatges d’una manera intuïtiva i personalitzada.",
+    "visionTitle": "La nostra visió",
+    "vision": "La nostra missió va més enllà de l’estil o la comoditat. A Clothy, somiem amb un futur on la moda sigui un reflex del canvi que volem veure en el món: un futur més sostenible, inclusiu i connectat. Volem oferir als usuaris les eines per trobar roba que no només els representi, sinó que també respecti el planeta.",
+    "commitmentTitle": "Compromesos amb els nostres usuaris",
+    "commitment": "Els nostres usuaris són el centre de tot el que fem. Cada funcionalitat, cada decisió i cada millora està pensada per oferir una experiència que compleixi amb les seves necessitats i superi les seves expectatives. A través dels vostres comentaris i suggeriments, ens comprometem a evolucionar i construir una plataforma que realment faci la diferència.",
+    "futureTitle": "Construïm el futur junts",
+    "future": "Aquest és només el començament. La nostra visió a llarg termini inclou projectes com crear un cercador de moda més sostenible, integració amb marques locals i fins i tot eines que ajudin a reduir l’excés de consum en la indústria de la roba. Tot això amb un únic objectiu: ajudar-te a trobar el teu estil mentre ajudem el món a trobar el seu equilibri.",
+    "thanks": "Gràcies per formar part d’aquest viatge. Amb Clothy, redefinim la moda, junts."
+  },
+  "contact_container": {
+    "title": "Contacta'ns",
+    "description": "A Clothy, ens encanta escoltar les teves idees, resoldre els teus dubtes i conèixer les teves experiències. La comunicació és clau per construir un món més connectat i accessible. Si tens alguna pregunta, suggeriment o simplement vols saludar-nos, no dubtis a contactar-nos!",
+    "formTitle": "Envia'ns un missatge:",
+    "nameLabel": "Nom",
+    "emailLabel": "Correu electrònic",
+    "messageLabel": "Missatge",
+    "submitButton": "Enviar",
+    "successMessage": "Missatge enviat amb èxit!",
+    "errorMessage": "Hi ha hagut un error. Torna-ho a intentar més tard."
+  },
+  "menu_container": {
+    "header": {
+      "title": "Clothy",
+      "subtitle": "Redissenyant la manera de viure la moda. Simple, sostenible i personalitzat."
+    },
+    "main": {
+      "heading": "La nostra primera implementació",
+      "description": "Amb Clothy pots carregar una imatge d’una peça de roba i la nostra intel·ligència artificial et mostrarà opcions similars de diverses marques perquè puguis adquirir-les fàcilment. Això és només el principi. Estem treballant en nous productes i serveis que et sorprendran.",
+      "communityNote": "Si tens alguna idea o vols col·laborar, contacta amb el nostre equip de suport. Nosaltres dissenyem per la comunitat, perquè volem construir un futur millor junts."
+    },
+    "buttons": {
+      "signup": "Registra't",
+      "login": "Inicia Sessió"
+    },
+    "footer": {
+      "betaNotice": "Clothy està en fase beta. Prova la nostra plataforma i ajuda’ns a millorar."
+    }
+  }
+
+
+}

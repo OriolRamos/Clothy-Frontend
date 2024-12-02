@@ -12,8 +12,11 @@ import LoginForm from "./components/LoginForm"; // Importamos el nuevo component
 import SignUpForm from "./components/SignUpForm"; // Importamos el nuevo componente de formulario de login
 import SearchClothing from "./components/SearchClothing"; // Importamos el nuevo componente de formulario de login
 import ProtectedRoute from "./components/ProtectedRoute"; // Importamos el nuevo componente de formulario de login
+import LanguageSelector from "./components/LanguageSelector";
+import Contact from "./components/Contact";
 import Menu from "./components/Menu"; // Importamos el nuevo componente de formulario de login
 import { useNavigate } from 'react-router-dom'; // Important importar useNavigate
+import { useTranslation } from 'react-i18next';
 import About from "./components/About";
 import styled from 'styled-components';
 import logo from './images/logo_black.png';
@@ -86,6 +89,7 @@ function App() {
     const [showNavbar, setShowNavbar] = useState(true);
     const [prevScrollPos, setPrevScrollPos] = useState(window.pageYOffset);
     const [openSnackbar, setOpenSnackbar] = useState(false); // Estat per la Snackbar
+    const { t } = useTranslation();
 
     useEffect(() => {
         const token = localStorage.getItem('authToken');
@@ -115,16 +119,16 @@ function App() {
                 <Slide in={showNavbar} direction="down">
                     <AppBar position="fixed" sx={{ bgcolor: "#f5f5f5", color: "#333" }}>
                         <Toolbar sx={{ justifyContent: "space-between" }}>
-                            {/* Secció esquerra: botons */}
                             <Box sx={{ display: "flex", alignItems: "center" }}>
-                                <StyledIconButton component={Link} to="/" color="inherit">Home</StyledIconButton>
+                                <StyledIconButton component={Link} to="/" color="inherit">
+                                    {t('home')}
+                                </StyledIconButton>
                                 {isAuthenticated && (
                                     <StyledIconButton component={Link} to="/search" color="inherit">
-                                        Cerca Roba
+                                        {t('search_clothing')}
                                     </StyledIconButton>
                                 )}
                             </Box>
-                            {/* Logo centrat */}
                             <Box
                                 sx={{
                                     position: "absolute",
@@ -136,56 +140,37 @@ function App() {
                                 }}
                             >
                                 <img src={logo} alt="Logo" style={{ width: "40px", height: "40px", marginRight: "10px" }} />
-                                <Typography
-                                    variant="h5"
-                                    component="div"
-                                    sx={{
-                                        fontFamily: "'Playfair Display', serif",
-                                        color: "#333",
-                                        display: "flex",
-                                        alignItems: "center",
-                                    }}
-                                >
+                                <Typography variant="h5" component="div" sx={{ fontFamily: "'Playfair Display', serif", color: "#333" }}>
                                     Clothy
                                 </Typography>
                             </Box>
-                            {/* Secció dreta: botons */}
                             <Box sx={{ display: "flex", alignItems: "center" }}>
                                 {isAuthenticated ? (
                                     <StyledIconButton onClick={handleLogout} component={Link} to="/" color="inherit">
-                                        Logout
+                                        {t('logout')}
                                     </StyledIconButton>
                                 ) : (
                                     <>
                                         <LoginButton component={Link} to="/login" color="inherit">
-                                            Login
+                                            {t('login')}
                                         </LoginButton>
                                         <SignUpButton component={Link} to="/sign-up" color="inherit">
-                                            Sign Up
+                                            {t('signup')}
                                         </SignUpButton>
                                     </>
                                 )}
                                 <Snackbar
                                     open={openSnackbar}
-                                    autoHideDuration={3000} // Amaga automàticament
-                                    onClose={() => setOpenSnackbar(false)} // Tanca la Snackbar
+                                    autoHideDuration={3000}
+                                    onClose={() => setOpenSnackbar(false)}
                                     anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
                                 >
-                                    <Alert
-                                        severity="error"
-                                        sx={{
-                                            bgcolor: "#d4edda", // Color de fons verd suau
-                                            color: "#155724", // Color del text verd fosc
-                                            fontSize: "16px",
-                                            borderRadius: "8px",
-                                            boxShadow: "0 2px 6px rgba(0,0,0,0.2)", // Ombra lleugera per un efecte suau
-                                        }}
-                                    >
-                                        La teva sessió s'ha tancat correctament.
+                                    <Alert severity="error" sx={{ bgcolor: "#d4edda", color: "#155724", fontSize: "16px", borderRadius: "8px" }}>
+                                        {t('session_closed')}
                                     </Alert>
                                 </Snackbar>
                                 <StyledIconButton color="inherit">
-                                    <PublicIcon />
+                                    <LanguageSelector />
                                 </StyledIconButton>
                             </Box>
                         </Toolbar>
@@ -201,7 +186,8 @@ function App() {
                         <Route path="/privacy-policy" element={<PrivacityPolicy />} />
                         <Route path="/about" element={<About />} />
                         <Route path="/login" element={<LoginForm setIsAuthenticated={setIsAuthenticated} />} />                        
-                        <Route path="/sign-up" element={<SignUpForm />} /> {/* Puedes reutilizar el mismo componente */}
+                        <Route path="/sign-up" element={<SignUpForm />} />
+                        <Route path="/contact" element={<Contact />} />
                         <Route
                             path="/search"
                             element={
@@ -231,21 +217,22 @@ function App() {
                     <Typography variant="body2" sx={{ fontFamily: "'Playfair Display', serif" }}>
                         © 2025 Clothy -{" "}
                         <Link to="/terms" style={{ color: "black", textDecoration: "underline" }}>
-                            Termes d'Ús i Condicions
+                            {t('terms_and_conditions')}
                         </Link>
                         {" - "}
                         <Link to="/privacy-policy" style={{ color: "black", textDecoration: "underline" }}>
-                            Política de Privacitat
+                            {t('privacy_policy')}
                         </Link>
                         {" - "}
                         <Link to="/about" style={{ color: "black", textDecoration: "underline" }}>
-                            About
+                            {t('about')}
                         </Link>
                         {" - "}
                         <Link to="/contact" style={{ color: "black", textDecoration: "underline" }}>
-                            Contact
+                            {t('contact')}
                         </Link>
                     </Typography>
+
                 </Box>
 
             </Box>
