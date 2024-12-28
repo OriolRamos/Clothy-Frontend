@@ -1,32 +1,17 @@
-// components/Navbar/index.tsx
 "use client";
-
-import React, { useEffect, useState } from "react";
-import {
-    Navbar as MTNavbar,
-    Collapse,
-    Button,
-    IconButton,
-    Typography,
-} from "@material-tailwind/react";
-import {
-    RectangleStackIcon,
-    UserCircleIcon,
-    CommandLineIcon,
-    XMarkIcon,
-    Bars3Icon,
-} from "@heroicons/react/24/solid";
-import Image from "next/image";
+import React, { useState, useEffect } from "react";
+import { Navbar as MTNavbar, Collapse, Button, IconButton, Typography } from "@material-tailwind/react";
+import { RectangleStackIcon, UserCircleIcon, CommandLineIcon, XMarkIcon, Bars3Icon } from "@heroicons/react/24/solid";
 import Link from "next/link";
 import { useRouter } from 'next/navigation';
 
-// Configuració del menú de navegació
 const NAV_MENU = [
     {
         name: "Home",
         icon: RectangleStackIcon,
         link: "/",
     },
+    // Afegeix més ítems si cal
 ];
 
 interface NavItemProps {
@@ -37,33 +22,37 @@ interface NavItemProps {
 function NavItem({ children, href }: NavItemProps) {
     return (
         <li>
-            <Typography
-                as="a"
-                href={href || "#"}
-                target={href ? "_blank" : "_self"}
-                variant="paragraph"
-                color="gray"
-                className="flex items-center gap-2 font-medium text-gray-900"
-            >
-                {children}
-            </Typography>
+            <Link href={href || "#"} passHref>
+                <Typography
+                    as="a"
+                    variant="paragraph"
+                    color="gray"
+                    className="flex items-center gap-2 font-medium text-gray-900"
+                    onClick={() => {}}
+                    placeholder="" // Afegit placeholder
+                    onPointerEnterCapture={() => {}} // Afegit onPointerEnterCapture
+                    onPointerLeaveCapture={() => {}} // Afegit onPointerLeaveCapture
+                    id="" // Afegit id
+                    key="" // Afegit key
+                >
+                    {children}
+                </Typography>
+            </Link>
         </li>
     );
 }
+
 
 const Navbar: React.FC = () => {
     const router = useRouter();
 
     const handleLogin = () => {
-        // Redirigeix a la pàgina de login
         router.push('/login');
     };
     const handleSignUp = () => {
-        // Redirigeix a la pàgina de login
         router.push('/signup');
     };
     const handleHome = () => {
-        // Redirigeix a la pàgina de home
         router.push('/');
     };
 
@@ -93,40 +82,61 @@ const Navbar: React.FC = () => {
     }, []);
 
     return (
-        <MTNavbar shadow={false} fullWidth className="border-0 sticky top-0 z-50">
+        <MTNavbar
+            shadow={false}
+            fullWidth
+            className="border-0 sticky top-0 z-50"
+            onPointerEnterCapture={() => {}} // Afegit onPointerEnterCapture
+            onPointerLeaveCapture={() => {}} // Afegit
+            onClick={() => {}}
+            id="" // Afegit id
+            key="" // Afegit key
+            placeholder="Your Placeholder Text"  // Afegir aquí la propietat placeholder
+        >
             <div className="container mx-auto flex items-center justify-between">
                 <Typography
                     as="a"
                     href="https://www.clothy.es"
                     target="_blank"
                     color="blue-gray"
-                    className="text-lg font-bold flex items-center gap-2 ml-4" // Flex per alinear text i imatge, marge a l'esquerra
+                    className="text-lg font-bold flex items-center gap-2 ml-4"
+                    onClick={() => {}}
+                    placeholder="" // Afegit placeholder
+                    onPointerEnterCapture={() => {}} // Afegit onPointerEnterCapture
+                    onPointerLeaveCapture={() => {}} // Afegit onPointerLeaveCapture
+                    id="" // Afegit id
+                    key="" // Afegit key
                 >
                     <img
-                        src="/images/clothy_black.png" // Ruta a la imatge
+                        src="/images/clothy_black.png"
                         alt="Clothy Logo"
-                        className="h-8 w-8 object-contain" // Millorar la qualitat de la imatge, mida més gran i mantenir les proporcions
+                        className="h-8 w-8 object-contain"
                     />
                     Clothy
                 </Typography>
 
                 <ul className="ml-10 hidden items-center gap-8 lg:flex">
-                    {NAV_MENU.map(({ name, link, icon: Icon, href }) => (
-                        <NavItem key={name} href={link} onClick={link}>
+                    {NAV_MENU.map(({ name, link, icon: Icon }) => (
+                        <NavItem key={name} href={link}>
                             <Icon className="h-5 w-5" />
                             {name}
                         </NavItem>
                     ))}
                 </ul>
                 <div className="hidden items-center gap-2 lg:flex">
-                    {/* Botó Login */}
                     <Link href="/login">
-                        <Button variant="text" onClick={handleLogin}>Login</Button>
+                        <Button variant="text" onClick={handleLogin}
+                                placeholder="" // Afegeix placeholder amb un valor buit si no tens cap valor específic
+                                onPointerEnterCapture={() => {}} // Afegeix una funció buida si no tens una acció específica
+                                onPointerLeaveCapture={() => {}} // Afegeix una funció buida si no tens una acció específic
+                        >Login</Button>
                     </Link>
-
-                    {/* Botó Sign up */}
                     <Link href="/signup">
-                        <Button color="gray" onClick={handleSignUp}>Sign up</Button>
+                        <Button color="gray" onClick={handleSignUp}
+                                placeholder="" // Afegeix placeholder amb un valor buit si no tens cap valor específic
+                                onPointerEnterCapture={() => {}} // Afegeix una funció buida si no tens una acció específica
+                                onPointerLeaveCapture={() => {}} // Afegeix una funció buida si no tens una acció específic
+                        >Sign up</Button>
                     </Link>
                 </div>
 
@@ -135,6 +145,9 @@ const Navbar: React.FC = () => {
                     color="gray"
                     onClick={handleOpen}
                     className="ml-auto inline-block lg:hidden"
+                    placeholder="" // Afegeix placeholder amb un valor buit si no tens cap valor específic
+                    onPointerEnterCapture={() => {}} // Afegeix una funció buida si no tens una acció específica
+                    onPointerLeaveCapture={() => {}} // Afegeix una funció buida si no tens una acció específic
                 >
                     {open ? (
                         <XMarkIcon strokeWidth={2} className="h-6 w-6" />
@@ -155,12 +168,16 @@ const Navbar: React.FC = () => {
                     </ul>
                     <div className="mt-6 mb-4 flex items-center gap-2">
                         <Link href="/login">
-                            <Button variant="text" onClick={handleLogin}>Login</Button>
+                            <Button variant="text" onClick={handleLogin} placeholder="" // Afegeix placeholder amb un valor buit si no tens cap valor específic
+                                    onPointerEnterCapture={() => {}} // Afegeix una funció buida si no tens una acció específica
+                                    onPointerLeaveCapture={() => {}} // Afegeix una funció buida si no tens una acció específica
+                            >Login</Button>
                         </Link>
-
-                        {/* Botó Sign up */}
                         <Link href="/signup">
-                            <Button color="gray" onClick={handleSignUp}>Sign up</Button>
+                            <Button color="gray" onClick={handleSignUp} placeholder="" // Afegeix placeholder amb un valor buit si no tens cap valor específic
+                                    onPointerEnterCapture={() => {}} // Afegeix una funció buida si no tens una acció específica
+                                    onPointerLeaveCapture={() => {}} // Afegeix una funció buida si no tens una acció específic
+                                    >Sign up</Button>
                         </Link>
                     </div>
                 </div>

@@ -33,12 +33,13 @@ const Banner = () => {
                         </h2>
                     </div>
                     <div className="my-7 text-center lg:text-start">
-                        <button
+                        <a
+                            href="/signup"
                             className="text-xs md:text-sm font-semibold hover:shadow-xl bg-blue text-white py-2 px-4 md:py-3 md:px-10 rounded-full hover:bg-hoblue"
                             onClick={handleSignUp}
-                            href="/signup">
-                            Inicia Sesión
-                        </button>
+                        >
+                            Inicia Sessió
+                        </a>
                     </div>
                 </div>
 
