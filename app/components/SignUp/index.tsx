@@ -4,9 +4,9 @@ import Image from "next/image";
 import { useState } from "react";
 
 const SignUp = () => {
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
-    const [error, setError] = useState('');
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [error, setError] = useState("");
 
     // Funció per validar la contrasenya
     const validatePassword = (password: string) => {
@@ -14,16 +14,18 @@ const SignUp = () => {
         return regex.test(password);
     };
 
+    // Gestionar l'enviament del formulari
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
+
         if (password !== confirmPassword) {
             setError("Les contrasenyes no coincideixen.");
         } else if (!validatePassword(password)) {
             setError("La contrasenya no compleix els requisits de seguretat.");
         } else {
             setError("");
-            // Aquí pots fer la crida per a l'enregistrament
-            console.log("Formulari enviat");
+            console.log("Formulari enviat amb èxit.");
+            // Aquí pots afegir la crida a l'API per a registrar l'usuari
         }
     };
 
@@ -37,8 +39,8 @@ const SignUp = () => {
                         <Image
                             src="/images/login.png"
                             alt="Imagen de signup"
-                            layout="fill"
-                            objectFit="cover"
+                            fill
+                            style={{ objectFit: "cover" }}
                             className="opacity-90"
                         />
                     </div>
@@ -46,14 +48,17 @@ const SignUp = () => {
 
                 {/* Columna del formulari */}
                 <div className="relative flex justify-center items-center">
-                    <div className="rounded-2xl p-10 w-full max-w-lg">
+                    <div className="rounded-2xl p-10 w-full max-w-lg bg-white shadow-md">
                         <h2 className="text-3xl font-bold text-blue-600 text-center mb-6">
-                            Crea tu cuenta
+                            Crea el teu compte
                         </h2>
                         <form className="space-y-6" onSubmit={handleSubmit}>
-                            {/* Input de Usuario/Correo */}
+                            {/* Input de correu electrònic */}
                             <div>
-                                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                                <label
+                                    htmlFor="email"
+                                    className="block text-sm font-medium text-gray-700"
+                                >
                                     Correu electrònic
                                 </label>
                                 <input
@@ -66,10 +71,13 @@ const SignUp = () => {
                                 />
                             </div>
 
-                            {/* Input de Contraseña */}
+                            {/* Input de contrasenya */}
                             <div>
-                                <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                                    Contraseña
+                                <label
+                                    htmlFor="password"
+                                    className="block text-sm font-medium text-gray-700"
+                                >
+                                    Contrasenya
                                 </label>
                                 <input
                                     type="password"
@@ -82,13 +90,16 @@ const SignUp = () => {
                                     placeholder="••••••••"
                                 />
                                 <p className="text-xs text-gray-500 mt-1">
-                                    La contrasenya ha de tenir almenys 8 caràcters, una lletra majúscula, un número i un caràcter especial.
+                                    La contrasenya ha de tenir almenys 8 caràcters, incloent-hi una lletra majúscula, un número i un caràcter especial.
                                 </p>
                             </div>
 
-                            {/* Confirmar Contraseña */}
+                            {/* Input per confirmar contrasenya */}
                             <div>
-                                <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">
+                                <label
+                                    htmlFor="confirmPassword"
+                                    className="block text-sm font-medium text-gray-700"
+                                >
                                     Confirma la contrasenya
                                 </label>
                                 <input
@@ -106,7 +117,7 @@ const SignUp = () => {
                             {/* Missatge d'error */}
                             {error && <p className="text-red-500 text-sm">{error}</p>}
 
-                            {/* Botó de Sign Up */}
+                            {/* Botó de registre */}
                             <button
                                 type="submit"
                                 className="w-full bg-teal-400 text-white py-3 px-6 rounded-lg shadow-lg hover:bg-teal-500 transition-colors"
@@ -122,7 +133,7 @@ const SignUp = () => {
                             <hr className="flex-grow border-t border-gray-300" />
                         </div>
 
-                        {/* Botó de Google */}
+                        {/* Botó d'inici de sessió amb Google */}
                         <button
                             className="flex items-center justify-center bg-teal-400 text-white py-3 px-6 rounded-lg w-full shadow-lg hover:bg-teal-500 transition-colors"
                         >
@@ -134,7 +145,7 @@ const SignUp = () => {
                             >
                                 <path d="M21.35 11.1h-9.25v2.8h5.65c-.4 2.3-2.4 4-5.65 4-3.35 0-6.1-2.7-6.1-6s2.75-6 6.1-6c1.55 0 2.9.6 3.95 1.5l2.05-2.05C18.3 3.85 15.9 3 13.4 3 7.95 3 3.5 7.45 3.5 12.95S7.95 23 13.4 23c5.35 0 9.55-4.1 9.55-9.55 0-.55-.05-1.1-.15-1.65z" />
                             </svg>
-                            Iniciar sesión con Google
+                            Registra't amb Google
                         </button>
                     </div>
                 </div>

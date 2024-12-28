@@ -5,24 +5,24 @@ import Image from "next/image";
 const Login = () => {
     return (
         <div className="relative h-screen flex items-center bg-gray-100">
-            {/* Contenidor principal */}
+            {/* Contenedor principal */}
             <div className="absolute inset-0 lg:grid grid-cols-2">
-                {/* Columna de la imatge */}
+                {/* Columna de la imagen */}
                 <div className="relative h-full hidden lg:block">
                     <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-tr from-blue-400 to-blue-600 clip-path-diagonal">
                         <Image
                             src="/images/login.png"
                             alt="Imagen de login"
-                            layout="fill"
-                            objectFit="cover"
+                            fill
+                            style={{ objectFit: "cover" }}
                             className="opacity-90"
                         />
                     </div>
                 </div>
 
-                {/* Columna del formulari */}
+                {/* Columna del formulario */}
                 <div className="relative flex justify-center items-center">
-                    <div className="rounded-2xl p-10 w-full max-w-lg">
+                    <div className="rounded-2xl p-10 w-full max-w-lg bg-white shadow-md">
                         <h2 className="text-3xl font-bold text-blue-600 text-center mb-6">
                             Inicia sesión en tu cuenta
                         </h2>
@@ -70,7 +70,6 @@ const Login = () => {
                             >
                                 Iniciar sesión
                             </button>
-
                         </form>
 
                         {/* Divider */}
@@ -94,7 +93,6 @@ const Login = () => {
                             </svg>
                             Iniciar sesión con Google
                         </button>
-
                     </div>
                 </div>
             </div>
