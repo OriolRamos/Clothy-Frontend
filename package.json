@@ -25,7 +25,8 @@
     "react-slick": "^0.30.2",
     "slick-carousel": "^1.8.1",
     "tailwindcss": "3.4.13",
-    "typescript": "5.6.2"
+    "typescript": "5.6.2",
+    "emailjs-com": "^3.2.0"
   },
   "devDependencies": {
     "@types/react-slick": "^0.23.13"
