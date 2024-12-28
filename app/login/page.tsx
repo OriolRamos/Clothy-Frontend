@@ -6,7 +6,7 @@ const LoginPage = () => {
         <div>
             {/* Metadatos para mejorar el SEO */}
             <Head>
-                <title>Inicia Sessió o Registra't - Clothy</title>
+                <title>Inicia Sessió o Registra&#39;t - Clothy</title>
                 <meta
                     name="description"
                     content="Inicia sessió o crea un compte a Clothy, la teva botiga de moda en línia. Registra't i gaudeix de descomptes i promocions exclusives."

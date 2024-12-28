@@ -6,7 +6,7 @@ const SignUpPage = () => {
         <div>
             {/* Metadades per millorar el SEO */}
             <Head>
-                <title>Registra't a Clothy - Crea el teu compte</title>
+                <title>Registra&#39;t a Clothy - Crea el teu compte</title>
                 <meta name="description" content="Crea el teu compte a Clothy, la botiga de moda en línia. Registra't ara i gaudeix de descomptes exclusius, novetats i ofertes especials." />
                 <meta name="robots" content="index, follow" />
                 <meta property="og:title" content="Registra't a Clothy - Crea el teu compte" />
