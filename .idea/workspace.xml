@@ -4,13 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da1a1d65-fd44-4e09-8dc4-bd35cbb307fe" name="Changes" comment="v2.2">
-      <change afterPath="$PROJECT_DIR$/app/utils/email/emailServiceBenvinguda.js" afterDir="false" />
+    <list default="true" id="da1a1d65-fd44-4e09-8dc4-bd35cbb307fe" name="Changes" comment="v2.3">
+      <change afterPath="$PROJECT_DIR$/app/components/AuthContext/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/search_cloth/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/verification/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/creating_page.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/verification.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Footer/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Footer/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/components/Joinus/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Joinus/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/utils/emailService.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Login/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Login/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Navbar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Navbar/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/SignUp/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/SignUp/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/utils/email/emailServiceBenvinguda.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/utils/email/emailServiceBenvinguda.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,32 +48,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Usuario/Desktop/University/Prod2/public/images/featured&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Usuario\\Desktop\\University\\Clothy-Frontend\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Usuario/Desktop/University/Clothy-Frontend/public",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "C:\\Users\\Usuario\\Desktop\\University\\Clothy-Frontend\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Usuario\Desktop\University\Clothy-Frontend\public" />
+      <recent name="C:\Users\Usuario\Desktop\University\Clothy-Frontend\public\images" />
       <recent name="C:\Users\Usuario\Desktop\University\Prod2\public\images\featured" />
       <recent name="C:\Users\Usuario\Desktop\University\Prod2\public\images" />
       <recent name="C:\Users\Usuario\Desktop\University\Prod2\app\components\SignUp" />
-      <recent name="C:\Users\Usuario\Desktop\University\Prod2\app\components\Login" />
-      <recent name="C:\Users\Usuario\Desktop\University\Prod2\app\signup" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Usuario\Desktop\University\Clothy-Frontend\public\images" />
       <recent name="C:\Users\Usuario\Desktop\University\Clothy-Frontend\public\images\dedicated" />
       <recent name="C:\Users\Usuario\Desktop\University\Prod2\public\images\team" />
       <recent name="C:\Users\Usuario\Desktop\University\Prod2\public\images" />
@@ -112,7 +122,7 @@
       <updated>1735124840339</updated>
       <workItem from="1735124866012" duration="28473000" />
       <workItem from="1735341172559" duration="14199000" />
-      <workItem from="1735486942971" duration="784000" />
+      <workItem from="1735486942971" duration="20830000" />
     </task>
     <task id="LOCAL-00001" summary="v2.0">
       <option name="closed" value="true" />
@@ -178,7 +188,15 @@
       <option name="project" value="LOCAL" />
       <updated>1735400277441</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="v2.3">
+      <option name="closed" value="true" />
+      <created>1735576801560</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1735576801560</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -188,6 +206,7 @@
     <MESSAGE value="v2.0" />
     <MESSAGE value="v2.1" />
     <MESSAGE value="v2.2" />
-    <option name="LAST_COMMIT_MESSAGE" value="v2.2" />
+    <MESSAGE value="v2.3" />
+    <option name="LAST_COMMIT_MESSAGE" value="v2.3" />
   </component>
 </project>

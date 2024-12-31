@@ -1,13 +1,65 @@
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useAuth } from "../AuthContext/index"; // Assegura't que el path és correcte
 
 const Login = () => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+    const router = useRouter();
+    const { login } = useAuth();
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+        try {
+            const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+            const response = await fetch(`${apiUrl}/users/login`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ email, password }),
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                setError(errorData.detail || "Credencials incorrectes.");
+            } else {
+                const userData = await response.json();
+                const token = userData.access_token; // Adapta això segons el backend
+
+                // Utilitza la funció login del context
+                login(token);
+
+                // Redirigeix a la pàgina principal
+                router.push("/");
+            }
+        } catch (error) {
+            console.error("Error:", error);
+            setError("No s'ha pogut connectar amb el servidor. Si us plau, intenta-ho més tard.");
+        }
+    };
+
+    // Funció per gestionar errors d'autenticació o connexió
+    const handleFetchError = (error: any) => {
+        console.error(error);
+
+        // Si l'error és d'autenticació, netegem el token i redirigim al login
+        if (error.message === "Error en obtenir el perfil de l'usuari.") {
+            localStorage.removeItem("authToken");
+            router.push("/login");
+        }
+    };
+
     return (
         <div className="relative h-screen flex items-center bg-gray-100">
-            {/* Contenedor principal */}
+            {/* Contenidor principal */}
             <div className="absolute inset-0 lg:grid grid-cols-2">
-                {/* Columna de la imagen */}
+                {/* Columna de la imatge */}
                 <div className="relative h-full hidden lg:block">
                     <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-tr from-blue-400 to-blue-600 clip-path-diagonal">
                         <Image
@@ -20,19 +72,16 @@ const Login = () => {
                     </div>
                 </div>
 
-                {/* Columna del formulario */}
+                {/* Columna del formulari */}
                 <div className="relative flex justify-center items-center">
                     <div className="rounded-2xl p-10 w-full max-w-lg bg-white shadow-md">
                         <h2 className="text-3xl font-bold text-blue-600 text-center mb-6">
                             Inicia sesión en tu cuenta
                         </h2>
-                        <form className="space-y-6">
-                            {/* Input de Usuario/Correo */}
+                        <form className="space-y-6" onSubmit={handleSubmit}>
+                            {/* Input de Correu electrònic */}
                             <div>
-                                <label
-                                    htmlFor="email"
-                                    className="block text-sm font-medium text-gray-700"
-                                >
+                                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                                     Usuario o correo electrónico
                                 </label>
                                 <input
@@ -40,17 +89,16 @@ const Login = () => {
                                     id="email"
                                     name="email"
                                     required
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
                                     className="mt-2 block w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
                                     placeholder="usuario@ejemplo.com"
                                 />
                             </div>
 
-                            {/* Input de Contraseña */}
+                            {/* Input de Contrasenya */}
                             <div>
-                                <label
-                                    htmlFor="password"
-                                    className="block text-sm font-medium text-gray-700"
-                                >
+                                <label htmlFor="password" className="block text-sm font-medium text-gray-700">
                                     Contraseña
                                 </label>
                                 <input
@@ -58,12 +106,17 @@ const Login = () => {
                                     id="password"
                                     name="password"
                                     required
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
                                     className="mt-2 block w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
                                     placeholder="••••••••"
                                 />
                             </div>
 
-                            {/* Botón de Login */}
+                            {/* Missatge d'error */}
+                            {error && <p className="text-red-500 text-sm">{error}</p>}
+
+                            {/* Botó de Login */}
                             <button
                                 type="submit"
                                 className="w-full bg-teal-400 text-white py-3 px-6 rounded-lg shadow-lg hover:bg-teal-500 transition-colors"
@@ -79,7 +132,7 @@ const Login = () => {
                             <hr className="flex-grow border-t border-gray-300" />
                         </div>
 
-                        {/* Botón de Google */}
+                        {/* Botó de Google */}
                         <button
                             className="flex items-center justify-center bg-teal-400 text-white py-3 px-6 rounded-lg w-full shadow-lg hover:bg-teal-500 transition-colors"
                         >

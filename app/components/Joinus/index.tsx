@@ -3,10 +3,10 @@ import React, { useRef, useState } from "react";
 import { sendEmailBenvinguda } from "../../utils/email/emailServiceBenvinguda"; // Importem el servei de SendGrid
 
 const Join = () => {
-    const [email, setEmail] = useState("");
-    const [message, setMessage] = useState("");
+    const [email, setEmail] = useState<string>(""); // Definim el tipus de l'estat
+    const [message, setMessage] = useState<string>("");
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         // Comprova que hi hagi un email

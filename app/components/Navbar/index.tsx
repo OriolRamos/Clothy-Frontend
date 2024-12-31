@@ -1,9 +1,9 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Navbar as MTNavbar, Collapse, Button, IconButton, Typography } from "@material-tailwind/react";
-import { RectangleStackIcon, UserCircleIcon, CommandLineIcon, XMarkIcon, Bars3Icon } from "@heroicons/react/24/solid";
+import { RectangleStackIcon, CommandLineIcon, XMarkIcon, Bars3Icon } from "@heroicons/react/24/solid";
 import Link from "next/link";
-import { useRouter } from 'next/navigation';
+import { useAuth } from "../AuthContext/index"; // Importem el context
 
 const NAV_MENU = [
     {
@@ -11,174 +11,167 @@ const NAV_MENU = [
         icon: RectangleStackIcon,
         link: "/",
     },
-    // Afegeix més ítems si cal
 ];
 
-interface NavItemProps {
-    children: React.ReactNode;
-    href?: string;
-}
-
-function NavItem({ children, href }: NavItemProps) {
-    return (
-        <li>
-            <Link href={href || "#"} passHref>
-                <Typography
-                    as="a"
-                    variant="paragraph"
-                    color="gray"
-                    className="flex items-center gap-2 font-medium text-gray-900"
-                    onClick={() => {}}
-                    placeholder="" // Afegit placeholder
-                    onPointerEnterCapture={() => {}} // Afegit onPointerEnterCapture
-                    onPointerLeaveCapture={() => {}} // Afegit onPointerLeaveCapture
-                    id="" // Afegit id
-                    key="" // Afegit key
-                >
-                    {children}
-                </Typography>
-            </Link>
-        </li>
-    );
-}
-
-
 const Navbar: React.FC = () => {
-    const router = useRouter();
-
-    const handleLogin = () => {
-        router.push('/login');
-    };
-    const handleSignUp = () => {
-        router.push('/signup');
-    };
-    const handleHome = () => {
-        router.push('/');
-    };
-
+    const { isAuthenticated, userInitial, logout } = useAuth(); // Usem el context
     const [open, setOpen] = useState(false);
 
     const handleOpen = () => setOpen((cur) => !cur);
 
-    useEffect(() => {
-        const debounce = (fn: Function) => {
-            let frame: number;
-            return (...params: any[]) => {
-                if (frame) {
-                    cancelAnimationFrame(frame);
-                }
-                frame = requestAnimationFrame(() => {
-                    fn(...params);
-                });
-            };
-        };
-
-        const storeScroll = () => {
-            document.documentElement.dataset.scroll = window.scrollY.toString();
-        };
-
-        document.addEventListener("scroll", debounce(storeScroll), { passive: true });
-        storeScroll();
-    }, []);
-
     return (
-        <MTNavbar
-            shadow={false}
-            fullWidth
-            className="border-0 sticky top-0 z-50"
-            onPointerEnterCapture={() => {}} // Afegit onPointerEnterCapture
-            onPointerLeaveCapture={() => {}} // Afegit
-            onClick={() => {}}
-            id="" // Afegit id
-            key="" // Afegit key
-            placeholder="Your Placeholder Text"  // Afegir aquí la propietat placeholder
-        >
+        <MTNavbar shadow={false} fullWidth placeholder=""  // Si el component accepta 'placeholder', potser s'ha de passar una cadena buida
+                  onPointerEnterCapture={() => {}}  // Passant funcions per evitar l'error, encara que potser no calgui utilitzar-les
+                  onPointerLeaveCapture={() => {}} className="border-0 sticky top-0 z-50">
             <div className="container mx-auto flex items-center justify-between">
                 <Typography
+                    placeholder=""  // Si el component accepta 'placeholder', potser s'ha de passar una cadena buida
+                    onPointerEnterCapture={() => {}}  // Passant funcions per evitar l'error, encara que potser no calgui utilitzar-les
+                    onPointerLeaveCapture={() => {}}
                     as="a"
                     href="https://www.clothy.es"
                     target="_blank"
                     color="blue-gray"
                     className="text-lg font-bold flex items-center gap-2 ml-4"
-                    onClick={() => {}}
-                    placeholder="" // Afegit placeholder
-                    onPointerEnterCapture={() => {}} // Afegit onPointerEnterCapture
-                    onPointerLeaveCapture={() => {}} // Afegit onPointerLeaveCapture
-                    id="" // Afegit id
-                    key="" // Afegit key
                 >
-                    <img
-                        src="/images/clothy_black.png"
-                        alt="Clothy Logo"
-                        className="h-8 w-8 object-contain"
-                    />
+                    <img src="/images/clothy_black.png" alt="Clothy Logo" className="h-8 w-8 object-contain" />
                     Clothy
                 </Typography>
 
                 <ul className="ml-10 hidden items-center gap-8 lg:flex">
                     {NAV_MENU.map(({ name, link, icon: Icon }) => (
-                        <NavItem key={name} href={link}>
-                            <Icon className="h-5 w-5" />
-                            {name}
-                        </NavItem>
+                        <li key={name}>
+                            <Link href={link} passHref>
+                                <Typography
+                                    as="a"
+                                    variant="paragraph"
+                                    color="gray"
+                                    className="flex items-center gap-2 font-medium text-gray-900"
+                                    placeholder=""  // Si el component accepta 'placeholder', potser s'ha de passar una cadena buida
+                                    onPointerEnterCapture={() => {}}  // Passant funcions per evitar l'error, encara que potser no calgui utilitzar-les
+                                    onPointerLeaveCapture={() => {}}
+                                >
+                                    <Icon className="h-5 w-5" />
+                                    {name}
+                                </Typography>
+                            </Link>
+                        </li>
                     ))}
+
+                    {isAuthenticated && (
+                        <li key="search_cloth">
+                            <Link href="/search_cloth" passHref>
+                                <Typography
+                                    as="a"
+                                    variant="paragraph"
+                                    color="gray"
+                                    className="flex items-center gap-2 font-medium text-gray-900"
+                                    placeholder=""  // Si el component accepta 'placeholder', potser s'ha de passar una cadena buida
+                                    onPointerEnterCapture={() => {}}  // Passant funcions per evitar l'error, encara que potser no calgui utilitzar-les
+                                    onPointerLeaveCapture={() => {}}
+                                >
+                                    <CommandLineIcon className="h-5 w-5" />
+                                    Search Cloth
+                                </Typography>
+                            </Link>
+                        </li>
+                    )}
                 </ul>
+
                 <div className="hidden items-center gap-2 lg:flex">
-                    <Link href="/login">
-                        <Button variant="text" onClick={handleLogin}
-                                placeholder="" // Afegeix placeholder amb un valor buit si no tens cap valor específic
-                                onPointerEnterCapture={() => {}} // Afegeix una funció buida si no tens una acció específica
-                                onPointerLeaveCapture={() => {}} // Afegeix una funció buida si no tens una acció específic
-                        >Login</Button>
-                    </Link>
-                    <Link href="/signup">
-                        <Button color="gray" onClick={handleSignUp}
-                                placeholder="" // Afegeix placeholder amb un valor buit si no tens cap valor específic
-                                onPointerEnterCapture={() => {}} // Afegeix una funció buida si no tens una acció específica
-                                onPointerLeaveCapture={() => {}} // Afegeix una funció buida si no tens una acció específic
-                        >Sign up</Button>
-                    </Link>
+                    {isAuthenticated ? (
+                        <div className="flex items-center gap-4">
+                            <div className="w-10 h-10 rounded-full bg-blue-500 text-white flex items-center justify-center">
+                                {userInitial}
+                            </div>
+                            <Button placeholder=""  // Si el component accepta 'placeholder', potser s'ha de passar una cadena buida
+                                    onPointerEnterCapture={() => {}}  // Passant funcions per evitar l'error, encara que potser no calgui utilitzar-les
+                                    onPointerLeaveCapture={() => {}} variant="text" color="red" onClick={logout}>
+                                Logout
+                            </Button>
+                        </div>
+                    ) : (
+                        <>
+                            <Link href="/login">
+                                <Button placeholder=""  // Si el component accepta 'placeholder', potser s'ha de passar una cadena buida
+                                        onPointerEnterCapture={() => {}}  // Passant funcions per evitar l'error, encara que potser no calgui utilitzar-les
+                                        onPointerLeaveCapture={() => {}} variant="text">Login</Button>
+                            </Link>
+                            <Link href="/signup">
+                                <Button placeholder=""  // Si el component accepta 'placeholder', potser s'ha de passar una cadena buida
+                                        onPointerEnterCapture={() => {}}  // Passant funcions per evitar l'error, encara que potser no calgui utilitzar-les
+                                        onPointerLeaveCapture={() => {}} color="gray">Sign up</Button>
+                            </Link>
+                        </>
+                    )}
                 </div>
 
-                <IconButton
-                    variant="text"
-                    color="gray"
-                    onClick={handleOpen}
-                    className="ml-auto inline-block lg:hidden"
-                    placeholder="" // Afegeix placeholder amb un valor buit si no tens cap valor específic
-                    onPointerEnterCapture={() => {}} // Afegeix una funció buida si no tens una acció específica
-                    onPointerLeaveCapture={() => {}} // Afegeix una funció buida si no tens una acció específic
-                >
-                    {open ? (
-                        <XMarkIcon strokeWidth={2} className="h-6 w-6" />
-                    ) : (
-                        <Bars3Icon strokeWidth={2} className="h-6 w-6" />
-                    )}
+                <IconButton placeholder=""  // Si el component accepta 'placeholder', potser s'ha de passar una cadena buida
+                            onPointerEnterCapture={() => {}}  // Passant funcions per evitar l'error, encara que potser no calgui utilitzar-les
+                            onPointerLeaveCapture={() => {}} variant="text" color="gray" onClick={handleOpen} className="ml-auto inline-block lg:hidden">
+                    {open ? <XMarkIcon strokeWidth={2} className="h-6 w-6" /> : <Bars3Icon strokeWidth={2} className="h-6 w-6" />}
                 </IconButton>
             </div>
+
             <Collapse open={open}>
                 <div className="container mx-auto mt-3 border-t border-gray-200 px-2 pt-4">
                     <ul className="flex flex-col gap-4">
-                        {NAV_MENU.map(({ name, icon: Icon }) => (
-                            <NavItem key={name}>
-                                <Icon className="h-5 w-5" />
-                                {name}
-                            </NavItem>
+                        {NAV_MENU.map(({ name, link, icon: Icon }) => (
+                            <li key={name}>
+                                <Link href={link} passHref>
+                                    <Typography
+                                        as="a"
+                                        variant="paragraph"
+                                        color="gray"
+                                        className="flex items-center gap-2 font-medium text-gray-900"
+                                        placeholder=""  // Si el component accepta 'placeholder', potser s'ha de passar una cadena buida
+                                        onPointerEnterCapture={() => {}}  // Passant funcions per evitar l'error, encara que potser no calgui utilitzar-les
+                                        onPointerLeaveCapture={() => {}}
+                                    >
+                                        <Icon className="h-5 w-5" />
+                                        {name}
+                                    </Typography>
+                                </Link>
+                            </li>
                         ))}
+                        {isAuthenticated && (
+                            <li key="search_cloth">
+                                <Link href="/search_cloth" passHref>
+                                    <Typography
+                                        as="a"
+                                        variant="paragraph"
+                                        color="gray"
+                                        className="flex items-center gap-2 font-medium text-gray-900"
+                                        placeholder=""  // Si el component accepta 'placeholder', potser s'ha de passar una cadena buida
+                                        onPointerEnterCapture={() => {}}  // Passant funcions per evitar l'error, encara que potser no calgui utilitzar-les
+                                        onPointerLeaveCapture={() => {}}
+                                    >
+                                        <CommandLineIcon className="h-5 w-5" />
+                                        Search Cloth
+                                    </Typography>
+                                </Link>
+                            </li>
+                        )}
                     </ul>
                     <div className="mt-6 mb-4 flex items-center gap-2">
-                        <Link href="/login">
-                            <Button variant="text" onClick={handleLogin} placeholder="" // Afegeix placeholder amb un valor buit si no tens cap valor específic
-                                    onPointerEnterCapture={() => {}} // Afegeix una funció buida si no tens una acció específica
-                                    onPointerLeaveCapture={() => {}} // Afegeix una funció buida si no tens una acció específica
-                            >Login</Button>
-                        </Link>
-                        <Link href="/signup">
-                            <Button color="gray" onClick={handleSignUp} placeholder="" // Afegeix placeholder amb un valor buit si no tens cap valor específic
-                                    onPointerEnterCapture={() => {}} // Afegeix una funció buida si no tens una acció específica
-                                    onPointerLeaveCapture={() => {}} // Afegeix una funció buida si no tens una acció específic
-                                    >Sign up</Button>
-                        </Link>
+                        {isAuthenticated ? (
+                            <div className="w-10 h-10 rounded-full bg-blue-500 text-white flex items-center justify-center">
+                                {userInitial}
+                            </div>
+                        ) : (
+                            <>
+                                <Link href="/login">
+                                    <Button placeholder=""  // Si el component accepta 'placeholder', potser s'ha de passar una cadena buida
+                                            onPointerEnterCapture={() => {}}  // Passant funcions per evitar l'error, encara que potser no calgui utilitzar-les
+                                            onPointerLeaveCapture={() => {}} variant="text">Login</Button>
+                                </Link>
+                                <Link href="/signup">
+                                    <Button placeholder=""  // Si el component accepta 'placeholder', potser s'ha de passar una cadena buida
+                                            onPointerEnterCapture={() => {}}  // Passant funcions per evitar l'error, encara que potser no calgui utilitzar-les
+                                            onPointerLeaveCapture={() => {}} color="gray">Sign up</Button>
+                                </Link>
+                            </>
+                        )}
                     </div>
                 </div>
             </Collapse>

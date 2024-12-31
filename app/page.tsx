@@ -13,19 +13,18 @@ import Articles from './components/Articles/index';
 import Joinus from './components/Joinus/index';
 import Insta from './components/Insta/index';
 
-
 export default function Home() {
   return (
     <main>
-      <Banner />
-      <Aboutus />
-      <Dedicated />
-      <Digital />
-      <Beliefs />
-      <Ourteam />
-      <Featured />
-      <FAQ />
-      <Joinus />
+          <Banner />
+          <Aboutus />
+          <Dedicated />
+          <Digital />
+          <Beliefs />
+          <Ourteam />
+          <Featured />
+          <FAQ />
+          <Joinus />
     </main>
   )
 }
