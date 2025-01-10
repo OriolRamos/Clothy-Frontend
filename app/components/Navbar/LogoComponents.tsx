@@ -8,6 +8,7 @@ const LogoDesktop: React.FC = () => (
         href="/"
         color="blue-gray"
         className="text-lg font-bold flex items-center gap-2"
+        {...({} as any)}
     >
         <img src="/images/clothy_black.png" alt="Clothy Logo" className="h-8 w-8 object-contain" />
         Clothy
@@ -21,6 +22,7 @@ const LogoMobile: React.FC = () => (
         href="/"
         color="blue-gray"
         className="text-lg font-bold flex items-center gap-2 mx-auto"
+        {...({} as any)}
     >
         <img src="/images/clothy_black.png" alt="Clothy Logo" className="h-8 w-8 object-contain" />
         Clothy

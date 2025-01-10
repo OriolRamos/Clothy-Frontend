@@ -4,19 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da1a1d65-fd44-4e09-8dc4-bd35cbb307fe" name="Changes" comment="v2.3">
-      <change afterPath="$PROJECT_DIR$/app/components/Navbar/LogoComponents.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/components/Navbar/UserMenu.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/components/Recover-Password/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/loss-password/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/maintenance/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/recover-password/rb_7876.png" afterDir="false" />
+    <list default="true" id="da1a1d65-fd44-4e09-8dc4-bd35cbb307fe" name="Changes" comment="v2.4">
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Login/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Login/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Navbar/LogoComponents.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Navbar/LogoComponents.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Navbar/UserMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Navbar/UserMenu.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/components/Navbar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Navbar/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/SignUp/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/SignUp/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Recover-Password/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Recover-Password/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,7 +116,7 @@
       <workItem from="1735124866012" duration="28473000" />
       <workItem from="1735341172559" duration="14199000" />
       <workItem from="1735486942971" duration="20830000" />
-      <workItem from="1736443525237" duration="21533000" />
+      <workItem from="1736443525237" duration="24786000" />
     </task>
     <task id="LOCAL-00001" summary="v2.0">
       <option name="closed" value="true" />
@@ -212,7 +206,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736450378618</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="v2.4">
+      <option name="closed" value="true" />
+      <created>1736512588985</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1736512588985</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -223,6 +225,7 @@
     <MESSAGE value="v2.1" />
     <MESSAGE value="v2.2" />
     <MESSAGE value="v2.3" />
-    <option name="LAST_COMMIT_MESSAGE" value="v2.3" />
+    <MESSAGE value="v2.4" />
+    <option name="LAST_COMMIT_MESSAGE" value="v2.4" />
   </component>
 </project>

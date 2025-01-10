@@ -12,7 +12,7 @@ const RecoverPassword = () => {
     const [step, setStep] = useState(1); // 1: Introduir correu, 2: Introduir codi
     const [error, setError] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
-    const [lastSentTime, setLastSentTime] = useState(null); // Guardar l'hora de l'última petició
+    const [lastSentTime, setLastSentTime] = useState<number | null>(null); // Aquí es declara correctament el tipus
     const [canResend, setCanResend] = useState(true); // Si es pot tornar a enviar el codi
     const [timer, setTimer] = useState(0); // Per mostrar el temps restant per tornar a enviar el correu
 
@@ -35,7 +35,7 @@ const RecoverPassword = () => {
         }
     }, [lastSentTime]);
 
-    const handleEmailSubmit = async (e) => {
+    const handleEmailSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setError("");
 
@@ -88,7 +88,7 @@ const RecoverPassword = () => {
         }
     };
 
-    const handleCodeSubmit = async (e) => {
+    const handleCodeSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setError("");
 
@@ -178,7 +178,7 @@ const RecoverPassword = () => {
                     {step === 2 && (
                         <form onSubmit={handleCodeSubmit}>
                             <p className="text-gray-700 text-sm mb-4">
-                                Introdueix el codi de 6 dígits que t'hem enviat al correu electrònic i la nova contrasenya.
+                                Introdueix el codi de 6 dígits que t&#39;hem enviat al correu electrònic i la nova contrasenya.
                             </p>
                             <div className="mb-4">
                                 <label htmlFor="code" className="block text-sm font-medium text-gray-700">

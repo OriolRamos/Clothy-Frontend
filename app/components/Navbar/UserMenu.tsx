@@ -26,43 +26,43 @@ const UserMenu: React.FC<UserMenuProps> = ({ userInitial, logout }) => {
             </MenuHandler>
 
             {/* Menú desplegable amb les opcions */}
-            <MenuList className="w-48">
-                <MenuItem>
+            <MenuList className="w-48" {...({} as any)}>
+                <MenuItem {...({} as any)}>
                     <Link href="/maintenance" passHref>
                     <button className="w-full text-left" >
                         Perfil
                     </button>
                     </Link>
                 </MenuItem>
-                <MenuItem>
+                <MenuItem {...({} as any)}>
                     <Link href="/maintenance" passHref>
                         <button className="w-full text-left" >
                             Historial
                         </button>
                     </Link>
                 </MenuItem>
-                <MenuItem>
+                <MenuItem {...({} as any)}>
                     <Link href="/maintenance" passHref>
                         <button className="w-full text-left" >
                             Favoritos
                         </button>
                     </Link>
                 </MenuItem>
-                <MenuItem>
+                <MenuItem {...({} as any)}>
                     <Link href="/maintenance" passHref>
                         <button className="w-full text-left" >
                             Mi armario
                         </button>
                     </Link>
                 </MenuItem>
-                <MenuItem>
+                <MenuItem {...({} as any)}>
                     <Link href="/maintenance" passHref>
                         <button className="w-full text-left" >
                             Suscripción
                         </button>
                     </Link>
                 </MenuItem>
-                <MenuItem>
+                <MenuItem {...({} as any)}>
                     <button className="w-full text-left" onClick={logout}>
                         Logout
                     </button>

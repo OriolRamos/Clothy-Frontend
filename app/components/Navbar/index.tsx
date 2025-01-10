@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import {
-    Navbar as MTNavbar,
     Collapse,
     Button,
     IconButton,
@@ -9,8 +8,7 @@ import {
     Menu,
     MenuHandler,
     MenuList,
-    MenuItem,
-} from "@material-tailwind/react";
+    MenuItem } from "@material-tailwind/react";
 import { RectangleStackIcon, CommandLineIcon, XMarkIcon, Bars3Icon, ChevronDownIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
 import { useAuth } from "../AuthContext/index";
@@ -26,7 +24,7 @@ const NAV_MENU = [
 ];
 
 const Navbar: React.FC = () => {
-    const { isAuthenticated, userInitial, logout, userImage } = useAuth();
+    const { isAuthenticated, userInitial, logout } = useAuth();
     const [open, setOpen] = useState(false);
     const [userMenuVisible, setUserMenuVisible] = useState(false); // Estat per controlar la visibilitat del UserMenu
 
@@ -47,7 +45,8 @@ const Navbar: React.FC = () => {
     const handleOpen = () => setOpen((cur) => !cur);
 
     return (
-        <MTNavbar shadow={false} fullWidth className="border-0 sticky top-0 z-50">
+        <div className="bg-white bg-opacity-60 sticky top-0 z-50 w-full px-5 py-2 backdrop-blur-md">
+            <div className="max-w-full mx-auto">
             <div className="container mx-auto flex items-center justify-between lg:justify-start">
                 {/* Botó per a mòbil */}
                 <IconButton
@@ -55,6 +54,7 @@ const Navbar: React.FC = () => {
                     color="gray"
                     onClick={handleOpen}
                     className="lg:hidden"
+                    {...({} as any)} // Ignora altres propietats no passades
                 >
                     {open ? <XMarkIcon strokeWidth={2} className="h-6 w-6" /> : <Bars3Icon strokeWidth={2} className="h-6 w-6" />}
                 </IconButton>
@@ -79,6 +79,7 @@ const Navbar: React.FC = () => {
                                     variant="paragraph"
                                     color="gray"
                                     className="flex items-center gap-2 font-medium text-gray-900"
+                                    {...({} as any)} // Ignora altres propietats no passades
                                 >
                                     <Icon className="h-5 w-5" />
                                     {name}
@@ -94,6 +95,7 @@ const Navbar: React.FC = () => {
                                     variant="paragraph"
                                     color="gray"
                                     className="flex items-center gap-2 font-medium text-gray-900"
+                                    {...({} as any)} // Ignora altres propietats no passades
                                 >
                                     <CommandLineIcon className="h-5 w-5" />
                                     Search Cloth
@@ -106,14 +108,16 @@ const Navbar: React.FC = () => {
                 {/* Accions d'usuari a la dreta */}
                 <div className="ml-auto flex items-center gap-2">
                     {isAuthenticated ? (
-                        <UserMenu />
+                        <UserMenu userInitial="U"   // Per exemple, les inicials de l'usuari
+                                  logout= {logout}
+                        />
                     ) : (
                         <>
-                            <Link href="/login">
-                                <Button variant="text">Login</Button>
+                            <Link href="/login" {...({} as any)}>
+                                <Button variant="text" {...({} as any)}>Login</Button>
                             </Link>
-                            <Link href="/signup">
-                                <Button color="gray">Sign up</Button>
+                            <Link href="/signup" {...({} as any)}>
+                                <Button color="gray" {...({} as any)}>Sign up</Button>
                             </Link>
                         </>
                     )}
@@ -132,6 +136,7 @@ const Navbar: React.FC = () => {
                                         variant="paragraph"
                                         color="gray"
                                         className="flex items-center gap-2 font-medium text-gray-900"
+                                        {...({} as any)}
                                     >
                                         <Icon className="h-5 w-5" />
                                         {name}
@@ -147,6 +152,7 @@ const Navbar: React.FC = () => {
                                         variant="paragraph"
                                         color="gray"
                                         className="flex items-center gap-2 font-medium text-gray-900"
+                                        {...({} as any)}
                                     >
                                         <CommandLineIcon className="h-5 w-5" />
                                         Search Cloth
@@ -157,7 +163,8 @@ const Navbar: React.FC = () => {
                     </ul>
                 </div>
             </Collapse>
-        </MTNavbar>
+            </div>
+        </div>
     );
 };
 
