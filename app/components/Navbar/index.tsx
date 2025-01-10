@@ -108,7 +108,7 @@ const Navbar: React.FC = () => {
                 {/* Accions d'usuari a la dreta */}
                 <div className="ml-auto flex items-center gap-2">
                     {isAuthenticated ? (
-                        <UserMenu userInitial="U"   // Per exemple, les inicials de l'usuari
+                        <UserMenu userInitial= {userInitial}   // Per exemple, les inicials de l'usuari
                                   logout= {logout}
                         />
                     ) : (

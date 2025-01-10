@@ -26,10 +26,10 @@ const Banner = () => {
                     </div>
                     <div className="py-3 text-center lg:text-start">
                         <h1 className="text-4xl lg:text-5xl font-bold text-darkpurple">
-                            Rediseñando la forma <br /> de vivir la moda.
+                            Rediseñando la forma <br /> de vivir la moda
                         </h1>
                         <h2 className="text-2xl lg:text-3xl font-bold text-darkpurple mt-4">
-                            Simple, sostenible y personalizado.
+                            Simple, sostenible y personalizado
                         </h2>
                     </div>
                     <div className="my-7 text-center lg:text-start">

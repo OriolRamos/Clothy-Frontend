@@ -17,6 +17,29 @@ const AuthContext = createContext<AuthContextType>({
     logout: () => {},
 });
 
+async function validateToken(token: string): Promise<{ valid: boolean; email?: string }> {
+    try {
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+        const response = await fetch(`${apiUrl}/users/validate-token`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ token }),
+        });
+
+        if (!response.ok) {
+            throw new Error("Error validant el token");
+        }
+
+        return await response.json();
+    } catch (error) {
+        console.error("Error validant el token:", error);
+        return { valid: false };
+    }
+}
+
+
 // Proveïdor del context
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -24,33 +47,37 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     // UseEffect per gestionar l'autenticació al client
     useEffect(() => {
-        // Només executem aquest codi al client
-        if (typeof window !== "undefined") {
-            const token = localStorage.getItem("authToken");
-            if (token) {
-                try {
-                    // Decodifiquem el token JWT i establim l'estat d'autenticació
-                    const userData = JSON.parse(atob(token.split(".")[1]));
-                    const email = userData.email || "";
-                    setUserInitial(email.charAt(0).toUpperCase());
-                    setIsAuthenticated(true);
-                } catch (error) {
-                    console.error("Error decoding token:", error);
+        async function checkToken() {
+            if (typeof window !== "undefined") {
+                const token = localStorage.getItem("authToken");
+                if (token) {
+                    const result = await validateToken(token);
+                    if (result.valid && result.email) {
+                        setUserInitial(result.email.charAt(0).toUpperCase());
+                        setIsAuthenticated(true);
+                        console.log("Usuari autenticat amb email:", result.email);
+                    } else {
+                        console.log("Token invàlid o caducat");
+                        logout();
+                    }
                 }
             }
         }
+
+        checkToken();
     }, []);
 
-    const login = (token: string) => {
+    const login = async (token: string) => {
         if (typeof window !== "undefined") {
             localStorage.setItem("authToken", token);
-            try {
-                const userData = JSON.parse(atob(token.split(".")[1]));
-                const email = userData.email || "";
-                setUserInitial(email.charAt(0).toUpperCase());
+            const result = await validateToken(token);
+            if (result.valid && result.email) {
+                setUserInitial(result.email.charAt(0).toUpperCase());
                 setIsAuthenticated(true);
-            } catch (error) {
-                console.error("Error decoding token during login:", error);
+                console.log("Usuari autenticat amb email:", result.email);
+            } else {
+                console.log("Token invàlid o caducat");
+                logout();
             }
         }
     };

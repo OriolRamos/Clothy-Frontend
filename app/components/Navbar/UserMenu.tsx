@@ -18,13 +18,12 @@ const UserMenu: React.FC<UserMenuProps> = ({ userInitial, logout }) => {
             <MenuHandler>
                 {/* Mostrem la icona d'usuari i la fletxa */}
                 <div className="flex items-center gap-2 cursor-pointer">
-                    <div className="w-8 h-8 rounded-full bg-blue-500 text-white flex items-center justify-center text-sm">
+                    <div className="w-8 h-8 rounded-full bg-gray-200 text-black flex items-center justify-center text-lg font-bold">
                         {userInitial}
                     </div>
                     <ChevronDownIcon className="h-4 w-4 text-gray-600" />
                 </div>
             </MenuHandler>
-
             {/* Menú desplegable amb les opcions */}
             <MenuList className="w-48" {...({} as any)}>
                 <MenuItem {...({} as any)}>
@@ -56,7 +55,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ userInitial, logout }) => {
                     </Link>
                 </MenuItem>
                 <MenuItem {...({} as any)}>
-                    <Link href="/maintenance" passHref>
+                    <Link href="/donaciones" passHref>
                         <button className="w-full text-left" >
                             Suscripción
                         </button>

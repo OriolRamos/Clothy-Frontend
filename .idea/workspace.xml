@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da1a1d65-fd44-4e09-8dc4-bd35cbb307fe" name="Changes" comment="v2.4">
+    <list default="true" id="da1a1d65-fd44-4e09-8dc4-bd35cbb307fe" name="Changes" comment="v2.5">
+      <change afterPath="$PROJECT_DIR$/app/donaciones/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Navbar/LogoComponents.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Navbar/LogoComponents.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/AuthContext/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/AuthContext/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Banner/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Banner/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/components/Navbar/UserMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Navbar/UserMenu.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/components/Navbar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Navbar/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Recover-Password/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Recover-Password/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,7 +117,7 @@
       <workItem from="1735124866012" duration="28473000" />
       <workItem from="1735341172559" duration="14199000" />
       <workItem from="1735486942971" duration="20830000" />
-      <workItem from="1736443525237" duration="24786000" />
+      <workItem from="1736443525237" duration="31882000" />
     </task>
     <task id="LOCAL-00001" summary="v2.0">
       <option name="closed" value="true" />
@@ -214,7 +215,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736512588985</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="v2.5">
+      <option name="closed" value="true" />
+      <created>1736515848144</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1736515848144</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -226,6 +235,7 @@
     <MESSAGE value="v2.2" />
     <MESSAGE value="v2.3" />
     <MESSAGE value="v2.4" />
-    <option name="LAST_COMMIT_MESSAGE" value="v2.4" />
+    <MESSAGE value="v2.5" />
+    <option name="LAST_COMMIT_MESSAGE" value="v2.5" />
   </component>
 </project>
