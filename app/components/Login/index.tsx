@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "../AuthContext/index"; // Assegura't que el path és correcte
+import Link from "next/link";
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -146,6 +147,12 @@ const Login = () => {
                             </svg>
                             Iniciar sesión con Google
                         </button>
+                        {/* Text petit */}
+                        <Link href="/loss-password">
+                            <p className="mt-4 text-sm text-gray-500 text-center hover:text-blue-500 cursor-pointer">
+                                ¿Has olvidado la contraseña?
+                            </p>
+                        </Link>
                     </div>
                 </div>
             </div>

@@ -197,6 +197,27 @@ const SignUp = () => {
                             >
                                 Crea el teu compte
                             </button>
+                            {/* Divider */}
+                            <div className="flex items-center my-6">
+                                <hr className="flex-grow border-t border-gray-300" />
+                                <span className="px-4 text-sm text-gray-500">O</span>
+                                <hr className="flex-grow border-t border-gray-300" />
+                            </div>
+
+                            {/* Botó de Google */}
+                            <button
+                                className="flex items-center justify-center bg-teal-400 text-white py-3 px-6 rounded-lg w-full shadow-lg hover:bg-teal-500 transition-colors"
+                            >
+                                <svg
+                                    className="h-5 w-5 mr-3"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                >
+                                    <path d="M21.35 11.1h-9.25v2.8h5.65c-.4 2.3-2.4 4-5.65 4-3.35 0-6.1-2.7-6.1-6s2.75-6 6.1-6c1.55 0 2.9.6 3.95 1.5l2.05-2.05C18.3 3.85 15.9 3 13.4 3 7.95 3 3.5 7.45 3.5 12.95S7.95 23 13.4 23c5.35 0 9.55-4.1 9.55-9.55 0-.55-.05-1.1-.15-1.65z" />
+                                </svg>
+                                Crea una cuenta con Google
+                            </button>
                         </form>
                     </div>
                 </div>
