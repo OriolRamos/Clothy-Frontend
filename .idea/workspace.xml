@@ -4,14 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da1a1d65-fd44-4e09-8dc4-bd35cbb307fe" name="Changes" comment="v2.5">
-      <change afterPath="$PROJECT_DIR$/app/donaciones/page.tsx" afterDir="false" />
+    <list default="true" id="da1a1d65-fd44-4e09-8dc4-bd35cbb307fe" name="Changes" comment="v2.6">
+      <change afterPath="$PROJECT_DIR$/app/components/Notifications/ErrorModal.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/components/Notifications/SuccesModal.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/components/SessionExpiredModal/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/profile/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/components/AuthContext/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/AuthContext/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Banner/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Banner/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/components/Navbar/UserMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Navbar/UserMenu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Navbar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Navbar/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,11 +68,11 @@
       <recent name="C:\Users\Usuario\Desktop\University\Prod2\app\components\SignUp" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Usuario\Desktop\University\Clothy-Frontend\app\components\AuthContext" />
       <recent name="C:\Users\Usuario\Desktop\University\Clothy-Frontend\public\images" />
       <recent name="C:\Users\Usuario\Desktop\University\Clothy-Frontend\public\recover-password" />
       <recent name="C:\Users\Usuario\Desktop\University\Clothy-Frontend\public\images\dedicated" />
       <recent name="C:\Users\Usuario\Desktop\University\Prod2\public\images\team" />
-      <recent name="C:\Users\Usuario\Desktop\University\Prod2\public\images" />
     </key>
   </component>
   <component name="RunManager">
@@ -117,7 +118,7 @@
       <workItem from="1735124866012" duration="28473000" />
       <workItem from="1735341172559" duration="14199000" />
       <workItem from="1735486942971" duration="20830000" />
-      <workItem from="1736443525237" duration="31882000" />
+      <workItem from="1736443525237" duration="45115000" />
     </task>
     <task id="LOCAL-00001" summary="v2.0">
       <option name="closed" value="true" />
@@ -223,7 +224,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736515848144</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="v2.6">
+      <option name="closed" value="true" />
+      <created>1736528163912</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1736528163912</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -236,6 +245,7 @@
     <MESSAGE value="v2.3" />
     <MESSAGE value="v2.4" />
     <MESSAGE value="v2.5" />
-    <option name="LAST_COMMIT_MESSAGE" value="v2.5" />
+    <MESSAGE value="v2.6" />
+    <option name="LAST_COMMIT_MESSAGE" value="v2.6" />
   </component>
 </project>

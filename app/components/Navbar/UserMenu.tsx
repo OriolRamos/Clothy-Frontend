@@ -27,7 +27,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ userInitial, logout }) => {
             {/* Menú desplegable amb les opcions */}
             <MenuList className="w-48" {...({} as any)}>
                 <MenuItem {...({} as any)}>
-                    <Link href="/maintenance" passHref>
+                    <Link href="/profile" passHref>
                     <button className="w-full text-left" >
                         Perfil
                     </button>
