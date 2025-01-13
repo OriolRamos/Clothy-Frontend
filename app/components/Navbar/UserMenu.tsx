@@ -25,44 +25,44 @@ const UserMenu: React.FC<UserMenuProps> = ({ userInitial, logout }) => {
                 </div>
             </MenuHandler>
             {/* Menú desplegable amb les opcions */}
-            <MenuList className="w-48" {...({} as any)}>
+            <MenuList className="w-48 bg-white bg-opacity-60 backdrop-blur-lg rounded-lg shadow-lg" {...({} as any)}>
                 <MenuItem {...({} as any)}>
                     <Link href="/profile" passHref>
-                    <button className="w-full text-left" >
+                    <button className="w-full text-left text-black" >
                         Perfil
                     </button>
                     </Link>
                 </MenuItem>
                 <MenuItem {...({} as any)}>
                     <Link href="/maintenance" passHref>
-                        <button className="w-full text-left" >
+                        <button className="w-full text-left text-black" >
                             Historial
                         </button>
                     </Link>
                 </MenuItem>
                 <MenuItem {...({} as any)}>
                     <Link href="/maintenance" passHref>
-                        <button className="w-full text-left" >
+                        <button className="w-full text-left text-black" >
                             Favoritos
                         </button>
                     </Link>
                 </MenuItem>
                 <MenuItem {...({} as any)}>
                     <Link href="/maintenance" passHref>
-                        <button className="w-full text-left" >
+                        <button className="w-full text-left text-black" >
                             Mi armario
                         </button>
                     </Link>
                 </MenuItem>
                 <MenuItem {...({} as any)}>
                     <Link href="/donaciones" passHref>
-                        <button className="w-full text-left" >
+                        <button className="w-full text-left text-black" >
                             Suscripción
                         </button>
                     </Link>
                 </MenuItem>
                 <MenuItem {...({} as any)}>
-                    <button className="w-full text-left" onClick={logout}>
+                    <button className="w-full text-left text-black" onClick={logout}>
                         Logout
                     </button>
                 </MenuItem>
