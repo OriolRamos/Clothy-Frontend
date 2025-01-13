@@ -9,7 +9,7 @@ import {
     MenuHandler,
     MenuList,
     MenuItem } from "@material-tailwind/react";
-import { RectangleStackIcon, CommandLineIcon, XMarkIcon, Bars3Icon, ChevronDownIcon } from "@heroicons/react/24/solid";
+import { RectangleStackIcon, MagnifyingGlassIcon , XMarkIcon, Bars3Icon, ChevronDownIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
 import { useAuth } from "../AuthContext/index";
 import {LogoDesktop, LogoMobile} from "./LogoComponents"
@@ -97,7 +97,7 @@ const Navbar: React.FC = () => {
                                         className="flex items-center gap-2 font-medium text-gray-900"
                                         {...({} as any)} // Ignora altres propietats no passades
                                     >
-                                        <CommandLineIcon className="h-5 w-5" />
+                                        <MagnifyingGlassIcon  className="h-5 w-5" />
                                         Search Cloth
                                     </Typography>
                                 </Link>
@@ -154,7 +154,7 @@ const Navbar: React.FC = () => {
                                             className="flex items-center gap-2 font-medium text-gray-900"
                                             {...({} as any)}
                                         >
-                                            <CommandLineIcon className="h-5 w-5" />
+                                            <MagnifyingGlassIcon  className="h-5 w-5" />
                                             Search Cloth
                                         </Typography>
                                     </Link>
