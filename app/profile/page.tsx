@@ -171,7 +171,7 @@ const UserProfile = () => {
                                 disabled
                                 className="mt-2 p-3 border border-gray-300 rounded-md w-full bg-gray-200"
                             />
-                            <p className="text-sm text-gray-500 mt-1">Haz clic <a href="/change-password" className="text-blue-600 underline">aquí</a> para cambiarla.</p>
+                            <p className="text-sm text-gray-500 mt-1">Haz clic <a href="/reset-password" className="text-blue-600 underline">aquí</a> para cambiarla.</p>
                         </div>
 
                         {/* Optional Fields */}

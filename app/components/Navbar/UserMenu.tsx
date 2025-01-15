@@ -41,7 +41,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ userInitial, logout }) => {
                     </Link>
                 </MenuItem>
                 <MenuItem {...({} as any)}>
-                    <Link href="/maintenance" passHref>
+                    <Link href="/profile/favorites" passHref>
                         <button className="w-full text-left text-black" >
                             Favoritos
                         </button>
@@ -62,9 +62,11 @@ const UserMenu: React.FC<UserMenuProps> = ({ userInitial, logout }) => {
                     </Link>
                 </MenuItem>
                 <MenuItem {...({} as any)}>
-                    <button className="w-full text-left text-black" onClick={logout}>
-                        Logout
-                    </button>
+                    <Link href="/" passHref>
+                        <button className="w-full text-left text-black" onClick={logout}>
+                            Logout
+                        </button>
+                    </Link>
                 </MenuItem>
             </MenuList>
         </Menu>

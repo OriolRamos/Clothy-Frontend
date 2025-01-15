@@ -1,8 +1,8 @@
 import Head from "next/head";
-import RecoverPassword from "@/app/components/Recover-Password/index"; // Assegura't que el path sigui correcte
+import ResetPassword from "@/app/components/Recover-Password/reset"; // Assegura't que el path sigui correcte
 import Link from "next/link";
 
-const RecoverPage = () => {
+const ResetPage = () => {
     return (
         <div>
             {/* Metadatos per millorar el SEO */}
@@ -45,9 +45,9 @@ const RecoverPage = () => {
             </Head>
 
             {/* Component de Recuperació de Contrasenya */}
-            <RecoverPassword />
+            <ResetPassword />
         </div>
     );
 };
 
-export default RecoverPage;
+export default ResetPage;
