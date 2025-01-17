@@ -89,7 +89,7 @@ const Navbar: React.FC = () => {
                         ))}
                         {isAuthenticated && (
                             <li key="search_cloth">
-                                <Link href="/maintenance" passHref>
+                                <Link href="/search_cloth" passHref>
                                     <Typography
                                         as="a"
                                         variant="paragraph"
@@ -146,7 +146,7 @@ const Navbar: React.FC = () => {
                             ))}
                             {isAuthenticated && (
                                 <li key="search_cloth">
-                                    <Link href="/maintenance" passHref>
+                                    <Link href="/search_cloth" passHref>
                                         <Typography
                                             as="a"
                                             variant="paragraph"

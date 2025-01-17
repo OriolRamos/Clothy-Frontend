@@ -47,13 +47,14 @@ const UserMenu: React.FC<UserMenuProps> = ({ userInitial, logout }) => {
                         </button>
                     </Link>
                 </MenuItem>
+                {/*
                 <MenuItem {...({} as any)}>
                     <Link href="/maintenance" passHref>
                         <button className="w-full text-left text-black" >
                             Mi armario
                         </button>
                     </Link>
-                </MenuItem>
+                </MenuItem>*/}
                 <MenuItem {...({} as any)}>
                     <Link href="/donaciones" passHref>
                         <button className="w-full text-left text-black" >

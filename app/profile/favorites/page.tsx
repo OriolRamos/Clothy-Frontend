@@ -58,7 +58,7 @@ const Favoritos = () => {
         const fetchFavorites = async () => {
             try {
                 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-                const response = await fetchWithAuth(`${apiUrl}/profile/favorites`, {
+                const response = await fetchWithAuth(`${apiUrl}/profile/favorites/get`, {
                     method: 'GET',
                 });
 
@@ -75,7 +75,7 @@ const Favoritos = () => {
                             if (favorite.url) {
                                 try {
                                     // Petició al backend amb la purchase_url per obtenir la imatge
-                                    const imageResponse = await fetchWithAuth(`${apiUrl}/profile/favorites/imageFile`, {
+                                    const imageResponse = await fetchWithAuth(`${apiUrl}/profile/favorites/imageFile/get`, {
                                         method: 'POST',
                                         headers: {
                                             'Content-Type': 'application/json',
@@ -124,7 +124,7 @@ const Favoritos = () => {
             setLoading(true); // Inicia la càrrega
             const apiUrl = process.env.NEXT_PUBLIC_API_URL;
             // Fer una nova petició per obtenir les últimes dades de les imatges
-            const response = await fetchWithAuth(`${apiUrl}/profile/favorites`, {
+            const response = await fetchWithAuth(`${apiUrl}/profile/favorites/get`, {
                 method: 'GET',
             });
 
@@ -145,7 +145,13 @@ const Favoritos = () => {
     const handleFavoriteToggle = async (url: string) => {
         try {
             const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-            await fetch(`${apiUrl}/favorites/${url}`, { method: "DELETE" });
+            await fetch(`${apiUrl}/profile/favorites/delete`, {
+                method: "DELETE",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ url: url }),
+            });
             setImages((prev) => prev.filter((image) => image.url !== url));
         } catch (error) {
             console.error("Error eliminando de favoritos:", error);
