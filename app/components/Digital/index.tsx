@@ -1,6 +1,16 @@
+"use client";
 import Image from "next/image";
+import {useRouter} from "next/navigation";
 
 const Digital = () => {
+
+    const router = useRouter();
+
+    const handleLogin = () => {
+        // Redirigeix a la pàgina de login
+        router.push('/login');
+    };
+
     return (
 
         <div className="mx-2">
@@ -17,7 +27,7 @@ const Digital = () => {
                         </h4>
                         <div className="text-center lg:text-start">
                             <button
-                                className="text-xl font-semibold text-white bg-btnblue py-4 px-12 hover:bg-hoblue rounded-full">Empieza
+                                className="text-xl font-semibold text-white bg-btnblue py-4 px-12 hover:bg-hoblue rounded-full" onClick={handleLogin}>Empieza
                             </button>
                         </div>
                     </div>

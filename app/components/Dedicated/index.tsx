@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Dedicated = () => {
     return (
-        <div className="relative bg-lightgray py-20">
+        <div id="dedicated-section" className="relative bg-lightgray py-20">
             {/* Fondo decorativo */}
             <Image
                 src="/images/dedicated/spiral.svg"
