@@ -186,7 +186,13 @@ const CercaRoba = () => {
 
             if (isFavorite) {
                 // Si és favorit, elimina'l
-                const response = await fetchWithAuth(`${apiUrl}/favorites/${url}`, { method: "DELETE" });
+                const response = await fetchWithAuth(`${apiUrl}/profile/favorites/delete`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ url }),
+                });
 
                 if (response.ok) {
                     // Actualitza l'estat per reflectir el canvi
@@ -200,7 +206,7 @@ const CercaRoba = () => {
                 }
             } else {
                 // Si no és favorit, afegeix-lo
-                const response = await fetchWithAuth(`${apiUrl}/favorites`, {
+                const response = await fetchWithAuth(`${apiUrl}/profile/favorites/add`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -547,7 +553,7 @@ const CercaRoba = () => {
                                 brand={result.brand as string}
                                 color={result.color as string}
                                 purchaseUrl={result.purchase_url as string}
-                                favorite={true}
+                                favorite={result.favorite as boolean}
                                 onFavoriteToggle={() => handleFavoriteToggle(result.url)}
                                 onReload={onReload}
                             />

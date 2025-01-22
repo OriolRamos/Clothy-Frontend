@@ -4,16 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da1a1d65-fd44-4e09-8dc4-bd35cbb307fe" name="Changes" comment="v2.8 (S'ha creat el menu de search cloth)">
+    <list default="true" id="da1a1d65-fd44-4e09-8dc4-bd35cbb307fe" name="Changes" comment="v2.8 (S'ha arreglat errors)">
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Aboutus/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Aboutus/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Beliefs/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Beliefs/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Dedicated/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Dedicated/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Digital/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Digital/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Featured/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Featured/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Login/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Login/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/SignUp/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/SignUp/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/search_cloth/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/search_cloth/page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +115,8 @@
       <workItem from="1735486942971" duration="20830000" />
       <workItem from="1736443525237" duration="46614000" />
       <workItem from="1736763927888" duration="44917000" />
-      <workItem from="1737103665913" duration="20237000" />
+      <workItem from="1737103665913" duration="20457000" />
+      <workItem from="1737380806275" duration="7448000" />
     </task>
     <task id="LOCAL-00001" summary="v2.0">
       <option name="closed" value="true" />
@@ -275,7 +270,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737139641391</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="v2.8 (S'ha arreglat errors)">
+      <option name="closed" value="true" />
+      <created>1737191917188</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1737191917188</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -294,6 +297,7 @@
     <MESSAGE value="v2.7 (s'ha afegit logo per search)" />
     <MESSAGE value="v2.8 (S'ha afegit el menu de favorites)" />
     <MESSAGE value="v2.8 (S'ha creat el menu de search cloth)" />
-    <option name="LAST_COMMIT_MESSAGE" value="v2.8 (S'ha creat el menu de search cloth)" />
+    <MESSAGE value="v2.8 (S'ha arreglat errors)" />
+    <option name="LAST_COMMIT_MESSAGE" value="v2.8 (S'ha arreglat errors)" />
   </component>
 </project>
