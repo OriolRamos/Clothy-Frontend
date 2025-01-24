@@ -5,6 +5,8 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "../AuthContext/index"; // Assegura't que el path és correcte
 import Link from "next/link";
+import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
+
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -56,7 +58,38 @@ const Login = () => {
         }
     };
 
+    // Funció per gestionar l'èxit del login amb Google
+    const handleGoogleSuccess = async (credentialResponse: any) => {
+        try {
+            const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
+            const response = await fetch(`${apiUrl}/auth/google/login`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    token: credentialResponse.credential,
+                }),
+            });
+
+            const data = await response.json();
+            if (response.ok) {
+                console.log("Usuari loguejat correctament amb Google!");
+                const token = data.access_token; // Obtenir el token del backend
+                login(token); // Utilitzar la funció login del context
+
+                router.push("/"); // Redirigir després del login
+            } else {
+                setError(data.message || "Error durant el login amb Google.");
+            }
+        } catch (err) {
+            console.error("Error al processar el login amb Google:", err);
+            setError("No es pot completar el login amb Google.");
+        }
+    };
+
     return (
+        <GoogleOAuthProvider clientId="677361179666-ae2o6mhsi2fq7g6ri1hiktap6mjrkaqs.apps.googleusercontent.com">
+
         <div className="relative h-screen flex items-center bg-gray-100">
             {/* Contenidor principal */}
             <div className="absolute inset-0 lg:grid grid-cols-2">
@@ -126,6 +159,13 @@ const Login = () => {
                             </button>
                         </form>
 
+                        {/* Text petit */}
+                        <Link href="/loss-password">
+                            <p className="mt-4 text-sm text-gray-500 text-center hover:text-blue-500 cursor-pointer">
+                                ¿Has olvidado la contraseña?
+                            </p>
+                        </Link>
+
                         {/* Divider */}
                         <div className="flex items-center my-6">
                             <hr className="flex-grow border-t border-gray-300" />
@@ -134,30 +174,16 @@ const Login = () => {
                         </div>
 
                         {/* Botó de Google */}
-                        <button
-                            className="block w-full relative cursor-pointer flex items-center justify-center py-3 px-6 text-white bg-faqblue rounded-lg font-medium shadow-lg hover:scale-105 hover:bg-faqblue/90 hover:backdrop-blur-sm hover:opacity-95 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-btnblue focus:ring-offset-2 active:bg-hoblue transition transform duration-200"
-                        >
-                            <svg
-                                className="h-5 w-5 mr-2"
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                                fill="currentColor"
-                            >
-                                <path
-                                    d="M21.35 11.1h-9.25v2.8h5.65c-.4 2.3-2.4 4-5.65 4-3.35 0-6.1-2.7-6.1-6s2.75-6 6.1-6c1.55 0 2.9.6 3.95 1.5l2.05-2.05C18.3 3.85 15.9 3 13.4 3 7.95 3 3.5 7.45 3.5 12.95S7.95 23 13.4 23c5.35 0 9.55-4.1 9.55-9.55 0-.55-.05-1.1-.15-1.65z"/>
-                            </svg>
-                            Iniciar sesión con Google
-                        </button>
-                        {/* Text petit */}
-                        <Link href="/loss-password">
-                            <p className="mt-4 text-sm text-gray-500 text-center hover:text-blue-500 cursor-pointer">
-                                ¿Has olvidado la contraseña?
-                            </p>
-                        </Link>
+                        <GoogleLogin
+                            onSuccess={handleGoogleSuccess}
+                            onError={() => setError("Error amb Google Login.")}
+                        />
+
                     </div>
                 </div>
             </div>
         </div>
+        </GoogleOAuthProvider>
     );
 };
 
