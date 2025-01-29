@@ -13,6 +13,7 @@ import React, { useState, useEffect } from "react";
 import ImageModel from "../../components/ImageModal/index";
 import { useAuth } from "@/app/components/AuthContext";
 import filters from "../../components/Filters/cloth_filters";
+import { useTranslation } from "react-i18next";
 
 interface Favorite {
     url: string;
@@ -158,6 +159,9 @@ const Favoritos = () => {
         }
     };
 
+    const { t } = useTranslation('common');
+
+
     const filteredImages = images.filter((image) => {
         const matchesType = filtersState.type
             ? (image.type || "").toLowerCase().includes(filtersState.type.toLowerCase())
@@ -189,14 +193,14 @@ const Favoritos = () => {
                 >
                     {filterKey.charAt(0).toUpperCase() + filterKey.slice(1)}:{" "}
                     <span className="text-gray-500">
-                        {filterValue || "Selecciona una opción"}
+                        {filterValue || t('favorites.selectOption')}
                     </span>
                 </button>
                 {expandedFilter === filterKey && (
                     <div className="absolute top-full left-0 w-full bg-white border border-gray-300 rounded-md shadow-md mt-2 z-10 max-h-48 overflow-y-auto">
                         <input
                             type="text"
-                            placeholder="Buscar..."
+                            placeholder={t('favorites.search')}
                             value={filterValue}
                             onChange={(e) =>
                                 setFiltersState((prev) => ({
@@ -227,7 +231,7 @@ const Favoritos = () => {
     return (
         <div className="min-h-screen bg-gray-100 px-8 py-12">
             <h1 className="text-4xl font-bold text-center text-black mb-8">
-                Favoritos
+                {t('favorites.title')}
             </h1>
 
             {/* Filtros */}
@@ -239,7 +243,7 @@ const Favoritos = () => {
                     onClick={() => setFiltersState({type: "", color: "", brand: ""})}
                     className="bg-blue-500 text-black px-4 py-2 rounded-md text-sm transition hover:bg-gray-300"
                 >
-                    Restablecer
+                    {t('favorites.reset')}
                 </button>
             </div>
 
@@ -267,7 +271,7 @@ const Favoritos = () => {
                     ))
                 ) : (
                     <div className="col-span-full text-center text-gray-600">
-                        No tienes ropa en favoritos.
+                        {t('favorites.empty')}
                     </div>
                 )}
             </div>

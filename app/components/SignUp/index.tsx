@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
+import { useTranslation } from "react-i18next";
 
 
 const SignUp = () => {
@@ -15,6 +16,8 @@ const SignUp = () => {
     const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
     const router = useRouter();
+    const { t } = useTranslation('common');
+
 
     // Funció per validar la contrasenya
     const validatePassword = (password: string) => {
@@ -27,9 +30,9 @@ const SignUp = () => {
         e.preventDefault();
 
         if (password !== confirmPassword) {
-            setError("Les contrasenyes no coincideixen.");
+            setError(t("signUp.errorPasswordMismatch"));
         } else if (!validatePassword(password)) {
-            setError("La contrasenya no compleix els requisits de seguretat.");
+            setError(t("signUp.errorPasswordInvalid"));
         } else {
             setError("");
 
@@ -51,7 +54,7 @@ const SignUp = () => {
 
                 if (!response.ok) {
                     const errorData = await response.json();
-                    setError(errorData.detail || "Ha ocorregut un error en registrar l'usuari.");
+                    setError(errorData.detail || t("signUp.errorServer"));
                 } else {
                     console.log("Usuari registrat correctament!");
                     // Redirigir a la pàgina de verificació
@@ -59,7 +62,7 @@ const SignUp = () => {
                 }
             } catch (error) {
                 console.error("Error en la connexió amb el backend:", error);
-                setError("No s'ha pogut connectar amb el servidor. Si us plau, intenta-ho més tard.");
+                setError(t("signUp.errorServer"));
             }
         }
     };
@@ -83,11 +86,11 @@ const SignUp = () => {
                 console.log("Usuari registrat correctament amb Google!");
                 router.push("/login"); // Redirigir després del registre
             } else {
-                setError(data.message || "Error durant el registre amb Google.");
+                setError(data.message || t("signUp.errorGoogle"));
             }
         } catch (err) {
             console.error("Error al processar el registre amb Google:", err);
-            setError("No es pot completar el registre amb Google.");
+            setError(t("signUp.errorGoogle"));
         }
     };
 
@@ -114,7 +117,7 @@ const SignUp = () => {
                 <div className="relative flex justify-center items-center">
                     <div className="rounded-2xl p-10 w-full max-w-lg bg-white shadow-md">
                         <h2 className="text-3xl font-bold text-blue-600 text-center mb-6">
-                            Crea el teu compte
+                            {t("signUp.title")}
                         </h2>
                         <form className="space-y-6" onSubmit={handleSubmit}>
                             {/* Input de correu electrònic */}
@@ -123,7 +126,7 @@ const SignUp = () => {
                                     htmlFor="email"
                                     className="block text-sm font-medium text-gray-700"
                                 >
-                                    Correu electrònic
+                                    {t("signUp.emailLabel")}
                                 </label>
                                 <input
                                     type="email"
@@ -133,7 +136,7 @@ const SignUp = () => {
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     className="mt-2 block w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                                    placeholder="usuario@ejemplo.com"
+                                    placeholder={t("signUp.emailPlaceholder") as string}
                                 />
                             </div>
 
@@ -143,7 +146,7 @@ const SignUp = () => {
                                     htmlFor="username"
                                     className="block text-sm font-medium text-gray-700"
                                 >
-                                    Nom d&#39;usuari
+                                    {t("signUp.usernameLabel")}
                                 </label>
                                 <input
                                     type="text"
@@ -153,7 +156,7 @@ const SignUp = () => {
                                     value={username}
                                     onChange={(e) => setUsername(e.target.value)}
                                     className="mt-2 block w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                                    placeholder="Nom d'usuari"
+                                    placeholder={t("signUp.usernamePlaceholder") as string}
                                 />
                             </div>
 
@@ -163,7 +166,7 @@ const SignUp = () => {
                                     htmlFor="password"
                                     className="block text-sm font-medium text-gray-700"
                                 >
-                                    Contrasenya
+                                    {t("signUp.passwordLabel")}
                                 </label>
                                 <div className="relative">
                                     <input
@@ -174,18 +177,18 @@ const SignUp = () => {
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
                                         className="mt-2 block w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                                        placeholder="••••••••"
+                                        placeholder={t("signUp.passwordPlaceholder") as string}
                                     />
                                     <button
                                         type="button"
                                         onClick={() => setShowPassword(!showPassword)}
                                         className="absolute right-3 top-3 text-sm text-gray-500"
                                     >
-                                        {showPassword ? "Amagar" : "Mostrar"}
+                                        {showPassword ? t("signUp.hidePassword") : t("signUp.showPassword")}
                                     </button>
                                 </div>
                                 <p className="text-xs text-gray-500 mt-1">
-                                    La contrasenya ha de tenir almenys 8 caràcters, incloent-hi una lletra majúscula, un número i un caràcter especial.
+                                    {t("signUp.passwordHint")}
                                 </p>
                             </div>
 
@@ -195,7 +198,7 @@ const SignUp = () => {
                                     htmlFor="confirmPassword"
                                     className="block text-sm font-medium text-gray-700"
                                 >
-                                    Confirma la contrasenya
+                                    {t("signUp.confirmPasswordLabel")}
                                 </label>
                                 <div className="relative">
                                     <input
@@ -206,14 +209,14 @@ const SignUp = () => {
                                         value={confirmPassword}
                                         onChange={(e) => setConfirmPassword(e.target.value)}
                                         className="mt-2 block w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                                        placeholder="••••••••"
+                                        placeholder={t("signUp.confirmPasswordPlaceholder") as string}
                                     />
                                     <button
                                         type="button"
                                         onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                                         className="absolute right-3 top-3 text-sm text-gray-500"
                                     >
-                                        {showConfirmPassword ? "Amagar" : "Mostrar"}
+                                        {showConfirmPassword ? t("signUp.hidePassword") : t("signUp.showPassword")}
                                     </button>
                                 </div>
                             </div>
@@ -226,7 +229,7 @@ const SignUp = () => {
                                 type="submit"
                                 className="block w-full relative cursor-pointer text-center py-3 px-6 text-white bg-faqblue rounded-lg font-medium shadow-lg hover:scale-105 hover:bg-faqblue/90 hover:backdrop-blur-sm hover:opacity-95 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-btnblue focus:ring-offset-2 active:bg-hoblue transition transform duration-200"
                             >
-                                Crea el teu compte
+                                {t("signUp.registerButton")}
                             </button>
                             {/* Divider */}
                             <div className="flex items-center my-6">
@@ -238,7 +241,7 @@ const SignUp = () => {
                             {/* Botó de Google */}
                             <GoogleLogin
                                 onSuccess={handleGoogleSuccess}
-                                onError={() => setError("Error amb Google Login.")}
+                                onError={() => setError(t("signUp.errorGoogle"))}
                             />
                         </form>
                     </div>

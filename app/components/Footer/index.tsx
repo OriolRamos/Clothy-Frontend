@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import {useRouter} from "next/navigation";
+import { useTranslation } from "react-i18next";
 
 // MIDDLE LINKS DATA
 interface ProductType {
@@ -12,22 +13,24 @@ interface ProductType {
     link: string[];
 }
 
-const products: ProductType[] = [
-    {
-        id: 1,
-        section: "Menu",
-        name: ['Home', 'About Us', 'FAQ', 'Join Us'],
-        link: ['/#baner-section', '/#section2', '/#faq-section', '/#joinus-section',]
-    },
-    {
-        id: 4,
-        section: "Others",
-        name: ['About Us'],
-        link: ['/about-us']
-    }
-]
+
 
 const Footer = () => {
+    const { t } = useTranslation('common');
+    const products: ProductType[] = [
+        {
+            id: 1,
+            section: t("footer.menu"),
+            name: [t("footer.home"), t("footer.aboutus"), t("footer.FAQ"), t("footer.joinus")],
+            link: ['/#baner-section', '/#section2', '/#faq-section', '/#joinus-section',]
+        },
+        {
+            id: 4,
+            section: t("footer.others"),
+            name: [t("footer.aboutus")],
+            link: ['/about-us']
+        }
+    ]
     const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
 
     useEffect(() => {

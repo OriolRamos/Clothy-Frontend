@@ -1,24 +1,26 @@
 "use client";
 import React, { useRef, useState } from "react";
 import { sendEmailBenvinguda } from "../../utils/email/emailServiceBenvinguda"; // Importem el servei de SendGrid
+import { useTranslation } from 'react-i18next'; // Afegim la importació de i18next
 
 const Join = () => {
     const [email, setEmail] = useState<string>(""); // Definim el tipus de l'estat
     const [message, setMessage] = useState<string>("");
+    const { t } = useTranslation('common'); // Utilitzem el hook de i18next per obtenir les traduccions
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         // Comprova que hi hagi un email
         if (!email) {
-            setMessage("Per favor, introdueix un correu electrònic.");
+            setMessage(t('joinus.error_message')); // Utilitzem la traducció per l'error
             return;
         }
 
         // Envia el correu electrònic amb les dades dinàmiques
         const dynamicData = {
             username: "Usuari Example", // Pots recollir més dades dinàmiques del formulari aquí
-            subject: "Benvingut/da a Clothy!",
+            subject: t('joinus.email_subject'), // Utilitzem la traducció per al tema de l'email
         };
 
         const result = await sendEmailBenvinguda(email, dynamicData);
@@ -36,17 +38,13 @@ const Join = () => {
                 {/* Secció de capçalera */}
                 <div className="text-center">
                     <h3 className="text-blue text-lg font-normal tracking-widest">
-                        ÚNETE A NOSOTROS
+                        {t('joinus.header')} {/* Traducim la capçalera */}
                     </h3>
                     <h2 className="text-3xl sm:text-5xl font-bold my-6 leading-tight">
-                        Rediseñemos el mundo juntos.
+                        {t('joinus.subheading')} {/* Traducim el subtítol */}
                     </h2>
                     <p className="text-lightblack text-xs sm:text-sm md:text-base font-normal max-w-[750px] mx-auto">
-                        En Clothy, creemos en la moda como una fuerza de cambio. Valoramos
-                        profundamente tus opiniones para crear nuevos productos y mejorar
-                        constantemente. <br />
-                        Juntos, podemos construir un futuro más inclusivo, sostenible y
-                        conectado.
+                        {t('joinus.description')} {/* Traducim la descripció */}
                     </p>
                 </div>
 
@@ -61,7 +59,7 @@ const Join = () => {
                             <input
                                 type="email"
                                 className="my-4 py-4 sm:pl-6 lg:text-xl text-black sm:rounded-full bg-lightgrey pl-1 focus:outline-none bg-emailbg focus:text-black"
-                                placeholder="Tu correo electrónico"
+                                placeholder={t('joinus.email_placeholder')} // Traduïm el placeholder
                                 autoComplete="off"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
@@ -74,7 +72,7 @@ const Join = () => {
                                 type="submit"
                                 className="joinButton w-full sm:w-0 text-xl text-white font-semibold text-center rounded-xl sm:rounded-full bg-blue hover:bg-btnblue"
                             >
-                                ¡Únete!
+                                {t('joinus.join_button')} {/* Traduïm el text del botó */}
                             </button>
                         </div>
                     </form>

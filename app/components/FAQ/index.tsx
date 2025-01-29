@@ -1,13 +1,15 @@
 "use client";
 import { Disclosure } from '@headlessui/react';
 import { ChevronUpIcon } from '@heroicons/react/20/solid';
+import { useTranslation } from "react-i18next";
 
 const FAQ = () => {
+    const { t } = useTranslation('common');
     return (
         <div id="faq-section" className="mx-auto max-w-7xl py-24 lg:px-8 bg-faqblue rounded-2xl my-16 faq-bg">
-            <h3 className="text-xl font-normal text-white text-center mb-6">Preguntas Frecuentes</h3>
+            <h3 className="text-xl font-normal text-white text-center mb-6">{t("faq.title")}</h3>
             <h2 className="text-4xl lg:text-6xl font-semibold text-center text-white">
-                Resolviendo tus dudas.
+                {t("faq.subtitle")}
             </h2>
             <div className="w-full px-4 pt-16">
                 {/* Pregunta 1 */}
@@ -16,13 +18,13 @@ const FAQ = () => {
                         {({ open }) => (
                             <>
                                 <Disclosure.Button className="flex w-full justify-between rounded-lg px-4 py-2 text-left text-2xl font-medium">
-                                    <span>¿Qué es Clothy y cómo funciona?</span>
+                                    <span>{t("faq.question1.title")}</span>
                                     <ChevronUpIcon
                                         className={`${open ? 'rotate-180 transform' : ''} h-5 w-5 text-purple-500`}
                                     />
                                 </Disclosure.Button>
                                 <Disclosure.Panel className="px-4 pt-4 pb-2 text-base text-black font-normal opacity-50">
-                                    Clothy es una plataforma diseñada para rediseñar el futuro de la moda. Nuestra primera funcionalidad permite a los usuarios encontrar ropa similar basada en imágenes a través de inteligencia artificial y web scraping. Nuestro objetivo es crear un entorno innovador y sostenible para todos los amantes de la moda.
+                                    {t("faq.question1.content")}
                                 </Disclosure.Panel>
                             </>
                         )}
@@ -35,13 +37,13 @@ const FAQ = () => {
                         {({ open }) => (
                             <>
                                 <Disclosure.Button className="flex w-full justify-between rounded-lg px-4 py-2 text-left text-2xl font-medium">
-                                    <span>¿Cómo puedo buscar ropa similar usando Clothy?</span>
+                                    <span>{t("faq.question2.title")}</span>
                                     <ChevronUpIcon
                                         className={`${open ? 'rotate-180 transform' : ''} h-5 w-5 text-purple-500`}
                                     />
                                 </Disclosure.Button>
                                 <Disclosure.Panel className="px-4 pt-4 pb-2 text-base text-black font-normal opacity-50">
-                                    Usar Clothy es muy sencillo. Solo necesitas subir una imagen de la prenda que estás buscando, y nuestra inteligencia artificial buscará opciones similares en tiempo real. Esto te permitirá encontrar productos que se adapten a tu estilo personal de manera rápida y efectiva.
+                                    {t("faq.question2.content")}
                                 </Disclosure.Panel>
                             </>
                         )}
@@ -54,13 +56,13 @@ const FAQ = () => {
                         {({ open }) => (
                             <>
                                 <Disclosure.Button className="flex w-full justify-between rounded-lg px-4 py-2 text-left text-2xl font-medium">
-                                    <span>¿Clothy trabaja con marcas locales?</span>
+                                    <span>{t("faq.question3.title")}</span>
                                     <ChevronUpIcon
                                         className={`${open ? 'rotate-180 transform' : ''} h-5 w-5 text-purple-500`}
                                     />
                                 </Disclosure.Button>
                                 <Disclosure.Panel className="px-4 pt-4 pb-2 text-base text-black font-normal opacity-50">
-                                    Sí, en Clothy creemos en apoyar a las marcas locales y sostenibles. Nuestro plan incluye integrar negocios locales para que puedan mostrar sus productos y llegar a una audiencia más amplia. De esta manera, fomentamos un ecosistema inclusivo y diverso en la industria de la moda.
+                                    {t("faq.question3.content")}
                                 </Disclosure.Panel>
                             </>
                         )}
@@ -73,13 +75,13 @@ const FAQ = () => {
                         {({ open }) => (
                             <>
                                 <Disclosure.Button className="flex w-full justify-between rounded-lg px-4 py-2 text-left text-2xl font-medium">
-                                    <span>¿Es seguro usar Clothy?</span>
+                                    <span>{t("faq.question4.title")}</span>
                                     <ChevronUpIcon
                                         className={`${open ? 'rotate-180 transform' : ''} h-5 w-5 text-purple-500`}
                                     />
                                 </Disclosure.Button>
                                 <Disclosure.Panel className="px-4 pt-4 pb-2 text-base text-black font-normal opacity-50">
-                                    Absolutamente. En Clothy priorizamos la seguridad y privacidad de nuestros usuarios. Tus datos y búsquedas están protegidos y nunca se compartirán con terceros sin tu consentimiento. Además, seguimos las mejores prácticas de seguridad en todas nuestras operaciones.
+                                    {t("faq.question4.content")}
                                 </Disclosure.Panel>
                             </>
                         )}
@@ -92,13 +94,13 @@ const FAQ = () => {
                         {({ open }) => (
                             <>
                                 <Disclosure.Button className="flex w-full justify-between rounded-lg px-4 py-2 text-left text-2xl font-medium">
-                                    <span>¿Cuáles son los planes futuros de Clothy?</span>
+                                    <span>{t("faq.question5.title")}</span>
                                     <ChevronUpIcon
                                         className={`${open ? 'rotate-180 transform' : ''} h-5 w-5 text-purple-500`}
                                     />
                                 </Disclosure.Button>
                                 <Disclosure.Panel className="px-4 pt-4 pb-2 text-base text-black font-normal opacity-50">
-                                    Este es solo el comienzo. Planeamos expandir las funcionalidades de Clothy, incluyendo un buscador más sostenible, integración con marcas internacionales, y herramientas para ayudar a los usuarios a tomar decisiones de compra más responsables. También queremos desarrollar sistemas que reduzcan el exceso de consumo en la industria de la moda.
+                                    {t("faq.question5.content")}
                                 </Disclosure.Panel>
                             </>
                         )}

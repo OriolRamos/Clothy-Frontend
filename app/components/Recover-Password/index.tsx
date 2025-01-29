@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
+
 
 const RecoverPassword = () => {
     const [email, setEmail] = useState("");
@@ -15,6 +17,7 @@ const RecoverPassword = () => {
     const [lastSentTime, setLastSentTime] = useState<number | null>(null); // Aquí es declara correctament el tipus
     const [canResend, setCanResend] = useState(true); // Si es pot tornar a enviar el codi
     const [timer, setTimer] = useState(0); // Per mostrar el temps restant per tornar a enviar el correu
+    const { t } = useTranslation('common');
 
     const router = useRouter();
 
@@ -55,11 +58,11 @@ const RecoverPassword = () => {
                 setCanResend(false); // Deshabilitar el botó d'enviament
             } else {
                 const errorData = await response.json();
-                setError(errorData.message || "No s'ha pogut enviar el correu electrònic.");
+                setError(errorData.message || t("recover.errorEmail"));
             }
         } catch (err) {
             console.error(err);
-            setError("Hi ha hagut un problema al contactar amb el servidor.");
+            setError(t("recover.serverError"));
         }
     };
 
@@ -80,11 +83,11 @@ const RecoverPassword = () => {
                 setCanResend(false); // Deshabilitar el botó
             } else {
                 const errorData = await response.json();
-                setError(errorData.message || "No s'ha pogut tornar a enviar el correu electrònic.");
+                setError(errorData.message || t("recover.errorResend"));
             }
         } catch (err) {
             console.error(err);
-            setError("Hi ha hagut un problema al contactar amb el servidor.");
+            setError(t("recover.serverError"));
         }
     };
 
@@ -93,7 +96,7 @@ const RecoverPassword = () => {
         setError("");
 
         if (password !== confirmPassword) {
-            setError("Les contrasenyes no coincideixen.");
+            setError(t("recover.passwordMismatch"));
             return;
         }
 
@@ -112,15 +115,15 @@ const RecoverPassword = () => {
             });
 
             if (response.ok) {
-                setSuccessMessage("Contrasenya actualitzada correctament! Pots iniciar sessió.");
+                setSuccessMessage(t("recover.success"));
                 setTimeout(() => router.push("/login"), 3000);
             } else {
                 const errorData = await response.json();
-                setError(errorData.message || "El codi introduït no és vàlid.");
+                setError(errorData.message || t("recover.invalidCode"));
             }
         } catch (err) {
             console.error(err);
-            setError("Hi ha hagut un problema al contactar amb el servidor.");
+            setError(t("recover.serverError"));
         }
     };
 
@@ -130,7 +133,7 @@ const RecoverPassword = () => {
             <div className="hidden lg:flex lg:w-1/2 bg-blue-500 relative justify-center items-center">
                 <Image
                     src="/images/recover-password/rb_7876.png"
-                    alt="Recupera la contrasenya"
+                    alt={t("recover.imageAlt")}
                     width={500}
                     height={500}
                     style={{ objectFit: "contain" }}
@@ -142,17 +145,17 @@ const RecoverPassword = () => {
             <div className="flex flex-col justify-center items-center lg:w-1/2 p-8 bg-gray-100">
                 <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md">
                     <h2 className="text-2xl font-bold text-blue-600 text-center mb-4">
-                        Recupera la teva contrasenya
+                        {t("recover.title")}
                     </h2>
 
                     {step === 1 && (
                         <form onSubmit={handleEmailSubmit}>
                             <p className="text-gray-700 text-sm mb-4">
-                                Introdueix el teu correu electrònic per rebre el codi de verificació.
+                                {t("recover.emailInstruction")}
                             </p>
                             <div className="mb-4">
                                 <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                                    Correu electrònic
+                                    {t("recover.emailLabel")}
                                 </label>
                                 <input
                                     type="email"
@@ -162,7 +165,7 @@ const RecoverPassword = () => {
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     className="mt-1 block w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500"
-                                    placeholder="usuario@ejemplo.com"
+                                    placeholder={t("recover.emailPlaceholder")}
                                 />
                             </div>
                             {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
@@ -170,7 +173,7 @@ const RecoverPassword = () => {
                                 type="submit"
                                 className="w-full bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition-colors"
                             >
-                                Enviar codi
+                                {t("recover.sendCode")}
                             </button>
                         </form>
                     )}
@@ -178,11 +181,11 @@ const RecoverPassword = () => {
                     {step === 2 && (
                         <form onSubmit={handleCodeSubmit}>
                             <p className="text-gray-700 text-sm mb-4">
-                                Introdueix el codi de 6 dígits que t&#39;hem enviat al correu electrònic i la nova contrasenya.
+                                {t("recover.codeInstruction")}
                             </p>
                             <div className="mb-4">
                                 <label htmlFor="code" className="block text-sm font-medium text-gray-700">
-                                    Codi de verificació
+                                    {t("recover.codeLabel")}
                                 </label>
                                 <input
                                     type="text"
@@ -192,12 +195,12 @@ const RecoverPassword = () => {
                                     value={code}
                                     onChange={(e) => setCode(e.target.value)}
                                     className="mt-1 block w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500"
-                                    placeholder="123456"
+                                    placeholder={t("recover.codePlaceholder")}
                                 />
                             </div>
                             <div className="mb-4">
                                 <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                                    Nova contrasenya
+                                    {t("recover.newPasswordLabel")}
                                 </label>
                                 <input
                                     type="password"
@@ -207,12 +210,12 @@ const RecoverPassword = () => {
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                     className="mt-1 block w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500"
-                                    placeholder="********"
+                                    placeholder={t("recover.newPasswordPlaceholder")}
                                 />
                             </div>
                             <div className="mb-4">
                                 <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">
-                                    Confirma la nova contrasenya
+                                    {t("recover.confirmPasswordLabel")}
                                 </label>
                                 <input
                                     type="password"
@@ -222,7 +225,7 @@ const RecoverPassword = () => {
                                     value={confirmPassword}
                                     onChange={(e) => setConfirmPassword(e.target.value)}
                                     className="mt-1 block w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500"
-                                    placeholder="********"
+                                    placeholder={t("recover.confirmPasswordPlaceholder")}
                                 />
                             </div>
                             {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
@@ -230,7 +233,7 @@ const RecoverPassword = () => {
                                 type="submit"
                                 className="w-full bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition-colors"
                             >
-                                Verificar codi i actualitzar contrasenya
+                                {t("recover.verifyCode")}
                             </button>
                         </form>
                     )}
@@ -242,7 +245,7 @@ const RecoverPassword = () => {
                     {/* Botó per tornar a enviar el codi si han passat 5 minuts */}
                     {step === 2 && !canResend && (
                         <p className="text-sm text-gray-500 mt-4">
-                            Pots tornar a enviar el codi en {timer} segons.
+                            {t("recover.resendTimer", { timer })}
                         </p>
                     )}
                     {step === 1 && canResend && (
@@ -251,7 +254,7 @@ const RecoverPassword = () => {
                             onClick={handleResendCode}
                             className="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors"
                         >
-                            Tornar a enviar codi
+                            {t("recover.resendCode")}
                         </button>
                     )}
                 </div>

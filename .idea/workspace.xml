@@ -4,11 +4,52 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da1a1d65-fd44-4e09-8dc4-bd35cbb307fe" name="Changes" comment="v2.9 (S'ha arreglat errors)">
+    <list default="true" id="da1a1d65-fd44-4e09-8dc4-bd35cbb307fe" name="Changes" comment="v2.91 (S'ha afegit auth amb google)">
+      <change afterPath="$PROJECT_DIR$/app/components/Navbar/LanguageSwitcher.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/i18n.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/locales/ar/common.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/locales/bn/common.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/locales/ca/common.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/locales/ch/common.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/locales/de/common.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/locales/en/common.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/locales/es/common.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/locales/fr/common.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/locales/hi/common.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/locales/ja/common.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/locales/ko/common.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/locales/pt/common.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/locales/ru/common.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/locales/tr/common.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/about-us/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/about-us/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Aboutus/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Aboutus/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Banner/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Banner/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Beliefs/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Beliefs/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Dedicated/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Dedicated/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Digital/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Digital/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/FAQ/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/FAQ/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Footer/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Footer/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Joinus/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Joinus/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/components/Login/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Login/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Navbar/UserMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Navbar/UserMenu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Navbar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Navbar/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Ourteam/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Ourteam/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Recover-Password/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Recover-Password/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Recover-Password/reset.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Recover-Password/reset.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/SessionExpiredModal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/SessionExpiredModal/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/components/SignUp/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/SignUp/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/donaciones/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/donaciones/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/privacy-policy/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/privacy-policy/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/profile/favorites/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/profile/favorites/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/profile/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/profile/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/search_cloth/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/search_cloth/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/terms&amp;conditions/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/terms&amp;conditions/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/verification/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/verification/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
@@ -21,6 +62,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -40,30 +82,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Usuario/Desktop/University/Clothy-Frontend/public&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Usuario\\Desktop\\University\\Clothy-Frontend\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Usuario/Desktop/University/Clothy-Frontend/public/locales/es",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "C:\\Users\\Usuario\\Desktop\\University\\Clothy-Frontend\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Usuario\Desktop\University\Clothy-Frontend\public\locales\es" />
+      <recent name="C:\Users\Usuario\Desktop\University\Clothy-Frontend\public\locales\en" />
       <recent name="C:\Users\Usuario\Desktop\University\Clothy-Frontend\public" />
       <recent name="C:\Users\Usuario\Desktop\University\Clothy-Frontend\public\images" />
       <recent name="C:\Users\Usuario\Desktop\University\Prod2\public\images\featured" />
-      <recent name="C:\Users\Usuario\Desktop\University\Prod2\public\images" />
-      <recent name="C:\Users\Usuario\Desktop\University\Prod2\app\components\SignUp" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Usuario\Desktop\University\Clothy-Frontend\app\components\AuthContext" />
@@ -119,7 +161,7 @@
       <workItem from="1736443525237" duration="46614000" />
       <workItem from="1736763927888" duration="44917000" />
       <workItem from="1737103665913" duration="20457000" />
-      <workItem from="1737380806275" duration="12660000" />
+      <workItem from="1737380806275" duration="61003000" />
     </task>
     <task id="LOCAL-00001" summary="v2.0">
       <option name="closed" value="true" />
@@ -289,7 +331,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737544938134</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="v2.91 (S'ha afegit auth amb google)">
+      <option name="closed" value="true" />
+      <created>1737721874815</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1737721874815</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -310,6 +360,7 @@
     <MESSAGE value="v2.8 (S'ha creat el menu de search cloth)" />
     <MESSAGE value="v2.8 (S'ha arreglat errors)" />
     <MESSAGE value="v2.9 (S'ha arreglat errors)" />
-    <option name="LAST_COMMIT_MESSAGE" value="v2.9 (S'ha arreglat errors)" />
+    <MESSAGE value="v2.91 (S'ha afegit auth amb google)" />
+    <option name="LAST_COMMIT_MESSAGE" value="v2.91 (S'ha afegit auth amb google)" />
   </component>
 </project>

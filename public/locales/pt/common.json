@@ -1,0 +1,421 @@
+{
+  "banner": {
+    "clothDesigns": "Designs de Roupas",
+    "redesigningFashion": "Redesenhando a forma",
+    "experienceFashion": "de vivenciar a moda",
+    "simpleSustainablePersonalized": "Simples, sustentável e personalizado",
+    "signIn": "Entrar",
+    "imageAlt": "Imagem do banner"
+  },
+
+  "login": {
+    "title": "Faça login na sua conta",
+    "email_label": "Nome de usuário ou E-mail",
+    "email_placeholder": "usuario@exemplo.com",
+    "password_label": "Senha",
+    "password_placeholder": "••••••••",
+    "submit_button": "Entrar",
+    "forgot_password": "Esqueceu sua senha?",
+    "or": "Ou",
+    "google_error": "Erro no login com o Google.",
+    "google_success": "Login bem-sucedido com o Google!",
+    "invalid_credentials": "Credenciais inválidas.",
+    "server_error": "Não foi possível conectar ao servidor. Tente novamente mais tarde.",
+    "image_alt": "Imagem de login"
+  },
+  "ourteam": {
+    "title": "Na Clothy, acreditamos que você merece apenas o melhor.",
+    "subtitle": "A moda é muito mais do que roupas: é identidade, criatividade e conexão. Na Clothy, usamos inteligência artificial para ajudá-lo a encontrar peças que realmente refletem seu estilo e visão.",
+    "image_alt": "Imagem da equipe Clothy",
+    "description": "Nossa equipe está comprometida em oferecer uma experiência única para você. Inovamos todos os dias para construir uma plataforma que conecta você com a moda que ama, de maneira acessível, sustentável e personalizada."
+  },
+  "beliefs": {
+    "section1": {
+      "title": "CRENÇAS",
+      "subtitle": "Honestidade",
+      "highlight": "e trabalho árduo são nossas crenças.",
+      "description": "Trabalhamos para você, com o único objetivo de melhorar a vida das pessoas e a cultura.",
+      "button": "Comece agora"
+    },
+    "section2": {
+      "title": "CONSTRUA CONOSCO",
+      "highlight": "Construa",
+      "subtitle": "aquela grande ideia que você tem.",
+      "description": "Ideias mudam o mundo, por isso estamos sempre abertos a ouvir e implementar suas ideias. Na Clothy, todas as ideias importam.",
+      "button": "Entre em contato"
+    }
+  },
+  "dedicated": {
+    "spiralAlt": "design espiral decorativo",
+    "imageAlt": "imagem pessoal do ícone do homem",
+    "commaAlt": "imagem decorativa de vírgula",
+    "title": "Redefinindo a moda para transformar o mundo.",
+    "description": "Na Clothy, sonhamos com uma moda mais inclusiva, sustentável e acessível para todos. Nosso único objetivo é ajudá-lo a encontrar seu estilo enquanto construímos tecnologia para mudar a moda.",
+    "ceoName": "Oriol Ramos, CEO"
+  },
+  "digital": {
+    "subtitle": "QUEM SOMOS",
+    "title": "Somos uma empresa de tecnologia revolucionando a moda. \nDesenhe seu estilo com nossos produtos inovadores.",
+    "button": "Comece agora",
+    "imageAlt": "ilustração de menina desenhada"
+  },
+  "faq": {
+    "title": "Perguntas Frequentes",
+    "subtitle": "Respondendo suas dúvidas.",
+    "question1": {
+      "title": "O que é Clothy e como funciona?",
+      "content": "Clothy é uma plataforma projetada para redesenhar o futuro da moda. Nosso primeiro recurso permite que os usuários encontrem roupas semelhantes com base em imagens usando inteligência artificial e web scraping. Nosso objetivo é criar um ambiente inovador e sustentável para todos os amantes da moda."
+    },
+    "question2": {
+      "title": "Como posso pesquisar roupas semelhantes usando o Clothy?",
+      "content": "Usar o Clothy é muito simples. Você só precisa enviar uma imagem da peça de roupa que está procurando, e nossa inteligência artificial buscará opções semelhantes em tempo real. Isso permitirá que você encontre produtos que se encaixem rapidamente e de forma eficaz no seu estilo pessoal."
+    },
+    "question3": {
+      "title": "O Clothy trabalha com marcas locais?",
+      "content": "Sim, na Clothy acreditamos em apoiar marcas locais e sustentáveis. Nosso plano inclui integrar negócios locais para que eles possam exibir seus produtos e alcançar um público mais amplo. Dessa forma, fomentamos um ecossistema inclusivo e diversificado na indústria da moda."
+    },
+    "question4": {
+      "title": "É seguro usar o Clothy?",
+      "content": "Absolutamente. Na Clothy, priorizamos a segurança e a privacidade dos nossos usuários. Seus dados e pesquisas são protegidos e nunca serão compartilhados com terceiros sem o seu consentimento. Além disso, seguimos as melhores práticas de segurança em todas as nossas operações."
+    },
+    "question5": {
+      "title": "Quais são os planos futuros do Clothy?",
+      "content": "Este é apenas o começo. Planejamos expandir os recursos do Clothy, incluindo um mecanismo de busca mais sustentável, integração com marcas internacionais e ferramentas para ajudar os usuários a tomar decisões de compra mais responsáveis. Também pretendemos desenvolver sistemas que reduzam o consumo excessivo na indústria da moda."
+    }
+  },
+  "featured": {
+    "title": "Nossas implementações.",
+    "headings": [
+      "Criador de looks com roupas do seu guarda-roupa.",
+      "Busca inteligente de roupas com base em imagens.",
+      "Explore tendências personalizadas."
+    ]
+  },
+  "aboutus": {
+    "section_title": "SOBRE NÓS",
+    "section_subtitle": "Saiba mais sobre nós",
+    "about_title": "Sobre nós",
+    "about_paragraph": "Na Clothy, acreditamos que moda não é apenas sobre roupas. É uma forma de expressar quem somos, de imaginar o mundo como queremos que seja e de nos conectar com os outros. Com esse sonho em mente, fundamos a Clothy: uma plataforma criada para redesenhar o futuro da moda, tornando-a mais acessível, inclusiva e sustentável para todos.",
+    "about_link": "Saiba mais",
+    "history_title": "Nossa História",
+    "history_paragraph": "Tudo começou com uma simples pergunta: Como podemos ajudar as pessoas a encontrar roupas que realmente se encaixem na sua visão e estilo? Inspirados pela rapidez com que a tecnologia está mudando o mundo, decidimos combinar inteligência artificial com criatividade humana para construir uma ferramenta única: uma que permite que os usuários encontrem roupas com base em imagens de forma intuitiva e personalizada.",
+    "history_link": "Leia mais",
+    "vision_title": "Nossa Visão",
+    "vision_paragraph": "Nossa missão vai além do estilo ou conforto. Na Clothy, sonhamos com um futuro onde a moda reflete a mudança que queremos ver no mundo: um futuro mais sustentável, inclusivo e conectado. Queremos fornecer aos usuários as ferramentas para encontrar roupas que não só os representem, mas também respeitem o planeta.",
+    "vision_link": "Descubra mais"
+  },
+  "joinus": {
+    "header": "JUNTE-SE A NÓS",
+    "subheading": "Vamos redesenhar o mundo juntos.",
+    "description": "Na Clothy, acreditamos que a moda é uma força para a mudança. Valorizamos profundamente suas opiniões para criar novos produtos e melhorar continuamente. Juntos, podemos construir um futuro mais inclusivo, sustentável e conectado.",
+    "email_placeholder": "Seu endereço de e-mail",
+    "join_button": "Junte-se a nós!",
+    "error_message": "Por favor, insira um endereço de e-mail.",
+    "email_subject": "Bem-vindo ao Clothy!"
+  },
+  "usermenu": {
+    "profile": "Perfil",
+    "history": "Histórico",
+    "favorites": "Favoritos",
+    "subscription": "Assinatura",
+    "logout": "Sair"
+  },
+  "recover": {
+    "title": "Recupere sua senha",
+    "emailInstruction": "Digite seu endereço de e-mail para receber o código de verificação.",
+    "emailLabel": "Endereço de e-mail",
+    "emailPlaceholder": "usuario@exemplo.com",
+    "sendCode": "Enviar código",
+    "codeInstruction": "Digite o código de 6 dígitos e sua nova senha.",
+    "codeLabel": "Código de verificação",
+    "codePlaceholder": "123456",
+    "newPasswordLabel": "Nova senha",
+    "newPasswordPlaceholder": "********",
+    "confirmPasswordLabel": "Confirmar nova senha",
+    "confirmPasswordPlaceholder": "********",
+    "verifyCode": "Verificar código e atualizar senha",
+    "resendCode": "Reenviar código",
+    "resendTimer": "Você pode reenviar o código em {{timer}} segundos.",
+    "success": "Senha atualizada com sucesso! Você pode agora fazer login.",
+    "errorEmail": "Falha ao enviar o e-mail.",
+    "errorResend": "Falha ao reenviar o e-mail.",
+    "serverError": "Houve um problema ao contatar o servidor.",
+    "passwordMismatch": "As senhas não coincidem.",
+    "invalidCode": "O código inserido é inválido.",
+    "imageAlt": "Recupere sua senha"
+  },
+  "reset": {
+    "title": "Recupere sua senha",
+    "emailInstruction": "Digite seu endereço de e-mail para receber o código de verificação.",
+    "emailLabel": "Endereço de e-mail",
+    "emailPlaceholder": "usuario@exemplo.com",
+    "sendCode": "Enviar código",
+    "codeInstruction": "Digite o código de 6 dígitos e sua nova senha.",
+    "codeLabel": "Código de verificação",
+    "codePlaceholder": "123456",
+    "newPasswordLabel": "Nova senha",
+    "newPasswordPlaceholder": "********",
+    "confirmPasswordLabel": "Confirmar nova senha",
+    "confirmPasswordPlaceholder": "********",
+    "verifyCode": "Verificar código e atualizar senha",
+    "resendCode": "Reenviar código",
+    "resendTimer": "Você pode reenviar o código em {{timer}} segundos.",
+    "success": "Senha atualizada com sucesso! Você pode agora fazer login.",
+    "errorEmail": "Falha ao enviar o e-mail.",
+    "errorResend": "Falha ao reenviar o e-mail.",
+    "serverError": "Houve um problema ao contatar o servidor.",
+    "passwordMismatch": "As senhas não coincidem.",
+    "invalidCode": "O código inserido é inválido.",
+    "imageAlt": "Recupere sua senha"
+  },
+  "sessionExpired": {
+    "title": "Sessão Expirada",
+    "message": "Sua sessão expirou. Por favor, faça login novamente.",
+    "loginButton": "Entrar"
+  },
+  "signUp": {
+    "title": "Crie sua conta",
+    "emailLabel": "Endereço de e-mail",
+    "emailPlaceholder": "usuario@exemplo.com",
+    "usernameLabel": "Nome de usuário",
+    "usernamePlaceholder": "Nome de usuário",
+    "passwordLabel": "Senha",
+    "passwordPlaceholder": "••••••••",
+    "passwordHint": "A senha deve ter pelo menos 8 caracteres, incluindo uma letra maiúscula, um número e um caractere especial.",
+    "confirmPasswordLabel": "Confirmar senha",
+    "confirmPasswordPlaceholder": "••••••••",
+    "showPassword": "Mostrar",
+    "hidePassword": "Ocultar",
+    "errorPasswordMismatch": "As senhas não coincidem.",
+    "errorPasswordInvalid": "A senha não atende aos requisitos de segurança.",
+    "errorServer": "Não foi possível conectar ao servidor. Tente novamente mais tarde.",
+    "errorGoogle": "Erro no login com o Google.",
+    "registerButton": "Criar sua conta",
+    "orText": "Ou"
+  },
+  "aboutusModal": {
+    "header": {
+      "title": "Sobre Nós",
+      "effectiveDate": "Data de Vigência: 13/03/2024"
+    },
+    "content": {
+      "intro": "No Clothy, acreditamos que a moda é mais do que apenas roupas. É uma forma de expressar quem somos, imaginar o mundo como queremos que ele seja e conectar com os outros. Com esse sonho em mente, fundamos o Clothy: uma plataforma criada para redesenhar o futuro da moda, tornando-a mais acessível, inclusiva e sustentável para todos.",
+      "history": {
+        "title": "Nossa História",
+        "description": "Tudo começou com uma simples pergunta: “Como podemos ajudar as pessoas a encontrar roupas que realmente se ajustem à sua visão e estilo?” Inspirados pela rapidez com que a tecnologia está mudando o mundo, decidimos combinar inteligência artificial com criatividade humana para construir uma ferramenta única: uma que permita aos usuários encontrar roupas com base em imagens de forma intuitiva e personalizada."
+      },
+      "vision": {
+        "title": "Nossa Visão",
+        "description": "Nossa missão vai além do estilo ou conforto. No Clothy, sonhamos com um futuro onde a moda reflita a mudança que queremos ver no mundo: um futuro mais sustentável, inclusivo e conectado. Nosso objetivo é fornecer ferramentas para encontrar roupas que não apenas os representem, mas que também respeitem o planeta."
+      },
+      "commitment": {
+        "title": "Comprometidos com Nossos Usuários",
+        "description": "Nossos usuários estão no centro de tudo o que fazemos. Cada funcionalidade, decisão e melhoria é projetada para oferecer uma experiência que atenda às suas necessidades e supere as expectativas. Através de seus feedbacks e sugestões, estamos comprometidos em evoluir e construir uma plataforma que realmente faça a diferença."
+      },
+      "future": {
+        "title": "Construindo o Futuro Juntos",
+        "description": "Isso é apenas o começo. Nossa visão a longo prazo inclui projetos como a criação de um motor de busca de moda mais sustentável, integração com marcas locais e ferramentas para ajudar a reduzir o excesso de consumo na indústria de roupas. Tudo com um único objetivo: ajudar você a encontrar seu estilo, ao mesmo tempo que ajudamos o mundo a encontrar seu equilíbrio."
+      },
+      "thanks": "Obrigado por fazer parte dessa jornada. Com o Clothy, redefinimos a moda juntos."
+    },
+    "button": {
+      "back": "Voltar para a página principal"
+    }
+  },
+  "donations": {
+    "header": {
+      "title": "Apoie-nos Durante Nossa Fase de Desenvolvimento!",
+      "subtitle": "Sua colaboração é fundamental para melhorar nossos serviços."
+    },
+    "content": {
+      "intro": "No Clothy, estamos em uma fase de desenvolvimento, e por enquanto, todos os nossos serviços são gratuitos. No entanto, se você deseja nos apoiar para continuar crescendo e aprimorando nossa plataforma, estamos abertos a receber sua generosa doação!",
+      "howToDonate": {
+        "title": "Como Você Pode Doar?",
+        "description": "Existem várias maneiras de colaborar conosco. Abaixo, detalhamos os métodos mais simples e seguros:",
+        "paypal": "PayPal: Se preferir usar sua conta PayPal, também aceitamos doações através deste sistema!"
+      },
+      "whyDonate": {
+        "title": "Por Que Doar?",
+        "description": "Sua doação nos ajudará a continuar desenvolvendo novas funcionalidades, melhorando a qualidade do serviço e garantindo que possamos oferecer uma experiência excelente.",
+        "thanks": "Toda contribuição, grande ou pequena, faz um grande impacto. Obrigado por fazer parte da nossa jornada!"
+      },
+      "paymentMethods": {
+        "title": "Métodos de Pagamento:",
+        "description": "Você pode fazer sua doação de qualquer uma das seguintes maneiras:",
+        "paypalLink": "Doe via PayPal"
+      },
+      "questions": {
+        "title": "Tem Dúvidas?",
+        "description": "Se tiver alguma dúvida sobre o processo de doação ou precisar de mais informações, não hesite em nos contatar.",
+        "contact": "Você pode nos escrever para"
+      }
+    }
+  },
+  "privacitypolicy": {
+    "header": {
+      "title": "Política de Privacidade do Clothy",
+      "date": "Data de Vigência: 13/03/2024"
+    },
+    "intro": "No Clothy, a sua privacidade é nossa prioridade. Estamos comprometidos em proteger seus dados pessoais e em conformidade com o Regulamento Geral de Proteção de Dados (GDPR). Veja como coletamos, usamos e protegemos suas informações.",
+    "section1": {
+      "title": "1. Quais Informações Coletamos e Como Usamos",
+      "description": "Coletamos as informações necessárias para fornecer e melhorar continuamente nosso serviço. Isso inclui:",
+      "bullet1": "Imagens enviadas: Usamos para encontrar roupas semelhantes com nossa IA. Essas imagens são anonimizadas e excluídas após um curto período.",
+      "bullet2": "Informações técnicas: Como tipo de dispositivo, sistema operacional e dados de uso para otimizar nossa plataforma."
+    },
+    "section2": {
+      "title": "2. Base Legal para o Processamento de Dados",
+      "description": "A base legal para o processamento de seus dados é baseada em:",
+      "bullet1": "Seu consentimento explícito: Quando você nos autoriza a usar suas imagens.",
+      "bullet2": "Necessidade de processamento de dados: Para fornecer o serviço solicitado.",
+      "bullet3": "Interesse legítimo: Para melhorar o desempenho de nossa plataforma e IA.",
+      "note": "Você pode retirar seu consentimento a qualquer momento entrando em contato conosco."
+    },
+    "section3": {
+      "title": "3. Seus Direitos Sob o GDPR",
+      "description": "Sob o GDPR, você tem o direito de:",
+      "bullet1": "Acesso: Solicitar para ver os dados que temos sobre você.",
+      "bullet2": "Retificação: Corrigir dados imprecisos ou incompletos.",
+      "bullet3": "Exclusão: Solicitar a exclusão de seus dados.",
+      "bullet4": "Restrição: Limitar como processamos seus dados em determinadas circunstâncias.",
+      "bullet5": "Portabilidade: Receber seus dados em formato eletrônico.",
+      "note": "Para exercer qualquer um desses direitos, envie-nos um e-mail para support@clothy.com."
+    },
+    "section4": {
+      "title": "4. Privacidade para Menores",
+      "description": "Nosso serviço não é destinado a crianças menores de 13 anos. Se você descobrir que um menor nos forneceu dados, entre em contato conosco imediatamente, e tomaremos as medidas necessárias para excluí-los."
+    },
+    "section5": {
+      "title": "5. Cookies e Tecnologias Semelhantes",
+      "description": "Usamos cookies para melhorar sua experiência no Clothy:",
+      "bullet1": "Cookies técnicos: Necessários para o funcionamento básico da plataforma.",
+      "bullet2": "Cookies analíticos: Com seu consentimento, para analisar o uso e melhorar nossos serviços.",
+      "note": "Você pode gerenciar os cookies através das configurações do seu navegador."
+    },
+    "section6": {
+      "title": "6. Alterações na Política de Privacidade",
+      "description": "Reservamo-nos o direito de atualizar esta política a qualquer momento. Notificaremos você sobre quaisquer alterações significativas antes que elas entrem em vigor."
+    },
+    "section7": {
+      "title": "7. Contato",
+      "description": "Para dúvidas ou esclarecimentos, envie um e-mail para support@clothy.com."
+    }
+  },
+  "profile": {
+    "title": "Perfil do Usuário",
+    "subtitle": "Personalize sua experiência e aprimore suas buscas.",
+    "personalInfo": "Informações Pessoais",
+    "username": "Nome de Usuário",
+    "email": "Email",
+    "password": "Senha",
+    "changePassword": "Clique",
+    "here": "aqui",
+    "additionalOptions": "Opções Adicionais",
+    "additionalOptionsText": "Compartilhar essas opções adicionais nos ajuda a conhecê-lo melhor e personalizar sua experiência, melhorando buscas e recomendações com base nas suas preferências. Obrigado por compartilhar conosco!",
+    "fullName": "Nome Completo",
+    "birthDate": "Data de Nascimento",
+    "gender": "Gênero",
+    "select": "Selecionar",
+    "male": "Masculino",
+    "female": "Feminino",
+    "nonBinary": "Não Binário",
+    "height": "Altura (cm)",
+    "weight": "Peso (kg)",
+    "location": "Localização (Cidade)",
+    "country": "País",
+    "saveChanges": "Salvar Alterações"
+  },
+  "favorites": {
+    "title": "Favoritos",
+    "empty": "Você não tem roupas favoritas.",
+    "type": "Tipo",
+    "color": "Cor",
+    "brand": "Marca",
+    "selectOption": "Selecione uma opção",
+    "search": "Buscar...",
+    "reset": "Redefinir"
+  },
+  "termsandconditions": {
+    "title": "Termos de Uso e Condições",
+    "welcome": "Bem-vindo ao Clothy. Sua experiência e confiança são nossa prioridade.",
+    "acceptableUse": {
+      "title": "1. Uso Aceitável",
+      "content": "O Clothy é projetado para uso pessoal e não comercial. É estritamente proibido:"
+    },
+    "privacy": {
+      "title": "2. Privacidade e Proteção de Dados (GDPR)",
+      "content": "No Clothy, seguimos rigorosamente o Regulamento Geral de Proteção de Dados (GDPR). Os dados pessoais que você fornece são usados exclusivamente para oferecer um melhor serviço."
+    },
+    "imagesUse": {
+      "title": "3. Uso de Imagens",
+      "content": "Quando você envia uma imagem para o Clothy, ela é usada apenas para encontrar roupas semelhantes e melhorar nosso algoritmo de IA."
+    },
+    "liability": {
+      "title": "4. Limitação de Responsabilidade",
+      "content": "Embora façamos o nosso melhor para manter um serviço seguro e confiável, o Clothy não é responsável por certos inconvenientes."
+    },
+    "modifications": {
+      "title": "5. Modificação dos Termos",
+      "content": "Reservamo-nos o direito de modificar estes termos e condições para adaptar aos novos requisitos legais ou tecnológicos."
+    },
+    "contact": {
+      "title": "6. Contato e Suporte",
+      "content": "Se você tiver alguma dúvida, preocupação ou sugestão sobre estes termos, não hesite em nos contatar."
+    }
+  },
+  "verification": {
+    "title": "Verifique Sua Conta",
+    "instructions": "Digite seu email e o código de verificação enviado para o seu email.",
+    "emailLabel": "Endereço de Email",
+    "emailPlaceholder": "user@example.com",
+    "codeLabel": "Código de Verificação",
+    "codePlaceholder": "123456",
+    "buttonText": "Verificar Conta",
+    "successMessage": "Sua conta foi verificada com sucesso!",
+    "error": {
+      "verification": "Houve um erro ao verificar sua conta.",
+      "unexpected": "Erro inesperado. Por favor, tente novamente mais tarde."
+    },
+    "imageAlt": "Imagem de verificação"
+  },
+  "searchcloth": {
+    "title": "Busca de Roupas",
+    "description": "Descubra nossa busca inteligente por roupas! Basta enviar uma imagem e nosso sistema irá compará-la com opções disponíveis na internet.",
+    "uploadButton": "Enviar Imagem",
+    "imageAlt": "Imagem Enviada",
+    "detectedInfoTitle": "Informações Detectadas",
+    "descriptionLabel": "Descrição:",
+    "typeLabel": "Tipo:",
+    "colorLabel": "Cor:",
+    "noInfoDetected": "Nenhuma informação detectada.",
+    "noResult": "Nenhum resultado encontrado.",
+    "sample": {
+      "description": "Jaqueta de couro preta",
+      "type": "Jaqueta",
+      "color": "Preta"
+    },
+    "filters": "Filtros",
+    "more_filters": "Mais filtros",
+    "search": "Buscar",
+    "advanced_filters": "Filtros Avançados",
+    "price_range": "Faixa de preço:",
+    "selected_price": "Preço selecionado: {{price}} €",
+    "only_offers": "Somente ofertas",
+    "high_rating": "Alta classificação",
+    "official_brands": "Marcas oficiais",
+    "reset": "Redefinir",
+    "apply": "Aplicar"
+  },
+  "navbar": {
+    "home": "Início",
+    "search": "Buscar"
+  },
+  "footer": {
+    "menu": "Menu",
+    "home": "Início",
+    "aboutus": "Sobre nós",
+    "FAQ": "Perguntas frequentes",
+    "joinus": "Junte-se a nós",
+    "others": "Outros"
+  }
+}

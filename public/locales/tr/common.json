@@ -1,0 +1,434 @@
+{
+  "banner": {
+    "clothDesigns": "Giysi Tasarımları",
+    "redesigningFashion": "Modayı yeniden tasarlamak",
+    "experienceFashion": "modayı deneyimlemek için",
+    "simpleSustainablePersonalized": "Basit, sürdürülebilir ve kişiselleştirilmiş",
+    "signIn": "Giriş Yap",
+    "imageAlt": "Afiş resmi"
+  },
+
+  "login": {
+    "title": "Hesabınıza giriş yapın",
+    "email_label": "Kullanıcı Adı veya E-posta",
+    "email_placeholder": "user@example.com",
+    "password_label": "Şifre",
+    "password_placeholder": "••••••••",
+    "submit_button": "Giriş Yap",
+    "forgot_password": "Şifrenizi mi unuttunuz?",
+    "or": "Veya",
+    "google_error": "Google Girişi ile ilgili bir hata oluştu.",
+    "google_success": "Google ile başarılı bir şekilde giriş yapıldı!",
+    "invalid_credentials": "Geçersiz kimlik bilgileri.",
+    "server_error": "Sunucuya bağlanılamadı. Lütfen daha sonra tekrar deneyin.",
+    "image_alt": "Giriş resmi"
+  },
+
+  "ourteam": {
+    "title": "Clothy'de, yalnızca en iyisini hak ettiğinize inanıyoruz.",
+    "subtitle": "Moda sadece giysi değildir: kimlik, yaratıcılık ve bağlantıdır. Clothy'de, tarzınızı ve vizyonunuzu gerçekten yansıtan parçaları bulmanıza yardımcı olmak için yapay zeka kullanıyoruz.",
+    "image_alt": "Clothy takımı resmi",
+    "description": "Ekibimiz, size benzersiz bir deneyim sunmaya kararlıdır. Her gün, sevdiğiniz modayla sizi birleştirecek, erişilebilir, sürdürülebilir ve kişiselleştirilmiş bir platform inşa etmek için yenilik yapıyoruz."
+  },
+
+  "beliefs": {
+    "section1": {
+      "title": "İNANÇLAR",
+      "subtitle": "Dürüstlük",
+      "highlight": "ve sıkı çalışma bizim inançlarımızdır.",
+      "description": "Biz, insanların hayatlarını ve kültürlerini iyileştirme amacını güderek sizin için çalışıyoruz.",
+      "button": "Başlayın"
+    },
+    "section2": {
+      "title": "BİZİMLE BİNA EDİN",
+      "highlight": "O harika fikri",
+      "subtitle": "inşa edin.",
+      "description": "Fikirler dünyayı değiştirir, bu yüzden her zaman fikirlerinizi dinlemeye ve uygulamaya açığız. Clothy'de, her fikir önemlidir.",
+      "button": "Bize Ulaşın"
+    }
+  },
+
+  "dedicated": {
+    "spiralAlt": "Dekoratif spiral tasarım",
+    "imageAlt": "Kişisel erkek ikonu resmi",
+    "commaAlt": "Dekoratif virgül resmi",
+    "title": "Dünyayı dönüştürmek için modayı yeniden tanımlamak.",
+    "description": "Clothy'de, herkes için daha kapsayıcı, sürdürülebilir ve erişilebilir bir moda hayal ediyoruz. Tek amacımız, tarzınızı bulmanıza yardımcı olurken modayı değiştirecek teknolojiler inşa etmektir.",
+    "ceoName": "Oriol Ramos, CEO"
+  },
+
+  "digital": {
+    "subtitle": "BİZ KİMİZ",
+    "title": "Biz, modayı devrim niteliğinde değiştiren bir teknoloji şirketiyiz. \nYenilikçi ürünlerimizle tarzınızı tasarlayın.",
+    "button": "Başlayın",
+    "imageAlt": "Kız çizimi illüstrasyonu"
+  },
+
+  "faq": {
+    "title": "Sık Sorulan Sorular",
+    "subtitle": "Sorularınızı yanıtlıyoruz.",
+    "question1": {
+      "title": "Clothy nedir ve nasıl çalışır?",
+      "content": "Clothy, modanın geleceğini yeniden tasarlamak için oluşturulmuş bir platformdur. İlk özelliğimiz, kullanıcıların yapay zeka ve web kazıma kullanarak görseller aracılığıyla benzer giysiler bulmalarına olanak tanır. Amacımız, tüm moda severler için yenilikçi ve sürdürülebilir bir ortam yaratmaktır."
+    },
+    "question2": {
+      "title": "Clothy ile benzer giysiler nasıl arayabilirim?",
+      "content": "Clothy kullanmak çok basittir. Sadece aradığınız giysinin bir fotoğrafını yüklemeniz yeterlidir, yapay zekamız gerçek zamanlı olarak benzer seçenekleri arar. Bu, kişisel tarzınıza uygun ürünleri hızlı ve etkili bir şekilde bulmanıza olanak tanır."
+    },
+    "question3": {
+      "title": "Clothy, yerel markalarla çalışıyor mu?",
+      "content": "Evet, Clothy'de yerel ve sürdürülebilir markaları desteklemeye inanıyoruz. Planımız, yerel işletmeleri entegre ederek onların ürünlerini sergilemelerine ve daha geniş bir kitleye ulaşmalarına yardımcı olmaktır. Bu şekilde, moda endüstrisinde kapsayıcı ve çeşitli bir ekosistemi teşvik ediyoruz."
+    },
+    "question4": {
+      "title": "Clothy kullanmak güvenli mi?",
+      "content": "Kesinlikle. Clothy'de kullanıcılarımızın güvenliğini ve gizliliğini ön planda tutuyoruz. Verileriniz ve aramalarınız korunur ve izniniz olmadan üçüncü şahıslarla paylaşılmaz. Ayrıca, tüm işlemlerimizde en iyi güvenlik uygulamalarını takip ediyoruz."
+    },
+    "question5": {
+      "title": "Clothy'nin gelecekteki planları nedir?",
+      "content": "Bu sadece bir başlangıçtır. Clothy'nin özelliklerini genişletmeyi planlıyoruz, bunlar arasında daha sürdürülebilir bir arama motoru, uluslararası markalarla entegrasyon ve kullanıcıların daha sorumlu satın alma kararları almalarına yardımcı olacak araçlar yer alacak. Ayrıca, moda endüstrisinde aşırı tüketimi azaltacak sistemler geliştirmeyi amaçlıyoruz."
+    }
+  },
+
+  "featured": {
+    "title": "Öne çıkan uygulamalarımız.",
+    "headings": [
+      "Kıyafetlerinizle kıyafet oluşturucu.",
+      "Görsellerle akıllı giysi arama.",
+      "Kişiselleştirilmiş trendleri keşfedin."
+    ]
+  },
+
+  "aboutus": {
+    "section_title": "HAKKIMIZDA",
+    "section_subtitle": "Bizi daha yakından tanıyın",
+    "about_title": "Hakkımızda",
+    "about_paragraph": "Clothy'de, modanın sadece giysi olmadığını düşünüyoruz. Modanın, kim olduğumuzu ifade etmenin, dünyayı istediğimiz gibi hayal etmenin ve başkalarıyla bağ kurmanın bir yolu olduğunu biliyoruz. Bu hayalle yola çıkarak Clothy'yi kurduk: Herkes için daha erişilebilir, kapsayıcı ve sürdürülebilir bir moda geleceğini yeniden tasarlamak amacıyla doğan bir platform.",
+    "about_link": "Daha fazla öğrenin",
+    "history_title": "Hikayemiz",
+    "history_paragraph": "Her şey basit bir soruyla başladı: İnsanların gerçekten vizyonlarına ve tarzlarına uyan giysileri nasıl bulmalarına yardımcı olabiliriz? Teknolojinin dünyayı ne kadar hızlı değiştirdiğinden ilham alarak, yapay zekayı insan yaratıcılığıyla birleştirmeye karar verdik ve kullanıcıların giysi bulmalarını sağlamak için benzersiz bir araç geliştirdik.",
+    "history_link": "Daha fazla oku",
+    "vision_title": "Vizyonumuz",
+    "vision_paragraph": "Misyonumuz, stil veya konforun ötesine geçiyor. Clothy'de, modanın dünyada görmek istediğimiz değişimi yansıtacağı bir gelecek hayal ediyoruz: daha sürdürülebilir, kapsayıcı ve bağlı bir gelecek. Kullanıcılarımıza sadece onları temsil eden değil, aynı zamanda gezegeni de koruyan giysiler bulmak için araçlar sağlamak istiyoruz.",
+    "vision_link": "Daha fazla keşfedin"
+  },
+
+  "joinus": {
+    "header": "BİZİMLE KATILIN",
+    "subheading": "Dünyayı birlikte yeniden tasarlayalım.",
+    "description": "Clothy'de, modayı değişim için bir güç olarak görüyoruz. Yeni ürünler oluşturmak ve sürekli gelişmek için fikirlerinizi derinlemesine değerlendiriyoruz. Birlikte daha kapsayıcı, sürdürülebilir ve bağlı bir gelecek inşa edebiliriz.",
+    "email_placeholder": "E-posta adresiniz",
+    "join_button": "Bize Katılın!",
+    "error_message": "Lütfen bir e-posta adresi girin.",
+    "email_subject": "Clothy'ye Hoş Geldiniz!"
+  },
+
+  "usermenu": {
+    "profile": "Profil",
+    "history": "Geçmiş",
+    "favorites": "Favoriler",
+    "subscription": "Abonelik",
+    "logout": "Çıkış Yap"
+  },
+
+  "recover": {
+    "title": "Şifrenizi Kurtarın",
+    "emailInstruction": "Doğrulama kodu almak için e-posta adresinizi girin.",
+    "emailLabel": "E-posta adresi",
+    "emailPlaceholder": "user@example.com",
+    "sendCode": "Kod gönder",
+    "codeInstruction": "6 haneli kodu ve yeni şifrenizi girin.",
+    "codeLabel": "Doğrulama kodu",
+    "codePlaceholder": "123456",
+    "newPasswordLabel": "Yeni şifre",
+    "newPasswordPlaceholder": "********",
+    "confirmPasswordLabel": "Yeni şifreyi onayla",
+    "confirmPasswordPlaceholder": "********",
+    "verifyCode": "Kodu doğrula ve şifreyi güncelle",
+    "resendCode": "Kodu yeniden gönder",
+    "resendTimer": "Kodu {{timer}} saniye içinde yeniden gönderebilirsiniz.",
+    "success": "Şifre başarıyla güncellendi! Artık giriş yapabilirsiniz.",
+    "errorEmail": "E-posta gönderilemedi.",
+    "errorResend": "E-posta yeniden gönderilemedi.",
+    "serverError": "Sunucu ile iletişimde bir sorun oluştu.",
+    "passwordMismatch": "Şifreler uyuşmuyor.",
+    "invalidCode": "Girilen kod geçersiz.",
+    "imageAlt": "Şifrenizi kurtarın"
+  },
+
+  "reset": {
+    "title": "Şifrenizi Kurtarın",
+    "emailInstruction": "Doğrulama kodu almak için e-posta adresinizi girin.",
+    "emailLabel": "E-posta adresi",
+    "emailPlaceholder": "user@example.com",
+    "sendCode": "Kod gönder",
+    "codeInstruction": "6 haneli kodu ve yeni şifrenizi girin.",
+    "codeLabel": "Doğrulama kodu",
+    "codePlaceholder": "123456",
+    "newPasswordLabel": "Yeni şifre",
+    "newPasswordPlaceholder": "********",
+    "confirmPasswordLabel": "Yeni şifreyi onayla",
+    "confirmPasswordPlaceholder": "********",
+    "verifyCode": "Kodu doğrula ve şifreyi güncelle",
+    "resendCode": "Kodu yeniden gönder",
+    "resendTimer": "Kodu {{timer}} saniye içinde yeniden gönderebilirsiniz.",
+    "success": "Şifre başarıyla güncellendi! Artık giriş yapabilirsiniz.",
+    "errorEmail": "E-posta gönderilemedi.",
+    "errorResend": "E-posta yeniden gönderilemedi.",
+    "serverError": "Sunucu ile iletişimde bir sorun oluştu.",
+    "passwordMismatch": "Şifreler uyuşmuyor.",
+    "invalidCode": "Girilen kod geçersiz.",
+    "imageAlt": "Şifrenizi kurtarın"
+  },
+
+  "sessionExpired": {
+    "title": "Oturum Süresi Doldu",
+    "message": "Oturum süreniz doldu. Lütfen tekrar giriş yapın.",
+    "loginButton": "Giriş Yap"
+  },
+
+  "signUp": {
+    "title": "Hesabınızı Oluşturun",
+    "emailLabel": "E-posta Adresi",
+    "emailPlaceholder": "user@example.com",
+    "usernameLabel": "Kullanıcı Adı",
+    "usernamePlaceholder": "Kullanıcı Adı",
+    "passwordLabel": "Şifre",
+    "passwordPlaceholder": "••••••••",
+    "passwordHint": "Şifre en az 8 karakterden oluşmalı, bir büyük harf, bir rakam ve bir özel karakter içermelidir.",
+    "confirmPasswordLabel": "Şifreyi Onayla",
+    "confirmPasswordPlaceholder": "••••••••",
+    "showPassword": "Göster",
+    "hidePassword": "Gizle",
+    "errorPasswordMismatch": "Şifreler uyuşmuyor.",
+    "errorPasswordInvalid": "Şifre güvenlik gereksinimlerini karşılamıyor.",
+    "errorServer": "Sunucuya bağlanılamadı. Lütfen daha sonra tekrar deneyin.",
+    "errorGoogle": "Google Girişi ile ilgili bir hata oluştu.",
+    "registerButton": "Hesabınızı Oluşturun",
+    "orText": "Veya"
+  },
+  "aboutusModal": {
+    "header": {
+      "title": "Hakkımızda",
+      "effectiveDate": "Geçerlilik Tarihi: 13/03/2024"
+    },
+    "content": {
+      "intro": "Clothy olarak, modanın sadece kıyafetlerden ibaret olmadığını düşünüyoruz. Kim olduğumuzu ifade etmenin, dünyayı istediğimiz gibi hayal etmenin ve başkalarıyla bağlantı kurmanın bir yoludur. Bu hayalle Clothy'yi kurduk: Modanın geleceğini yeniden tasarlamak için doğmuş bir platform, herkese daha erişilebilir, kapsayıcı ve sürdürülebilir hale getirmeyi amaçlıyoruz.",
+      "history": {
+        "title": "Tarihimiz",
+        "description": "Her şey basit bir soruyla başladı: “İnsanların gerçekten vizyonlarına ve tarzlarına uyan kıyafetleri nasıl bulmalarına yardımcı olabiliriz?” Teknolojinin dünyayı ne kadar hızlı değiştirdiğinden ilham alarak, yapay zekayı insan yaratıcılığıyla birleştirip kullanıcıların görsellere dayalı kıyafet bulmalarını sağlayan benzersiz bir araç oluşturmayı karar verdik."
+      },
+      "vision": {
+        "title": "Vizyonumuz",
+        "description": "Misyonumuz stil veya konforun ötesine geçiyor. Clothy'de, modanın dünyada görmek istediğimiz değişimi yansıtacağı bir gelecek hayal ediyoruz: Daha sürdürülebilir, kapsayıcı ve bağlı bir gelecek. Kullanıcılarımıza sadece onları temsil etmekle kalmayıp gezegeni de koruyan kıyafetleri bulmaları için araçlar sağlamayı hedefliyoruz."
+      },
+      "commitment": {
+        "title": "Kullanıcılarımıza Bağlılık",
+        "description": "Kullanıcılarımız, yaptığımız her şeyin merkezindedir. Her özellik, karar ve iyileştirme, onların ihtiyaçlarını karşılamak ve beklentilerini aşmak için tasarlanmıştır. Geri bildirimleriniz ve önerileriniz sayesinde, gerçekten fark yaratan bir platform geliştirmeye kararlıyız."
+      },
+      "future": {
+        "title": "Geleceği Birlikte İnşa Ediyoruz",
+        "description": "Bu sadece bir başlangıç. Uzun vadeli vizyonumuz, daha sürdürülebilir bir moda arama motoru yaratmak, yerel markalarla entegrasyon sağlamak ve kıyafet endüstrisinde aşırı tüketimi azaltmaya yönelik araçlar geliştirmek gibi projeleri içeriyor. Tek bir hedefle: Tarzınızı bulmanıza yardımcı olurken, dünyaya dengesini bulmasında yardımcı olmak."
+      },
+      "thanks": "Bu yolculuğun bir parçası olduğunuz için teşekkür ederiz. Clothy ile birlikte modayı yeniden tanımlıyoruz."
+    },
+    "button": {
+      "back": "Ana sayfaya geri dön"
+    }
+  },
+  "donations": {
+    "header": {
+      "title": "Gelişim Aşamasında Bize Destek Olun!",
+      "subtitle": "İşbirliğiniz, hizmetlerimizi geliştirmek için çok önemlidir."
+    },
+    "content": {
+      "intro": "Clothy olarak bir gelişim aşamasındayız ve şu an için tüm hizmetlerimiz ücretsiz. Ancak, platformumuzu büyütmeye ve geliştirmeye devam edebilmemiz için cömert bağışlarınızı kabul etmeye açığız!",
+      "howToDonate": {
+        "title": "Bağış Nasıl Yapılır?",
+        "description": "Bizimle işbirliği yapmanın birkaç yolu vardır. Aşağıda en basit ve güvenli yöntemleri ayrıntılı olarak açıklıyoruz:",
+        "paypal": "PayPal: PayPal hesabınızı kullanmak isterseniz, bu sistem üzerinden de bağış kabul ediyoruz!"
+      },
+      "whyDonate": {
+        "title": "Neden Bağış Yapmalısınız?",
+        "description": "Bağışınız, yeni özellikler geliştirmemize, hizmet kalitemizi iyileştirmemize ve size mükemmel bir deneyim sunabilmemize yardımcı olacaktır.",
+        "thanks": "Büyük veya küçük her katkı önemli bir etki yaratır. Yolculuğumuza katıldığınız için teşekkür ederiz!"
+      },
+      "paymentMethods": {
+        "title": "Ödeme Yöntemleri:",
+        "description": "Bağışınızı aşağıdaki yöntemlerden herhangi biriyle yapabilirsiniz:",
+        "paypalLink": "PayPal ile bağış yapın"
+      },
+      "questions": {
+        "title": "Sorularınız Var mı?",
+        "description": "Bağış süreciyle ilgili herhangi bir sorunuz varsa veya daha fazla bilgiye ihtiyaç duyuyorsanız, bizimle iletişime geçmekten çekinmeyin.",
+        "contact": "Bize şu adresten yazabilirsiniz"
+      }
+    }
+  },
+  "privacitypolicy": {
+    "header": {
+      "title": "Clothy Gizlilik Politikası",
+      "date": "Geçerlilik Tarihi: 13/03/2024"
+    },
+    "intro": "Clothy olarak, gizliliğiniz bizim önceliğimizdir. Kişisel verilerinizi korumaya ve Genel Veri Koruma Yönetmeliği'ne (GDPR) uymaya kararlıyız. İşte bilgilerinizi nasıl topluyor, kullanıyor ve koruyoruz.",
+    "section1": {
+      "title": "1. Topladığımız Bilgiler ve Bunları Nasıl Kullandığımız",
+      "description": "Hizmetimizi sağlamak ve sürekli olarak iyileştirmek için gerekli bilgileri topluyoruz. Bunlar şunları içerir:",
+      "bullet1": "Yüklenen görseller: Bunları, yapay zekamızla benzer kıyafetler bulmak için kullanıyoruz. Bu görseller anonimleştirilir ve kısa bir süre sonra silinir.",
+      "bullet2": "Teknik bilgiler: Cihaz türü, işletim sistemi ve kullanım verileri gibi bilgileri, platformumuzu optimize etmek için kullanıyoruz."
+    },
+    "section2": {
+      "title": "2. Veri İşleme İçin Hukuki Dayanak",
+      "description": "Verilerinizi işlemek için hukuki dayanağımız şunlara dayanır:",
+      "bullet1": "Açık rızanız: Görsellerinizi kullanmamıza izin verdiğinizde.",
+      "bullet2": "Veri işleme gerekliliği: Talep ettiğiniz hizmeti sağlamak için.",
+      "bullet3": "Meşru çıkar: Platformumuzun ve yapay zekamızın performansını iyileştirmek için.",
+      "note": "Rızanızı istediğiniz zaman geri alabilirsiniz, bizimle iletişime geçerek."
+    },
+    "section3": {
+      "title": "3. GDPR'ye Göre Haklarınız",
+      "description": "GDPR'ye göre, şu haklara sahipsiniz:",
+      "bullet1": "Erişim: Hakkınızda sahip olduğumuz verilere erişim talep etmek.",
+      "bullet2": "Düzeltme: Yanlış veya eksik verileri düzeltmek.",
+      "bullet3": "Silme: Verilerinizi silmek için talepte bulunmak.",
+      "bullet4": "Sınırlama: Belirli koşullar altında verilerinizi nasıl işlediğimizi sınırlamak.",
+      "bullet5": "Taşınabilirlik: Verilerinizi elektronik formatta almak.",
+      "note": "Bu haklardan herhangi birini kullanmak için, lütfen bize support@clothy.com adresinden e-posta gönderin."
+    },
+    "section4": {
+      "title": "4. Çocuklar İçin Gizlilik",
+      "description": "Hizmetimiz 13 yaş altındaki çocuklar için değildir. Eğer bir çocuğun verilerini bizimle paylaştığını fark ederseniz, lütfen hemen bizimle iletişime geçin ve gerekli adımları atacağız."
+    },
+    "section5": {
+      "title": "5. Çerezler ve Benzeri Teknolojiler",
+      "description": "Clothy'de deneyiminizi geliştirmek için çerezler kullanıyoruz:",
+      "bullet1": "Teknik çerezler: Platformun temel işleyişi için gerekli olan çerezler.",
+      "bullet2": "Analitik çerezler: Onayınızla, kullanım verilerini analiz etmek ve hizmetlerimizi geliştirmek için kullanılan çerezler.",
+      "note": "Çerezleri, tarayıcı ayarlarınızdan yönetebilirsiniz."
+    },
+    "section6": {
+      "title": "6. Gizlilik Politikasındaki Değişiklikler",
+      "description": "Bu politikayı herhangi bir zamanda güncelleme hakkımız saklıdır. Önemli değişiklikler olduğunda sizi bilgilendireceğiz."
+    },
+    "section7": {
+      "title": "7. İletişim",
+      "description": "Herhangi bir soru veya talebiniz varsa, lütfen support@clothy.com adresine e-posta gönderin."
+    }
+  },
+  "profile": {
+    "title": "Kullanıcı Profili",
+    "subtitle": "Deneyiminizi kişiselleştirin ve aramalarınızı geliştirin.",
+    "personalInfo": "Kişisel Bilgiler",
+    "username": "Kullanıcı Adı",
+    "email": "E-posta",
+    "password": "Şifre",
+    "changePassword": "Tıkla",
+    "here": "buraya",
+    "additionalOptions": "Ekstra Seçenekler",
+    "additionalOptionsText": "Bu ekstra seçenekleri paylaşmanız, sizi daha iyi tanımamıza ve tercihleriniz doğrultusunda aramalarınızı ve önerilerinizi kişiselleştirmemize yardımcı olacaktır. Bizimle paylaştığınız için teşekkür ederiz!",
+    "fullName": "Tam Ad",
+    "birthDate": "Doğum Tarihi",
+    "gender": "Cinsiyet",
+    "select": "Seç",
+    "male": "Erkek",
+    "female": "Kadın",
+    "nonBinary": "Cinsiyetsiz",
+    "height": "Boy (cm)",
+    "weight": "Kilo (kg)",
+    "location": "Konum (Şehir)",
+    "country": "Ülke",
+    "saveChanges": "Değişiklikleri Kaydet"
+  },
+  "favorites": {
+    "title": "Favoriler",
+    "empty": "Hiç favori kıyafetiniz yok.",
+    "type": "Tür",
+    "color": "Renk",
+    "brand": "Marka",
+    "selectOption": "Bir seçenek seçin",
+    "search": "Ara...",
+    "reset": "Sıfırla"
+  },
+  "termsandconditions": {
+    "title": "Kullanım ve Koşullar",
+    "welcome": "Clothy'ye hoş geldiniz. Deneyiminiz ve güveniniz bizim için önceliklidir.",
+    "acceptableUse": {
+      "title": "1. Kabul Edilebilir Kullanım",
+      "content": "Clothy, kişisel ve ticari olmayan kullanım için tasarlanmıştır. Şiddetle yasaklanmıştır:"
+    },
+    "privacy": {
+      "title": "2. Gizlilik ve Veri Koruma (GDPR)",
+      "content": "Clothy olarak, Genel Veri Koruma Yönetmeliği'ne (GDPR) sıkı bir şekilde uyarız. Sağladığınız kişisel veriler yalnızca size daha iyi bir hizmet sunmak için kullanılır."
+    },
+    "imagesUse": {
+      "title": "3. Görsellerin Kullanımı",
+      "content": "Clothy'ye bir görsel yüklediğinizde, bu görsel sadece benzer kıyafetleri bulmak ve yapay zeka algoritmamızı iyileştirmek için kullanılır."
+    },
+    "liability": {
+      "title": "4. Sorumluluğun Sınırlanması",
+      "content": "Hizmetimizi güvenli ve güvenilir tutmak için elimizden geleni yapmamıza rağmen, Clothy bazı aksaklıklardan sorumlu değildir."
+    },
+    "modifications": {
+      "title": "5. Şartların Değiştirilmesi",
+      "content": "Bu şartlar ve koşulları yeni hukuki veya teknolojik gereksinimlere uyacak şekilde değiştirme hakkımız saklıdır."
+    },
+    "contact": {
+      "title": "6. İletişim ve Destek",
+      "content": "Bu şartlarla ilgili herhangi bir sorunuz, endişeniz veya öneriniz varsa, bizimle iletişime geçmekten çekinmeyin."
+    }
+  },
+  "verification": {
+    "title": "Hesabınızı Doğrulayın",
+    "instructions": "E-posta adresinizi ve e-posta adresinize gönderilen doğrulama kodunu girin.",
+    "emailLabel": "E-posta Adresi",
+    "emailPlaceholder": "user@example.com",
+    "codeLabel": "Doğrulama Kodu",
+    "codePlaceholder": "123456",
+    "buttonText": "Hesabı Doğrula",
+    "successMessage": "Hesabınız başarıyla doğrulandı!",
+    "error": {
+      "verification": "Hesabınız doğrulanırken bir hata oluştu.",
+      "unexpected": "Beklenmedik bir hata oluştu. Lütfen daha sonra tekrar deneyin."
+    },
+    "imageAlt": "Doğrulama görseli"
+  },
+  "searchcloth": {
+    "title": "Kıyafet Arama",
+    "description": "Akıllı kıyafet arama sistemimizi keşfedin! Sadece bir görsel yükleyin ve sistemimiz bunu internetteki mevcut seçeneklerle karşılaştıracaktır.",
+    "uploadButton": "Görsel Yükle",
+    "imageAlt": "Yüklenen Görsel",
+    "detectedInfoTitle": "Tespit Edilen Bilgiler",
+    "descriptionLabel": "Açıklama:",
+    "typeLabel": "Tür:",
+    "colorLabel": "Renk:",
+    "noInfoDetected": "Hiç bilgi tespit edilmedi.",
+    "noResult": "Hiç sonuç bulunamadı.",
+    "sample": {
+      "description": "Siyah deri ceket",
+      "type": "Ceket",
+      "color": "Siyah"
+    },
+    "filters": "Filtreler",
+    "more_filters": "Daha fazla filtre",
+    "search": "Ara",
+    "advanced_filters": "Gelişmiş filtreler",
+    "price_range": "Fiyat aralığı:",
+    "selected_price": "Seçilen fiyat: {{price}} €",
+    "only_offers": "Sadece teklifler",
+    "high_rating": "Yüksek puan",
+    "official_brands": "Resmi markalar",
+    "reset": "Sıfırla",
+    "apply": "Uygula"
+  },
+  "navbar": {
+    "home": "Ana Sayfa",
+    "search": "Arama"
+  },
+  "footer": {
+    "menu": "Menü",
+    "home": "Ana Sayfa",
+    "aboutus": "Hakkımızda",
+    "FAQ": "SSS",
+    "joinus": "Bize Katılın",
+    "others": "Diğerleri"
+  }
+}

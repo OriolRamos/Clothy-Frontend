@@ -1,0 +1,422 @@
+{
+    "banner": {
+        "clothDesigns": "Dissenys de roba",
+        "redesigningFashion": "Redissenyant la forma",
+        "experienceFashion": "de viure la moda",
+        "simpleSustainablePersonalized": "Simple, sostenible i personalitzat",
+        "signIn": "Inicia sessió",
+        "imageAlt": "Imatge del banner"
+    },
+    "login": {
+        "title": "Inicia sessió al teu compte",
+        "email_label": "Usuari o correu electrònic",
+        "email_placeholder": "usuari@exemple.com",
+        "password_label": "Contrasenya",
+        "password_placeholder": "••••••••",
+        "submit_button": "Iniciar sessió",
+        "forgot_password": "Has oblidat la contrasenya?",
+        "or": "O",
+        "google_error": "Error amb Google Login.",
+        "google_success": "Sessió iniciada correctament amb Google!",
+        "invalid_credentials": "Credencials incorrectes.",
+        "server_error": "No s'ha pogut connectar amb el servidor. Intenta-ho més tard.",
+        "image_alt": "Imatge de la pàgina de login"
+    },
+    "ourteam": {
+        "title": "A Clothy, creiem que et mereixes només el millor.",
+        "subtitle": "La moda és molt més que roba: és identitat, creativitat i connexió. A Clothy, utilitzem intel·ligència artificial per ajudar-te a trobar peces que realment reflecteixin el teu estil i visió.",
+        "image_alt": "Imatge de l'equip de Clothy",
+        "description": "El nostre equip està compromès a oferir-te una experiència única. Innovem cada dia per construir una plataforma que et connecti amb la moda que estimes, d'una manera accessible, sostenible i personalitzada."
+    },
+    "beliefs": {
+        "section1": {
+            "title": "CREENCES",
+            "subtitle": "L'honestedat",
+            "highlight": "i el treball dur són les nostres creences.",
+            "description": "Treballem per vosaltres, amb l'únic objectiu de millorar la vida i la cultura de les persones.",
+            "button": "Comença"
+        },
+        "section2": {
+            "title": "CONSTRUEIX AMB NOSALTRES",
+            "highlight": "Construeix",
+            "subtitle": "aquella gran idea que tens.",
+            "description": "Les idees canvien el món, per això estem totalment oberts a escoltar i implementar les vostres idees. A Clothy totes les idees són importants.",
+            "button": "Contacta'ns"
+        }
+    },
+    "dedicated": {
+        "spiralAlt": "disseny decoratiu en espiral",
+        "imageAlt": "imatge personal d'un icona masculí",
+        "commaAlt": "imatge decorativa d'una coma",
+        "title": "Redefinint la moda per transformar el món.",
+        "description": "A Clothy, somiem amb una moda més inclusiva, sostenible i accessible per a tothom. El nostre únic objectiu és ajudar-te a trobar el teu estil mentre construïm tecnologia per canviar la moda.",
+        "ceoName": "Oriol Ramos, CEO"
+    },
+    "digital": {
+        "subtitle": "QUI SOM",
+        "title": "Som una empresa tecnològica que revoluciona la moda. \nDissenya el teu estil amb els nostres productes innovadors.",
+        "button": "Comença",
+        "imageAlt": "il·lustració d'un doodle de noia"
+    },
+    "faq": {
+        "title": "Preguntes Freqüents",
+        "subtitle": "Responent els teus dubtes.",
+        "question1": {
+            "title": "Què és Clothy i com funciona?",
+            "content": "Clothy és una plataforma dissenyada per redefinir el futur de la moda. La nostra primera funcionalitat permet als usuaris trobar roba similar basada en imatges mitjançant intel·ligència artificial i web scraping. El nostre objectiu és crear un entorn innovador i sostenible per a tots els amants de la moda."
+        },
+        "question2": {
+            "title": "Com puc buscar roba similar amb Clothy?",
+            "content": "Fer servir Clothy és molt senzill. Només necessites pujar una imatge de la peça que estàs buscant, i la nostra intel·ligència artificial buscarà opcions similars en temps real. Això et permetrà trobar productes que s'adaptin al teu estil personal de manera ràpida i efectiva."
+        },
+        "question3": {
+            "title": "Clothy treballa amb marques locals?",
+            "content": "Sí, a Clothy creiem en donar suport a les marques locals i sostenibles. El nostre pla inclou integrar negocis locals perquè puguin mostrar els seus productes i arribar a un públic més ampli. D'aquesta manera, fomentem un ecosistema inclusiu i divers a la indústria de la moda."
+        },
+        "question4": {
+            "title": "És segur utilitzar Clothy?",
+            "content": "Absolutament. A Clothy prioritzem la seguretat i privacitat dels nostres usuaris. Les teves dades i cerques estan protegides i mai es compartiran amb tercers sense el teu consentiment. A més, seguim les millors pràctiques de seguretat en totes les nostres operacions."
+        },
+        "question5": {
+            "title": "Quins són els plans futurs de Clothy?",
+            "content": "Això és només el començament. Planejem ampliar les funcionalitats de Clothy, incloent-hi un cercador més sostenible, integració amb marques internacionals i eines per ajudar els usuaris a prendre decisions de compra més responsables. També volem desenvolupar sistemes que redueixin el consum excessiu a la indústria de la moda."
+        }
+    },
+    "featured": {
+        "title": "Les nostres implementacions.",
+        "headings": [
+            "Creador d'outfits amb la roba del teu armari.",
+            "Cercador de roba intel·ligent basat en imatges.",
+            "Explora tendències personalitzades."
+        ]
+    },
+    "aboutus": {
+        "section_title": "SOBRE NOSALTRES",
+        "section_subtitle": "Coneix més sobre nosaltres",
+        "about_title": "Sobre Nosaltres",
+        "about_paragraph": "A Clothy, creiem que la moda no és només roba. És una manera d'expressar qui som, d'imaginar el món tal com el volem i de connectar amb els altres. Amb aquest somni al cor, vam fundar Clothy: una plataforma nascuda per redissenyar el futur de la moda, fent-la més accessible, inclusiva i sostenible per a tots.",
+        "about_link": "Conèixer més",
+        "history_title": "La nostra història",
+        "history_paragraph": "Tot va començar amb una pregunta senzilla: Com podem ajudar les persones a trobar peces de roba que realment s'adaptin a la seva visió i estil? Inspirats per la velocitat amb què la tecnologia està canviant el món, vam decidir combinar la intel·ligència artificial amb la creativitat humana per construir una eina única: una que permeti als usuaris trobar roba basada en imatges de manera intuïtiva i personalitzada.",
+        "history_link": "Llegir més",
+        "vision_title": "La nostra visió",
+        "vision_paragraph": "La nostra missió va més enllà de l'estil o la comoditat. A Clothy, somiem amb un futur on la moda sigui un reflex del canvi que volem veure al món: un futur més sostenible, inclusiu i connectat. Volem oferir als usuaris les eines per trobar roba que no només els representi, sinó que també respecti el planeta.",
+        "vision_link": "Descobrir més"
+    },
+    "joinus": {
+        "header": "UNEIX-TE A NOSALTRES",
+        "subheading": "Redissenyem el món junts.",
+        "description": "A Clothy, creiem que la moda és una força de canvi. Valorem profundament les teves opinions per crear nous productes i millorar constantment. Junts, podem construir un futur més inclusiu, sostenible i connectat.",
+        "email_placeholder": "El teu correu electrònic",
+        "join_button": "Uneix-te!",
+        "error_message": "Per favor, introdueix un correu electrònic.",
+        "email_subject": "Benvingut/da a Clothy!"
+    },
+    "usermenu": {
+        "profile": "Perfil",
+        "history": "Historial",
+        "favorites": "Favorits",
+        "subscription": "Subscripció",
+        "logout": "Tancar sessió"
+    },
+    "recover": {
+        "title": "Recupera la teva contrasenya",
+        "emailInstruction": "Introdueix el teu correu electrònic per rebre el codi de verificació.",
+        "emailLabel": "Correu electrònic",
+        "emailPlaceholder": "usuari@exemple.com",
+        "sendCode": "Enviar codi",
+        "codeInstruction": "Introdueix el codi de 6 dígits i la nova contrasenya.",
+        "codeLabel": "Codi de verificació",
+        "codePlaceholder": "123456",
+        "newPasswordLabel": "Nova contrasenya",
+        "newPasswordPlaceholder": "********",
+        "confirmPasswordLabel": "Confirma la nova contrasenya",
+        "confirmPasswordPlaceholder": "********",
+        "verifyCode": "Verificar codi i actualitzar contrasenya",
+        "resendCode": "Tornar a enviar codi",
+        "resendTimer": "Pots tornar a enviar el codi en {{timer}} segons.",
+        "success": "Contrasenya actualitzada correctament! Pots iniciar sessió.",
+        "errorEmail": "No s'ha pogut enviar el correu electrònic.",
+        "errorResend": "No s'ha pogut tornar a enviar el correu electrònic.",
+        "serverError": "Hi ha hagut un problema al contactar amb el servidor.",
+        "passwordMismatch": "Les contrasenyes no coincideixen.",
+        "invalidCode": "El codi introduït no és vàlid.",
+        "imageAlt": "Recupera la contrasenya"
+    },
+    "reset": {
+        "title": "Recupera la teva contrasenya",
+        "emailInstruction": "Introdueix el teu correu electrònic per rebre el codi de verificació.",
+        "emailLabel": "Correu electrònic",
+        "emailPlaceholder": "usuari@exemple.com",
+        "sendCode": "Enviar codi",
+        "codeInstruction": "Introdueix el codi de 6 dígits i la teva nova contrasenya.",
+        "codeLabel": "Codi de verificació",
+        "codePlaceholder": "123456",
+        "newPasswordLabel": "Nova contrasenya",
+        "newPasswordPlaceholder": "********",
+        "confirmPasswordLabel": "Confirma la nova contrasenya",
+        "confirmPasswordPlaceholder": "********",
+        "verifyCode": "Verificar codi i actualitzar contrasenya",
+        "resendCode": "Reenviar codi",
+        "resendTimer": "Pots reenviar el codi en {{timer}} segons.",
+        "success": "Contrasenya actualitzada correctament! Pots iniciar sessió.",
+        "errorEmail": "No s'ha pogut enviar el correu electrònic.",
+        "errorResend": "No s'ha pogut reenviar el correu electrònic.",
+        "serverError": "Hi ha hagut un problema al contactar amb el servidor.",
+        "passwordMismatch": "Les contrasenyes no coincideixen.",
+        "invalidCode": "El codi introduït no és vàlid.",
+        "imageAlt": "Recupera la teva contrasenya"
+    },
+    "sessionExpired": {
+        "title": "Sessió Expirada",
+        "message": "La teva sessió ha expirat. Torna a iniciar sessió.",
+        "loginButton": "Iniciar Sessió"
+    },
+    "signUp": {
+        "title": "Crea el teu compte",
+        "emailLabel": "Correu electrònic",
+        "emailPlaceholder": "usuari@exemple.com",
+        "usernameLabel": "Nom d'usuari",
+        "usernamePlaceholder": "Nom d'usuari",
+        "passwordLabel": "Contrasenya",
+        "passwordPlaceholder": "••••••••",
+        "passwordHint": "La contrasenya ha de tenir almenys 8 caràcters, incloent-hi una lletra majúscula, un número i un caràcter especial.",
+        "confirmPasswordLabel": "Confirma la contrasenya",
+        "confirmPasswordPlaceholder": "••••••••",
+        "showPassword": "Mostrar",
+        "hidePassword": "Amagar",
+        "errorPasswordMismatch": "Les contrasenyes no coincideixen.",
+        "errorPasswordInvalid": "La contrasenya no compleix els requisits de seguretat.",
+        "errorServer": "No s'ha pogut connectar amb el servidor. Si us plau, intenta-ho més tard.",
+        "errorGoogle": "Error amb Google Login.",
+        "registerButton": "Crea el teu compte",
+        "orText": "O"
+    },
+    "aboutusModal": {
+      "header": {
+        "title": "Sobre Nosaltres",
+        "effectiveDate": "Data d’efectivitat: 13/03/2024"
+      },
+      "content": {
+        "intro": "A Clothy, creiem que la moda no és només roba. És una manera d’expressar qui som, d’imaginar el món tal com volem que sigui i de connectar amb els altres. Amb aquest somni al cor, vam fundar Clothy: una plataforma nascuda per redissenyar el futur de la moda, fent-la més accessible, inclusiva i sostenible per a tothom.",
+        "history": {
+          "title": "La nostra història",
+          "description": "Tot va començar amb una pregunta senzilla: “Com podem ajudar les persones a trobar peces de roba que realment s’adaptin a la seva visió i estil?”. Inspirats per la rapidesa amb què la tecnologia està canviant el món, vam decidir combinar la intel·ligència artificial amb la creativitat humana per construir una eina única: una que permeti als usuaris trobar roba basada en imatges d’una manera intuïtiva i personalitzada."
+        },
+        "vision": {
+          "title": "La nostra visió",
+          "description": "La nostra missió va més enllà de l’estil o la comoditat. A Clothy, somiem amb un futur on la moda sigui un reflex del canvi que volem veure al món: un futur més sostenible, inclusiu i connectat. Volem oferir als usuaris les eines per trobar roba que no només els representi, sinó que també respecti el planeta."
+        },
+        "commitment": {
+          "title": "Compromesos amb els nostres usuaris",
+          "description": "Els nostres usuaris són el centre de tot el que fem. Cada funcionalitat, cada decisió i cada millora està pensada per oferir una experiència que compleixi amb les seves necessitats i superi les seves expectatives. A través dels vostres comentaris i suggeriments, ens comprometem a evolucionar i construir una plataforma que realment marqui la diferència."
+        },
+        "future": {
+          "title": "Construïm el futur junts",
+          "description": "Això és només el començament. La nostra visió a llarg termini inclou projectes com crear un cercador de moda més sostenible, integració amb marques locals i fins i tot eines que ajudin a reduir l’excés de consum a la indústria de la roba. Tot això amb un únic objectiu: ajudar-te a trobar el teu estil mentre ajudem el món a trobar el seu equilibri."
+        },
+        "thanks": "Gràcies per formar part d’aquest viatge. Amb Clothy, redefinim la moda junts."
+      },
+      "button": {
+        "back": "Tornar a la pàgina principal"
+      }
+    },
+    "donations": {
+        "header": {
+            "title": "Recolza’ns durant la nostra fase de desenvolupament!",
+            "subtitle": "La teva col·laboració és clau per millorar els nostres serveis."
+        },
+        "content": {
+            "intro": "A Clothy, ens trobem en una fase de desenvolupament i, per ara, tots els nostres serveis són gratuïts. Tanmateix, si vols donar-nos suport per continuar creixent i millorant la nostra plataforma, estem oberts a rebre la teva generosa donació!",
+            "howToDonate": {
+                "title": "Com pots fer una donació?",
+                "description": "Hi ha diverses maneres de col·laborar amb nosaltres. A continuació, detallem els mètodes més senzills i segurs:",
+                "paypal": "PayPal: Si prefereixes utilitzar el teu compte de PayPal, també acceptem donacions a través d’aquest sistema!"
+            },
+            "whyDonate": {
+                "title": "Per què fer una donació?",
+                "description": "La teva donació ens ajudarà a continuar desenvolupant noves funcions, millorant la qualitat del servei i assegurant-nos que podem oferir-te una experiència excel·lent.",
+                "thanks": "Cada contribució, gran o petita, té un impacte significatiu. Gràcies per formar part del nostre viatge!"
+            },
+            "paymentMethods": {
+                "title": "Mètodes de pagament:",
+                "description": "Pots fer la teva donació de qualsevol de les següents maneres:",
+                "paypalLink": "Fes una donació mitjançant PayPal"
+            },
+            "questions": {
+                "title": "Tens preguntes?",
+                "description": "Si tens algun dubte sobre el procés de donació o necessites més informació, no dubtis a posar-te en contacte amb nosaltres.",
+                "contact": "Pots escriure’ns a"
+            }
+        }
+    },
+    "privacypolicy": {
+        "header": {
+            "title": "Política de Privacitat de Clothy",
+            "date": "Data d'entrada en vigor: 13/03/2024"
+        },
+        "intro": "A Clothy, la teva privacitat és la nostra prioritat. Estem compromesos a protegir les teves dades personals i a complir amb el Reglament General de Protecció de Dades (GDPR). Aquí t'expliquem com recopilem, utilitzem i protegim la teva informació.",
+        "section1": {
+            "title": "1. Quina informació recopilem i com la utilitzem",
+            "description": "Recopilem la informació necessària per oferir i millorar contínuament el nostre servei. Això inclou:",
+            "bullet1": "Imatges pujades: Les utilitzem per trobar peces similars amb la nostra IA. Aquestes imatges es processen de manera anonimitzada i s'eliminen després d'un curt període.",
+            "bullet2": "Informació tècnica: Com el tipus de dispositiu, sistema operatiu i dades d'ús per optimitzar la nostra plataforma."
+        },
+        "section2": {
+            "title": "2. Base legal per al tractament de dades",
+            "description": "La base legal per al tractament de les teves dades es basa en:",
+            "bullet1": "El teu consentiment explícit: Quan ens autoritzes a utilitzar les teves imatges.",
+            "bullet2": "La necessitat de processar dades: Per oferir el servei que sol·licites.",
+            "bullet3": "L'interès legítim: Per millorar el rendiment de la nostra plataforma i IA.",
+            "note": "Pots retirar el teu consentiment en qualsevol moment posant-te en contacte amb nosaltres."
+        },
+        "section3": {
+            "title": "3. Els teus drets segons el GDPR",
+            "description": "Segons el GDPR, tens dret a:",
+            "bullet1": "Accedir: Pots sol·licitar veure les dades que tenim sobre tu.",
+            "bullet2": "Rectificar: Pots corregir dades incorrectes o incompletes.",
+            "bullet3": "Eliminar: Pots sol·licitar que eliminem les teves dades.",
+            "bullet4": "Restricció: Pots limitar com processem les teves dades en determinades circumstàncies.",
+            "bullet5": "Portabilitat: Tens dret a rebre les teves dades en un format electrònic.",
+            "note": "Per exercir qualsevol d'aquests drets, envia'ns un correu a support@clothy.com."
+        },
+        "section4": {
+            "title": "4. Privacitat dels menors",
+            "description": "El nostre servei no està destinat a menors de 13 anys. Si descobreixes que un menor ens ha proporcionat dades, posa't en contacte amb nosaltres immediatament i prendrem les mesures necessàries per eliminar-les."
+        },
+        "section5": {
+            "title": "5. Galetes i tecnologies similars",
+            "description": "Utilitzem galetes per millorar la teva experiència a Clothy:",
+            "bullet1": "Galetes tècniques: Necessàries per al funcionament bàsic de la plataforma.",
+            "bullet2": "Galetes analítiques: Amb el teu consentiment, per analitzar l'ús i millorar els nostres serveis.",
+            "note": "Pots gestionar les galetes des de la configuració del teu navegador."
+        },
+        "section6": {
+            "title": "6. Canvis en la Política de Privacitat",
+            "description": "Ens reservem el dret d'actualitzar aquesta política en qualsevol moment. Et notificarem qualsevol canvi important abans que sigui efectiu."
+        },
+        "section7": {
+            "title": "7. Contacte",
+            "description": "Per dubtes o consultes, pots escriure'ns a support@clothy.com."
+        }
+    },
+    "profile": {
+        "title": "Perfil d'Usuari",
+        "subtitle": "Personalitza la teva experiència i millora les cerques.",
+        "personalInfo": "Informació Personal",
+        "username": "Nom d'usuari",
+        "email": "Correu electrònic",
+        "password": "Contrasenya",
+        "changePassword": "Fes clic",
+        "here": "aquí",
+        "additionalOptions": "Opcions Addicionals",
+        "additionalOptionsText": "Compartir aquestes opcions addicionals ens ajuda a conèixer-te millor i a personalitzar la teva experiència, millorant les cerques i recomanacions segons les teves preferències. Gràcies per compartir amb nosaltres!",
+        "fullName": "Nom complet",
+        "birthDate": "Data de naixement",
+        "gender": "Gènere",
+        "select": "Seleccionar",
+        "male": "Home",
+        "female": "Dona",
+        "nonBinary": "No binari",
+        "height": "Alçada (cm)",
+        "weight": "Pes (kg)",
+        "location": "Ubicació (Ciutat)",
+        "country": "País",
+        "saveChanges": "Desa els canvis"
+    },
+    "favorites" : {
+        "title": "Favorits",
+        "empty": "No tens roba a favorits.",
+        "type": "Tipus",
+        "color": "Color",
+        "brand": "Marca",
+        "selectOption": "Selecciona una opció",
+        "search": "Cercar...",
+        "reset": "Restablir"
+    },
+    "termsandconditions": {
+        "title": "Condicions d'Ús i Termes",
+        "welcome": "Benvingut a Clothy. La teva experiència i confiança són la nostra prioritat.",
+        "acceptableUse": {
+            "title": "1. Ús Acceptable",
+            "content": "Clothy està dissenyada per a ús personal i no comercial. Està estrictament prohibit:"
+        },
+        "privacy": {
+            "title": "2. Privadesa i Protecció de Dades (GDPR)",
+            "content": "A Clothy seguim estrictament el Reglament General de Protecció de Dades (GDPR). Les dades personals que ens proporciones s’utilitzen exclusivament per oferir-te un millor servei."
+        },
+        "imagesUse": {
+            "title": "3. Ús de les Imatges",
+            "content": "Quan puges una imatge a Clothy, només s’utilitza per trobar roba similar i millorar el nostre algoritme d’IA."
+        },
+        "liability": {
+            "title": "4. Limitació de Responsabilitat",
+            "content": "Tot i que fem tot el possible per mantenir un servei segur i fiable, Clothy no es fa responsable de certs inconvenients."
+        },
+        "modifications": {
+            "title": "5. Modificació dels Termes",
+            "content": "Ens reservem el dret de modificar aquests termes i condicions per adaptar-nos a noves necessitats legals o tecnològiques."
+        },
+        "contact": {
+            "title": "6. Contacte i Suport",
+            "content": "Si tens algun dubte, preocupació o suggeriment sobre aquests termes, no dubtis a contactar-nos."
+        }
+    },
+    "verification" : {
+        "title": "Verifica el teu compte",
+        "instructions": "Introdueix el teu correu i el codi de verificació enviat al teu correu electrònic.",
+        "emailLabel": "Correu electrònic",
+        "emailPlaceholder": "usuari@exemple.com",
+        "codeLabel": "Codi de verificació",
+        "codePlaceholder": "123456",
+        "buttonText": "Verifica el compte",
+        "successMessage": "El teu compte ha estat verificat correctament!",
+        "error": {
+            "verification": "Hi ha hagut un error en la verificació.",
+            "unexpected": "Error inesperat. Torna-ho a intentar més tard."
+        },
+        "imageAlt": "Imatge de verificació"
+    },
+    "searchcloth": {
+        "title": "Buscador de roba",
+        "description": "Descobreix el nostre buscador intel·ligent de roba! Només has de pujar una imatge i el nostre sistema la compararà amb opcions disponibles a Internet.",
+        "uploadButton": "Pujar imatge",
+        "imageAlt": "Imatge carregada",
+        "detectedInfoTitle": "Informació detectada",
+        "descriptionLabel": "Descripció:",
+        "typeLabel": "Tipus:",
+        "colorLabel": "Color:",
+        "noInfoDetected": "No s'ha detectat cap informació.",
+        "noResult": "No s'han trobat resultats.",
+        "sample": {
+            "description": "Jaqueta de cuir negre",
+            "type": "Jaqueta",
+            "color": "Negre"
+        },
+        "filters": "Filtres",
+        "more_filters": "Més filtres",
+        "search": "Buscar",
+        "advanced_filters": "Filtres avançats",
+        "price_range": "Rangs de preu:",
+        "selected_price": "Preu seleccionat: {{price}} €",
+        "only_offers": "Només ofertes",
+        "high_rating": "Bona puntuació",
+        "official_brands": "Marques oficials",
+        "reset": "Restablecer",
+        "apply": "Aplicar"
+    },
+    "navbar": {
+        "home": "Inici",
+        "search": "Cercador"
+    },
+    "footer": {
+        "menu": "Menú",
+        "home": "Inici",
+        "aboutus": "Sobre nosaltres",
+        "FAQ": "PMF",
+        "joinus": "Uneix-te",
+        "others": "Altres"
+    }
+
+
+}

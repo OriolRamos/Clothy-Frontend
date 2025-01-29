@@ -14,20 +14,26 @@ import Link from "next/link";
 import { useAuth } from "../AuthContext/index";
 import {LogoDesktop, LogoMobile} from "./LogoComponents"
 import UserMenu from "./UserMenu"
+import LanguageSwitcher from "./LanguageSwitcher";
+import { useTranslation } from 'react-i18next';
 
-const NAV_MENU = [
-    {
-        name: "Home",
-        icon: RectangleStackIcon,
-        link: "/",
-    },
-];
+
+
+
 
 const Navbar: React.FC = () => {
     const { isAuthenticated, userInitial, logout } = useAuth();
     const [open, setOpen] = useState(false);
     const [userMenuVisible, setUserMenuVisible] = useState(false); // Estat per controlar la visibilitat del UserMenu
+    const { t } = useTranslation('common'); // Usar traducciones
 
+    const NAV_MENU = [
+        {
+            name: t("navbar.home"),
+            icon: RectangleStackIcon,
+            link: "/",
+        },
+    ];
 
     useEffect(() => {
         const handleResize = () => {
@@ -98,7 +104,7 @@ const Navbar: React.FC = () => {
                                         {...({} as any)} // Ignora altres propietats no passades
                                     >
                                         <MagnifyingGlassIcon  className="h-5 w-5" />
-                                        Search Cloth
+                                        {t("navbar.search")}
                                     </Typography>
                                 </Link>
                             </li>
@@ -107,6 +113,7 @@ const Navbar: React.FC = () => {
 
                     {/* Accions d'usuari a la dreta */}
                     <div className="ml-auto flex items-center gap-2">
+                        <LanguageSwitcher />
                         {isAuthenticated ? (
                             <UserMenu userInitial= {userInitial}   // Per exemple, les inicials de l'usuari
                                       logout= {logout}
@@ -155,7 +162,7 @@ const Navbar: React.FC = () => {
                                             {...({} as any)}
                                         >
                                             <MagnifyingGlassIcon  className="h-5 w-5" />
-                                            Search Cloth
+                                            {t("navbar.search")}
                                         </Typography>
                                     </Link>
                                 </li>

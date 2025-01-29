@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { Menu, MenuHandler, MenuList, MenuItem } from "@material-tailwind/react";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
+
 
 interface UserMenuProps {
     userInitial: string;
@@ -11,6 +13,7 @@ interface UserMenuProps {
 
 const UserMenu: React.FC<UserMenuProps> = ({ userInitial, logout }) => {
     const [menuOpen, setMenuOpen] = useState(false);
+    const { t } = useTranslation('common');
 
 
     return (
@@ -29,21 +32,21 @@ const UserMenu: React.FC<UserMenuProps> = ({ userInitial, logout }) => {
                 <MenuItem {...({} as any)}>
                     <Link href="/profile" passHref>
                     <button className="w-full text-left text-black" >
-                        Perfil
+                        {t("usermenu.profile")}
                     </button>
                     </Link>
                 </MenuItem>
                 <MenuItem {...({} as any)}>
                     <Link href="/maintenance" passHref>
                         <button className="w-full text-left text-black" >
-                            Historial
+                            {t("usermenu.history")}
                         </button>
                     </Link>
                 </MenuItem>
                 <MenuItem {...({} as any)}>
                     <Link href="/profile/favorites" passHref>
                         <button className="w-full text-left text-black" >
-                            Favoritos
+                            {t("usermenu.favorites")}
                         </button>
                     </Link>
                 </MenuItem>
@@ -51,21 +54,21 @@ const UserMenu: React.FC<UserMenuProps> = ({ userInitial, logout }) => {
                 <MenuItem {...({} as any)}>
                     <Link href="/maintenance" passHref>
                         <button className="w-full text-left text-black" >
-                            Mi armario
+                            {t("usermenu.armario")}
                         </button>
                     </Link>
                 </MenuItem>*/}
                 <MenuItem {...({} as any)}>
                     <Link href="/donaciones" passHref>
                         <button className="w-full text-left text-black" >
-                            Suscripción
+                            {t("usermenu.subscription")}
                         </button>
                     </Link>
                 </MenuItem>
                 <MenuItem {...({} as any)}>
                     <Link href="/" passHref>
                         <button className="w-full text-left text-black" onClick={logout}>
-                            Logout
+                            {t("usermenu.logout")}
                         </button>
                     </Link>
                 </MenuItem>

@@ -1,6 +1,10 @@
+"use client"
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 
 const Dedicated = () => {
+    const { t } = useTranslation('common');
+
     return (
         <div id="dedicated-section" className="relative bg-lightgray py-20">
             {/* Fondo decorativo */}
@@ -8,7 +12,7 @@ const Dedicated = () => {
                 src="/images/dedicated/spiral.svg"
                 height={272}
                 width={686}
-                alt="spiral-design"
+                alt={t("dedicated.spiralAlt")}
                 className="absolute left-0 hidden lg:block -z-10"
             />
 
@@ -18,7 +22,7 @@ const Dedicated = () => {
                     <div>
                         <Image
                             src="/images/dedicated/personal_image.jpg"
-                            alt="man-icon"
+                            alt={t("dedicated.imageAlt")}
                             width={416}
                             height={530}
                             className="mx-auto md:mx-0 rounded-lg filter saturate-90 brightness-105"
@@ -30,7 +34,7 @@ const Dedicated = () => {
                         {/* Imagen decorativa */}
                         <Image
                             src="/images/dedicated/comma.svg"
-                            alt="comma-image"
+                            alt={t("dedicated.commaAlt")}
                             width={200}
                             height={106}
                             className="absolute -top-10 -left-10 hidden lg:block"
@@ -38,13 +42,13 @@ const Dedicated = () => {
 
                         {/* Contenido principal */}
                         <h2 className="text-4xl lg:text-6xl font-bold text-darkpurple leading-snug text-center lg:text-start">
-                            Redefiniendo la moda para transformar el mundo.
+                            {t("dedicated.title")}
                         </h2>
                         <p className="text-2xl font-medium text-gray-700 mt-5 text-center lg:text-start">
-                            En Clothy, soñamos con una moda más inclusiva, sostenible y accesible para todos. Nuestro único objetivo es ayudarte a encontrar tu estilo mientras construimos tecnologia para canviar la moda.
+                            {t("dedicated.description")}
                         </p>
                         <p className="text-2xl font-semibold mt-12 text-darkpurple text-center lg:text-start">
-                            Oriol Ramos, CEO
+                            {t("dedicated.ceoName")}
                         </p>
                     </div>
                 </div>

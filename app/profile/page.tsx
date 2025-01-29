@@ -4,9 +4,12 @@ import SessionExpiredModal from "../components/SessionExpiredModal/index"; // Im
 import {useAuth} from "../components/AuthContext/index";
 import SuccesModal from "../components/Notifications/SuccesModal";
 import ErrorModal from "../components/Notifications/ErrorModal";
+import { useTranslation } from "react-i18next";
 
 
 const UserProfile = () => {
+    const { t } = useTranslation('common');
+
     const [showSessionExpiredModal, setShowSessionExpiredModal] = useState(false);
     const { fetchWithAuth } = useAuth();
     const [userData, setUserData] = useState({
@@ -126,8 +129,8 @@ const UserProfile = () => {
             {/* Header */}
             <header className="bg-blue-600 py-6">
                 <div className="max-w-7xl mx-auto text-center text-black">
-                    <h1 className="text-4xl font-extrabold">Perfil de Usuario</h1>
-                    <p className="mt-2 text-lg">Personaliza tu experiencia y mejora las búsquedas.</p>
+                    <h1 className="text-4xl font-extrabold">{t('profile.title')}</h1>
+                    <p className="mt-2 text-lg">{t('profile.subtitle')}</p>
                 </div>
             </header>
 
@@ -135,11 +138,11 @@ const UserProfile = () => {
             <main className="flex-1 bg-white py-16">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="rounded-lg p-8 bg-gray-100 shadow-lg">
-                        <h2 className="text-3xl font-semibold text-blue-600 mb-6">Información Personal</h2>
+                        <h2 className="text-3xl font-semibold text-blue-600 mb-6">{t('profile.personalInfo')}</h2>
 
                         {/* Username */}
                         <div className="mb-6">
-                            <label className="block text-lg font-medium text-gray-700">Nombre de usuario</label>
+                            <label className="block text-lg font-medium text-gray-700">{t('profile.username')}</label>
                             <input
                                 type="text"
                                 name="username"
@@ -151,7 +154,7 @@ const UserProfile = () => {
 
                         {/* Email */}
                         <div className="mb-6">
-                            <label className="block text-lg font-medium text-gray-700">Correo electrónico</label>
+                            <label className="block text-lg font-medium text-gray-700">{t('profile.email')}</label>
                             <input
                                 type="email"
                                 name="email"
@@ -163,7 +166,7 @@ const UserProfile = () => {
 
                         {/* Password */}
                         <div className="mb-6">
-                            <label className="block text-lg font-medium text-gray-700">Contraseña</label>
+                            <label className="block text-lg font-medium text-gray-700">{t('profile.password')}</label>
                             <input
                                 type="password"
                                 name="password"
@@ -171,21 +174,21 @@ const UserProfile = () => {
                                 disabled
                                 className="mt-2 p-3 border border-gray-300 rounded-md w-full bg-gray-200"
                             />
-                            <p className="text-sm text-gray-500 mt-1">Haz clic <a href="/reset-password" className="text-blue-600 underline">aquí</a> para cambiarla.</p>
+                            <p className="text-sm text-gray-500 mt-1">
+                                {t('profile.changePassword')} <a href="/reset-password"
+                                                                 className="text-blue-600 underline">{t('profile.here')}</a>.
+                            </p>
                         </div>
 
                         {/* Optional Fields */}
-                        <h2 className="text-3xl font-semibold text-blue-600 mt-12 mb-6">Opciones adicionales</h2>
-                        {/* Informative Text Below Optional Fields */}
-                        <p className="mt-6 text-sm text-gray-500 italic">
-                            Compartir estas opciones adicionales nos ayuda a conocerte mejor y a personalizar tu experiencia,
-                            mejorando las búsquedas y recomendaciones según tus preferencias. ¡Gracias por compartir con nosotros!
-                        </p>
+                        <h2 className="text-3xl font-semibold text-blue-600 mt-12 mb-6">{t('profile.additionalOptions')}</h2>
+                        <p className="mt-6 text-sm text-gray-500 italic">{t('profile.additionalOptionsText')}</p>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             {/* Full Name */}
                             <div>
-                                <label className="block text-lg font-medium text-gray-700">Nombre completo</label>
+                                <label
+                                    className="block text-lg font-medium text-gray-700">{t('profile.fullName')}</label>
                                 <input
                                     type="text"
                                     name="fullName"
@@ -197,7 +200,8 @@ const UserProfile = () => {
 
                             {/* Birth Date */}
                             <div>
-                                <label className="block text-lg font-medium text-gray-700">Fecha de nacimiento</label>
+                                <label
+                                    className="block text-lg font-medium text-gray-700">{t('profile.birthDate')}</label>
                                 <input
                                     type="date"
                                     name="birthDate"
@@ -209,23 +213,23 @@ const UserProfile = () => {
 
                             {/* Gender */}
                             <div>
-                                <label className="block text-lg font-medium text-gray-700">Género</label>
+                                <label className="block text-lg font-medium text-gray-700">{t('profile.gender')}</label>
                                 <select
                                     name="gender"
                                     value={userData.gender}
                                     onChange={handleInputChange}
                                     className="mt-2 p-3 border border-gray-300 rounded-md w-full"
                                 >
-                                    <option value="">Seleccionar</option>
-                                    <option value="male">Hombre</option>
-                                    <option value="female">Mujer</option>
-                                    <option value="non-binary">No binario</option>
+                                    <option value="">{t('profile.select')}</option>
+                                    <option value="male">{t('profile.male')}</option>
+                                    <option value="female">{t('profile.female')}</option>
+                                    <option value="non-binary">{t('profile.nonBinary')}</option>
                                 </select>
                             </div>
 
                             {/* Height */}
                             <div>
-                                <label className="block text-lg font-medium text-gray-700">Altura (cm)</label>
+                                <label className="block text-lg font-medium text-gray-700">{t('profile.height')}</label>
                                 <input
                                     type="number"
                                     name="height"
@@ -237,7 +241,7 @@ const UserProfile = () => {
 
                             {/* Weight */}
                             <div>
-                                <label className="block text-lg font-medium text-gray-700">Peso (kg)</label>
+                                <label className="block text-lg font-medium text-gray-700">{t('profile.weight')}</label>
                                 <input
                                     type="number"
                                     name="weight"
@@ -249,7 +253,8 @@ const UserProfile = () => {
 
                             {/* Location */}
                             <div>
-                                <label className="block text-lg font-medium text-gray-700">Ubicación (Ciudad)</label>
+                                <label
+                                    className="block text-lg font-medium text-gray-700">{t('profile.location')}</label>
                                 <input
                                     type="text"
                                     name="location"
@@ -261,7 +266,8 @@ const UserProfile = () => {
 
                             {/* Country */}
                             <div>
-                                <label className="block text-lg font-medium text-gray-700">País</label>
+                                <label
+                                    className="block text-lg font-medium text-gray-700">{t('profile.country')}</label>
                                 <input
                                     type="text"
                                     name="country"
@@ -278,24 +284,9 @@ const UserProfile = () => {
                                 onClick={saveChanges}
                                 className="bg-blue-600 text-black px-6 py-3 rounded-md text-lg font-semibold hover:bg-blue-700"
                             >
-                                Guardar cambios
+                                {t('profile.saveChanges')}
                             </button>
                         </div>
-                        {/* Aquí cridem el SuccessModal, passan-li el missatge i el temps que es mantindrà obert */}
-                        <SuccesModal
-                            isOpen={isSucessModalOpen}
-                            onClose={handleCloseSucessModal}
-                            text="¡Perfil actualizado correctamente!"
-                            duration={5} // El modal es tancarà automàticament després de 5 segons
-                        />
-
-                        <ErrorModal
-                            isOpen={isErrorModalOpen}
-                            onClose={handleCloseErrorModal}
-                            text="Error actualizando el perfil"
-                            duration={5} // El modal es tancarà automàticament després de 5 segons
-                        />
-
                     </div>
                 </div>
             </main>

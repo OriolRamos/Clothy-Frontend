@@ -6,6 +6,8 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "../AuthContext/index"; // Assegura't que el path és correcte
 import Link from "next/link";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
+import { useTranslation } from "react-i18next";
+
 
 
 const Login = () => {
@@ -14,6 +16,7 @@ const Login = () => {
     const [error, setError] = useState("");
     const router = useRouter();
     const { login } = useAuth();
+    const { t } = useTranslation('common');
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -30,7 +33,7 @@ const Login = () => {
 
             if (!response.ok) {
                 const errorData = await response.json();
-                setError(errorData.detail || "Credencials incorrectes.");
+                setError(errorData.detail || t("login.invalid_credentials"));
             } else {
                 const userData = await response.json();
                 const token = userData.access_token; // Adapta això segons el backend
@@ -43,7 +46,7 @@ const Login = () => {
             }
         } catch (error) {
             console.error("Error:", error);
-            setError("No s'ha pogut connectar amb el servidor. Si us plau, intenta-ho més tard.");
+            setError(t("login.server_error"));
         }
     };
 
@@ -79,11 +82,11 @@ const Login = () => {
 
                 router.push("/"); // Redirigir després del login
             } else {
-                setError(data.message || "Error durant el login amb Google.");
+                setError(data.message || t("login.google_error"));
             }
         } catch (err) {
             console.error("Error al processar el login amb Google:", err);
-            setError("No es pot completar el login amb Google.");
+            setError(t("login.google_error"));
         }
     };
 
@@ -98,7 +101,7 @@ const Login = () => {
                     <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-tr from-blue-400 to-blue-600 clip-path-diagonal">
                         <Image
                             src="/images/login.png"
-                            alt="Imagen de login"
+                            alt={t("login.image_alt")}
                             fill
                             style={{ objectFit: "cover" }}
                             className="opacity-90"
@@ -110,13 +113,13 @@ const Login = () => {
                 <div className="relative flex justify-center items-center">
                     <div className="rounded-2xl p-10 w-full max-w-lg bg-white shadow-md">
                         <h2 className="text-3xl font-bold text-blue-600 text-center mb-6">
-                            Inicia sesión en tu cuenta
+                            {t("login.title")}
                         </h2>
                         <form className="space-y-6" onSubmit={handleSubmit}>
                             {/* Input de Correu electrònic */}
                             <div>
                                 <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                                    Usuario o correo electrónico
+                                    {t("login.email_label")}
                                 </label>
                                 <input
                                     type="email"
@@ -126,14 +129,14 @@ const Login = () => {
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     className="mt-2 block w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                                    placeholder="usuario@ejemplo.com"
+                                    placeholder={t("login.email_placeholder")}
                                 />
                             </div>
 
                             {/* Input de Contrasenya */}
                             <div>
                                 <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                                    Contraseña
+                                    {t("login.password_label")}
                                 </label>
                                 <input
                                     type="password"
@@ -143,7 +146,7 @@ const Login = () => {
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                     className="mt-2 block w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                                    placeholder="••••••••"
+                                    placeholder={t("login.password_placeholder")}
                                 />
                             </div>
 
@@ -155,14 +158,14 @@ const Login = () => {
                                 type="submit"
                                 className="block w-full relative cursor-pointer text-center py-3 px-6 text-white bg-faqblue rounded-lg font-medium shadow-lg hover:scale-105 hover:bg-faqblue/90 hover:backdrop-blur-sm hover:opacity-95 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-btnblue focus:ring-offset-2 active:bg-hoblue transition transform duration-200"
                             >
-                                Iniciar sesión
+                                {t("login.submit_button")}
                             </button>
                         </form>
 
                         {/* Text petit */}
                         <Link href="/loss-password">
                             <p className="mt-4 text-sm text-gray-500 text-center hover:text-blue-500 cursor-pointer">
-                                ¿Has olvidado la contraseña?
+                                {t("login.forgot_password")}
                             </p>
                         </Link>
 
@@ -176,7 +179,7 @@ const Login = () => {
                         {/* Botó de Google */}
                         <GoogleLogin
                             onSuccess={handleGoogleSuccess}
-                            onError={() => setError("Error amb Google Login.")}
+                            onError={() => setError(t("login.google_error"))}
                         />
 
                     </div>

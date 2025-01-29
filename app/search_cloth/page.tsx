@@ -11,8 +11,12 @@ import {
 import { useAuth } from "@/app/components/AuthContext";
 import ImageModel from "../components/ImageModal/index";
 import filters from "../components/Filters/cloth_filters";
+import { useTranslation } from "react-i18next";
+
 
 const CercaRoba = () => {
+    const { t } = useTranslation("common");
+
     const { fetchWithAuth } = useAuth();
     const [imageFile, setImageFile] = useState<File | null>(null);
     const [uploadedImageUrl, setUploadedImageUrl] = useState<string | null>(null);
@@ -258,14 +262,10 @@ const CercaRoba = () => {
     return (
         <div className="min-h-screen bg-gray-100 px-8 py-12">
             <h1 className="text-4xl font-bold text-center text-black mb-8">
-                Buscador de Ropa
+                {t("searchcloth.title")}
             </h1>
             <p className="text-center text-gray-600 mb-8 max-w-3xl mx-auto">
-                Descubre nuestro buscador inteligente de ropa, una herramienta avanzada que combina tecnología y
-                comodidad. Solo necesitas subir una imagen de la prenda que deseas encontrar, y el sistema analizará sus
-                características utilizando algoritmos de inteligencia artificial. Te mostraremos resultados con opciones
-                similares e idénticas disponibles en Internet, permitiéndote filtrar por color, tipo, marca y mucho más.
-                Simplifica tu búsqueda y encuentra las mejores opciones al alcance de tu mano.
+                {t("searchcloth.description")}
             </p>
 
 
@@ -276,7 +276,7 @@ const CercaRoba = () => {
                         htmlFor="upload-input"
                         className="block relative cursor-pointer text-center py-3 px-6 text-white bg-faqblue rounded-lg font-medium shadow-lg hover:scale-105 hover:bg-faqblue/90 hover:backdrop-blur-sm hover:opacity-95 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-btnblue focus:ring-offset-2 active:bg-hoblue transition transform duration-200"
                     >
-                        Subir Imagen
+                        {t("searchcloth.uploadButton")}
                         <input
                             id="upload-input"
                             type="file"
@@ -313,24 +313,24 @@ const CercaRoba = () => {
                     {Object.keys(detectedInfo).length > 0 ? (
                         <div className="p-6 bg-white rounded-lg shadow-lg space-y-4">
                             <h3 className="text-2xl font-semibold text-gray-900">
-                                Informació detectada:
+                                {t("searchcloth.detectedInfoTitle")}
                             </h3>
                             <div className="space-y-2">
                                 {detectedInfo?.description && (
                                     <div className="flex justify-between">
-                                        <span className="font-medium text-gray-800">Descripció:</span>
+                                        <span className="font-medium text-gray-800">{t("searchcloth.descriptionLabel")}</span>
                                         <p className="text-gray-600">{detectedInfo.description}</p>
                                     </div>
                                 )}
                                 {detectedInfo?.type && (
                                     <div className="flex justify-between">
-                                        <span className="font-medium text-gray-800">Tipus:</span>
+                                        <span className="font-medium text-gray-800">{t("searchcloth.typeLabel")}</span>
                                         <p className="text-gray-600">{detectedInfo.type}</p>
                                     </div>
                                 )}
                                 {detectedInfo?.color && (
                                     <div className="flex justify-between">
-                                        <span className="font-medium text-gray-800">Color:</span>
+                                        <span className="font-medium text-gray-800">{t("searchcloth.colorLabel")}</span>
                                         <p className="text-gray-600">{detectedInfo.color}</p>
                                     </div>
                                 )}
@@ -338,7 +338,7 @@ const CercaRoba = () => {
                         </div>
                     ) : (
                         <div className="flex-grow flex items-center justify-center">
-                            <p className="text-gray-600">No s&#39;ha detectat cap informació.</p>
+                            <p className="text-gray-600">{t("searchcloth.noInfoDetected")}</p>
                         </div>
                     )}
 
@@ -347,7 +347,7 @@ const CercaRoba = () => {
                             htmlFor="upload-input"
                             className="block relative cursor-pointer text-center py-3 px-6 text-white bg-faqblue rounded-lg font-medium shadow-lg hover:scale-105 hover:bg-faqblue/90 hover:backdrop-blur-sm hover:opacity-95 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-btnblue focus:ring-offset-2 active:bg-hoblue transition transform duration-200"
                         >
-                            Subir Imagen
+                            {t("searchcloth.uploadButton")}
                             <input
                                 id="upload-input"
                                 type="file"
@@ -363,8 +363,7 @@ const CercaRoba = () => {
 
             {/* Filtres */}
             {Object.keys(detectedInfo).length > 0 && (
-                <div
-                    className="flex flex-col sm:flex-row items-center justify-evenly bg-white p-4 rounded-lg shadow-md mt-8 space-y-4 sm:space-y-0">
+                <div className="flex flex-col sm:flex-row items-center justify-evenly bg-white p-4 rounded-lg shadow-md mt-8 space-y-4 sm:space-y-0">
                     {Object.keys(filters).map((filterKey) =>
                         renderFilter(filterKey, filters[filterKey])
                     )}
@@ -373,22 +372,20 @@ const CercaRoba = () => {
                         onClick={() => setIsModalOpen(true)}
                         className="flex items-center cursor-pointer text-black text-sm font-medium transition-transform duration-200 hover:scale-105 focus:outline-none"
                     >
-                        Mas filtros
+                        {t('searchcloth.more_filters')}
                         <span className="ml-2 text-sm transform transition-transform duration-200">
-                            ▼
-                        </span>
+        ▼
+      </span>
                     </button>
-
 
                     <button
                         onClick={handleSearch}
                         className="block relative cursor-pointer text-center py-3 px-6 text-white bg-faqblue rounded-lg font-medium shadow-lg hover:scale-105 hover:bg-faqblue/90 hover:backdrop-blur-sm hover:opacity-95 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-btnblue focus:ring-offset-2 active:bg-hoblue transition transform duration-200"
                     >
-                        Buscar
+                        {t('searchcloth.search')}
                     </button>
                 </div>
             )}
-
 
             {/* Modal de filtres avançats */}
             {isModalOpen && (
@@ -405,7 +402,7 @@ const CercaRoba = () => {
                         </button>
 
                         {/* Header del modal */}
-                        <h2 className="text-2xl font-bold mb-6 text-center">Filtres avançats</h2>
+                        <h2 className="text-2xl font-bold mb-6 text-center">{t('searchcloth.advanced_filters')}</h2>
 
                         {/* Cos del modal */}
                         <div className="space-y-6">
@@ -419,7 +416,7 @@ const CercaRoba = () => {
                             {/* Filtre de preu */}
                             <div className="flex flex-col items-start">
                                 <label htmlFor="price-range" className="text-lg font-medium mb-2">
-                                    Rangs de preu:
+                                    {t('searchcloth.price_range')}
                                 </label>
                                 <input
                                     id="price-range"
@@ -437,8 +434,8 @@ const CercaRoba = () => {
                                     className="w-full accent-blue-500"
                                 />
                                 <span className="mt-2 text-sm text-gray-600">
-                        Preu seleccionat: {filtersState.price || 500} €
-                    </span>
+            {t('searchcloth.selected_price', { price: filtersState.price || 500 })}
+          </span>
                             </div>
 
                             {/* Checkbox per opcions addicionals */}
@@ -457,7 +454,7 @@ const CercaRoba = () => {
                                         className="h-5 w-5 accent-blue-500"
                                     />
                                     <label htmlFor="only-offers" className="text-sm">
-                                        Només ofertes
+                                        {t('searchcloth.only_offers')}
                                     </label>
                                 </div>
 
@@ -475,7 +472,7 @@ const CercaRoba = () => {
                                         className="h-5 w-5 accent-blue-500"
                                     />
                                     <label htmlFor="high-rating" className="text-sm">
-                                        Bona puntuació
+                                        {t('searchcloth.high_rating')}
                                     </label>
                                 </div>
 
@@ -493,7 +490,7 @@ const CercaRoba = () => {
                                         className="h-5 w-5 accent-blue-500"
                                     />
                                     <label htmlFor="official-brands" className="text-sm">
-                                        Marques oficials
+                                        {t('searchcloth.official_brands')}
                                     </label>
                                 </div>
                             </div>
@@ -515,7 +512,7 @@ const CercaRoba = () => {
                                 }
                                 className="w-32 h-12 bg-gray-200 text-gray-700 rounded-lg font-medium hover:bg-gray-300 transition flex items-center justify-center shadow-md focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-offset-2"
                             >
-                                Restablecer
+                                {t('searchcloth.reset')}
                             </button>
                             <div className="flex space-x-4">
                                 <button
@@ -525,14 +522,14 @@ const CercaRoba = () => {
                                     }}
                                     className="w-32 h-12 bg-faqblue text-white rounded-lg font-medium shadow-lg hover:scale-105 hover:bg-faqblue/90 hover:backdrop-blur-sm hover:opacity-95 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-btnblue focus:ring-offset-2 active:bg-hoblue transition-transform transform duration-200 flex items-center justify-center"
                                 >
-                                    Aplicar
+                                    {t('searchcloth.apply')}
                                 </button>
                             </div>
                         </div>
-
                     </div>
                 </div>
             )}
+
 
             {/* Resultats */}
             {Object.keys(detectedInfo).length > 0 && (
@@ -560,7 +557,7 @@ const CercaRoba = () => {
                         ))
                     ) : (
                         <div className="col-span-full text-center text-gray-600">
-                            No s&#39;han trobat resultats.
+                            {t('searchcloth.noResult')}
                         </div>
                     )}
                 </div>
