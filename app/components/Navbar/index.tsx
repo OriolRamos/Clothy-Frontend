@@ -55,29 +55,33 @@ const Navbar: React.FC = () => {
             <div className="max-w-full mx-auto">
                 <div className="max-w-[1980px] mx-auto flex items-center justify-between lg:justify-start">
                     {/* Botó per a mòbil */}
-                    <IconButton
-                        variant="text"
-                        color="gray"
-                        onClick={handleOpen}
-                        className="lg:hidden"
-                        {...({} as any)} // Ignora altres propietats no passades
-                    >
-                        {open ? <XMarkIcon strokeWidth={2} className="h-6 w-6" /> : <Bars3Icon strokeWidth={2} className="h-6 w-6" />}
-                    </IconButton>
+                    <div className="lg:hidden flex items-center p-1 gap-1">
+                        <IconButton
+                            variant="text"
+                            color="gray"
+                            onClick={handleOpen}
+                            {...({} as any)}
+                        >
+                            {open ? <XMarkIcon className="h-6 w-6"/> : <Bars3Icon className="h-6 w-6"/>}
+                        </IconButton>
+                        {!isAuthenticated && (
+                            <LanguageSwitcher/>
+                        )}
+                    </div>
 
                     {/* Logo per pantalles grans */}
                     <div className="hidden lg:block">
-                        <LogoDesktop />
+                        <LogoDesktop/>
                     </div>
 
                     {/* Logo per pantalles petites */}
-                    <div className="lg:hidden flex justify-center w-full">
+                    <div className="lg:hidden flex justify-center w-full pointer-events-none">
                         <LogoMobile />
                     </div>
 
                     {/* Menús a la dreta en pantalla gran */}
                     <ul className="hidden lg:flex items-center justify-center gap-8 ml-auto">
-                        {NAV_MENU.map(({ name, link, icon: Icon }) => (
+                        {NAV_MENU.map(({name, link, icon: Icon}) => (
                             <li key={name}>
                                 <Link href={link} passHref>
                                     <Typography
@@ -87,7 +91,7 @@ const Navbar: React.FC = () => {
                                         className="flex items-center gap-2 font-medium text-gray-900"
                                         {...({} as any)} // Ignora altres propietats no passades
                                     >
-                                        <Icon className="h-5 w-5" />
+                                        <Icon className="h-5 w-5"/>
                                         {name}
                                     </Typography>
                                 </Link>
@@ -103,7 +107,7 @@ const Navbar: React.FC = () => {
                                         className="flex items-center gap-2 font-medium text-gray-900"
                                         {...({} as any)} // Ignora altres propietats no passades
                                     >
-                                        <MagnifyingGlassIcon  className="h-5 w-5" />
+                                        <MagnifyingGlassIcon className="h-5 w-5"/>
                                         {t("navbar.search")}
                                     </Typography>
                                 </Link>
@@ -113,10 +117,19 @@ const Navbar: React.FC = () => {
 
                     {/* Accions d'usuari a la dreta */}
                     <div className="ml-auto flex items-center gap-2">
-                        <LanguageSwitcher />
+                        <div className="hidden lg:block">
+                            <LanguageSwitcher/>
+                        </div>
+                        {/* Logo per pantalles petites */}
+                        <div className="lg:hidden flex justify-center w-full">
+                            {isAuthenticated && (
+                                <LanguageSwitcher/>
+                            )}
+                        </div>
+
                         {isAuthenticated ? (
-                            <UserMenu userInitial= {userInitial}   // Per exemple, les inicials de l'usuari
-                                      logout= {logout}
+                            <UserMenu userInitial={userInitial}   // Per exemple, les inicials de l'usuari
+                                      logout={logout}
                             />
                         ) : (
                             <>
@@ -135,7 +148,7 @@ const Navbar: React.FC = () => {
                 <Collapse open={open}>
                     <div className="container mx-auto mt-3 border-t border-gray-200 px-2 pt-4">
                         <ul className="flex flex-col gap-4">
-                            {NAV_MENU.map(({ name, link, icon: Icon }) => (
+                            {NAV_MENU.map(({name, link, icon: Icon}) => (
                                 <li key={name}>
                                     <Link href={link} passHref>
                                         <Typography
@@ -145,7 +158,7 @@ const Navbar: React.FC = () => {
                                             className="flex items-center gap-2 font-medium text-gray-900"
                                             {...({} as any)}
                                         >
-                                            <Icon className="h-5 w-5" />
+                                            <Icon className="h-5 w-5"/>
                                             {name}
                                         </Typography>
                                     </Link>
@@ -161,7 +174,7 @@ const Navbar: React.FC = () => {
                                             className="flex items-center gap-2 font-medium text-gray-900"
                                             {...({} as any)}
                                         >
-                                            <MagnifyingGlassIcon  className="h-5 w-5" />
+                                            <MagnifyingGlassIcon className="h-5 w-5"/>
                                             {t("navbar.search")}
                                         </Typography>
                                     </Link>
@@ -169,6 +182,7 @@ const Navbar: React.FC = () => {
                             )}
                         </ul>
                     </div>
+
                 </Collapse>
             </div>
         </div>

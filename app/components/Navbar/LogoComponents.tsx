@@ -25,7 +25,6 @@ const LogoMobile: React.FC = () => (
         {...({} as any)}
     >
         <img src="/images/clothy_black.png" alt="Clothy Logo" className="h-8 w-8 object-contain" />
-        Clothy
     </Typography>
 );
 

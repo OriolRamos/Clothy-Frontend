@@ -4,54 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da1a1d65-fd44-4e09-8dc4-bd35cbb307fe" name="Changes" comment="v2.91 (S'ha afegit auth amb google)">
-      <change afterPath="$PROJECT_DIR$/app/components/Navbar/LanguageSwitcher.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/i18n.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/locales/ar/common.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/locales/bn/common.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/locales/ca/common.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/locales/ch/common.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/locales/de/common.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/locales/en/common.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/locales/es/common.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/locales/fr/common.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/locales/hi/common.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/locales/ja/common.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/locales/ko/common.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/locales/pt/common.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/locales/ru/common.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/locales/tr/common.json" afterDir="false" />
+    <list default="true" id="da1a1d65-fd44-4e09-8dc4-bd35cbb307fe" name="Changes" comment="v3 (S'ha afegit les traducions)">
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/about-us/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/about-us/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Aboutus/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Aboutus/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Banner/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Banner/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Beliefs/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Beliefs/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Dedicated/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Dedicated/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Digital/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Digital/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/FAQ/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/FAQ/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Footer/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Footer/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Joinus/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Joinus/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Login/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Login/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Navbar/UserMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Navbar/UserMenu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Navbar/LogoComponents.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Navbar/LogoComponents.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/components/Navbar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Navbar/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Ourteam/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Ourteam/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Recover-Password/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Recover-Password/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Recover-Password/reset.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Recover-Password/reset.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/SessionExpiredModal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/SessionExpiredModal/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/SignUp/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/SignUp/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/donaciones/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/donaciones/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/privacy-policy/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/privacy-policy/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/profile/favorites/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/profile/favorites/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/profile/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/profile/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/search_cloth/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/search_cloth/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/terms&amp;conditions/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/terms&amp;conditions/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/verification/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/verification/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,7 +118,7 @@
       <workItem from="1736443525237" duration="46614000" />
       <workItem from="1736763927888" duration="44917000" />
       <workItem from="1737103665913" duration="20457000" />
-      <workItem from="1737380806275" duration="61003000" />
+      <workItem from="1737380806275" duration="64512000" />
     </task>
     <task id="LOCAL-00001" summary="v2.0">
       <option name="closed" value="true" />
@@ -339,7 +296,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737721874815</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="v3 (S'ha afegit les traducions)">
+      <option name="closed" value="true" />
+      <created>1738164638022</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1738164638023</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -361,6 +326,7 @@
     <MESSAGE value="v2.8 (S'ha arreglat errors)" />
     <MESSAGE value="v2.9 (S'ha arreglat errors)" />
     <MESSAGE value="v2.91 (S'ha afegit auth amb google)" />
-    <option name="LAST_COMMIT_MESSAGE" value="v2.91 (S'ha afegit auth amb google)" />
+    <MESSAGE value="v3 (S'ha afegit les traducions)" />
+    <option name="LAST_COMMIT_MESSAGE" value="v3 (S'ha afegit les traducions)" />
   </component>
 </project>
