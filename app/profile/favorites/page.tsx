@@ -237,15 +237,19 @@ const Favoritos = () => {
             {/* Filtros */}
             <div className="flex flex-col sm:flex-row items-center justify-evenly bg-white p-4 rounded-lg shadow-md mb-8 space-y-4 sm:space-y-0">
                 {Object.keys(filters).map((filterKey) =>
-                    renderFilter(filterKey, filters[filterKey])
+                    renderFilter(
+                        filterKey,
+                        filters[filterKey].map((option) => option.translation) // Convertim en un array de strings
+                    )
                 )}
                 <button
-                    onClick={() => setFiltersState({type: "", color: "", brand: ""})}
+                    onClick={() => setFiltersState({ type: "", color: "", brand: "" })}
                     className="bg-blue-500 text-black px-4 py-2 rounded-md text-sm transition hover:bg-gray-300"
                 >
                     {t('favorites.reset')}
                 </button>
             </div>
+
 
             {/* Contenido principal */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -1,24 +1,24 @@
-"use client";
-
 import React, { useState } from "react";
 
 interface ImageModelProps {
     imageUrl: string;
     description: string;
     price: number;
+    discountPrice?: number; // Si hi ha un preu d'oferta
     brand: string;
     color: string;
     type: string;
     purchaseUrl: string;
     favorite: boolean;
     onFavoriteToggle: () => void;
-    onReload: () => void; // Afegim funció per actualitzar la informació
+    onReload: () => void;
 }
 
 const ImageModel: React.FC<ImageModelProps> = ({
                                                    imageUrl,
                                                    description,
                                                    price,
+                                                   discountPrice,
                                                    brand,
                                                    color,
                                                    type,
@@ -29,21 +29,33 @@ const ImageModel: React.FC<ImageModelProps> = ({
                                                }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
+    const isOnSale = discountPrice !== undefined; // Comprovem si hi ha descompte
+
     return (
-        <div className="relative rounded-lg shadow-lg bg-white hover:shadow-lg transition max-w-[300px]">
+        <div className="relative rounded-lg shadow-lg bg-white hover:shadow-xl transition max-w-[300px]">
             {/* Miniatura de la imatge */}
-            <img
-                src={imageUrl}
-                alt={description}
-                className="cursor-pointer object-cover w-[300px] h-[400px] rounded-t-lg"
-                onClick={() => setIsModalOpen(true)}
-            />
+            <div className="relative">
+                <img
+                    src={imageUrl}
+                    alt={description || "Product image"}
+                    className="cursor-pointer object-cover w-[300px] h-[400px] rounded-lg"
+                    onClick={() => setIsModalOpen(true)}
+                    onError={(e) => (e.currentTarget.src = "https://via.placeholder.com/300x400?text=No+Image")}
+                />
+
+                {/* Preu flotant sobre la imatge */}
+                <div
+                    className={`absolute bottom-2 left-2 px-3 py-1 rounded-full text-white font-semibold text-sm 
+                        ${isOnSale ? "bg-red-500" : "bg-black"} 
+                    `}
+                >
+                    {isOnSale ? `${discountPrice}€` : `${price}€`}
+                </div>
+            </div>
 
             {/* Botó Favorits */}
             <button
-                className={`absolute top-2 right-2 rounded-full p-1 ${
-                    favorite ? "bg-red-500" : "bg-gray-300"
-                } hover:scale-105`}
+                className={`absolute top-2 right-2 rounded-full p-2 ${favorite ? "bg-red-500" : "bg-gray-300"} hover:scale-110 transition`}
                 onClick={onFavoriteToggle}
             >
                 <svg
@@ -52,7 +64,7 @@ const ImageModel: React.FC<ImageModelProps> = ({
                     viewBox="0 0 24 24"
                     strokeWidth="2"
                     stroke="currentColor"
-                    className="w-4 h-4 text-white"
+                    className="w-5 h-5 text-white"
                 >
                     <path
                         strokeLinecap="round"
@@ -62,13 +74,9 @@ const ImageModel: React.FC<ImageModelProps> = ({
                 </svg>
             </button>
 
-            {/* Línia separadora */}
-            <div className="border-b border-gray-300"></div>
-
             {/* Descripció curta */}
-            <p className="m-1 text-center text-black">{description}</p>
+            <p className="m-2 text-center text-black font-medium">{description}</p>
 
-            {/* Modal detallat */}
             {/* Modal detallat */}
             {isModalOpen && (
                 <div
@@ -76,29 +84,28 @@ const ImageModel: React.FC<ImageModelProps> = ({
                     onClick={() => setIsModalOpen(false)}
                 >
                     <div
-                        className="bg-white rounded-lg shadow-lg w-[600px] h-auto flex flex-col"
+                        className="bg-white rounded-lg shadow-lg w-[400px] h-auto flex flex-col"
                         onClick={(e) => e.stopPropagation()} // Evitem que el clic fora tanqui el modal
                     >
-                        
                         {/* Imatge en alta qualitat */}
-                        <div className="h-[300px] flex items-center justify-center overflow-hidden rounded-t-lg relative">
+                        <div className="h-[250px] flex items-center justify-center overflow-hidden rounded-t-lg relative">
                             {/* Creueta per tancar el modal */}
                             <button
-                                className="absolute top-2 left-4 text-2xl font-bold text-black hover:text-gray-800 transition z-10"
+                                className="absolute top-2 right-4 text-2xl font-bold text-black hover:text-gray-800 transition z-10"
                                 onClick={() => setIsModalOpen(false)}
                             >
                                 &times;
                             </button>
                             <img
                                 src={imageUrl}
-                                alt={description}
+                                alt={description || "Product image"}
                                 className="max-w-full max-h-full object-contain"
                             />
                         </div>
 
                         {/* Footer amb la informació */}
-                        <div className="p-6 flex flex-col gap-4">
-                            <h2 className="text-2xl font-semibold text-gray-800">{description}</h2>
+                        <div className="p-4 flex flex-col gap-2">
+                            <h2 className="text-xl font-semibold text-gray-800">{description}</h2>
                             <p className="text-gray-600">
                                 <strong>Marca:</strong> {brand}
                             </p>
@@ -108,8 +115,8 @@ const ImageModel: React.FC<ImageModelProps> = ({
                             <p className="text-gray-600">
                                 <strong>Color:</strong> {color}
                             </p>
-                            <p className="text-gray-600">
-                                <strong>Preu:</strong> {price}
+                            <p className={`text-lg font-semibold ${isOnSale ? "text-red-500" : "text-black"}`}>
+                                <strong>Preu:</strong> {isOnSale ? `${discountPrice}€` : `${price}€`}
                             </p>
                             <a
                                 href={purchaseUrl}
@@ -120,9 +127,9 @@ const ImageModel: React.FC<ImageModelProps> = ({
                                 Comprar ara
                             </a>
 
-                            {/* Botó blau per buscar més informació */}
+                            {/* Botó per actualitzar informació */}
                             <button
-                                className="mt-auto w-full bg-blue-500 text-black py-3 rounded-lg hover:bg-blue-600 transition"
+                                className="mt-auto w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition"
                                 onClick={onReload}
                             >
                                 Actualitzar informació

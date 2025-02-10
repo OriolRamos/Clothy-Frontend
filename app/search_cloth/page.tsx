@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect, useCallback} from "react";
 import {
     Button,
     Dialog,
@@ -11,7 +11,9 @@ import {
 import { useAuth } from "@/app/components/AuthContext";
 import ImageModel from "../components/ImageModal/index";
 import filters from "../components/Filters/cloth_filters";
+import FilterModal from "../components/Filters/FilterModal";
 import { useTranslation } from "react-i18next";
+import ErrorModal from "../components/Notifications/ErrorModal"
 
 
 const CercaRoba = () => {
@@ -21,33 +23,105 @@ const CercaRoba = () => {
     const [imageFile, setImageFile] = useState<File | null>(null);
     const [uploadedImageUrl, setUploadedImageUrl] = useState<string | null>(null);
     const [detectedInfo, setDetectedInfo] = useState<Record<string, string | number>>({});
-    const [results, setResults] = useState<any[]>([]);
+    const [results, setResults] = useState<Cloth[]>([]);
     const [filtersState, setFiltersState] = React.useState<{
         type: string | null;
         color: string | null;
         brand: string | null;
-        price: number | null;
+        size: string | null;
+        material: string | null;
+        print: string | null;
+        section: string | null;
+        maxPrice: number | null;
+        minPrice: number | null;
+        orderMajorMenor: boolean;
+        orderMenorMajor: boolean;
         onlyOffers: boolean;
-        highRating: boolean;
         officialBrands: boolean;
         [key: string]: any;  // Afegeix una signatura d'índex per permetre altres claus
     }>({
         type: null,
         color: null,
         brand: null,
-        price: null,
+        size:null,
+        material: null,
+        print: null,
+        section: null,
+        maxPrice: null,
+        minPrice: null,
+        orderMajorMenor: false,
+        orderMenorMajor: false,
         onlyOffers: false,
-        highRating: false,
         officialBrands: false,
     });
+
+    interface Cloth {
+        id: string;
+        description: string;
+        price: string;
+        purchase_url: string;
+        image_url: string;
+        brand: string;
+        section: string;
+        type: string;
+        color?: string;
+        material?: string;
+        size?: string;
+        print?: string;
+        in_offert?: boolean;
+        favorite?: boolean;
+    }
+
+
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [loading, setLoading] = useState(false);
     const [searching, setSearching] = useState(false);
 
-    // Comprovar verificació d'usuari
-    useEffect(() => {
+    const [page, setPage] = useState(1); // Pàgina actual per a la càrrega
+    const [hasMoreResults, setHasMoreResults] = useState(true); // Si hi ha més resultats per carregar
+    const [totalResults, setTotalResults] = useState<any[]>([]); // Tots els resultats obtinguts
 
-    }, []);
+// Carregar més resultats a mesura que es fa scroll
+    const loadMoreResults = useCallback(() => {
+        if (loading || !hasMoreResults || totalResults.length === 0) return;
+
+        setLoading(true);
+
+        setTimeout(() => {
+            setResults((prevResults) => [
+                ...prevResults,
+                ...totalResults.slice(page * 9, (page + 1) * 9)
+            ]);
+
+            // Comprovar si queden més resultats per carregar
+            setHasMoreResults(totalResults.length > (page + 1) * 9);
+            setPage((prevPage) => prevPage + 1);
+            setLoading(false);
+        }, 500); // Afegim un petit delay per evitar càrregues innecessàries
+
+    }, [loading, hasMoreResults, page, totalResults]);
+
+// Detectar quan l'usuari arriba al final de la pàgina per carregar més resultats
+    useEffect(() => {
+        const onScroll = () => {
+            if (window.innerHeight + window.scrollY >= document.documentElement.offsetHeight - 100) {
+                loadMoreResults();
+            }
+        };
+
+        window.addEventListener("scroll", onScroll);
+        return () => window.removeEventListener("scroll", onScroll);
+    }, [loadMoreResults]);
+
+// Quan es fa la cerca, inicialitzar els resultats
+    useEffect(() => {
+        if (totalResults.length > 0) {
+            setResults(totalResults.slice(0, 9)); // Inicialment només carreguem els primers 9 resultats
+            setPage(1);
+            setHasMoreResults(totalResults.length > 9);
+        }
+    }, [totalResults]);
+
 
     const handleImageUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
         if (event.target.files && event.target.files[0]) {
@@ -84,109 +158,117 @@ const CercaRoba = () => {
         }
     };
 
-    const handleSearch = async () => {
-        if (!imageFile || Object.keys(detectedInfo).length === 0) return;
+    const [errorModalOpen, setErrorModalOpen] = useState(false); // Estat per al modal d'error
 
+    const handleSearch = async () => {
+
+        console.log("Info", filtersState);
+
+        // Validar que 'type', 'brand' i 'section' no siguin null ni undefined
+        if (!filtersState.type || !filtersState.brand || !filtersState.section) {
+            console.error("Error: Els valors de type, brand i section són obligatoris.");
+            setErrorModalOpen(true); // Obre el modal d'error
+            setLoading(false);  // Atura la càrrega
+            return; // No continuïs amb la cerca
+        }
+
+        setLoading(true);
         setSearching(true);
         try {
             const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-            const response = await fetchWithAuth(`${apiUrl}/search/results`, {
+            const response = await fetchWithAuth(`${apiUrl}/search/results/filter`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({
-                    detected_info: detectedInfo,
-                    filters: filtersState,
-                }),
+                body: JSON.stringify(filtersState), // Enviar directament filtersState
+
             });
 
             if (response.ok) {
                 const data = await response.json();
-                setResults(data.results);
+                console.log("Data", data);
+                setResults(data.results.slice(0, 9)); // Carregar només els primers 9 resultats
+                setHasMoreResults(data.results.length > 9); // Comprovar si hi ha més resultats per carregar
+                setTotalResults(data.results);
             } else {
                 throw new Error("Error en la cerca de roba.");
             }
         } catch (error) {
             console.error(error);
         } finally {
-            setSearching(false);
+            setLoading(false);
         }
     };
 
     const [expandedFilter, setExpandedFilter] = React.useState<string>(""); // Estat a nivell global
 
-    const renderFilter = (filterKey: string, filterOptions: string[]) => {
-        const isDynamicFilter = filterKey === "type" || filterKey === "color";
+    const renderFilter = (filterKey: string, filterOptions: { value: string, translation: string }[]) => {
+        // Valor inicial del filtre (utilitza el valor si existeix, sinó "Select")
+        const initialValue = filtersState[filterKey] || "";
 
-        // Obtenir el valor inicial només si no s'ha establert un valor al filtre
-        const initialValue = isDynamicFilter && filtersState[filterKey] === undefined
-            ? detectedInfo[filterKey] || ""
-            : filtersState[filterKey] || "";
-
-        const filteredOptions = filterOptions.filter((option) =>
-            option.toLowerCase().includes(initialValue.toLowerCase())
+        // Filtra les opcions basant-se en la traducció
+        const filteredOptions = filterOptions.filter(option =>
+            option.translation.toLowerCase().includes(initialValue.toLowerCase())
         );
 
+        // Troba la traducció associada al valor actual seleccionat
+        const selectedOption = filterOptions.find(option => option.value === initialValue);
+
         return (
-            <div key={filterKey} className="relative w-full sm:w-auto">
+            <div key={filterKey} className="relative w-full max-w-[250px]">
                 <button
-                    className={`min-w-[150px] w-full text-left px-4 py-2 rounded-md border ${
-                        expandedFilter === filterKey ? "border-blue-500" : "border-gray-300"
-                    } focus:outline-none`}
-                    onClick={() =>
-                        setExpandedFilter((prev) => (prev === filterKey ? "" : filterKey))
-                    }
+                    className={`w-full text-black px-6 py-3 rounded-lg border ${
+                        expandedFilter === filterKey ? "border-blue-600" : "border-gray-300"
+                    } focus:outline-none transition-all ease-in-out duration-200 hover:bg-blue-50`}
+                    onClick={() => setExpandedFilter(expandedFilter === filterKey ? "" : filterKey)}
                 >
-                    {filterKey.charAt(0).toUpperCase() + filterKey.slice(1)}:{" "}
-                    <span className="text-gray-500">
-                    {initialValue || "Selecciona una opción"}
+                    <span className="font-semibold text-black">{filterKey.charAt(0).toUpperCase() + filterKey.slice(1)}:</span>
+                    <span className="text-black px-2 py-1 ml-2 rounded-md">
+                    {/* Mostra la traducció associada al valor seleccionat */}
+                        {selectedOption ? selectedOption.translation : "Select"}
                 </span>
                 </button>
+
                 {expandedFilter === filterKey && (
-                    <div className="absolute top-full left-0 w-full bg-white border border-gray-300 rounded-md shadow-md mt-2 z-10 max-h-48 overflow-y-auto">
+                    <div className="absolute top-full left-0 w-full bg-white border border-gray-300 rounded-lg shadow-lg mt-2 z-10 max-h-48 overflow-y-auto scrollbar-hidden filter">
                         <input
                             type="text"
                             placeholder="Buscar..."
                             value={initialValue}
-                            onChange={(e) => {
-                                const newValue = e.target.value;
-                                setFiltersState((prev) => ({
-                                    ...prev,
-                                    [filterKey]: newValue === "" ? null : newValue, // Si es buida, es posa a null
-                                }));
-                            }}
-                            className="w-full px-4 py-2 border-b border-gray-200 focus:outline-none"
+                            onChange={(e) => setFiltersState((prev) => ({
+                                ...prev,
+                                [filterKey]: e.target.value || null,
+                            }))}
+                            className="w-full px-4 py-3 border-b border-gray-200 focus:outline-none text-black rounded-t-lg"
                         />
-                        {filteredOptions.map((option, idx) => (
-                            <button
-                                key={`${filterKey}-${idx}`}
-                                className="w-full text-left px-4 py-2 hover:bg-gray-100"
-                                onClick={() => {
-                                    setFiltersState((prev) => ({
-                                        ...prev,
-                                        [filterKey]: option,
-                                    }));
-                                    setExpandedFilter("");
-                                }}
-                            >
-                                {option}
-                            </button>
-                        ))}
+                        <div className="py-1">
+                            {filteredOptions.map((option, idx) => (
+                                <button
+                                    key={`${filterKey}-${idx}`}
+                                    className="w-full text-black px-6 py-2 hover:bg-gray-100 transition-all ease-in-out duration-150"
+                                    onClick={() => {
+                                        // Quan es fa clic, emmagatzema el valor del filtre (value)
+                                        setFiltersState((prev) => ({ ...prev, [filterKey]: option.value }));
+                                        setExpandedFilter("");
+                                    }}
+                                >
+                                    {option.translation} {/* Mostra la traducció */}
+                                </button>
+                            ))}
+                        </div>
                     </div>
                 )}
             </div>
         );
     };
 
-
-
-    const handleFavoriteToggle = async (url: string) => {
+    const handleFavoriteToggle = async (cloth: Cloth) => {
         try {
             const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
             // Comprova si l'element ja és als favorits
-            const isFavorite = results.some((result) => result.url === url && result.favorite);
+            const isFavorite = results.some((item) => item.purchase_url === cloth.purchase_url && item.favorite);
 
             if (isFavorite) {
                 // Si és favorit, elimina'l
@@ -195,14 +277,13 @@ const CercaRoba = () => {
                     headers: {
                         "Content-Type": "application/json",
                     },
-                    body: JSON.stringify({ url }),
+                    body: JSON.stringify({ purchase_url: cloth.purchase_url }),
                 });
 
                 if (response.ok) {
-                    // Actualitza l'estat per reflectir el canvi
                     setResults((prevResults) =>
-                        prevResults.map((result) =>
-                            result.url === url ? { ...result, favorite: false } : result
+                        prevResults.map((item) =>
+                            item.purchase_url === cloth.purchase_url ? { ...item, favorite: false } : item
                         )
                     );
                 } else {
@@ -215,14 +296,13 @@ const CercaRoba = () => {
                     headers: {
                         "Content-Type": "application/json",
                     },
-                    body: JSON.stringify({ url }),
+                    body: JSON.stringify(cloth), // Envia totes les dades de la peça
                 });
 
                 if (response.ok) {
-                    // Actualitza l'estat per reflectir el canvi
                     setResults((prevResults) =>
-                        prevResults.map((result) =>
-                            result.url === url ? { ...result, favorite: true } : result
+                        prevResults.map((item) =>
+                            item.purchase_url === cloth.purchase_url ? { ...item, favorite: true } : item
                         )
                     );
                 } else {
@@ -233,6 +313,7 @@ const CercaRoba = () => {
             console.error("Error gestionant els favorits:", error);
         }
     };
+
 
     const onReload = async () => {
         try {
@@ -261,121 +342,25 @@ const CercaRoba = () => {
 
     return (
         <div className="min-h-screen bg-gray-100 px-8 py-12">
-            <h1 className="text-4xl font-bold text-center text-black mb-8">
-                {t("searchcloth.title")}
-            </h1>
-            <p className="text-center text-gray-600 mb-8 max-w-3xl mx-auto">
-                {t("searchcloth.description")}
-            </p>
-
-
-            {/* Penjar Imatge */}
-            {!uploadedImageUrl && !loading && (
-                <div className="flex items-center justify-center">
-                    <label
-                        htmlFor="upload-input"
-                        className="block relative cursor-pointer text-center py-3 px-6 text-white bg-faqblue rounded-lg font-medium shadow-lg hover:scale-105 hover:bg-faqblue/90 hover:backdrop-blur-sm hover:opacity-95 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-btnblue focus:ring-offset-2 active:bg-hoblue transition transform duration-200"
-                    >
-                        {t("searchcloth.uploadButton")}
-                        <input
-                            id="upload-input"
-                            type="file"
-                            accept="image/*"
-                            onChange={handleImageUpload}
-                            className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                        />
-                    </label>
-                </div>
-            )}
-
-            {/* Barra de càrrega */}
-            {loading && (
-                <div className="flex items-center justify-center min-h-screen">
-                    <div className="w-2/3">
-                        <div className="h-2 bg-blue-500 rounded-full animate-pulse"></div>
-                    </div>
-                </div>
-            )}
-
-            {/* Layout amb imatge i informació */}{uploadedImageUrl && !loading && (
-            <div className="flex flex-wrap max-h-[500px] overflow-y-auto">
-                {/* 1/3: Imatge carregada */}
-                <div className="flex w-full sm:w-1/3 p-4 max-h-[400px] justify-center items-center">
-                    <img
-                        src={uploadedImageUrl}
-                        alt="Imatge carregada"
-                        className="max-h-[400px] w-auto shadow-md object-contain rounded-md"
-                    />
-                </div>
-
-                {/* 2/3: Informació detectada */}
-                <div className="w-full sm:w-2/3 p-4 flex flex-col justify-between h-full">
-                    {Object.keys(detectedInfo).length > 0 ? (
-                        <div className="p-6 bg-white rounded-lg shadow-lg space-y-4">
-                            <h3 className="text-2xl font-semibold text-gray-900">
-                                {t("searchcloth.detectedInfoTitle")}
-                            </h3>
-                            <div className="space-y-2">
-                                {detectedInfo?.description && (
-                                    <div className="flex justify-between">
-                                        <span className="font-medium text-gray-800">{t("searchcloth.descriptionLabel")}</span>
-                                        <p className="text-gray-600">{detectedInfo.description}</p>
-                                    </div>
-                                )}
-                                {detectedInfo?.type && (
-                                    <div className="flex justify-between">
-                                        <span className="font-medium text-gray-800">{t("searchcloth.typeLabel")}</span>
-                                        <p className="text-gray-600">{detectedInfo.type}</p>
-                                    </div>
-                                )}
-                                {detectedInfo?.color && (
-                                    <div className="flex justify-between">
-                                        <span className="font-medium text-gray-800">{t("searchcloth.colorLabel")}</span>
-                                        <p className="text-gray-600">{detectedInfo.color}</p>
-                                    </div>
-                                )}
-                            </div>
-                        </div>
-                    ) : (
-                        <div className="flex-grow flex items-center justify-center">
-                            <p className="text-gray-600">{t("searchcloth.noInfoDetected")}</p>
-                        </div>
-                    )}
-
-                    <div className="flex justify-center mt-4">
-                        <label
-                            htmlFor="upload-input"
-                            className="block relative cursor-pointer text-center py-3 px-6 text-white bg-faqblue rounded-lg font-medium shadow-lg hover:scale-105 hover:bg-faqblue/90 hover:backdrop-blur-sm hover:opacity-95 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-btnblue focus:ring-offset-2 active:bg-hoblue transition transform duration-200"
-                        >
-                            {t("searchcloth.uploadButton")}
-                            <input
-                                id="upload-input"
-                                type="file"
-                                accept="image/*"
-                                onChange={handleImageUpload}
-                                className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                            />
-                        </label>
-                    </div>
-                </div>
-            </div>
-        )}
-
-            {/* Filtres */}
-            {Object.keys(detectedInfo).length > 0 && (
-                <div className="flex flex-col sm:flex-row items-center justify-evenly bg-white p-4 rounded-lg shadow-md mt-8 space-y-4 sm:space-y-0">
-                    {Object.keys(filters).map((filterKey) =>
-                        renderFilter(filterKey, filters[filterKey])
-                    )}
+            {/* Contenidor de filtres amb comportament responsiu */}
+            <div className="mb-8">
+                {/* Versió completa (només visible en pantalles grans) */}
+                <div className="hidden lg:flex flex-col sm:flex-row items-center justify-evenly bg-white p-4 rounded-lg shadow-md space-y-4 sm:space-y-0">
+                    {Object.keys(filters).map((filterKey) => {
+                        if (filterKey === "type" || filterKey === "brand" || filterKey === "section") {
+                            // Si és un filtre string (que no sigui color), renderitzem amb renderFilter
+                            return renderFilter(filterKey, filters[filterKey]);
+                        }else{
+                            return null;
+                        }
+                    })}
 
                     <button
                         onClick={() => setIsModalOpen(true)}
                         className="flex items-center cursor-pointer text-black text-sm font-medium transition-transform duration-200 hover:scale-105 focus:outline-none"
                     >
                         {t('searchcloth.more_filters')}
-                        <span className="ml-2 text-sm transform transition-transform duration-200">
-        ▼
-      </span>
+                        <span className="ml-2 text-sm transform transition-transform duration-200">▼</span>
                     </button>
 
                     <button
@@ -385,183 +370,86 @@ const CercaRoba = () => {
                         {t('searchcloth.search')}
                     </button>
                 </div>
+
+                {/* Versió mòbil (només visible en pantalles petites) */}
+                <button
+                    onClick={() => setIsModalOpen(true)}
+                    className="lg:hidden flex items-center justify-center w-full py-3 px-6 bg-white text-black rounded-lg shadow-md font-medium border border-gray-300 hover:scale-105 transition-transform duration-200"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                        <path fillRule="evenodd" d="M8 2a6 6 0 014.47 10.24l4.28 4.28a1 1 0 11-1.42 1.42l-4.28-4.28A6 6 0 118 2zm0 2a4 4 0 100 8 4 4 0 000-8z" clipRule="evenodd" />
+                    </svg>
+                    {t("searchcloth.start_search")} {/* "Empieza a buscar" */}
+                </button>
+            </div>
+
+            {/* Mostrar el modal d'error si hi ha un error */}
+            <ErrorModal
+                isOpen={errorModalOpen}
+                onClose={() => setErrorModalOpen(false)} // Tanca el modal quan es faci click a "tancar"
+                text="Els filtres 'type', 'brand' i 'section' són obligatoris." // Missatge personalitzat
+                duration={5} // Duració de 5 segons
+            />
+
+            {/* Informacion del buscador*/}
+            {!loading && !searching && (
+                <div className="text-center mb-8">
+                    <h1 className="text-4xl font-bold text-black mb-4">
+                        {t("searchcloth.title")}
+                    </h1>
+                    <p className="text-gray-600 max-w-3xl mx-auto">
+                        {t("searchcloth.description")}
+                    </p>
+                </div>
             )}
 
-            {/* Modal de filtres avançats */}
-            {isModalOpen && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-                    <div className="bg-white rounded-lg p-8 max-w-3xl w-full shadow-2xl relative">
-                        {/* Fletxeta negra per tancar */}
-                        <button
-                            onClick={() => setIsModalOpen(false)}
-                            className="absolute top-4 left-4 text-black hover:text-gray-700 focus:outline-none"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                        </button>
+            <FilterModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                filters={filters}
+                filtersState={filtersState}
+                setFiltersState={setFiltersState}
+                handleSearch={handleSearch}
+            />
 
-                        {/* Header del modal */}
-                        <h2 className="text-2xl font-bold mb-6 text-center">{t('searchcloth.advanced_filters')}</h2>
 
-                        {/* Cos del modal */}
-                        <div className="space-y-6">
-                            {/* Filtres dinàmics */}
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                                {Object.keys(filters).map((filterKey) =>
-                                    renderFilter(filterKey, filters[filterKey])
-                                )}
-                            </div>
-
-                            {/* Filtre de preu */}
-                            <div className="flex flex-col items-start">
-                                <label htmlFor="price-range" className="text-lg font-medium mb-2">
-                                    {t('searchcloth.price_range')}
-                                </label>
-                                <input
-                                    id="price-range"
-                                    type="range"
-                                    min="0"
-                                    max="1000"
-                                    step="10"
-                                    value={filtersState.price || 500} // Valor predeterminat
-                                    onChange={(e) =>
-                                        setFiltersState((prev) => ({
-                                            ...prev,
-                                            price: parseInt(e.target.value, 10),
-                                        }))
-                                    }
-                                    className="w-full accent-blue-500"
-                                />
-                                <span className="mt-2 text-sm text-gray-600">
-            {t('searchcloth.selected_price', { price: filtersState.price || 500 })}
-          </span>
-                            </div>
-
-                            {/* Checkbox per opcions addicionals */}
-                            <div className="space-y-2">
-                                <div className="flex items-center space-x-3">
-                                    <input
-                                        type="checkbox"
-                                        id="only-offers"
-                                        checked={filtersState.onlyOffers || false}
-                                        onChange={(e) =>
-                                            setFiltersState((prev) => ({
-                                                ...prev,
-                                                onlyOffers: e.target.checked,
-                                            }))
-                                        }
-                                        className="h-5 w-5 accent-blue-500"
-                                    />
-                                    <label htmlFor="only-offers" className="text-sm">
-                                        {t('searchcloth.only_offers')}
-                                    </label>
-                                </div>
-
-                                <div className="flex items-center space-x-3">
-                                    <input
-                                        type="checkbox"
-                                        id="high-rating"
-                                        checked={filtersState.highRating || false}
-                                        onChange={(e) =>
-                                            setFiltersState((prev) => ({
-                                                ...prev,
-                                                highRating: e.target.checked,
-                                            }))
-                                        }
-                                        className="h-5 w-5 accent-blue-500"
-                                    />
-                                    <label htmlFor="high-rating" className="text-sm">
-                                        {t('searchcloth.high_rating')}
-                                    </label>
-                                </div>
-
-                                <div className="flex items-center space-x-3">
-                                    <input
-                                        type="checkbox"
-                                        id="official-brands"
-                                        checked={filtersState.officialBrands || false}
-                                        onChange={(e) =>
-                                            setFiltersState((prev) => ({
-                                                ...prev,
-                                                officialBrands: e.target.checked,
-                                            }))
-                                        }
-                                        className="h-5 w-5 accent-blue-500"
-                                    />
-                                    <label htmlFor="official-brands" className="text-sm">
-                                        {t('searchcloth.official_brands')}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Peu del modal */}
-                        <div className="flex justify-between items-center mt-8">
-                            <button
-                                onClick={() =>
-                                    setFiltersState({
-                                        type: "",
-                                        color: "",
-                                        brand: "",
-                                        price: null,
-                                        onlyOffers: false,
-                                        highRating: false,
-                                        officialBrands: false,
-                                    })
-                                }
-                                className="w-32 h-12 bg-gray-200 text-gray-700 rounded-lg font-medium hover:bg-gray-300 transition flex items-center justify-center shadow-md focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-offset-2"
-                            >
-                                {t('searchcloth.reset')}
-                            </button>
-                            <div className="flex space-x-4">
-                                <button
-                                    onClick={() => {
-                                        handleSearch();
-                                        setIsModalOpen(false);
-                                    }}
-                                    className="w-32 h-12 bg-faqblue text-white rounded-lg font-medium shadow-lg hover:scale-105 hover:bg-faqblue/90 hover:backdrop-blur-sm hover:opacity-95 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-btnblue focus:ring-offset-2 active:bg-hoblue transition-transform transform duration-200 flex items-center justify-center"
-                                >
-                                    {t('searchcloth.apply')}
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+            {/* Barra de càrrega */}
+            {loading && (
+                <div className="fixed inset-0 flex justify-center items-center bg-white bg-opacity-70 z-50">
+                    <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
                 </div>
             )}
 
 
             {/* Resultats */}
-            {Object.keys(detectedInfo).length > 0 && (
+                        {results.length > 0 && (
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-                    {loading || searching ? (
-                        <div className="col-span-full flex justify-center items-center">
-                            <div
-                                className="w-16 h-16 border-4 border-gray-700 border-dashed rounded-full animate-spin"></div>
-                        </div>
-                    ) : results.length > 0 ? (
-                        results.map((result, idx) => (
-                            <ImageModel
-                                key={result.url}
-                                imageUrl={result.imageUrl as string}
-                                description={result.description as string}
-                                price={result.price as number}
-                                type={result.type as string}
-                                brand={result.brand as string}
-                                color={result.color as string}
-                                purchaseUrl={result.purchase_url as string}
-                                favorite={result.favorite as boolean}
-                                onFavoriteToggle={() => handleFavoriteToggle(result.url)}
-                                onReload={onReload}
-                            />
-                        ))
-                    ) : (
-                        <div className="col-span-full text-center text-gray-600">
-                            {t('searchcloth.noResult')}
-                        </div>
-                    )}
+                    {results.map((result) => (
+                        <ImageModel
+                            key={result.url}
+                            imageUrl={result.image_url as string}
+                            description={result.description as string}
+                            price={result.price as number}
+                            type={result.type as string}
+                            brand={result.brand as string}
+                            color={result.color as string}
+                            purchaseUrl={result.purchase_url as string}
+                            favorite={result.favorite as boolean}
+                            onFavoriteToggle={() => handleFavoriteToggle(result)}
+                            onReload={onReload}
+                        />
+                    ))}
                 </div>
             )}
+
+            {loading && hasMoreResults && (
+                <div className="flex justify-center items-center py-4">
+                    <Button onClick={loadMoreResults} className="bg-blue-500 text-white px-4 py-2 rounded-md">
+                        Carregar més resultats
+                    </Button>
+                </div>
+            )}
+
 
         </div>
     );

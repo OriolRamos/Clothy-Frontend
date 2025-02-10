@@ -1,0 +1,16 @@
+/* Custom scrollbar for modern look */
+.scrollbar-hidden::-webkit-scrollbar {
+    width: 2px; /* Mida més petita per a la barra vertical */
+    height: 2px; /* Mida més petita per a la barra horitzontal */
+}
+
+.scrollbar-hidden::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3); /* Color del thumb */
+    border: 2px solid rgba(255, 255, 255, 0.2); /* Petit límit blanc per a l'efecte de contrast */
+}
+
+/* La barra es sobreposa al contingut sense moure'l */
+.scrollbar-hidden {
+    scrollbar-width: thin; /* Barra més fina per a navegadors que utilitzen la propietat "scrollbar-width" */
+    scrollbar-color: rgba(0, 0, 0, 0.3) transparent; /* Barra transparent amb un thumb fosc */
+}

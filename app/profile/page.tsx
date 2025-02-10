@@ -35,7 +35,7 @@ const UserProfile = () => {
 
                 if (response.ok) {
                     const data = await response.json();
-                    console.log("Dades del perfil de l'usuari:", data);
+
                     // Actualitza les dades de l'usuari amb la resposta de l'API
                     setUserData((prevData) => ({
                         username: data.username || prevData.username,
