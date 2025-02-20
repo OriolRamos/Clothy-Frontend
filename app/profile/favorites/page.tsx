@@ -12,19 +12,11 @@ import {
 import React, { useState, useEffect } from "react";
 import ImageModel from "../../components/ImageModal/index";
 import { useAuth } from "@/app/components/AuthContext";
-import filters from "../../components/Filters/cloth_filters";
+import {filters} from "../../components/Filters/cloth_filters";
 import { useTranslation } from "react-i18next";
+import { Cloth } from "../../components/Modals/Cloth.ts";
+import { Filters, defaultFilters } from "../../components/Modals/Filter.ts";
 
-interface Favorite {
-    url: string;
-    description?: string;
-    type?: string;
-    brand?: string;
-    color?: string;
-    price?: number;
-    purchase_url?: string;
-    imageUrl?: string | null; // Afegim `imageUrl` per a la imatge generada
-}
 
 const Favoritos = () => {
     const [filtersState, setFiltersState] = useState<{ [key: string]: string }>({
@@ -36,23 +28,8 @@ const Favoritos = () => {
     const [expandedFilter, setExpandedFilter] = useState("");
     const [loading, setLoading] = useState(true);
     const { fetchWithAuth } = useAuth();
-    const [images, setImages] = useState<Favorite[]>([]); // Estat inicialitzat amb el tipus correcte
+    const [results, setResults] = useState<Cloth[]>([]);
 
-
-    // Funció per convertir el blob a Base64
-    const blobToBase64 = (blob: Blob): Promise<string> =>
-        new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                if (reader.result) {
-                    resolve((reader.result as string).split(",")[1]); // Retorna només el Base64
-                } else {
-                    reject(new Error("Failed to read the Blob."));
-                }
-            };
-            reader.onerror = reject;
-            reader.readAsDataURL(blob);
-        });
 
     // useEffect per obtenir els favorits i les imatges
     useEffect(() => {
@@ -65,46 +42,9 @@ const Favoritos = () => {
 
                 if (response.ok) {
                     // Obtenim els favorits inicials
-                    const data: Favorite[] = await response.json();
-                    console.log('Info', data);
+                    const data: Cloth[] = await response.json();
 
-                    // Per a cada favorit, fem una petició al backend per obtenir la imatge
-                    const updatedFavorites = await Promise.all(
-                        data.map(async (favorite: Favorite) => {
-                            let imageUrl = null;
-
-                            if (favorite.url) {
-                                try {
-                                    // Petició al backend amb la purchase_url per obtenir la imatge
-                                    const imageResponse = await fetchWithAuth(`${apiUrl}/profile/favorites/imageFile/get`, {
-                                        method: 'POST',
-                                        headers: {
-                                            'Content-Type': 'application/json',
-                                        },
-                                        body: JSON.stringify({ url: favorite.url }),
-                                    });
-
-                                    if (imageResponse.ok) {
-                                        // Converteix el blob en un objecte Data URI
-                                        const imageBlob = await imageResponse.blob();
-                                        imageUrl = `data:image/jpeg;base64,${await blobToBase64(imageBlob)}`;
-                                        console.log('Imatge64', imageUrl);
-                                    } else {
-                                        console.error(`Error obtenint la imatge per ${favorite.url}`);
-                                    }
-                                } catch (error) {
-                                    console.error(`Error a la petició de la imatge: ${(error as Error).message}`);
-                                }
-                            }
-
-                            return {
-                                ...favorite,
-                                imageUrl, // Afegim la URL de la imatge retornada
-                            };
-                        })
-                    );
-                    console.log('Images', updatedFavorites);
-                    setImages(updatedFavorites); // Actualitzem l'estat amb les dades i les imatges
+                    setResults(data); // Actualitzem l'estat amb les dades i les imatges
                 } else {
                     throw new Error('Error al obtenir els favorits.');
                 }
@@ -130,9 +70,9 @@ const Favoritos = () => {
             });
 
             if (response.ok) {
-                const data: Favorite[] = await response.json();
+                const data: Cloth[] = await response.json();
                 // Actualitzar les imatges amb les noves dades
-                setImages(data);
+                setResults(data);
             } else {
                 console.error('Error al obtenir els favorits.');
             }
@@ -153,7 +93,7 @@ const Favoritos = () => {
                 },
                 body: JSON.stringify({ url: url }),
             });
-            setImages((prev) => prev.filter((image) => image.url !== url));
+            setResults((prev) => prev.filter((image) => image.purchase_url !== url));
         } catch (error) {
             console.error("Error eliminando de favoritos:", error);
         }
@@ -162,7 +102,7 @@ const Favoritos = () => {
     const { t } = useTranslation('common');
 
 
-    const filteredImages = images.filter((image) => {
+    const filteredImages = results.filter((image) => {
         const matchesType = filtersState.type
             ? (image.type || "").toLowerCase().includes(filtersState.type.toLowerCase())
             : true;
@@ -260,16 +200,9 @@ const Favoritos = () => {
                 ) : filteredImages.length > 0 ? (
                     filteredImages.map((image) => (
                         <ImageModel
-                            key={image.url}
-                            imageUrl={image.imageUrl as string}
-                            description={image.description as string}
-                            price={image.price as number}
-                            type={image.type as string}
-                            brand={image.brand as string}
-                            color={image.color as string}
-                            purchaseUrl={image.purchase_url as string}
-                            favorite={true}
-                            onFavoriteToggle={() => handleFavoriteToggle(image.url)}
+                            key={image.purchase_url}
+                            cloth={image}
+                            onFavoriteToggle={() => handleFavoriteToggle(image.purchase_url)}
                             onReload={onReload}
                         />
                     ))

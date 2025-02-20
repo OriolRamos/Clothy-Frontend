@@ -250,39 +250,21 @@ const FilterModal: React.FC<FilterModalProps> = ({ isOpen, onClose, filters, fil
                         <label className="text-lg font-medium">Filtros adicionales</label>
                         <div className="grid grid-cols-2 gap-4">
                             <label className="flex items-center mb-4">
-                                <input
-                                    id="onlyOffers-checkbox"
-                                    type="checkbox"
-                                    checked={filtersState.onlyOffers}
-                                    onChange={() => toggleBooleanFilter("onlyOffers")}
-                                    className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                                />
-                                <label htmlFor="onlyOffers-checkbox"
-                                       className="ms-2 text-base font-semibold text-gray-900 dark:text-gray-300">
-                                    ⭐ Solo ofertas
-                                </label>
+                                <div
+                                    className={`px-4 py-2 rounded-md border transition-all duration-300 transform hover:scale-105 
+                                    ${filtersState.onlyOffers ? "bg-faqblue text-white" : "bg-gray-200 text-gray-700"}`}
+                                    onClick={() => toggleBooleanFilter("onlyOffers")}
+                                >
+                                    Solo ofertas
+                                </div>
                             </label>
-
-                            <label className="flex items-center">
-                                <input
-                                    id="officialBrands-checkbox"
-                                    type="checkbox"
-                                    checked={filtersState.officialBrands}
-                                    onChange={() => toggleBooleanFilter("officialBrands")}
-                                    className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                                />
-                                <label htmlFor="officialBrands-checkbox"
-                                       className="ms-2 text-base font-semibold text-gray-900 dark:text-gray-300">
-                                    🏆 Marcas oficiales
-                                </label>
-                            </label>
-
                         </div>
                     </div>
                 </div>
-                <div className="sticky bottom-0 bg-white shadow-md border-t border-gray-300 z-20 p-4 flex justify-between items-center">
+                <div
+                    className="sticky bottom-0 bg-white shadow-md border-t border-gray-300 z-20 p-4 flex justify-between items-center">
                     <div className="flex justify-between items-center w-full">
-                        <button
+                    <button
                             onClick={() => setFiltersState({
                                 onlyOffers: false,
                                 officialBrands: false,

@@ -10,10 +10,12 @@ import {
 } from "@material-tailwind/react";
 import { useAuth } from "@/app/components/AuthContext";
 import ImageModel from "../components/ImageModal/index";
-import filters from "../components/Filters/cloth_filters";
+import {filters} from "../components/Filters/cloth_filters";
 import FilterModal from "../components/Filters/FilterModal";
 import { useTranslation } from "react-i18next";
 import ErrorModal from "../components/Notifications/ErrorModal"
+import { Cloth } from "../components/Modals/Cloth.ts";
+import { Filters, defaultFilters } from "../components/Modals/Filter.ts";
 
 
 const CercaRoba = () => {
@@ -24,53 +26,8 @@ const CercaRoba = () => {
     const [uploadedImageUrl, setUploadedImageUrl] = useState<string | null>(null);
     const [detectedInfo, setDetectedInfo] = useState<Record<string, string | number>>({});
     const [results, setResults] = useState<Cloth[]>([]);
-    const [filtersState, setFiltersState] = React.useState<{
-        type: string | null;
-        color: string | null;
-        brand: string | null;
-        size: string | null;
-        material: string | null;
-        print: string | null;
-        section: string | null;
-        maxPrice: number | null;
-        minPrice: number | null;
-        orderMajorMenor: boolean;
-        orderMenorMajor: boolean;
-        onlyOffers: boolean;
-        officialBrands: boolean;
-        [key: string]: any;  // Afegeix una signatura d'índex per permetre altres claus
-    }>({
-        type: null,
-        color: null,
-        brand: null,
-        size:null,
-        material: null,
-        print: null,
-        section: null,
-        maxPrice: null,
-        minPrice: null,
-        orderMajorMenor: false,
-        orderMenorMajor: false,
-        onlyOffers: false,
-        officialBrands: false,
-    });
+    const [filtersState, setFiltersState] = useState<Filters>(defaultFilters);
 
-    interface Cloth {
-        id: string;
-        description: string;
-        price: string;
-        purchase_url: string;
-        image_url: string;
-        brand: string;
-        section: string;
-        type: string;
-        color?: string;
-        material?: string;
-        size?: string;
-        print?: string;
-        in_offert?: boolean;
-        favorite?: boolean;
-    }
 
 
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -188,9 +145,22 @@ const CercaRoba = () => {
             if (response.ok) {
                 const data = await response.json();
                 console.log("Data", data);
-                setResults(data.results.slice(0, 9)); // Carregar només els primers 9 resultats
-                setHasMoreResults(data.results.length > 9); // Comprovar si hi ha més resultats per carregar
-                setTotalResults(data.results);
+
+                let sortedResults = data.results;
+
+                if (filtersState.orderMenorMajor) {
+                    sortedResults = sortedResults.sort((a: Cloth, b: Cloth) =>
+                        (a.discount_price ?? a.price) - (b.discount_price ?? b.price)
+                    );
+                } else if (filtersState.orderMajorMenor) {
+                    sortedResults = sortedResults.sort((a: Cloth, b: Cloth) =>
+                        (b.discount_price ?? b.price) - (a.discount_price ?? a.price)
+                    );
+                }
+
+                setResults(sortedResults.slice(0, 9)); // Carregar només els primers 9 resultats
+                setHasMoreResults(sortedResults.length > 9); // Comprovar si hi ha més resultats per carregar
+                setTotalResults(sortedResults);
             } else {
                 throw new Error("Error en la cerca de roba.");
             }
@@ -423,33 +393,19 @@ const CercaRoba = () => {
 
             {/* Resultats */}
                         {results.length > 0 && (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-                    {results.map((result) => (
-                        <ImageModel
-                            key={result.url}
-                            imageUrl={result.image_url as string}
-                            description={result.description as string}
-                            price={result.price as number}
-                            type={result.type as string}
-                            brand={result.brand as string}
-                            color={result.color as string}
-                            purchaseUrl={result.purchase_url as string}
-                            favorite={result.favorite as boolean}
-                            onFavoriteToggle={() => handleFavoriteToggle(result)}
-                            onReload={onReload}
-                        />
-                    ))}
-                </div>
-            )}
+                            <div
+                                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 justify-center place-items-center mx-auto max-w-[1200px]">
+                                {results.map((result) => (
+                                    <ImageModel
+                                        key={result.purchase_url}
+                                        cloth={result}
+                                        onFavoriteToggle={() => handleFavoriteToggle(result)}
+                                        onReload={onReload}
+                                    />
+                                ))}
+                            </div>
 
-            {loading && hasMoreResults && (
-                <div className="flex justify-center items-center py-4">
-                    <Button onClick={loadMoreResults} className="bg-blue-500 text-white px-4 py-2 rounded-md">
-                        Carregar més resultats
-                    </Button>
-                </div>
-            )}
-
+                        )}
 
         </div>
     );
