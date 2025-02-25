@@ -1,13 +1,6 @@
 "use client";
 
 import React, {useState, useEffect, useCallback} from "react";
-import {
-    Button,
-    Dialog,
-    DialogBody,
-    DialogFooter,
-    Typography,
-} from "@material-tailwind/react";
 import { useAuth } from "@/app/components/AuthContext";
 import ImageModel from "../components/ImageModal/index";
 import {filters} from "../components/Filters/cloth_filters";
@@ -16,27 +9,28 @@ import { useTranslation } from "react-i18next";
 import ErrorModal from "../components/Notifications/ErrorModal"
 import { Cloth } from "../components/Modals/Cloth.ts";
 import { Filters, defaultFilters } from "../components/Modals/Filter.ts";
+import RenderFilter from "../components/Filters/RenderFilter";
+import RenderMultipleFilter from "../components/Filters/RenderMultipleFilter";
 
 
 const CercaRoba = () => {
-    const { t } = useTranslation("common");
 
+    const { t } = useTranslation("common");
     const { fetchWithAuth } = useAuth();
     const [imageFile, setImageFile] = useState<File | null>(null);
     const [uploadedImageUrl, setUploadedImageUrl] = useState<string | null>(null);
     const [detectedInfo, setDetectedInfo] = useState<Record<string, string | number>>({});
     const [results, setResults] = useState<Cloth[]>([]);
     const [filtersState, setFiltersState] = useState<Filters>(defaultFilters);
-
-
-
+    const [expandedFilter, setExpandedFilter] = React.useState<string>(""); // Estat a nivell global
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [loading, setLoading] = useState(false);
     const [searching, setSearching] = useState(false);
-
     const [page, setPage] = useState(1); // Pàgina actual per a la càrrega
     const [hasMoreResults, setHasMoreResults] = useState(true); // Si hi ha més resultats per carregar
     const [totalResults, setTotalResults] = useState<any[]>([]); // Tots els resultats obtinguts
+    const [errorModalOpen, setErrorModalOpen] = useState(false); // Estat per al modal d'error
+
 
 // Carregar més resultats a mesura que es fa scroll
     const loadMoreResults = useCallback(() => {
@@ -115,8 +109,6 @@ const CercaRoba = () => {
         }
     };
 
-    const [errorModalOpen, setErrorModalOpen] = useState(false); // Estat per al modal d'error
-
     const handleSearch = async () => {
 
         console.log("Info", filtersState);
@@ -146,91 +138,46 @@ const CercaRoba = () => {
                 const data = await response.json();
                 console.log("Data", data);
 
-                let sortedResults = data.results;
+                // Filtrar productes segons el rang de preus i l'estat de descompte
+                const filteredResults = data.results.filter((item: Cloth) => {
+                    const productPrice = item.discount_price ?? item.price;
+                    const minPrice = filtersState.minPrice ?? 0;
+                    const maxPrice = filtersState.maxPrice ?? Infinity;
 
+                    // Comprova si el producte està dins del rang de preus
+                    const isWithinPriceRange = productPrice >= minPrice && productPrice <= maxPrice;
+
+                    // Si onlyOfferts està activat, només mostra productes amb descompte
+                    const matchesOfferFilter = filtersState.onlyOfferts ? item.in_discount === true : true;
+
+                    return isWithinPriceRange && matchesOfferFilter;
+                });
+
+                // Ordena els resultats segons l'ordre seleccionat
+                let sortedResults = filteredResults;
                 if (filtersState.orderMenorMajor) {
-                    sortedResults = sortedResults.sort((a: Cloth, b: Cloth) =>
-                        (a.discount_price ?? a.price) - (b.discount_price ?? b.price)
+                    sortedResults = filteredResults.sort(
+                        (a: Cloth, b: Cloth) => (a.discount_price ?? a.price) - (b.discount_price ?? b.price)
                     );
                 } else if (filtersState.orderMajorMenor) {
-                    sortedResults = sortedResults.sort((a: Cloth, b: Cloth) =>
-                        (b.discount_price ?? b.price) - (a.discount_price ?? a.price)
+                    sortedResults = filteredResults.sort(
+                        (a: Cloth, b: Cloth) => (b.discount_price ?? b.price) - (a.discount_price ?? a.price)
                     );
                 }
 
-                setResults(sortedResults.slice(0, 9)); // Carregar només els primers 9 resultats
-                setHasMoreResults(sortedResults.length > 9); // Comprovar si hi ha més resultats per carregar
-                setTotalResults(sortedResults);
+                setResults(sortedResults.slice(0, 9)); // Carrega només els primers 9 resultats
+                setHasMoreResults(sortedResults.length > 9); // Comprova si hi ha més resultats per carregar
+                setTotalResults(sortedResults); // Desa els resultats totals
             } else {
                 throw new Error("Error en la cerca de roba.");
             }
+
+
         } catch (error) {
             console.error(error);
         } finally {
             setLoading(false);
         }
-    };
-
-    const [expandedFilter, setExpandedFilter] = React.useState<string>(""); // Estat a nivell global
-
-    const renderFilter = (filterKey: string, filterOptions: { value: string, translation: string }[]) => {
-        // Valor inicial del filtre (utilitza el valor si existeix, sinó "Select")
-        const initialValue = filtersState[filterKey] || "";
-
-        // Filtra les opcions basant-se en la traducció
-        const filteredOptions = filterOptions.filter(option =>
-            option.translation.toLowerCase().includes(initialValue.toLowerCase())
-        );
-
-        // Troba la traducció associada al valor actual seleccionat
-        const selectedOption = filterOptions.find(option => option.value === initialValue);
-
-        return (
-            <div key={filterKey} className="relative w-full max-w-[250px]">
-                <button
-                    className={`w-full text-black px-6 py-3 rounded-lg border ${
-                        expandedFilter === filterKey ? "border-blue-600" : "border-gray-300"
-                    } focus:outline-none transition-all ease-in-out duration-200 hover:bg-blue-50`}
-                    onClick={() => setExpandedFilter(expandedFilter === filterKey ? "" : filterKey)}
-                >
-                    <span className="font-semibold text-black">{filterKey.charAt(0).toUpperCase() + filterKey.slice(1)}:</span>
-                    <span className="text-black px-2 py-1 ml-2 rounded-md">
-                    {/* Mostra la traducció associada al valor seleccionat */}
-                        {selectedOption ? selectedOption.translation : "Select"}
-                </span>
-                </button>
-
-                {expandedFilter === filterKey && (
-                    <div className="absolute top-full left-0 w-full bg-white border border-gray-300 rounded-lg shadow-lg mt-2 z-10 max-h-48 overflow-y-auto scrollbar-hidden filter">
-                        <input
-                            type="text"
-                            placeholder="Buscar..."
-                            value={initialValue}
-                            onChange={(e) => setFiltersState((prev) => ({
-                                ...prev,
-                                [filterKey]: e.target.value || null,
-                            }))}
-                            className="w-full px-4 py-3 border-b border-gray-200 focus:outline-none text-black rounded-t-lg"
-                        />
-                        <div className="py-1">
-                            {filteredOptions.map((option, idx) => (
-                                <button
-                                    key={`${filterKey}-${idx}`}
-                                    className="w-full text-black px-6 py-2 hover:bg-gray-100 transition-all ease-in-out duration-150"
-                                    onClick={() => {
-                                        // Quan es fa clic, emmagatzema el valor del filtre (value)
-                                        setFiltersState((prev) => ({ ...prev, [filterKey]: option.value }));
-                                        setExpandedFilter("");
-                                    }}
-                                >
-                                    {option.translation} {/* Mostra la traducció */}
-                                </button>
-                            ))}
-                        </div>
-                    </div>
-                )}
-            </div>
-        );
     };
 
     const handleFavoriteToggle = async (cloth: Cloth) => {
@@ -315,13 +262,41 @@ const CercaRoba = () => {
             {/* Contenidor de filtres amb comportament responsiu */}
             <div className="mb-8">
                 {/* Versió completa (només visible en pantalles grans) */}
-                <div className="hidden lg:flex flex-col sm:flex-row items-center justify-evenly bg-white p-4 rounded-lg shadow-md space-y-4 sm:space-y-0">
+                <div
+                    className="hidden lg:flex flex-col sm:flex-row items-center justify-evenly bg-white p-4 rounded-lg shadow-md space-y-4 sm:space-y-0">
                     {Object.keys(filters).map((filterKey) => {
-                        if (filterKey === "type" || filterKey === "brand" || filterKey === "section") {
-                            // Si és un filtre string (que no sigui color), renderitzem amb renderFilter
-                            return renderFilter(filterKey, filters[filterKey]);
-                        }else{
-                            return null;
+                        if (filterKey === "brand") {
+                            // Per al filtre de marques, utilitza renderFilterBrand per la selecció múltiple
+                            return (
+                                <div className="max-w-[250px] w-full"> {/* Aquí afegim el màxim ample */}
+                                    <RenderMultipleFilter
+                                        key={filterKey}
+                                        filterKey={filterKey}
+                                        filterOptions={filters[filterKey]} // Ens passem les opcions per aquest filtre
+                                        expandedFilter={expandedFilter}
+                                        setExpandedFilter={setExpandedFilter}
+                                        filtersState={filtersState}
+                                        setFiltersState={setFiltersState}
+                                    />
+                                </div>
+                            );
+                        } else if (filterKey === "type" || filterKey === "section") {
+                            // Per als altres filtres (type i section), utilitza renderFilter com abans
+                            return (
+                                <div className="max-w-[250px] w-full"> {/* Aquí també afegim el màxim ample */}
+                                    <RenderFilter
+                                        key={filterKey}
+                                        filterKey={filterKey}
+                                        filterOptions={filters[filterKey]} // Ens passem les opcions per aquest filtre
+                                        expandedFilter={expandedFilter}
+                                        setExpandedFilter={setExpandedFilter}
+                                        filtersState={filtersState}
+                                        setFiltersState={setFiltersState}
+                                    />
+                                </div>
+                            );
+                        } else {
+                            return null; // No es mostra si no coincideix amb cap filtre conegut
                         }
                     })}
 
@@ -341,13 +316,17 @@ const CercaRoba = () => {
                     </button>
                 </div>
 
+
                 {/* Versió mòbil (només visible en pantalles petites) */}
                 <button
                     onClick={() => setIsModalOpen(true)}
                     className="lg:hidden flex items-center justify-center w-full py-3 px-6 bg-white text-black rounded-lg shadow-md font-medium border border-gray-300 hover:scale-105 transition-transform duration-200"
                 >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                        <path fillRule="evenodd" d="M8 2a6 6 0 014.47 10.24l4.28 4.28a1 1 0 11-1.42 1.42l-4.28-4.28A6 6 0 118 2zm0 2a4 4 0 100 8 4 4 0 000-8z" clipRule="evenodd" />
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-500 mr-2" viewBox="0 0 20 20"
+                         fill="currentColor">
+                        <path fillRule="evenodd"
+                              d="M8 2a6 6 0 014.47 10.24l4.28 4.28a1 1 0 11-1.42 1.42l-4.28-4.28A6 6 0 118 2zm0 2a4 4 0 100 8 4 4 0 000-8z"
+                              clipRule="evenodd"/>
                     </svg>
                     {t("searchcloth.start_search")} {/* "Empieza a buscar" */}
                 </button>

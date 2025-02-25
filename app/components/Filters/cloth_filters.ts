@@ -72,20 +72,123 @@ export const filters: { [key: string]: { value: string; translation: string; col
         { value: "gold", translation: "Dorado", color: "rgb(255, 215, 0)" },
         { value: "silver", translation: "Plateado", color: "rgb(192, 192, 192)" },
     ],
-    size: [
-        { value: "xxs", translation: "XXS" },
-        { value: "xs", translation: "XS" },
-        { value: "s", translation: "S" },
-        { value: "m", translation: "M" },
-        { value: "l", translation: "L" },
-        { value: "xl", translation: "XL" },
-        { value: "xxl", translation: "XXL" },
-    ],
     section: [
         { value: "woman", translation: "Mujeres" },
         { value: "man", translation: "Hombres" },
         { value: "kids", translation: "Niños" },
     ],
+    brand: [
+        { value: "zara", translation: "Zara" },
+        { value: "hm", translation: "H&M" },
+        { value: "mango", translation: "Mango" },
+        { value: "bershka", translation: "Bershka" },
+        { value: "stradivarius", translation: "Stradivarius" },
+        { value: "pullbear", translation: "Pull&Bear" },
+        { value: "oysho", translation: "Oysho" },
+        { value: "uniglo", translation: "Uniqlo" },
+    ],
+    country: [
+        { value: "albania", translation: "Albània" },
+        { value: "andorra", translation: "Andorra" },
+        { value: "armenia", translation: "Armènia" },
+        { value: "austria", translation: "Àustria" },
+        { value: "belgica", translation: "Bèlgica" },
+        { value: "bosnia", translation: "Bòsnia i Hercegovina" },
+        { value: "bulgaria", translation: "Bulgària" },
+        { value: "croacia", translation: "Croàcia" },
+        { value: "dinamarca", translation: "Dinamarca" },
+        { value: "espanya", translation: "Espanya" },
+        { value: "estonia", translation: "Estònia" },
+        { value: "finlandia", translation: "Finlàndia" },
+        { value: "francia", translation: "França" },
+        { value: "georgia", translation: "Geòrgia" },
+        { value: "greci", translation: "Grècia" },
+        { value: "holanda", translation: "Països Baixos" },
+        { value: "hungria", translation: "Hongria" },
+        { value: "islandia", translation: "Islàndia" },
+        { value: "irlanda", translation: "Irlanda" },
+        { value: "italia", translation: "Itàlia" },
+        { value: "kosovo", translation: "Kosovo" },
+        { value: "lituania", translation: "Lituània" },
+        { value: "luxemburgo", translation: "Luxemburg" },
+        { value: "macedonia", translation: "Macedònia del Nord" },
+        { value: "malta", translation: "Malta" },
+        { value: "moldavia", translation: "Moldàvia" },
+        { value: "mónaco", translation: "Mònaco" },
+        { value: "montenegro", translation: "Montenegro" },
+        { value: "noruega", translation: "Noruega" },
+        { value: "polonia", translation: "Polònia" },
+        { value: "portugal", translation: "Portugal" },
+        { value: "republicaTxeca", translation: "República Txeca" },
+        { value: "romania", translation: "Romania" },
+        { value: "serbia", translation: "Sèrbia" },
+        { value: "eslovaquia", translation: "Eslovàquia" },
+        { value: "eslovenia", translation: "Eslovènia" },
+        { value: "suecia", translation: "Suècia" },
+        { value: "suiza", translation: "Suïssa" },
+        { value: "unionEuropea", translation: "Unió Europea" },
+        { value: "estatsUnits", translation: "Estats Units" },
+        { value: "canada", translation: "Canadà" },
+        { value: "mexico", translation: "Mèxic" },
+        { value: "argentina", translation: "Argentina" },
+        { value: "brasil", translation: "Brasil" },
+        { value: "colombia", translation: "Colòmbia" },
+        { value: "chile", translation: "Xile" },
+        { value: "peru", translation: "Perú" },
+        { value: "uruguay", translation: "Uruguai" },
+        { value: "venezuela", translation: "Veneçuela" },
+        { value: "panama", translation: "Panamà" },
+        { value: "costarica", translation: "Costa Rica" },
+        { value: "dominicana", translation: "República Dominicana" },
+        { value: "guatemala", translation: "Guatemala" },
+        { value: "ecuador", translation: "Equador" },
+        { value: "paraguay", translation: "Paraguai" },
+        { value: "bolivia", translation: "Bolívia" },
+        { value: "honduras", translation: "Hondures" },
+        { value: "salvador", translation: "El Salvador" },
+        { value: "nicaragua", translation: "Nicaragua" },
+        { value: "belize", translation: "Belize" },
+        { value: "trinidad", translation: "Trinitat i Tobago" },
+        { value: "jamaica", translation: "Jamaica" },
+        { value: "haiti", translation: "Haití" },
+        { value: "barbados", translation: "Barbados" },
+        { value: "bahames", translation: "Bahames" },
+        { value: "antilles", translation: "Antilles Holandeses" },
+        { value: "arabiaSaudita", translation: "Aràbia Saudita" },
+        { value: "india", translation: "Índia" },
+        { value: "china", translation: "Xina" },
+        { value: "japó", translation: "Japó" },
+        { value: "coreadelsud", translation: "Corea del Sud" },
+        { value: "coreadelNord", translation: "Corea del Nord" },
+        { value: "pakistan", translation: "Pakistan" },
+        { value: "afganistan", translation: "Afganistan" },
+        { value: "nepal", translation: "Nepal" },
+        { value: "bangladesh", translation: "Bangladesh" },
+        { value: "sriLanka", translation: "Sri Lanka" },
+        { value: "malasia", translation: "Malàisia" },
+        { value: "indonesia", translation: "Indonèsia" },
+        { value: "tailandia", translation: "Tailàndia" },
+        { value: "singapur", translation: "Singapur" },
+        { value: "filipines", translation: "Filipines" },
+        { value: "nepal", translation: "Nepal" },
+        { value: "emiratsArabesUnits", translation: "Emirats Àrabs Units" },
+        { value: "israel", translation: "Israel" },
+        { value: "palestina", translation: "Palestina" },
+    ],
+
+};
+
+// Funció per obtenir la traducció per categoria i valor
+export const getTranslation = (category: string, value: string): string | undefined => {
+    const categoryFilters = filters[category];
+    if (!categoryFilters) return undefined;
+
+    const foundItem = categoryFilters.find(item => item.value === value);
+    return foundItem ? foundItem.translation : undefined;
+};
+
+/*
+Future implementations of filters:
     brand: [
         { value: "nike", translation: "Nike" },
         { value: "adidas", translation: "Adidas" },
@@ -119,13 +222,13 @@ export const filters: { [key: string]: { value: string; translation: string; col
         { value: "valentino", translation: "Valentino" },
         { value: "hermes", translation: "Hermès" },
     ],
-};
-
-// Funció per obtenir la traducció per categoria i valor
-export const getTranslation = (category: string, value: string): string | undefined => {
-    const categoryFilters = filters[category];
-    if (!categoryFilters) return undefined;
-
-    const foundItem = categoryFilters.find(item => item.value === value);
-    return foundItem ? foundItem.translation : undefined;
-};
+    size: [
+        { value: "xxs", translation: "XXS" },
+        { value: "xs", translation: "XS" },
+        { value: "s", translation: "S" },
+        { value: "m", translation: "M" },
+        { value: "l", translation: "L" },
+        { value: "xl", translation: "XL" },
+        { value: "xxl", translation: "XXL" },
+    ],
+ */

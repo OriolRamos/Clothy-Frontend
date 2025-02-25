@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import MultiRangeSlider from "./MultiRangeSlider";
 import './FilterModal.css';  // Importa el fitxer CSS
+import RenderFilter from "./RenderFilter";
+import RenderMultipleFilter from "./RenderMultipleFilter";
+import RenderColorFilter from "./RenderColorFilter";
 
 
 interface FilterModalProps {
@@ -65,128 +68,6 @@ const FilterModal: React.FC<FilterModalProps> = ({ isOpen, onClose, filters, fil
         });
     };
 
-    const renderFilter = (filterKey: string, filterOptions: { value: string, translation: string }[]) => {
-        const initialValue = filtersState[filterKey] || "";  // Valor inicial del filtro
-        const filteredOptions = filterOptions.filter(option =>
-            typeof option.translation === "string" && option.translation.toLowerCase().includes(initialValue.toLowerCase())
-        );
-
-        // Encuentra la traducción asociada al valor seleccionado
-        const selectedTranslation = filterOptions.find(option => option.value === initialValue)?.translation || "Selecciona una opción";
-
-        return (
-            <div key={filterKey} className="relative w-full scrollbar-hidden">
-                <button
-                    className={`w-full text-black px-6 py-3 rounded-lg border ${
-                        expandedFilter === filterKey ? "border-blue-600" : "border-gray-300"
-                    } focus:outline-none transition-all ease-in-out duration-200 hover:bg-blue-50`}
-                    onClick={() => setExpandedFilter(expandedFilter === filterKey ? "" : filterKey)}
-                >
-                    <span className="font-semibold text-black">{filterKey.charAt(0).toUpperCase() + filterKey.slice(1)}:</span>
-                    <span className="text-black px-2 py-1 ml-2 rounded-md">
-                    {selectedTranslation} {/* Mostrar siempre la traducción seleccionada */}
-                </span>
-                </button>
-
-                {expandedFilter === filterKey && (
-                    <div className="absolute top-full left-0 w-full bg-white border border-gray-300 rounded-lg shadow-lg mt-2 z-10 max-h-48 overflow-y-auto scrollbar-hidden filter">
-                        <input
-                            type="text"
-                            placeholder="Buscar..."
-                            value={initialValue}
-                            onChange={(e) => setFiltersState((prev: FiltersState) => ({
-                                ...prev,
-                                [filterKey]: e.target.value || null,  // Actualizar el valor de la búsqueda
-                            }))}
-                            className="w-full px-4 py-3 border-b border-gray-200 focus:outline-none text-black rounded-t-lg"
-                        />
-                        <div className="py-1">
-                            {filteredOptions.map((option, idx) => (
-                                <button
-                                    key={`${filterKey}-${idx}`}
-                                    className="w-full text-black px-6 py-2 hover:bg-gray-100 transition-all ease-in-out duration-150"
-                                    onClick={() => {
-                                        setFiltersState((prev: FiltersState) => ({
-                                            ...prev,
-                                            [filterKey]: option.value  // Actualizar el valor del estado con 'value'
-                                        }));
-                                        setExpandedFilter(""); // Cerrar el desplegable
-                                    }}
-                                >
-                                    {option.translation} {/* Mostrar siempre la traducción */}
-                                </button>
-                            ))}
-                        </div>
-                    </div>
-                )}
-            </div>
-        );
-    };
-
-
-    const renderColorFilter = (filterKey: string, filterOptions: { value: string, translation: string, color: string }[]) => {
-        const initialValue = filtersState[filterKey] || "";  // Valor inicial del filtro
-        const filteredOptions = filterOptions.filter(option =>
-            typeof option.translation === "string" && option.translation.toLowerCase().includes(initialValue.toLowerCase())
-        );
-
-        // Encuentra la traducción asociada al valor seleccionado
-        const selectedTranslation = filterOptions.find(option => option.value === initialValue)?.translation || "Selecciona un color";
-
-        return (
-            <div key={filterKey} className="relative w-full scrollbar-hidden">
-                <button
-                    className={`w-full text-black px-6 py-3 rounded-lg border ${
-                        expandedFilter === filterKey ? "border-blue-600" : "border-gray-300"
-                    } focus:outline-none transition-all ease-in-out duration-200 hover:bg-blue-50`}
-                    onClick={() => setExpandedFilter(expandedFilter === filterKey ? "" : filterKey)}
-                >
-                    <span className="font-semibold text-black">{filterKey.charAt(0).toUpperCase() + filterKey.slice(1)}:</span>
-                    <span className="text-black px-2 py-1 ml-2 rounded-md">
-                    {selectedTranslation} {/* Mostrar la traducción seleccionada */}
-                </span>
-                </button>
-
-                {expandedFilter === filterKey && (
-                    <div className="absolute top-full left-0 w-full bg-white border border-gray-300 rounded-lg shadow-lg mt-2 z-10 max-h-48 overflow-y-auto scrollbar-hidden filter">
-                        <input
-                            type="text"
-                            placeholder="Buscar..."
-                            value={initialValue}
-                            onChange={(e) => setFiltersState((prev: FiltersState) => ({
-                                ...prev,
-                                [filterKey]: e.target.value || null,
-                            }))}
-                            className="w-full px-4 py-3 border-b border-gray-200 focus:outline-none text-black rounded-t-lg"
-                        />
-                        <div className="py-1">
-                            {filteredOptions.map((option, idx) => (
-                                <button
-                                    key={`${filterKey}-${idx}`}
-                                    className="w-full text-black px-6 py-2 hover:bg-gray-100 transition-all ease-in-out duration-150 flex items-center"
-                                    onClick={() => {
-                                        setFiltersState((prev: FiltersState) => ({
-                                            ...prev,
-                                            [filterKey]: option.value  // Actualizar el estado con el valor de la opción
-                                        }));
-                                        setExpandedFilter(""); // Cerrar el desplegable
-                                    }}
-                                >
-                                    <div
-                                        className="w-4 h-4 rounded-full mr-2"
-                                        style={{ backgroundColor: option.color }} // Color de fondo del círculo
-                                    ></div>
-                                    {option.translation} {/* Mostrar la traducción */}
-                                </button>
-                            ))}
-                        </div>
-                    </div>
-                )}
-            </div>
-        );
-    };
-
-
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
             <div className="bg-white rounded-lg w-full max-w-4xl shadow-2xl relative overflow-hidden max-h-[90vh] overflow-y-auto m-4 scrollbar-hidden">
@@ -206,10 +87,41 @@ const FilterModal: React.FC<FilterModalProps> = ({ isOpen, onClose, filters, fil
                         {Object.keys(filters).map((filterKey) => {
                             if (filterKey === "color") {
                                 // Si el filtre és de tipus color, renderitzem amb la funció renderColorFilter
-                                return renderColorFilter(filterKey, filters[filterKey]);
-                            } else if (typeof filters[filterKey][0]?.translation === "string") {
+                                return (
+                                    <RenderColorFilter
+                                        key={filterKey}
+                                        filterKey={filterKey}
+                                        filterOptions={filters[filterKey]} // Opcions per al filtre de colors
+                                        expandedFilter={expandedFilter}
+                                        setExpandedFilter={setExpandedFilter}
+                                        filtersState={filtersState}
+                                        setFiltersState={setFiltersState}
+                                    />
+                                );
+                            } else if (filterKey === "brand") {
                                 // Si és un filtre string (que no sigui color), renderitzem amb renderFilter
-                                return renderFilter(filterKey, filters[filterKey]);
+                                return (
+                                    <RenderMultipleFilter
+                                        key={filterKey}
+                                        filterKey={filterKey}
+                                        filterOptions={filters[filterKey]} // Ens passem les opcions per aquest filtre
+                                        expandedFilter={expandedFilter}
+                                        setExpandedFilter={setExpandedFilter}
+                                        filtersState={filtersState}
+                                        setFiltersState={setFiltersState}
+                                    />
+                                );
+                            }else if (typeof filters[filterKey][0]?.translation === "string") {
+                                // Si és un filtre string (que no sigui color), renderitzem amb renderFilter
+                                return (<RenderFilter
+                                    key={filterKey}
+                                    filterKey={filterKey}
+                                    filterOptions={filters[filterKey]} // Ens passem les opcions per aquest filtre
+                                    expandedFilter={expandedFilter}
+                                    setExpandedFilter={setExpandedFilter}
+                                    filtersState={filtersState}
+                                    setFiltersState={setFiltersState}
+                                />);
                             }
                             return null;
                         })}
@@ -252,7 +164,7 @@ const FilterModal: React.FC<FilterModalProps> = ({ isOpen, onClose, filters, fil
                             <label className="flex items-center mb-4">
                                 <div
                                     className={`px-4 py-2 rounded-md border transition-all duration-300 transform hover:scale-105 
-                                    ${filtersState.onlyOffers ? "bg-faqblue text-white" : "bg-gray-200 text-gray-700"}`}
+                                                ${filtersState.onlyOfferts ? "bg-faqblue text-white" : "bg-gray-200"}`}
                                     onClick={() => toggleBooleanFilter("onlyOffers")}
                                 >
                                     Solo ofertas
