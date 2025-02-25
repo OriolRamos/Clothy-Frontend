@@ -1,10 +1,12 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import SessionExpiredModal from "../components/SessionExpiredModal/index"; // Importem el modal
-import {useAuth} from "../components/AuthContext/index";
+import { useAuth } from "../components/AuthContext/index";
 import SuccesModal from "../components/Notifications/SuccesModal";
 import ErrorModal from "../components/Notifications/ErrorModal";
 import { useTranslation } from "react-i18next";
+import RenderFilter from "../components/Filters/RenderFilter"; // Importem el component de filtres
+import { filters } from "../components/Filters/cloth_filters";
 
 
 const UserProfile = () => {
@@ -24,6 +26,22 @@ const UserProfile = () => {
         location: "",
         country: "",
     });
+
+    // Estats per gestionar el RenderFilter del país
+    const [expandedFilter, setExpandedFilter] = React.useState<string>(""); // Estat a nivell global
+    const [filtersState, setFiltersState] = useState({ country: userData.country });
+
+    // Sincronitzar el valor de userData.country amb filtersState quan es carrega el perfil
+    useEffect(() => {
+        setFiltersState({ country: userData.country });
+    }, [userData.country]);
+
+    // Quan es canvia el filtre, actualitzar userData
+    useEffect(() => {
+        if (filtersState.country !== userData.country) {
+            setUserData((prev) => ({ ...prev, country: filtersState.country }));
+        }
+    }, [filtersState.country]);
 
     useEffect(() => {
         const fetchUserProfile = async () => {
@@ -49,7 +67,6 @@ const UserProfile = () => {
                         location: data.location || prevData.location,
                         country: data.country || prevData.country,
                     }));
-                    // Aquí pots actualitzar l'estat amb les dades del perfil
                 } else {
                     throw new Error("Error obtenint el perfil de l'usuari.");
                 }
@@ -59,25 +76,19 @@ const UserProfile = () => {
         };
 
         fetchUserProfile();
-    }, [fetchWithAuth]); // Dependència de fetchWithAuth per assegurar la coherència
-
-
+    }, [fetchWithAuth]);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         setUserData((prev) => ({ ...prev, [name]: value }));
     };
 
-    const [isSucessModalOpen, setIsSucessModalOpen] = useState(false); // Estat per controlar el modal
-
-    // Funció per tancar el modal
+    const [isSucessModalOpen, setIsSucessModalOpen] = useState(false);
     const handleCloseSucessModal = () => {
         setIsSucessModalOpen(false);
     };
 
-    const [isErrorModalOpen, setIsErrorModalOpen] = useState(false); // Estat per controlar el modal
-
-    // Funció per tancar el modal
+    const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
     const handleCloseErrorModal = () => {
         setIsErrorModalOpen(false);
     };
@@ -87,20 +98,19 @@ const UserProfile = () => {
 
         // Prepara les dades per enviar-les al backend
         const profileData = {
-            email: userData.email, // L'email sempre s'ha d'enviar
-            username: userData.username || null,  // Si username és null o undefined, enviar null
-            fullName: userData.fullName || null,  // Si fullName és null o undefined, enviar null
-            birthDate: userData.birthDate || null,  // Si birthDate és null o undefined, enviar null
-            gender: userData.gender || null,  // Si gender és null o undefined, enviar null
-            height: userData.height ? parseFloat(userData.height) : null,  // Si height és null o undefined, enviar null (i assegurar que és un número)
-            weight: userData.weight ? parseFloat(userData.weight) : null,  // Si weight és null o undefined, enviar null (i assegurar que és un número)
-            location: userData.location || null,  // Si location és null o undefined, enviar null
-            country: userData.country || null,  // Si country és null o undefined, enviar null
+            email: userData.email,
+            username: userData.username || null,
+            fullName: userData.fullName || null,
+            birthDate: userData.birthDate || null,
+            gender: userData.gender || null,
+            height: userData.height ? parseFloat(userData.height) : null,
+            weight: userData.weight ? parseFloat(userData.weight) : null,
+            location: userData.location || null,
+            country: userData.country || null,
         };
 
         console.log("Dades enviades", profileData);
 
-        // Realitzar la petició PUT
         fetch(`${apiUrl}/users/profile`, {
             method: "PUT",
             headers: {
@@ -110,7 +120,6 @@ const UserProfile = () => {
         })
             .then((response) => {
                 if (response.ok) {
-                    // Mostrar el modal de success quan el perfil s'actualitza correctament
                     setIsSucessModalOpen(true);
                 } else {
                     return response.json().then((data) => {
@@ -175,8 +184,7 @@ const UserProfile = () => {
                                 className="mt-2 p-3 border border-gray-300 rounded-md w-full bg-gray-200"
                             />
                             <p className="text-sm text-gray-500 mt-1">
-                                {t('profile.changePassword')} <a href="/reset-password"
-                                                                 className="text-blue-600 underline">{t('profile.here')}</a>.
+                                {t('profile.changePassword')} <a href="/reset-password" className="text-blue-600 underline">{t('profile.here')}</a>.
                             </p>
                         </div>
 
@@ -187,8 +195,7 @@ const UserProfile = () => {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             {/* Full Name */}
                             <div>
-                                <label
-                                    className="block text-lg font-medium text-gray-700">{t('profile.fullName')}</label>
+                                <label className="block text-lg font-medium text-gray-700">{t('profile.fullName')}</label>
                                 <input
                                     type="text"
                                     name="fullName"
@@ -200,8 +207,7 @@ const UserProfile = () => {
 
                             {/* Birth Date */}
                             <div>
-                                <label
-                                    className="block text-lg font-medium text-gray-700">{t('profile.birthDate')}</label>
+                                <label className="block text-lg font-medium text-gray-700">{t('profile.birthDate')}</label>
                                 <input
                                     type="date"
                                     name="birthDate"
@@ -253,8 +259,7 @@ const UserProfile = () => {
 
                             {/* Location */}
                             <div>
-                                <label
-                                    className="block text-lg font-medium text-gray-700">{t('profile.location')}</label>
+                                <label className="block text-lg font-medium text-gray-700">{t('profile.location')}</label>
                                 <input
                                     type="text"
                                     name="location"
@@ -264,17 +269,20 @@ const UserProfile = () => {
                                 />
                             </div>
 
-                            {/* Country */}
+                            {/* Country: MODIFICAT per usar RenderFilter */}
                             <div>
-                                <label
-                                    className="block text-lg font-medium text-gray-700">{t('profile.country')}</label>
-                                <input
-                                    type="text"
-                                    name="country"
-                                    value={userData.country}
-                                    onChange={handleInputChange}
-                                    className="mt-2 p-3 border border-gray-300 rounded-md w-full"
-                                />
+                                <label className="block text-lg font-medium text-gray-700">{t('profile.country')}</label>
+                                <div className="mt-2 bg-white">
+                                    <RenderFilter
+                                        key="country"
+                                        filterKey="country"
+                                        filterOptions={filters["country"]}
+                                        expandedFilter={expandedFilter}
+                                        setExpandedFilter={setExpandedFilter}
+                                        filtersState={filtersState}
+                                        setFiltersState={setFiltersState}
+                                    />
+                                </div>
                             </div>
                         </div>
 

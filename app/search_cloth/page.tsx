@@ -52,6 +52,28 @@ const CercaRoba = () => {
 
     }, [loading, hasMoreResults, page, totalResults]);
 
+    useEffect(() => {
+        const fetchCountry = async () => {
+            try {
+                const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+                const response = await fetchWithAuth(`${apiUrl}/users/profile/getCountry`, {
+                    method: "GET",
+                });
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data.country) {
+                        setFiltersState((prev) => ({ ...prev, country: data.country }));
+                    }
+                } else {
+                    console.error("Error obtenint el country del perfil.");
+                }
+            } catch (error) {
+                console.error("Error fetching country:", error);
+            }
+        };
+        fetchCountry();
+    }, [fetchWithAuth]);
+
 // Detectar quan l'usuari arriba al final de la pàgina per carregar més resultats
     useEffect(() => {
         const onScroll = () => {
