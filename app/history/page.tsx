@@ -75,9 +75,6 @@ const HistorialBusquedas = () => {
                                     <p className="text-sm text-gray-600">
                                         {new Date(entry.search_date).toLocaleString()}
                                     </p>
-                                    <p className="text-lg font-semibold">
-                                        {t("historial.searchPage", "Pàgina")}: {entry.search_page}
-                                    </p>
                                     <p className="text-sm">
                                         {t("historial.totalCloth", "Total de prendes")}: {entry.cloth_count || 0}
                                     </p>

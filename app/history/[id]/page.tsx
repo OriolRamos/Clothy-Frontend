@@ -35,7 +35,7 @@ const SearchDetailPage = () => {
             const apiUrl = process.env.NEXT_PUBLIC_API_URL;
             // Es suposa que aquest endpoint rep l'id de la cerca i retorna les robes associades,
             // a més de detalls com filtres aplicats, número de pàgina, etc.
-            const response = await fetchWithAuth(`${apiUrl}/search/history/${id}?page=${pageToLoad}`, {
+            const response = await fetchWithAuth(`${apiUrl}/profile/search_history/${id}?page=${pageToLoad}`, {
                 method: "GET",
             });
             if (response.ok) {
@@ -131,14 +131,7 @@ const SearchDetailPage = () => {
                 <h1 className="text-4xl font-bold text-black mb-4">
                     {t("searchDetail.title", "Detall de la cerca")}
                 </h1>
-                {filtersState && (
-                    <div className="bg-white p-4 rounded-lg shadow-md mb-4">
-                        <p className="text-sm font-medium">{t("searchDetail.filters", "Filtres aplicats")}:</p>
-                        <pre className="bg-gray-100 p-2 rounded text-xs">
-              {JSON.stringify(filtersState, null, 2)}
-            </pre>
-                    </div>
-                )}
+
             </div>
 
             {/* Mostra les robes resultants de la cerca */}
