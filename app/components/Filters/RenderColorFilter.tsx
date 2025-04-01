@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
 
 interface FilterOption {
     value: string;
@@ -6,59 +7,52 @@ interface FilterOption {
     color: string;  // Color per mostrar
 }
 
-interface RenderColorsProps {
+interface RenderFilterProps {
     filterKey: string;
     filterOptions: FilterOption[];
     expandedFilter: string;
     setExpandedFilter: (key: string) => void;
-    filtersState: Record<string, string>;
-    setFiltersState: React.Dispatch<React.SetStateAction<Record<string, string>>>;
+    filtersState: Record<string, string[]>;
+    setFiltersState: React.Dispatch<React.SetStateAction<Record<string, string[]>>>;
 }
 
-const RenderColorFilter: React.FC<RenderColorsProps> = ({
-                                                            filterKey,
-                                                            filterOptions,
-                                                            expandedFilter,
-                                                            setExpandedFilter,
-                                                            filtersState,
-                                                            setFiltersState,
-                                                        }) => {
-    const filterRef = useRef<HTMLDivElement>(null); // Referència al filtre
-    const initialValue = filtersState[filterKey] || ""; // Valor inicial del filtre
+const RenderColorFilter: React.FC<RenderFilterProps> = ({
+                                                               filterKey,
+                                                               filterOptions,
+                                                               expandedFilter,
+                                                               setExpandedFilter,
+                                                               filtersState,
+                                                               setFiltersState,
+                                                           }) => {
+    const { t } = useTranslation("common");
+    const filterRef = useRef<HTMLDivElement>(null); // 🔑 Referència al filtre
 
-    // Filtrar les opcions en funció de la cerca
+    const selectedValues = filtersState[filterKey] || [];
+    const searchValue = filtersState[`${filterKey}Search`] || "";
+
     const filteredOptions = filterOptions.filter(option =>
-        option.translation.toLowerCase().includes(String(filtersState[`${filterKey}Search`] || "").toLowerCase())
+        t(`filters.${filterKey}.${option.value}`)
+            .toLowerCase()
+            .includes(searchValue.toLowerCase())
     );
 
-
-    // Funció per tancar el modal si es fa clic fora
-    const handleClickOutside = (event: MouseEvent) => {
-        if (filterRef.current && !filterRef.current.contains(event.target as Node)) {
-            setExpandedFilter(""); // Tancar el modal
-        }
+    // Funció per alternar les opcions seleccionades
+    const toggleSelection = (value: string) => {
+        setFiltersState(prev => {
+            const selectedSet = new Set(prev[filterKey] || []);
+            if (selectedSet.has(value)) {
+                selectedSet.delete(value); // Eliminar si ja està seleccionat
+            } else {
+                selectedSet.add(value); // Afegir si no està seleccionat
+            }
+            return { ...prev, [filterKey]: Array.from(selectedSet) };
+        });
     };
 
-    // Afegir i eliminar el listener de clic fora
-    useEffect(() => {
-        if (expandedFilter === filterKey) {
-            document.addEventListener("mousedown", handleClickOutside);
-        } else {
-            document.removeEventListener("mousedown", handleClickOutside);
-        }
-
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside); // Netegem l'escoltador
-        };
-    }, [expandedFilter, filterKey]);
-
-    // Trobar la traducció associada al valor seleccionat
-    const selectedOption = filterOptions.find(option => option.value === initialValue);
-    const selectedTranslation = selectedOption ? selectedOption.translation : "Selecciona un color";
-
-    // Toggle per obrir o tancar el modal
     const handleModalToggle = () => {
         setExpandedFilter(expandedFilter === filterKey ? "" : filterKey);
+
+        // 🔄 Neteja la cerca només quan s'obre el modal
         if (expandedFilter !== filterKey) {
             setFiltersState((prev) => ({
                 ...prev,
@@ -66,6 +60,23 @@ const RenderColorFilter: React.FC<RenderColorsProps> = ({
             }));
         }
     };
+
+    // 🧲 Detecta clics fora per tancar el modal
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (filterRef.current && !filterRef.current.contains(event.target as Node)) {
+                setExpandedFilter(""); // 🚪 Tanca si clic fora
+            }
+        };
+
+        if (expandedFilter === filterKey) {
+            document.addEventListener("mousedown", handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside); // 🧹 Neteja l’escoltador
+        };
+    }, [expandedFilter, filterKey, setExpandedFilter]);
 
     return (
         <div ref={filterRef} key={filterKey} className="relative w-full scrollbar-hidden">
@@ -78,8 +89,14 @@ const RenderColorFilter: React.FC<RenderColorsProps> = ({
                 <span className="font-semibold text-black">
                     {filterKey.charAt(0).toUpperCase() + filterKey.slice(1)}:
                 </span>
-                <span className={`px-2 py-1 ml-2 rounded-md ${selectedOption ? "text-black" : "text-black"}`}>
-                    {selectedTranslation} {/* Mostrar la traducció seleccionada */}
+                <span
+                    className={`px-2 py-1 ml-2 rounded-md ${
+                        selectedValues.length > 0 ? "text-black" : "text-black"
+                    }`}
+                >
+                    {selectedValues.length > 0
+                        ? `${selectedValues.length} seleccionat${selectedValues.length > 1 ? "s" : ""}`
+                        : t("defaultSelect")}
                 </span>
             </button>
 
@@ -87,19 +104,19 @@ const RenderColorFilter: React.FC<RenderColorsProps> = ({
                 <div className="absolute top-full left-0 w-full bg-white border border-gray-300 rounded-lg shadow-lg mt-2 z-10 max-h-48 overflow-y-auto scrollbar-hidden filter">
                     <input
                         type="text"
-                        placeholder="Buscar..."
-                        value={filtersState[`${filterKey}Search`] || ""}
+                        placeholder={t("filters.searchPlaceholder", "Buscar...")}
+                        value={searchValue}
                         onChange={(e) =>
                             setFiltersState((prev) => ({
                                 ...prev,
-                                [`${filterKey}Search`]: e.target.value, // Filtrar segons el cercador
+                                [`${filterKey}Search`]: e.target.value,
                             }))
                         }
                         className="w-full px-4 py-3 border-b border-gray-200 focus:outline-none text-black rounded-t-lg"
                     />
                     <div className="py-1">
                         {filteredOptions.map((option, idx) => {
-                            const isSelected = option.value === initialValue;
+                            const isSelected = selectedValues.includes(option.value);
                             return (
                                 <button
                                     key={`${filterKey}-${idx}`}
@@ -108,29 +125,19 @@ const RenderColorFilter: React.FC<RenderColorsProps> = ({
                                             ? "bg-faqblue text-white hover:bg-blue-300 border border-b-cyan-900"
                                             : "bg-white hover:bg-gray-100"
                                     }`}
-                                    onClick={() => {
-                                        // Si el color ja és seleccionat, el deseleccionem
-                                        const newValue = isSelected ? "" : option.value;
-                                        setFiltersState((prev) => ({
-                                            ...prev,
-                                            [filterKey]: newValue, // Actualitzem el valor seleccionat o buidem-lo
-                                            [`${filterKey}Search`]: "", // Netegem la cerca després de la selecció
-                                        }));
-                                        setExpandedFilter(""); // Tancar el modal després de seleccionar
-                                    }}
+                                    onClick={() => toggleSelection(option.value)}
                                 >
-                                    <div
-                                        className="flex items-center"> {/* Utilitzem flex per alinear els elements horitzontalment */}
+                                    <div className="flex items-center">
                                         <div
                                             className="w-4 h-4 rounded-full mr-2"
                                             style={{
-                                                backgroundColor: option.color, // Mostrar el color de fons
-                                                boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)", // Afegir ombra suau per al relleu
-                                                transform: "scale(1.1)", // Donar un efecte de lleuger relleu
-                                                transition: "transform 0.2s ease-in-out", // Animar l'efecte quan es clica
+                                                backgroundColor: option.color,
+                                                boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
+                                                transform: "scale(1.1)",
+                                                transition: "transform 0.2s ease-in-out",
                                             }}
                                         ></div>
-                                        <span>{option.translation}</span> {/* Mostrar la traducció */}
+                                        <span>{t(`filters.${filterKey}.${option.value}`, option.translation)}</span>
                                     </div>
                                 </button>
                             );
@@ -143,3 +150,4 @@ const RenderColorFilter: React.FC<RenderColorsProps> = ({
 };
 
 export default RenderColorFilter;
+

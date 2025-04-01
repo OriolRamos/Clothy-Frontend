@@ -335,34 +335,6 @@
         "search": "Search...",
         "reset": "Reset"
     },
-    "termsandconditions": {
-        "title": "Terms of Use and Conditions",
-        "welcome": "Welcome to Clothy. Your experience and trust are our priority.",
-        "acceptableUse": {
-            "title": "1. Acceptable Use",
-            "content": "Clothy is designed for personal and non-commercial use. It is strictly prohibited:"
-        },
-        "privacy": {
-            "title": "2. Privacy and Data Protection (GDPR)",
-            "content": "At Clothy, we strictly follow the General Data Protection Regulation (GDPR). The personal data you provide is used exclusively to offer you a better service."
-        },
-        "imagesUse": {
-            "title": "3. Use of Images",
-            "content": "When you upload an image to Clothy, it is only used to find similar clothing and improve our AI algorithm."
-        },
-        "liability": {
-            "title": "4. Limitation of Liability",
-            "content": "Although we do our best to maintain a secure and reliable service, Clothy is not responsible for certain inconveniences."
-        },
-        "modifications": {
-            "title": "5. Modification of Terms",
-            "content": "We reserve the right to modify these terms and conditions to adapt to new legal or technological requirements."
-        },
-        "contact": {
-            "title": "6. Contact and Support",
-            "content": "If you have any questions, concerns, or suggestions about these terms, do not hesitate to contact us."
-        }
-    },
     "verification" : {
         "title": "Verify Your Account",
         "instructions": "Enter your email and the verification code sent to your email.",
@@ -406,6 +378,63 @@
         "reset": "Reset",
         "apply": "Apply"
     },
+    "termsandconditions": {
+        "title": "TERMS AND CONDITIONS OF USE OF CLOTHY",
+        "lastUpdated": "Last updated: [Date]",
+        "welcome": "Welcome to Clothy, the platform that allows you to explore and compare fashion options through advanced web scraping techniques, and which will soon integrate functionalities such as a digital wardrobe and virtual fitting rooms based on artificial intelligence. By accessing and using our services, you expressly and unconditionally accept these Terms and Conditions, as well as any future updates. If you do not agree with any clause, please refrain from using the platform.",
+        "section1": {
+            "title": "1. OBJECTIVE AND SCOPE OF THE SERVICE",
+            "content": "1.1 Purpose:\nClothy offers a service that allows you to view, compare, and select fashion products extracted from various websites. The platform is intended for personal and consultation purposes, facilitating the user's decision-making when choosing garments.\n1.2 Future Functionalities:\nIn future updates, Clothy will allow users to:\n- Upload images of their own garments to create a personalized digital wardrobe.\n- Generate outfits by combining pieces from their personal collection.\n- Use a virtual fitting room with artificial intelligence that will realistically display how the garments would look."
+        },
+        "section2": {
+            "title": "2. PROPER USE AND CONDUCT OF THE USER",
+            "content": "2.1 Permitted Use:\nThe Clothy service is intended exclusively for personal and consultation purposes. The use of the platform for illegal, defamatory activities or those that infringe on the rights of third parties, as well as for unauthorized commercial purposes, is strictly prohibited.\n2.2 User Responsibility:\nThe user agrees to use Clothy responsibly and to comply with:\n- The technical conditions and limitations of the service.\n- The applicable laws and regulations, including data protection, copyright, and e-commerce legislation.\n- The terms and conditions of the websites from which data is extracted via web scraping (see section 3).\nImproper or abusive use of the service may result in the immediate suspension or cancellation of the account."
+        },
+        "section3": {
+            "title": "3. FUNCTIONALITIES AND TECHNOLOGIES OF CLOTHY",
+            "content": "3.1 Web Scraping and Third Parties:\nClothy incorporates a web scraping tool to obtain fashion information from various websites. The user acknowledges and agrees that:\n - They are solely responsible for initiating and managing web scraping queries.\n - They must comply with the policies, terms, and conditions of each website from which data is extracted.\n - Any non-compliance in the use of the extracted information will be the user's exclusive responsibility.\n 3.2 List of Sites and Links:\nCurrently, Clothy integrates data from the following sites (it is recommended to review their Terms and Conditions):\n Zara: https://www.zara.com/terms\nBershka: https://www.bershka.com/terms\nOysho: https://www.oysho.com/terms\nPull & Bear: https://www.pullandbear.com/terms\nStradivarius: https://www.stradivarius.com/terms\nMassimo Dutti: https://www.massimodutti.com/terms\nMango: https://shop.mango.com/terms\nH&M: https://www2.hm.com/en_us/customer-service/terms.html\nUniqlo: https://www.uniqlo.com/us/en/terms-of-use\nGap: https://www.gap.com/help/terms-conditions.html\nForever 21: https://www.forever21.com/us/shop/info/terms\nPrimark: https://www.primark.com/terms\nTopshop: https://www.topshop.com/terms-and-conditions\nASOS: https://www.asos.com/terms-and-conditions\nNike: https://www.nike.com/legal/terms-of-use\nAdidas: https://www.adidas.com/us/terms-and-conditions\nLevi's: https://www.levi.com/US/en_US/legal/terms-of-use\nPuma: https://us.puma.com/terms-of-use\nCalvin Klein: https://www.calvinklein.us/en/terms-of-use\nTommy Hilfiger: https://usa.tommy.com/terms-of-use\n 3.3 Additional Features:\nIn future versions, Clothy will allow:\n- The management of a personal digital wardrobe, where users can store images of their garments.\n- The generation of personalized combinations and outfits.\n- The real-time visualization of how the garments would look using virtual simulation technology.\nFor these functions, the user must accept specific conditions regarding the use and processing of their images and data."
+        },
+        "section4": {
+            "title": "4. DATA PROTECTION AND PRIVACY",
+            "content": "4.1 Regulatory Compliance:\nClothy is committed to protecting the privacy of its users and to complying with the General Data Protection Regulation (GDPR), the Organic Law on Data Protection and Guarantee of Digital Rights (LOPDGDD), and other applicable regulations.\n4.2 Data Processing:\nThe personal information you provide will be treated confidentially and used exclusively to improve the experience and quality of the service. For more details, please refer to our Privacy Policy."
+        },
+        "section5": {
+            "title": "5. USE OF CONTENT AND IMAGES",
+            "content": "5.1 Upload and Use of Images:\nThe images and content that users upload for the digital wardrobe or virtual fitting room will be used solely for:\n- Identifying and recommending similar garments.\n- Optimizing our artificial intelligence algorithms.\n5.2 License of Use:\nThe user retains the intellectual property rights to their images, but grants Clothy a non-exclusive, transferable, and royalty-free license to process, store, and display them in order to provide the service optimally."
+        },
+        "section6": {
+            "title": "6. INTELLECTUAL PROPERTY",
+            "content": "6.1 Reserved Rights:\nAll rights related to the Clothy brand, including logos, designs, texts, graphics, interfaces, and any other content on the site, are reserved.\n6.2 Prohibited Use:\nThe reproduction, distribution, public communication, or transformation of any Clothy content is prohibited without the express written consent of the company."
+        },
+        "section7": {
+            "title": "7. LIMITATION OF LIABILITY AND DISCLAIMER",
+            "content": "7.1 Warranties and Availability:\nClothy strives to maintain a secure, reliable, and up-to-date service; however, it does not guarantee that:\n- Access to the service is uninterrupted or free of errors or vulnerabilities.\n- The information extracted via web scraping is complete, accurate, or up-to-date at all times.\n7.2 Exclusion of Liability:\nIn no event shall Clothy be liable for:\n- Direct, indirect, incidental, special, or consequential damages arising from the use or inability to use the service.\n- Damages caused by errors in the extraction, processing, or presentation of data.\n- Third-party claims related to the non-compliance with the terms and conditions of the websites from which data is extracted.\n- Damages arising from the functionalities of the digital wardrobe or virtual fitting room.\n7.3 Assumption of Risk:\nThe use of Clothy is at the user's sole risk, and the user assumes full responsibility for decisions based on the information provided by the platform."
+        },
+        "section8": {
+            "title": "8. MODIFICATIONS AND UPDATES",
+            "content": "8.1 Right to Modify:\nClothy reserves the right to modify, update, or replace these Terms and Conditions at any time in order to adapt them to legislative, technological, or operational changes in the service.\n8.2 Notification and Obligation to Review:\nModifications will be published on this same page and will take effect upon publication. It is the user's responsibility to periodically review the Terms to stay informed of any changes."
+        },
+        "section9": {
+            "title": "9. JURISDICTION AND APPLICABLE LAW",
+            "content": "These Terms shall be governed by and interpreted in accordance with Spanish law. Any dispute arising from the use of the service or from the interpretation of these terms shall be submitted to the competent courts of [City/Region], unless otherwise agreed."
+        },
+        "section10": {
+            "title": "10. INFORMATION AND DATA OF THE OWNER (LSSI-CE)",
+            "content": "In compliance with the Law on Information Society Services and Electronic Commerce (LSSI-CE), the user is informed that:\nService Owner: [Company Name]\nRegistered Office: [Complete Address]\nCIF/NIF: [Fiscal Identification Number]\nContact Email: support@clothy.com\nContact Phone: [Phone Number]\nThis information will be provided to users to ensure transparency in communications and electronic contracting."
+        },
+        "section11": {
+            "title": "11. COOKIE POLICY AND SIMILAR TECHNOLOGIES",
+            "content": "Clothy uses cookies and similar technologies to improve the user experience, analyze traffic, and personalize content. By using the site, you accept the use of these technologies in accordance with our Cookie Policy, which details:\n- The purpose and types of cookies used.\n- Consent modalities and options to manage or reject them.\n- Procedures for deactivating and deleting cookies."
+        },
+        "section12": {
+            "title": "12. CONSUMER RIGHTS AND DISTANCE CONTRACTING",
+            "content": "If the user accesses the service as a final consumer, they are informed that:\n- They have the right to withdraw from the contract within 14 calendar days, without the need for justification, in accordance with applicable distance contracting regulations.\n- Warranties and rights regarding claims and resolution of consumer disputes apply.\n- Information on payment methods, deadlines, and contracting conditions will be provided clearly and transparently before any transaction is formalized."
+        },
+        "section13": {
+            "title": "13. CONTACT AND SUPPORT",
+            "content": "If you have any questions, comments, or suggestions regarding these Terms and Conditions, you can contact us through:\n- Contact Form: https://www.clothy.com/contacto\n- Email: support@clothy.com\n\nBy using Clothy, you expressly accept these Terms and Conditions, acknowledging that you are solely responsible for your use of the platform and for complying with the conditions imposed by both Clothy and third parties.\nAll rights of the Clothy brand are expressly reserved."
+        }
+    },
     "navbar": {
         "home": "Home",
         "search": "Search"
@@ -417,7 +446,189 @@
         "FAQ": "FAQ",
         "joinus": "Join Us",
         "others": "Others"
+    },
+    "defaultSelect": "Select",
+    "disponibleBrans": "Available brands",
+    "termsText": "I have read and accept the ",
+    "termsLink": "terms and conditions",
+    "signupbutton": "Sign Up",
+    "loginbutton": "Login",
+
+    "filters": {
+        "type": {
+            "shirts": "Shirts",
+            "tshirts": "T-shirts",
+            "blouses": "Blouses",
+            "tank_tops": "Tank tops / Sleeveless T-shirts",
+            "pants": "Pants",
+            "jeans": "Jeans",
+            "shorts": "Shorts",
+            "dresses": "Dresses",
+            "skirts": "Skirts",
+            "jackets": "Jackets",
+            "coats": "Coats",
+            "suits": "Suits",
+            "blazers": "Blazers",
+            "hoodies": "Hoodies",
+            "sweaters": "Sweaters",
+            "cardigans": "Cardigans",
+            "vests": "Vests",
+            "overalls": "Overalls",
+            "jumpsuits": "Jumpsuits",
+            "leggings": "Leggings",
+            "sweatpants": "Sweatpants",
+            "tracksuits": "Tracksuits",
+            "pajamas": "Pajamas",
+            "bathrobes": "Bathrobes",
+            "underwear": "Underwear",
+            "bras": "Bras",
+            "panties": "Panties",
+            "boxers": "Boxers",
+            "briefs": "Briefs",
+            "socks": "Socks",
+            "stockings": "Stockings",
+            "tights": "Tights",
+            "swimwear": "Swimwear",
+            "bikinis": "Bikinis",
+            "one_piece_swimsuit": "One-piece swimsuits",
+            "boardshorts": "Boardshorts",
+            "sandals": "Sandals",
+            "shoes": "Shoes",
+            "boots": "Boots",
+            "sneakers": "Sneakers",
+            "loafers": "Loafers",
+            "heels": "Heels",
+            "slippers": "Slippers",
+            "flip_flops": "Flip-flops",
+            "sportswear": "Sportswear",
+            "cycling_wear": "Cycling wear",
+            "yoga_wear": "Yoga wear",
+            "hiking_wear": "Hiking wear",
+            "gloves": "Gloves",
+            "hats": "Hats / Beanies",
+            "scarves": "Scarves",
+            "belts": "Belts",
+            "ties": "Ties"
+        },
+        "color": {
+            "red": "Red",
+            "blue": "Blue",
+            "green": "Green",
+            "black": "Black",
+            "white": "White",
+            "yellow": "Yellow",
+            "orange": "Orange",
+            "pink": "Pink",
+            "purple": "Purple",
+            "gray": "Gray",
+            "brown": "Brown",
+            "beige": "Beige",
+            "turquoise": "Turquoise",
+            "lilac": "Lilac",
+            "gold": "Gold",
+            "silver": "Silver"
+        },
+        "section": {
+            "woman": "Women",
+            "man": "Men",
+            "kids": "Kids"
+        },
+        "brand": {
+            "zara": "Zara",
+            "hm": "H&M",
+            "mango": "Mango",
+            "bershka": "Bershka",
+            "stradivarius": "Stradivarius",
+            "pullbear": "Pull&Bear",
+            "oysho": "Oysho",
+            "uniglo": "Uniqlo"
+        },
+        "country": {
+            "albania": "Albania",
+            "andorra": "Andorra",
+            "armenia": "Armenia",
+            "austria": "Austria",
+            "belgica": "Belgium",
+            "bosnia": "Bosnia and Herzegovina",
+            "bulgaria": "Bulgaria",
+            "croacia": "Croatia",
+            "dinamarca": "Denmark",
+            "espanya": "Spain",
+            "estonia": "Estonia",
+            "finlandia": "Finland",
+            "francia": "France",
+            "georgia": "Georgia",
+            "greci": "Greece",
+            "holanda": "Netherlands",
+            "hungria": "Hungary",
+            "islandia": "Iceland",
+            "irlanda": "Ireland",
+            "italia": "Italy",
+            "kosovo": "Kosovo",
+            "lituania": "Lithuania",
+            "luxemburgo": "Luxembourg",
+            "macedonia": "North Macedonia",
+            "malta": "Malta",
+            "moldavia": "Moldova",
+            "mónaco": "Monaco",
+            "montenegro": "Montenegro",
+            "noruega": "Norway",
+            "polonia": "Poland",
+            "portugal": "Portugal",
+            "republicaTxeca": "Czech Republic",
+            "romania": "Romania",
+            "serbia": "Serbia",
+            "eslovaquia": "Slovakia",
+            "eslovenia": "Slovenia",
+            "suecia": "Sweden",
+            "suiza": "Switzerland",
+            "unionEuropea": "European Union",
+            "estatsUnits": "United States",
+            "canada": "Canada",
+            "mexico": "Mexico",
+            "argentina": "Argentina",
+            "brasil": "Brazil",
+            "colombia": "Colombia",
+            "chile": "Chile",
+            "peru": "Peru",
+            "uruguay": "Uruguay",
+            "venezuela": "Venezuela",
+            "panama": "Panama",
+            "costarica": "Costa Rica",
+            "dominicana": "Dominican Republic",
+            "guatemala": "Guatemala",
+            "ecuador": "Ecuador",
+            "paraguay": "Paraguay",
+            "bolivia": "Bolivia",
+            "honduras": "Honduras",
+            "salvador": "El Salvador",
+            "nicaragua": "Nicaragua",
+            "belize": "Belize",
+            "trinidad": "Trinidad and Tobago",
+            "jamaica": "Jamaica",
+            "haiti": "Haiti",
+            "barbados": "Barbados",
+            "bahames": "Bahamas",
+            "antilles": "Dutch Antilles",
+            "arabiaSaudita": "Saudi Arabia",
+            "india": "India",
+            "china": "China",
+            "japó": "Japan",
+            "coreadelsud": "South Korea",
+            "coreadelNord": "North Korea",
+            "pakistan": "Pakistan",
+            "afganistan": "Afghanistan",
+            "nepal": "Nepal",
+            "bangladesh": "Bangladesh",
+            "sriLanka": "Sri Lanka",
+            "malasia": "Malaysia",
+            "indonesia": "Indonesia",
+            "tailandia": "Thailand",
+            "singapur": "Singapore",
+            "filipines": "Philippines",
+            "emiratsArabesUnits": "United Arab Emirates",
+            "israel": "Israel",
+            "palestina": "Palestine"
+        }
     }
-
-
 }

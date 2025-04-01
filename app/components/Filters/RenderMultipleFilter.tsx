@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
 
 interface FilterOption {
     value: string;
@@ -15,20 +16,23 @@ interface RenderFilterProps {
 }
 
 const RenderMultipleFilter: React.FC<RenderFilterProps> = ({
-                                                       filterKey,
-                                                       filterOptions,
-                                                       expandedFilter,
-                                                       setExpandedFilter,
-                                                       filtersState,
-                                                       setFiltersState,
-                                                   }) => {
+                                                               filterKey,
+                                                               filterOptions,
+                                                               expandedFilter,
+                                                               setExpandedFilter,
+                                                               filtersState,
+                                                               setFiltersState,
+                                                           }) => {
+    const { t } = useTranslation("common");
     const filterRef = useRef<HTMLDivElement>(null); // 🔑 Referència al filtre
 
     const selectedValues = filtersState[filterKey] || [];
     const searchValue = filtersState[`${filterKey}Search`] || "";
 
     const filteredOptions = filterOptions.filter(option =>
-        option.translation.toLowerCase().includes(searchValue.toLowerCase())
+        t(`filters.${filterKey}.${option.value}`)
+            .toLowerCase()
+            .includes(searchValue.toLowerCase())
     );
 
     // Funció per alternar les opcions seleccionades
@@ -91,7 +95,7 @@ const RenderMultipleFilter: React.FC<RenderFilterProps> = ({
                 >
                     {selectedValues.length > 0
                         ? `${selectedValues.length} seleccionat${selectedValues.length > 1 ? "s" : ""}`
-                        : "Selecciona"}
+                        : t("defaultSelect")}
                 </span>
             </button>
 
@@ -99,7 +103,7 @@ const RenderMultipleFilter: React.FC<RenderFilterProps> = ({
                 <div className="absolute top-full left-0 w-full bg-white border border-gray-300 rounded-lg shadow-lg mt-2 z-10 max-h-48 overflow-y-auto scrollbar-hidden filter">
                     <input
                         type="text"
-                        placeholder="Buscar..."
+                        placeholder={t("filters.searchPlaceholder", "Buscar...")}
                         value={searchValue}
                         onChange={(e) =>
                             setFiltersState((prev) => ({
@@ -122,7 +126,7 @@ const RenderMultipleFilter: React.FC<RenderFilterProps> = ({
                                     }`}
                                     onClick={() => toggleSelection(option.value)}
                                 >
-                                    {option.translation}
+                                    {t(`filters.${filterKey}.${option.value}`, option.translation)}
                                 </button>
                             );
                         })}

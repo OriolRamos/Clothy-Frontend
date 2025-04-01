@@ -134,10 +134,10 @@ const Navbar: React.FC = () => {
                         ) : (
                             <>
                                 <Link href="/login" {...({} as any)}>
-                                    <Button variant="text" {...({} as any)}>Login</Button>
+                                    <Button variant="text" {...({} as any)}>{t("loginbutton")}</Button>
                                 </Link>
                                 <Link href="/signup" {...({} as any)}>
-                                    <Button color="gray" className="whitespace-nowrap" {...({} as any)}>Sign up</Button>
+                                    <Button color="gray" className="whitespace-nowrap" {...({} as any)}>{t("signupbutton")}</Button>
                                 </Link>
                             </>
                         )}

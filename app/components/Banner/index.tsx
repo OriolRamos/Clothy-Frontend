@@ -47,7 +47,7 @@ const Banner = () => {
                             className="text-xs md:text-sm font-semibold hover:shadow-xl bg-blue text-white py-2 px-4 md:py-3 md:px-10 rounded-full hover:bg-hoblue"
                             onClick={handleSignUp}
                         >
-                            {t('banenr.signIn')}
+                            {t('signUp.registerButton')}
                         </a>
                     </div>
                 </div>

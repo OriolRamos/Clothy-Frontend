@@ -45,13 +45,13 @@ i18n
             order: ['localStorage', 'cookie', 'navigator'],
             caches: ['localStorage', 'cookie'],
         },
+        debug: false, // Desactiva els missatges de depuració
         interpolation: {
             escapeValue: false, // React ja s'encarrega de l'escapat de valors
         },
         react: {
             useSuspense: false, // Desactivar Suspense per SSR
         },
-        debug: true,
     });
 
 export default i18n;

@@ -335,34 +335,6 @@
     "search": "搜索...",
     "reset": "重置"
   },
-  "termsandconditions": {
-    "title": "使用条款和条件",
-    "welcome": "欢迎来到Clothy。您的体验和信任是我们的首要任务。",
-    "acceptableUse": {
-      "title": "1. 可接受的使用",
-      "content": "Clothy旨在个人和非商业用途。严格禁止："
-    },
-    "privacy": {
-      "title": "2. 隐私和数据保护（GDPR）",
-      "content": "在Clothy，我们严格遵循《通用数据保护条例》（GDPR）。您提供的个人数据仅用于为您提供更好的服务。"
-    },
-    "imagesUse": {
-      "title": "3. 图像使用",
-      "content": "当您上传图像到Clothy时，我们仅使用它来查找相似的衣物并改进我们的AI算法。"
-    },
-    "liability": {
-      "title": "4. 责任限制",
-      "content": "尽管我们尽力保持安全可靠的服务，Clothy对于某些不便不承担责任。"
-    },
-    "modifications": {
-      "title": "5. 条款的修改",
-      "content": "我们保留修改这些条款和条件的权利，以适应新的法律或技术要求。"
-    },
-    "contact": {
-      "title": "6. 联系和支持",
-      "content": "如果您对这些条款有任何疑问、关注或建议，请随时联系我们。"
-    }
-  },
   "verification" : {
     "title": "验证您的账户",
     "instructions": "请输入您的电子邮件和发送到您电子邮件的验证码。",
@@ -417,5 +389,245 @@
     "FAQ": "常见问题",
     "joinus": "加入我们",
     "others": "其他"
+  },
+  "termsandconditions": {
+    "title": "CLOTHY 使用条款与条件",
+    "lastUpdated": "最后更新：[日期]",
+    "welcome": "欢迎来到 Clothy，这是一个通过先进的网页抓取技术帮助您探索和比较时尚选项的平台，并且即将集成数字衣橱和基于人工智能的虚拟试衣间功能。通过访问和使用我们的服务，您明确且无条件地接受这些条款与条件以及任何未来的更新。如果您不同意其中任何条款，请停止使用该平台。",
+    "section1": {
+      "title": "1. 服务的目的与范围",
+      "content": "1.1 目的：\nClothy 提供一项服务，使您能够查看、比较和选择从多个网站提取的时尚产品。该平台仅供个人及参考使用，帮助用户在选择服装时做出决策。\n1.2 未来功能：\n在未来的更新中，Clothy 将允许用户：\n- 上传自己的服装图片以构建个性化的数字衣橱。\n- 通过组合个人收藏中的单品生成搭配。\n- 使用基于人工智能的虚拟试衣间，逼真地展示服装的穿着效果。"
+    },
+    "section2": {
+      "title": "2. 用户的适当使用和行为",
+      "content": "2.1 允许的使用：\nClothy 服务仅供个人和参考使用。严禁将该平台用于非法、诽谤或侵犯第三方权利的活动，以及未经授权的商业用途。\n2.2 用户责任：\n用户同意以负责任的方式使用 Clothy，并遵守以下规定：\n- 服务的技术条件和限制。\n- 现行法律法规，包括数据保护、版权和电子商务法规。\n- 通过网页抓取提取数据的网站的条款与条件（见第 3 节）。\n滥用或不当使用该服务可能会导致账号立即被暂停或取消。"
+    },
+    "section3": {
+      "title": "3. CLOTHY 的功能与技术",
+      "content": "3.1 网页抓取及第三方：\nClothy 整合了网页抓取工具，从多个网站获取时尚信息。用户承认并同意：\n- 发起和管理网页抓取请求的责任完全由用户承担。\n- 用户必须遵守每个数据提取网站的政策、条款和条件。\n- 任何不当使用提取信息的行为均由用户自行承担责任。\n3.2 网站及链接列表：\n目前，Clothy 整合了以下网站的数据（建议查看其条款与条件）：\nFashionSite1: https://www.fashionsite1.com/terms\nFashionSite2: https://www.fashionsite2.com/terms\nFashionSite3: https://www.fashionsite3.com/terms\n3.3 附加功能：\n在未来版本中，Clothy 将允许：\n- 管理个人数字衣橱，用户可以在其中存储自己的服装图片。\n- 生成个性化的搭配组合。\n- 利用虚拟仿真技术实时展示服装效果。\n为使用这些功能，用户必须接受有关其图片和数据使用及处理的特定条件。"
+    },
+    "section4": {
+      "title": "4. 数据保护与隐私",
+      "content": "4.1 法规遵从：\nClothy 承诺保护用户隐私，并遵守《通用数据保护条例》(GDPR)、数据保护和数字权利保障相关法律及其他适用法规。\n4.2 数据处理：\n您提供的个人信息将被保密处理，并仅用于提升服务体验和质量。更多详情请参阅我们的隐私政策。"
+    },
+    "section5": {
+      "title": "5. 内容与图像的使用",
+      "content": "5.1 图像上传与使用：\n用户为数字衣橱或虚拟试衣间上传的图像和内容，仅用于以下目的：\n- 识别和推荐类似服装。\n- 优化我们的人工智能算法。\n5.2 使用许可：\n用户保留其图像的知识产权，但授予 Clothy 非独占、可转让且免版权费的许可，以处理、存储和展示这些图像，从而提供最佳服务。"
+    },
+    "section6": {
+      "title": "6. 知识产权",
+      "content": "6.1 保留所有权利：\n与 Clothy 品牌相关的所有权利，包括标志、设计、文本、图形、界面及网站上其他所有内容，均予以保留。\n6.2 禁止使用：\n未经公司明确书面同意，禁止复制、分发、公开传播或修改任何 Clothy 内容。"
+    },
+    "section7": {
+      "title": "7. 责任限制及免责声明",
+      "content": "7.1 保证与可用性：\nClothy 致力于提供安全、可靠且最新的服务；但不保证服务访问不间断或无错误、无漏洞，也不保证通过网页抓取提取的信息始终完整、准确或最新。\n7.2 免责：\n在任何情况下，Clothy 均不对以下事项负责：\n- 因使用或无法使用服务所引起的直接、间接、偶然、特殊或结果性损害。\n- 因数据提取、处理或展示中的错误而导致的损害。\n- 因违反数据提取网站条款与条件而引起的第三方索赔。\n- 因数字衣橱或虚拟试衣间功能而导致的损害。\n7.3 风险承担：\n使用 Clothy 的风险完全由用户承担，用户对基于平台提供的信息所作出的所有决策承担全部责任。"
+    },
+    "section8": {
+      "title": "8. 修改及更新",
+      "content": "8.1 修改权：\nClothy 保留在任何时候修改、更新或替换本条款与条件的权利，以适应法律、技术或服务运营的变更。\n8.2 通知及审查义务：\n修改内容将在本页面上公布，并自公布之时起生效。用户有责任定期审查条款以了解任何变更。"
+    },
+    "section9": {
+      "title": "9. 司法管辖与适用法律",
+      "content": "本条款应受西班牙法律管辖并按其解释。因使用服务或解释本条款而引起的任何争议，应提交给 [城市/地区] 的有管辖权法院（除非另有协议）。"
+    },
+    "section10": {
+      "title": "10. 所有者信息 (LSSI-CE)",
+      "content": "根据《信息社会服务与电子商务法》(LSSI-CE)的规定，用户将获得以下信息：\n服务所有者: [公司名称]\n注册地址: [完整地址]\nCIF/NIF: [税号]\n联系邮箱: support@clothy.com\n联系电话: [电话号码]\n该信息旨在确保沟通及电子合同的透明度。"
+    },
+    "section11": {
+      "title": "11. Cookie 政策及类似技术",
+      "content": "Clothy 使用 Cookies 及类似技术以提升用户体验、分析流量并个性化内容。使用本网站即表示您同意按照我们的 Cookie 政策使用这些技术，该政策详细说明：\n- 使用的 Cookies 的目的及类型\n- 管理或拒绝 Cookies 的方式及选项\n- 禁用及删除 Cookies 的程序"
+    },
+    "section12": {
+      "title": "12. 消费者权利与远程合同",
+      "content": "如果用户以最终消费者身份使用服务，则告知用户：\n- 用户有权在 14 个日历日内无理由撤销合同，依据适用的远程合同规定。\n- 有关消费者索赔和争议解决的保证及权利适用。\n- 在任何交易正式达成之前，关于支付方式、期限及合同条件的信息将以明确和透明的方式提供。"
+    },
+    "section13": {
+      "title": "13. 联系与支持",
+      "content": "如果您对这些条款与条件有任何疑问、意见或建议，您可以通过以下方式联系我们：\n- 联系表单: https://www.clothy.com/contacto\n- 电子邮件: support@clothy.com\n\n通过使用 Clothy，您明确接受这些条款与条件，并确认您对平台的使用以及遵守 Clothy 及第三方规定的条款承担全部责任。\nClothy 品牌的所有权利均予以保留。"
+    }
+  },
+  "defaultSelect": "请选择",
+  "disponibleBrans": "可用品牌",
+  "termsText": "我已阅读并同意 ",
+  "termsLink": "条款和条件",
+  "signupbutton": "注册",
+  "loginbutton": "登录",
+  "filters": {
+    "type": {
+      "shirts": "衬衫",
+      "tshirts": "T恤",
+      "blouses": "女衬衫",
+      "tank_tops": "背心",
+      "pants": "裤子",
+      "jeans": "牛仔裤",
+      "shorts": "短裤",
+      "dresses": "连衣裙",
+      "skirts": "裙子",
+      "jackets": "夹克",
+      "coats": "外套",
+      "suits": "西装",
+      "blazers": "西装外套",
+      "hoodies": "连帽衫",
+      "sweaters": "毛衣",
+      "cardigans": "开衫",
+      "vests": "背心",
+      "overalls": "背带裤",
+      "jumpsuits": "连体衣",
+      "leggings": "打底裤",
+      "sweatpants": "运动裤",
+      "tracksuits": "运动套装",
+      "pajamas": "睡衣",
+      "bathrobes": "浴袍",
+      "underwear": "内衣",
+      "bras": "胸罩",
+      "panties": "内裤",
+      "boxers": "男士平角裤",
+      "briefs": "男士三角裤",
+      "socks": "袜子",
+      "stockings": "长袜",
+      "tights": "连裤袜",
+      "swimwear": "泳装",
+      "bikinis": "比基尼",
+      "one_piece_swimsuit": "连体泳衣",
+      "boardshorts": "沙滩短裤",
+      "sandals": "凉鞋",
+      "shoes": "鞋子",
+      "boots": "靴子",
+      "sneakers": "运动鞋",
+      "loafers": "乐福鞋",
+      "heels": "高跟鞋",
+      "slippers": "拖鞋",
+      "flip_flops": "人字拖",
+      "sportswear": "运动服",
+      "cycling_wear": "骑行服",
+      "yoga_wear": "瑜伽服",
+      "hiking_wear": "徒步服",
+      "gloves": "手套",
+      "hats": "帽子",
+      "scarves": "围巾",
+      "belts": "腰带",
+      "ties": "领带"
+    },
+    "color": {
+      "red": "红色",
+      "blue": "蓝色",
+      "green": "绿色",
+      "black": "黑色",
+      "white": "白色",
+      "yellow": "黄色",
+      "orange": "橙色",
+      "pink": "粉色",
+      "purple": "紫色",
+      "gray": "灰色",
+      "brown": "棕色",
+      "beige": "米色",
+      "turquoise": "青绿色",
+      "lilac": "淡紫色",
+      "gold": "金色",
+      "silver": "银色"
+    },
+    "section": {
+      "woman": "女装",
+      "man": "男装",
+      "kids": "儿童"
+    },
+    "brand": {
+      "zara": "ZARA",
+      "hm": "H&M",
+      "mango": "MANGO",
+      "bershka": "BERSHKA",
+      "stradivarius": "STRADIVARIUS",
+      "pullbear": "PULL&BEAR",
+      "oysho": "OYSHO",
+      "uniglo": "优衣库"
+    },
+    "country": {
+      "albania": "阿尔巴尼亚",
+      "andorra": "安道尔",
+      "armenia": "亚美尼亚",
+      "austria": "奥地利",
+      "belgica": "比利时",
+      "bosnia": "波斯尼亚和黑塞哥维那",
+      "bulgaria": "保加利亚",
+      "croacia": "克罗地亚",
+      "dinamarca": "丹麦",
+      "espanya": "西班牙",
+      "estonia": "爱沙尼亚",
+      "finlandia": "芬兰",
+      "francia": "法国",
+      "georgia": "格鲁吉亚",
+      "greci": "希腊",
+      "holanda": "荷兰",
+      "hungria": "匈牙利",
+      "islandia": "冰岛",
+      "irlanda": "爱尔兰",
+      "italia": "意大利",
+      "kosovo": "科索沃",
+      "lituania": "立陶宛",
+      "luxemburgo": "卢森堡",
+      "macedonia": "北马其顿",
+      "malta": "马耳他",
+      "moldavia": "摩尔多瓦",
+      "mónaco": "摩纳哥",
+      "montenegro": "黑山",
+      "noruega": "挪威",
+      "polonia": "波兰",
+      "portugal": "葡萄牙",
+      "republicaTxeca": "捷克共和国",
+      "romania": "罗马尼亚",
+      "serbia": "塞尔维亚",
+      "eslovaquia": "斯洛伐克",
+      "eslovenia": "斯洛文尼亚",
+      "suecia": "瑞典",
+      "suiza": "瑞士",
+      "unionEuropea": "欧盟",
+      "estatsUnits": "美国",
+      "canada": "加拿大",
+      "mexico": "墨西哥",
+      "argentina": "阿根廷",
+      "brasil": "巴西",
+      "colombia": "哥伦比亚",
+      "chile": "智利",
+      "peru": "秘鲁",
+      "uruguay": "乌拉圭",
+      "venezuela": "委内瑞拉",
+      "panama": "巴拿马",
+      "costarica": "哥斯达黎加",
+      "dominicana": "多米尼加共和国",
+      "guatemala": "危地马拉",
+      "ecuador": "厄瓜多尔",
+      "paraguay": "巴拉圭",
+      "bolivia": "玻利维亚",
+      "honduras": "洪都拉斯",
+      "salvador": "萨尔瓦多",
+      "nicaragua": "尼加拉瓜",
+      "belize": "伯利兹",
+      "trinidad": "特立尼达和多巴哥",
+      "jamaica": "牙买加",
+      "haiti": "海地",
+      "barbados": "巴巴多斯",
+      "bahames": "巴哈马",
+      "antilles": "荷属安的列斯",
+      "arabiaSaudita": "沙特阿拉伯",
+      "india": "印度",
+      "china": "中国",
+      "japó": "日本",
+      "coreadelsud": "韩国",
+      "coreadelNord": "朝鲜",
+      "pakistan": "巴基斯坦",
+      "afganistan": "阿富汗",
+      "nepal": "尼泊尔",
+      "bangladesh": "孟加拉国",
+      "sriLanka": "斯里兰卡",
+      "malasia": "马来西亚",
+      "indonesia": "印度尼西亚",
+      "tailandia": "泰国",
+      "singapur": "新加坡",
+      "filipines": "菲律宾",
+      "emiratsArabesUnits": "阿拉伯联合酋长国",
+      "israel": "以色列",
+      "palestina": "巴勒斯坦"
+    }
   }
 }

@@ -2,17 +2,21 @@ import React, { useState } from "react";
 import ExternalPageModal from "./ExternalPageModal";
 import { Cloth } from "../Modals/Cloth"; // Importa la interfície Cloth centralitzada
 import Image from "next/image";
+import {filters} from "../Filters/cloth_filters";
 
 interface ImageModelProps {
     cloth: Cloth;
+    country: string | null,
     onFavoriteToggle: () => void;
     onReload: () => void;
 }
 
-const ImageModel: React.FC<ImageModelProps> = ({ cloth, onFavoriteToggle, onReload }) => {
+const ImageModel: React.FC<ImageModelProps> = ({ cloth,country,  onFavoriteToggle, onReload }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const isOnSale = cloth.discount_price !== undefined;
 
+    // Buscar la divisa segons el país seleccionat
+    const currencySymbol = filters.currency.find(c => c.value === country)?.translation || "€";
     const brandLogoPath = `/images/brands/${cloth.brand.toLowerCase()}.png`;
 
     return (
@@ -41,9 +45,9 @@ const ImageModel: React.FC<ImageModelProps> = ({ cloth, onFavoriteToggle, onRelo
                     <div
                         className="absolute bottom-2 left-2 px-3 py-1 rounded-full text-white bg-black font-semibold text-sm flex items-center space-x-2">
                     {/* Preu original amb un efecte de línia tachada */}
-                        <span className="line-through text-gray-500">{cloth.price}€</span>
+                        <span className="line-through text-gray-500">{cloth.price}{currencySymbol}</span>
                         {/* Preu amb descompte en vermell */}
-                        <span className="text-red-500">{cloth.discount_price}€</span>
+                        <span className="text-red-500">{cloth.discount_price}{currencySymbol}</span>
                         {/* Percentatge de descompte en vermell */}
                         <span className="text-red-500 text-xs">- {cloth.discount}%</span>
                         {/* S'afegirà el signe de % al descompte */}
@@ -52,7 +56,7 @@ const ImageModel: React.FC<ImageModelProps> = ({ cloth, onFavoriteToggle, onRelo
                     // Si no hi ha descompte, només mostrem el preu regular
                     <div
                         className="absolute bottom-2 left-2 px-3 py-1 rounded-full text-white font-semibold text-sm bg-black">
-                        {cloth.price}€
+                        {cloth.price}{currencySymbol}
                     </div>
                 )}
             </div>
@@ -88,6 +92,7 @@ const ImageModel: React.FC<ImageModelProps> = ({ cloth, onFavoriteToggle, onRelo
             {isModalOpen && (
                 <ExternalPageModal
                     cloth={cloth}
+                    country={country}
                     isOpen={isModalOpen}
                     onClose={() => setIsModalOpen(false)}
                 />

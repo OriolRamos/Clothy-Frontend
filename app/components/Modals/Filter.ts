@@ -9,6 +9,7 @@ export interface Filters {
     orderMajorMenor: boolean;
     orderMenorMajor: boolean;
     onlyOffers: boolean;
+    country: string | null;
     [key: string]: any;  // Permet altres claus dinàmiques si cal
 }
 
@@ -24,4 +25,5 @@ export const defaultFilters: Filters = {
     orderMajorMenor: false,
     orderMenorMajor: false,
     onlyOffers: false,
+    country: null,
 };

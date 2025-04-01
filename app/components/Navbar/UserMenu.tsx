@@ -36,15 +36,15 @@ const UserMenu: React.FC<UserMenuProps> = ({ userInitial, logout }) => {
                     </button>
                     </Link>
                 </MenuItem>
-                {/*
+
                 <MenuItem {...({} as any)}>
-                    <Link href="/maintenance" passHref>
+                    <Link href="/history" passHref>
                         <button className="w-full text-left text-black" >
                             {t("usermenu.history")}
                         </button>
                     </Link>
                 </MenuItem>
-                */}
+
                 <MenuItem {...({} as any)}>
                     <Link href="/profile/favorites" passHref>
                         <button className="w-full text-left text-black" >

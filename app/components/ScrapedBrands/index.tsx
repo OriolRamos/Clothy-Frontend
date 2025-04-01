@@ -1,8 +1,11 @@
 "use client";
 import Image from "next/image";
 import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
 
 const ScrapedBrands = () => {
+    const { t } = useTranslation("common");
+
     const logos = useMemo(() => {
         const images = require.context(
             "../../../public/images/brands",
@@ -14,7 +17,7 @@ const ScrapedBrands = () => {
 
     return (
         <div className="relative w-full h-[300px] overflow-hidden rounded-2xl bg-white/70 backdrop-blur-md ">
-            <h2 className="text-4xl font-semibold text-center text-gray-800 mb-2">Marcas Disponibles</h2>
+            <h2 className="text-4xl font-semibold text-center text-gray-800 mb-2">{t("disponibleBrans")}</h2>
             <div className="relative w-full h-[250px] overflow-hidden">
                 <div className="flex space-x-8 animate-marquee">
                     {logos.concat(logos).map((logo, index) => (

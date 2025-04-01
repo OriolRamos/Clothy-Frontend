@@ -1,8 +1,10 @@
+"use client";
 import { useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
 
 interface FilterOption {
     value: string;
-    translation: string;
+    translation: string; // Aquest camp ara serveix com a valor per defecte o per a fallback
 }
 
 interface RenderFilterProps {
@@ -22,20 +24,24 @@ const RenderFilter: React.FC<RenderFilterProps> = ({
                                                        filtersState,
                                                        setFiltersState,
                                                    }) => {
-    const filterRef = useRef<HTMLDivElement>(null); // 🔑 Referència al filtre
+    const { t } = useTranslation("common");
+    const filterRef = useRef<HTMLDivElement>(null);
 
     const initialValue = String(filtersState[filterKey] ?? "");
-    const selectedOption = filterOptions.find(option => option.value === initialValue);
+    // Mostrem la traducció mitjançant t() amb la clau: filters.{filterKey}.{value}
+    const selectedOption = filterOptions.find(
+        (option) => option.value === initialValue
+    );
     const searchValue = filtersState[`${filterKey}Search`] || "";
 
-    const filteredOptions = filterOptions.filter(option =>
-        option.translation.toLowerCase().includes(searchValue.toLowerCase())
+    const filteredOptions = filterOptions.filter((option) =>
+        t(`filters.${filterKey}.${option.value}`)
+            .toLowerCase()
+            .includes(searchValue.toLowerCase())
     );
 
     const handleModalToggle = () => {
         setExpandedFilter(expandedFilter === filterKey ? "" : filterKey);
-
-        // 🔄 Neteja la cerca només quan s'obre el modal
         if (expandedFilter !== filterKey) {
             setFiltersState((prev) => ({
                 ...prev,
@@ -44,11 +50,10 @@ const RenderFilter: React.FC<RenderFilterProps> = ({
         }
     };
 
-    // 🧲 Detecta clics fora per tancar el modal
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             if (filterRef.current && !filterRef.current.contains(event.target as Node)) {
-                setExpandedFilter(""); // 🚪 Tanca si clic fora
+                setExpandedFilter("");
             }
         };
 
@@ -57,7 +62,7 @@ const RenderFilter: React.FC<RenderFilterProps> = ({
         }
 
         return () => {
-            document.removeEventListener("mousedown", handleClickOutside); // 🧹 Neteja l’escoltador
+            document.removeEventListener("mousedown", handleClickOutside);
         };
     }, [expandedFilter, filterKey, setExpandedFilter]);
 
@@ -69,23 +74,21 @@ const RenderFilter: React.FC<RenderFilterProps> = ({
                 } focus:outline-none transition-all ease-in-out duration-200 hover:bg-blue-50`}
                 onClick={handleModalToggle}
             >
-                <span className="font-semibold text-black">
-                    {filterKey.charAt(0).toUpperCase() + filterKey.slice(1)}:
-                </span>
-                <span
-                    className={`px-2 py-1 ml-2 rounded-md ${
-                        selectedOption ? "text-black" : "text-black"
-                    }`}
-                >
-                    {selectedOption ? selectedOption.translation : "Seleccione"}
-                </span>
+        <span className="font-semibold text-black">
+          {filterKey.charAt(0).toUpperCase() + filterKey.slice(1)}:
+        </span>
+                <span className="px-2 py-1 ml-2 rounded-md text-black">
+          {selectedOption
+              ? t(`filters.${filterKey}.${selectedOption.value}`)
+              : t("defaultSelect")}
+        </span>
             </button>
 
             {expandedFilter === filterKey && (
                 <div className="absolute top-full left-0 w-full bg-white border border-gray-300 rounded-lg shadow-lg mt-2 z-10 max-h-48 overflow-y-auto scrollbar-hidden filter">
                     <input
                         type="text"
-                        placeholder="Buscar..."
+                        placeholder={t("filters.searchPlaceholder", "Buscar...")}
                         value={searchValue}
                         onChange={(e) =>
                             setFiltersState((prev) => ({
@@ -109,13 +112,13 @@ const RenderFilter: React.FC<RenderFilterProps> = ({
                                     onClick={() => {
                                         setFiltersState((prev) => ({
                                             ...prev,
-                                            [filterKey]: isSelected ? null : option.value,
+                                            [filterKey]: isSelected ? "" : option.value,
                                             [`${filterKey}Search`]: "",
                                         }));
-                                        setExpandedFilter(""); // 🚪 Tanca després de seleccionar
+                                        setExpandedFilter("");
                                     }}
                                 >
-                                    {option.translation}
+                                    {t(`filters.${filterKey}.${option.value}`, option.translation)}
                                 </button>
                             );
                         })}

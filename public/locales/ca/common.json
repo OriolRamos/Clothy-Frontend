@@ -334,34 +334,6 @@
         "search": "Cercar...",
         "reset": "Restablir"
     },
-    "termsandconditions": {
-        "title": "Condicions d'Ús i Termes",
-        "welcome": "Benvingut a Clothy. La teva experiència i confiança són la nostra prioritat.",
-        "acceptableUse": {
-            "title": "1. Ús Acceptable",
-            "content": "Clothy està dissenyada per a ús personal i no comercial. Està estrictament prohibit:"
-        },
-        "privacy": {
-            "title": "2. Privadesa i Protecció de Dades (GDPR)",
-            "content": "A Clothy seguim estrictament el Reglament General de Protecció de Dades (GDPR). Les dades personals que ens proporciones s’utilitzen exclusivament per oferir-te un millor servei."
-        },
-        "imagesUse": {
-            "title": "3. Ús de les Imatges",
-            "content": "Quan puges una imatge a Clothy, només s’utilitza per trobar roba similar i millorar el nostre algoritme d’IA."
-        },
-        "liability": {
-            "title": "4. Limitació de Responsabilitat",
-            "content": "Tot i que fem tot el possible per mantenir un servei segur i fiable, Clothy no es fa responsable de certs inconvenients."
-        },
-        "modifications": {
-            "title": "5. Modificació dels Termes",
-            "content": "Ens reservem el dret de modificar aquests termes i condicions per adaptar-nos a noves necessitats legals o tecnològiques."
-        },
-        "contact": {
-            "title": "6. Contacte i Suport",
-            "content": "Si tens algun dubte, preocupació o suggeriment sobre aquests termes, no dubtis a contactar-nos."
-        }
-    },
     "verification" : {
         "title": "Verifica el teu compte",
         "instructions": "Introdueix el teu correu i el codi de verificació enviat al teu correu electrònic.",
@@ -416,7 +388,246 @@
         "FAQ": "PMF",
         "joinus": "Uneix-te",
         "others": "Altres"
+    },
+    "termsandconditions": {
+        "title": "TERMES I CONDICIONS D'ÚS DE CLOTHY",
+        "lastUpdated": "Última actualització: [Data]",
+        "welcome": "Benvingut/da a Clothy, la plataforma que et permet explorar i comparar opcions de moda mitjançant tècniques avançades de web scraping, i que pròximament integrarà funcionalitats d'armari digital i probadors virtuals basats en intel·ligència artificial. En accedir i utilitzar els nostres serveis, acceptes de manera expressa i incondicional aquests Termes i Condicions, així com qualsevol actualització futura. Si no estàs d'acord amb alguna clàusula, et demanem que t'abstinguis d'utilitzar la plataforma.",
+        "section1": {
+            "title": "1. OBJECTIU I ABAST DEL SERVEI",
+            "content": "1.1 Finalitat:\nClothy ofereix un servei que permet visualitzar, comparar i seleccionar productes de moda extrets de diversos llocs web. La plataforma està destinada a l'ús personal i de consulta, facilitant a l'usuari la presa de decisions a l'hora d'escollir peces de vestir.\n1.2 Funcionalitats Futures:\nEn properes actualitzacions, Clothy permetrà als usuaris:\n- Pugin imatges de les seves pròpies peces per conformar un armari digital personalitzat.\n- Generin outfits combinant peces de la seva col·lecció personal.\n- Utilitzin un probador virtual mitjançant intel·ligència artificial, que mostrarà de manera realista com quedarien les peces."
+        },
+        "section2": {
+            "title": "2. ÚS ADEQUAT I CONDUCTA DE L'USUARI",
+            "content": "2.1 Ús Permès:\nEl servei de Clothy està destinat exclusivament a finalitats personals i de consulta. Queda estrictament prohibit utilitzar la plataforma per a activitats il·legals, difamatories o que vulnerin drets de tercers, així com per a usos comercials no autoritzats.\n2.2 Responsabilitat de l'Usuari:\nL'usuari es compromet a utilitzar Clothy de manera responsable i a respectar:\n- Les condicions tècniques i limitacions del servei.\n- Les normatives i lleis vigents, incloent-hi les de protecció de dades, drets d'autor i la legislació de comerç electrònic.\n- Els termes i condicions dels llocs web dels quals s'extreuen les dades mitjançant web scraping (vegeu la secció 3).\nL'ús indegut o abusiu del servei podrà comportar la suspensió o cancel·lació immediata del compte."
+        },
+        "section3": {
+            "title": "3. FUNCIONALITATS I TECNOLOGIES DE CLOTHY",
+            "content": "3.1 Web Scraping i Tercers:\nClothy incorpora una eina de web scraping per obtenir informació de moda de diversos llocs web. L'usuari reconeix i accepta que: \n - És l'únic responsable d'iniciar i gestionar les consultes de web scraping. \n - Ha de complir amb les polítiques, termes i condicions de cada lloc web des del qual s'extreguin dades. \n - Qualsevol incompliment en l'ús de la informació extreta serà responsabilitat exclusiva de l'usuari. \n 3.2 Llistat de Llocs i Enllaços: \n Actualment, Clothy integra dades dels següents llocs (es recomana revisar els seus Termes i Condicions): \n Zara: https://www.zara.com/terms\nBershka: https://www.bershka.com/terms\nOysho: https://www.oysho.com/terms\nPull & Bear: https://www.pullandbear.com/terms\nStradivarius: https://www.stradivarius.com/terms\nMassimo Dutti: https://www.massimodutti.com/terms\nMango: https://shop.mango.com/terms\nH&M: https://www2.hm.com/en_us/customer-service/terms.html\nUniqlo: https://www.uniqlo.com/us/en/terms-of-use\nGap: https://www.gap.com/help/terms-conditions.html\nForever 21: https://www.forever21.com/us/shop/info/terms\nPrimark: https://www.primark.com/terms\nTopshop: https://www.topshop.com/terms-and-conditions\nASOS: https://www.asos.com/terms-and-conditions\nNike: https://www.nike.com/legal/terms-of-use\nAdidas: https://www.adidas.com/us/terms-and-conditions\nLevi's: https://www.levi.com/US/en_US/legal/terms-of-use\nPuma: https://us.puma.com/terms-of-use\nCalvin Klein: https://www.calvinklein.us/en/terms-of-use\nTommy Hilfiger: https://usa.tommy.com/terms-of-use \n 3.3 Funcionalitats Addicionals:\n En futures versions, Clothy permetrà:\n - La gestió d'un armari digital personal, on els usuaris podran emmagatzemar imatges de les seves peces.\n - La generació de combinacions i conjunts personalitzats.\n - La visualització en temps real de com quedarien les peces mitjançant tecnologia de simulació virtual.\n Per a aquestes funcions, l'usuari haurà d'acceptar condicions específiques sobre l'ús i el tractament de les seves imatges i dades."
+        },
+        "section4": {
+            "title": "4. PROTECCIÓ DE DADES I PRIVACITAT",
+            "content": "4.1 Compliment Normatiu:\nClothy es compromet a protegir la privacitat dels usuaris i a complir amb el Reglament General de Protecció de Dades (GDPR), la Llei Orgànica de Protecció de Dades i Garantia de Drets Digitals (LOPDGDD) i altres normatives aplicables.\n4.2 Tractament de Dades:\nLa informació personal que proporcioneu es tractarà de forma confidencial i s'utilitzarà exclusivament per millorar l'experiència i la qualitat del servei. Per a més detalls, consulteu la nostra Política de Privacitat."
+        },
+        "section5": {
+            "title": "5. ÚS DE CONTINGUTS I IMATGES",
+            "content": "5.1 Carrega i Ús d'Imatges:\nLes imatges i continguts que els usuaris carreguin per a l'armari digital o per al probador virtual seran utilitzats única i exclusivament per a:\n- Identificar i recomanar peces de vestir similars.\n- Optimitzar els nostres algoritmes d'intel·ligència artificial.\n5.2 Llicència d'Ús:\nL'usuari conserva la propietat intel·lectual de les seves imatges, però concedeix a Clothy una llicència no exclusiva, transferible i lliure de royalties per processar-les, emmagatzemar-les i visualitzar-les amb la finalitat de prestar-li el servei de manera òptima."
+        },
+        "section6": {
+            "title": "6. PROPIETAT INTEL·LECTUAL",
+            "content": "6.1 Drets Reservats:\nTots els drets relatius a la marca Clothy, incloent-hi logotips, dissenys, textos, gràfics, interfícies i qualsevol altre contingut del lloc, queden reservats.\n6.2 Ús Prohibit:\nEs prohibeix la reproducció, distribució, comunicació pública o transformació de qualsevol contingut de Clothy sense el consentiment exprés i per escrit de l'empresa."
+        },
+        "section7": {
+            "title": "7. LIMITACIÓ DE RESPONSABILITAT I RENÚNCIA",
+            "content": "7.1 Garanties i Disponibilitat:\nClothy s'esforça per mantenir un servei segur, fiable i actualitzat; no obstant això, no garanteix que:\n- L'accés al servei sigui ininterromput ni exempt d'errors o vulnerabilitats.\n- La informació extreta mitjançant web scraping sigui completa, exacta o actualitzada en tot moment.\n7.2 Exclusió de Responsabilitat:\nEn cap cas Clothy serà responsable de:\n- Danys directes, indirectes, incidentals, especials o consecutius derivats de l'ús o la impossibilitat d'ús del servei.\n- Perjudicis ocasionats per errors en l'extracció, processament o presentació de dades.\n- Reclamacions de tercers relacionades amb l'incompliment dels termes i condicions dels llocs web dels quals s'extreuen dades.\n- Danys o perjudicis derivats de les funcionalitats de l'armari digital o del probador virtual.\n7.3 Assumpció de Riscos:\nL'ús de Clothy es realitza sota el risc exclusiu de l'usuari, qui assumeix la plena responsabilitat de les decisions basades en la informació proporcionada per la plataforma."
+        },
+        "section8": {
+            "title": "8. MODIFICACIONS I ACTUALITZACIONS",
+            "content": "8.1 Dret de Modificació:\nClothy es reserva el dret de modificar, actualitzar o substituir aquests Termes i Condicions en qualsevol moment, amb la finalitat d'adaptar-los a canvis legislatius, tecnològics o de funcionament del servei.\n8.2 Notificació i Obligació de Revisió:\nLes modificacions seran publicades en aquesta mateixa pàgina i entraran en vigor en el moment de la seva publicació. És responsabilitat de l'usuari revisar periòdicament els Termes per estar al corrent de possibles canvis."
+        },
+        "section9": {
+            "title": "9. JURISDICCIÓ I LLEI APLICABLE",
+            "content": "Aquests Termes es regiran i interpretaran d'acord amb la legislació espanyola. Qualsevol controvèrsia derivada de l'ús del servei o de la interpretació d'aquests termes es sotmetrà als jutjats i tribunals competents de [Ciutat/Regió], llevat d'un acord en contrari."
+        },
+        "section10": {
+            "title": "10. INFORMACIÓ I DADES DEL TITULAR (LSSI-CE)",
+            "content": "En compliment de la Llei de Serveis de la Societat de la Informació i Comerç Electrònic (LSSI-CE), s'informa a l'usuari que:\nTitular del Servei: [Nom de l'Empresa]\nDomicili Social: [Adreça Completa]\nCIF/NIF: [Número d'Identificació Fiscal]\nCorreu Electrònic de Contacte: support@clothy.com\nTelèfon de Contacte: [Número de Telèfon]\nAquesta informació es facilitarà als usuaris per garantir la transparència en les comunicacions i la contractació electrònica."
+        },
+        "section11": {
+            "title": "11. POLÍTICA DE COOKIES I TECNOLOGIES SIMILARS",
+            "content": "Clothy utilitza cookies i tecnologies similars per millorar l'experiència de l'usuari, analitzar el trànsit i personalitzar el contingut. En utilitzar el lloc, acceptes l'ús d'aquestes tecnologies d'acord amb la nostra Política de Cookies, en la qual es detalla:\n- Finalitat i tipus de cookies utilitzades.\n- Modalitats de consentiment i opcions per gestionar-les o rebutjar-les.\n- Procediments per a la desactivació i eliminació de cookies."
+        },
+        "section12": {
+            "title": "12. DRETS DEL CONSUMIDOR I CONTRACTACIÓ A DISTÀNCIA",
+            "content": "Si l'usuari accedeix al servei en qualitat de consumidor final, se li informa que:\n- Té dret a desistir del contracte en un termini de 14 dies naturals, sense necessitat de justificació, d'acord amb la normativa aplicable en contractació a distància.\n- S'apliquen garanties i drets en matèria de reclamacions i resolució de conflictes de consum.\n- La informació sobre mitjans de pagament, terminis i condicions de contractació serà facilitada de manera clara i transparent abans de formalitzar qualsevol transacció."
+        },
+        "section13": {
+            "title": "13. CONTACTE I SUPORT",
+            "content": "Si tens qualsevol dubte, comentari o suggeriment sobre aquests Termes i Condicions, pots posar-te en contacte amb nosaltres a través de:\n- Formulari de Contacte: https://www.clothy.com/contacto\n- Correu Electrònic: support@clothy.com\n\nEn utilitzar Clothy, acceptes expressament aquests Termes i Condicions, reconeixent que ets l'únic responsable de l'ús que facis de la plataforma i de complir amb les condicions imposades tant per Clothy com per tercers.\nTots els drets de la marca Clothy queden expressament reservats."
+        }
+    },
+    "defaultSelect": "Selecciona",
+    "disponibleBrans": "Marques disponibles",
+    "termsText": "He llegit i accepto els ",
+    "termsLink": "termes i condicions",
+    "signupbutton": "Registra't",
+    "loginbutton": "Inicia sessió",
+    "filters": {
+        "type": {
+            "shirts": "Camises",
+            "tshirts": "Samarretes",
+            "blouses": "Bruses",
+            "tank_tops": "Tops / Samarretes de tirants",
+            "pants": "Pantalons",
+            "jeans": "Texans",
+            "shorts": "Bermudes / Pantalons curts",
+            "dresses": "Vestits",
+            "skirts": "Faldilles",
+            "jackets": "Jaquetes",
+            "coats": "Abrics",
+            "suits": "Vestits de jaqueta",
+            "blazers": "Americanes",
+            "hoodies": "Dessuatxes amb caputxa",
+            "sweaters": "Jerseis",
+            "cardigans": "Càrdigans",
+            "vests": "Armilles",
+            "overalls": "Peto",
+            "jumpsuits": "Macaques",
+            "leggings": "Malles / Leggings",
+            "sweatpants": "Pantalons de xandall",
+            "tracksuits": "Xandalls",
+            "pajamas": "Pijames",
+            "bathrobes": "Barnussos",
+            "underwear": "Roba interior",
+            "bras": "Sostenidors",
+            "panties": "Calces",
+            "boxers": "Calçotets tipus bòxer",
+            "briefs": "Calçotets",
+            "socks": "Mitjons",
+            "stockings": "Mitges",
+            "tights": "Mitjanes",
+            "swimwear": "Banyadors",
+            "bikinis": "Biquinis",
+            "one_piece_swimsuit": "Banyadors d'una peça",
+            "boardshorts": "Banyadors curts",
+            "sandals": "Sandàlies",
+            "shoes": "Sabates",
+            "boots": "Botes",
+            "sneakers": "Sabatilles esportives",
+            "loafers": "Mocassins",
+            "heels": "Sabates de taló",
+            "slippers": "Pantufles",
+            "flip_flops": "Xancletes",
+            "sportswear": "Roba esportiva",
+            "cycling_wear": "Roba de ciclisme",
+            "yoga_wear": "Roba de ioga",
+            "hiking_wear": "Roba de muntanya",
+            "gloves": "Guants",
+            "hats": "Gorros / Barrets",
+            "scarves": "Bufandes",
+            "belts": "Cinturons",
+            "ties": "Corbates"
+        },
+        "color": {
+            "red": "Vermell",
+            "blue": "Blau",
+            "green": "Verd",
+            "black": "Negre",
+            "white": "Blanc",
+            "yellow": "Groc",
+            "orange": "Taronja",
+            "pink": "Rosa",
+            "purple": "Lila",
+            "gray": "Gris",
+            "brown": "Marró",
+            "beige": "Beix",
+            "turquoise": "Turquesa",
+            "lilac": "Lila clar",
+            "gold": "Daurat",
+            "silver": "Platejat"
+        },
+        "section": {
+            "woman": "Dona",
+            "man": "Home",
+            "kids": "Infantil"
+        },
+        "brand": {
+            "zara": "Zara",
+            "hm": "H&M",
+            "mango": "Mango",
+            "bershka": "Bershka",
+            "stradivarius": "Stradivarius",
+            "pullbear": "Pull&Bear",
+            "oysho": "Oysho",
+            "uniglo": "Uniqlo"
+        },
+        "country": {
+            "albania": "Albània",
+            "andorra": "Andorra",
+            "armenia": "Armènia",
+            "austria": "Àustria",
+            "belgica": "Bèlgica",
+            "bosnia": "Bòsnia i Hercegovina",
+            "bulgaria": "Bulgària",
+            "croacia": "Croàcia",
+            "dinamarca": "Dinamarca",
+            "espanya": "Espanya",
+            "estonia": "Estònia",
+            "finlandia": "Finlàndia",
+            "francia": "França",
+            "georgia": "Geòrgia",
+            "greci": "Grècia",
+            "holanda": "Països Baixos",
+            "hungria": "Hongria",
+            "islandia": "Islàndia",
+            "irlanda": "Irlanda",
+            "italia": "Itàlia",
+            "kosovo": "Kosovo",
+            "lituania": "Lituània",
+            "luxemburgo": "Luxemburg",
+            "macedonia": "Macedònia del Nord",
+            "malta": "Malta",
+            "moldavia": "Moldàvia",
+            "mónaco": "Mònaco",
+            "montenegro": "Montenegro",
+            "noruega": "Noruega",
+            "polonia": "Polònia",
+            "portugal": "Portugal",
+            "republicaTxeca": "República Txeca",
+            "romania": "Romania",
+            "serbia": "Sèrbia",
+            "eslovaquia": "Eslovàquia",
+            "eslovenia": "Eslovènia",
+            "suecia": "Suècia",
+            "suiza": "Suïssa",
+            "unionEuropea": "Unió Europea",
+            "estatsUnits": "Estats Units",
+            "canada": "Canadà",
+            "mexico": "Mèxic",
+            "argentina": "Argentina",
+            "brasil": "Brasil",
+            "colombia": "Colòmbia",
+            "chile": "Xile",
+            "peru": "Perú",
+            "uruguay": "Uruguai",
+            "venezuela": "Veneçuela",
+            "panama": "Panamà",
+            "costarica": "Costa Rica",
+            "dominicana": "República Dominicana",
+            "guatemala": "Guatemala",
+            "ecuador": "Equador",
+            "paraguay": "Paraguai",
+            "bolivia": "Bolívia",
+            "honduras": "Hondures",
+            "salvador": "El Salvador",
+            "nicaragua": "Nicaragua",
+            "belize": "Belize",
+            "trinidad": "Trinitat i Tobago",
+            "jamaica": "Jamaica",
+            "haiti": "Haití",
+            "barbados": "Barbados",
+            "bahames": "Bahames",
+            "antilles": "Antilles Neerlandeses",
+            "arabiaSaudita": "Aràbia Saudita",
+            "india": "Índia",
+            "china": "Xina",
+            "japó": "Japó",
+            "coreadelsud": "Corea del Sud",
+            "coreadelNord": "Corea del Nord",
+            "pakistan": "Pakistan",
+            "afganistan": "Afganistan",
+            "nepal": "Nepal",
+            "bangladesh": "Bangladesh",
+            "sriLanka": "Sri Lanka",
+            "malasia": "Malàisia",
+            "indonesia": "Indonèsia",
+            "tailandia": "Tailàndia",
+            "singapur": "Singapur",
+            "filipines": "Filipines",
+            "emiratsArabesUnits": "Emirats Àrabs Units",
+            "israel": "Israel",
+            "palestina": "Palestina"
+        }
     }
-
 
 }

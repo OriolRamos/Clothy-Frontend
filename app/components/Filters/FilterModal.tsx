@@ -98,7 +98,7 @@ const FilterModal: React.FC<FilterModalProps> = ({ isOpen, onClose, filters, fil
                                         setFiltersState={setFiltersState}
                                     />
                                 );
-                            } else if (filterKey === "brand") {
+                            } else if (filterKey === "brand" || filterKey === "size") {
                                 // Si és un filtre string (que no sigui color), renderitzem amb renderFilter
                                 return (
                                     <RenderMultipleFilter

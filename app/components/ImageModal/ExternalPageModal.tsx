@@ -1,22 +1,48 @@
 import React, { useEffect } from "react";
 import { Cloth } from "../Modals/Cloth.ts"; // Assegura't que la interfície Cloth està en un fitxer centralitzat
 import {filters, getTranslation} from "../Filters/cloth_filters";
+import {useAuth} from "@/app/components/AuthContext";
 
 interface ExternalPageModalProps {
     cloth: Cloth;
+    counrty: string | null;
     isOpen: boolean;
     onClose: () => void;
 }
 
-const ExternalPageModal: React.FC<ExternalPageModalProps> = ({ cloth, isOpen, onClose }) => {
+const ExternalPageModal: React.FC<ExternalPageModalProps> = ({ cloth, country, isOpen, onClose }) => {
+    const { fetchWithAuth } = useAuth();
     useEffect(() => {
         document.body.style.overflow = isOpen ? "hidden" : "auto";
         return () => {
             document.body.style.overflow = "auto";
         };
     }, [isOpen]);
+    const currencySymbol = filters.currency.find(c => c.value === country)?.translation || "€";
 
     if (!isOpen || !cloth) return null;
+
+    const setRedirectingLog = async (cloth: Cloth) => {
+        // Mètode per afegir o eliminar de favorits (sense canvis en aquesta part)
+        try {
+            const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+            const response = await fetchWithAuth(`${apiUrl}/search/redirecting/log`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ cloth }),
+            });
+            if (response.ok) {
+                console.log("Log de reenviament correcte!");
+            } else {
+                console.error("Error eliminant dels favorits.");
+            }
+
+        } catch (error) {
+            console.error("Error gestionant els favorits:", error);
+        }
+    };
 
     return (
         <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
@@ -66,18 +92,19 @@ const ExternalPageModal: React.FC<ExternalPageModalProps> = ({ cloth, isOpen, on
                         <div className="mt-4 text-right">
                             {cloth.in_discount ? (
                                 <p className="text-2xl font-bold">
-                                    <span className="line-through text-gray-500 mr-2">{cloth.price}€</span>
-                                    <span className="text-red-500">{cloth.discount_price}€</span>
+                                    <span className="line-through text-gray-500 mr-2">{cloth.price}{currencySymbol}</span>
+                                    <span className="text-red-500">{cloth.discount_price}{currencySymbol}</span>
                                     <span className="text-sm text-red-600 ml-2">-{cloth.discount}%</span>
                                 </p>
                             ) : (
-                                <p className="text-2xl font-bold">{cloth.price}€</p>
+                                <p className="text-2xl font-bold">{cloth.price}{currencySymbol}</p>
                             )}
                         </div>
 
                         {/* Botó comprar */}
                         <div className="mt-auto text-right">
                             <a
+                                onClick={() => setRedirectingLog(cloth)}
                                 href={cloth.purchase_url}
                                 target="_blank"
                                 rel="noopener noreferrer"
