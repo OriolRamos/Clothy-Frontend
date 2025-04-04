@@ -126,24 +126,31 @@ const SignUp = () => {
         <GoogleOAuthProvider clientId="677361179666-ae2o6mhsi2fq7g6ri1hiktap6mjrkaqs.apps.googleusercontent.com">
             <div className="relative h-[900px] flex items-center bg-gray-100">
                 <div className="absolute inset-0 lg:grid grid-cols-2">
-                    <div className="relative h-full hidden lg:block">
-                        <div className="absolute top-0 left-0 max-w-[400px] max-h-[400px] bg-gradient-to-tr from-blue-400 to-blue-600 clip-path-diagonal">
+                    {/* Columna de la imatge */}
+                    <div className="relative h-[900px] w-[900px] max-w-full hidden lg:block">
+                        <div
+                            className="absolute top-0 left-0 w-full h-full bg-gradient-to-tr from-blue-400 to-blue-600 clip-path-diagonal">
                             <Image
                                 src="/images/login.png"
-                                alt="Imagen de signup"
-                                fill
-                                style={{ objectFit: "cover" }}
-                                className="opacity-90"
+                                alt={t("login.image_alt")}
+                                width={800}  // Definir amplada màxima
+                                height={800} // Definir alçada màxima
+                                style={{objectFit: "cover"}}
+                                className="opacity-90 max-w-full max-h-full"
                             />
                         </div>
                     </div>
 
-                    <div className="relative flex justify-center items-center pt-10">
+
+                    <div className="relative flex justify-center items-start pt-24">
                         <div className="rounded-2xl p-10 w-full max-w-lg bg-white shadow-md">
                             <h2 className="text-3xl font-bold text-blue-600 text-center mb-6">
                                 {t("signUp.title")}
                             </h2>
                             <form className="space-y-6" onSubmit={handleSubmit}>
+                                <h4 className="text-sm font-medium text-gray-700 font-bold">
+                                    {t("signUp.obligated_camps")}
+                                </h4>
                                 {/* Sección de información necesaria (país y términos) */}
                                 <div className="space-y-4">
                                     <div className="flex items-center">
@@ -195,13 +202,13 @@ const SignUp = () => {
 
                                 {/* Divider */}
                                 <div className="flex items-center my-6">
-                                    <hr className="flex-grow border-t border-gray-300" />
+                                    <hr className="flex-grow border-t border-gray-300"/>
                                 </div>
 
                                 {/* Fila para desplegar el formulario de correo */}
                                 <div
                                     onClick={() => setShowEmailForm(!showEmailForm)}
-                                    className="cursor-pointer text-center"
+                                    className="block w-full relative cursor-pointer text-center py-3 px-6 text-white bg-faqblue rounded-lg font-medium shadow-lg hover:scale-105 hover:bg-faqblue/90 hover:backdrop-blur-sm hover:opacity-95 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-btnblue focus:ring-offset-2 active:bg-hoblue transition transform duration-200"
                                 >
                                     <p className="text-blue-600 hover:underline">
                                         {t("signUp.createEmailSession") || "Crea sessió amb correu"}
@@ -228,7 +235,8 @@ const SignUp = () => {
                                             />
                                         </div>
                                         <div>
-                                            <label htmlFor="username" className="block text-sm font-medium text-gray-700">
+                                            <label htmlFor="username"
+                                                   className="block text-sm font-medium text-gray-700">
                                                 {t("signUp.usernameLabel")}
                                             </label>
                                             <input
@@ -242,7 +250,8 @@ const SignUp = () => {
                                             />
                                         </div>
                                         <div>
-                                            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+                                            <label htmlFor="password"
+                                                   className="block text-sm font-medium text-gray-700">
                                                 {t("signUp.passwordLabel")}
                                             </label>
                                             <div className="relative">
@@ -268,7 +277,8 @@ const SignUp = () => {
                                             </p>
                                         </div>
                                         <div>
-                                            <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">
+                                            <label htmlFor="confirmPassword"
+                                                   className="block text-sm font-medium text-gray-700">
                                                 {t("signUp.confirmPasswordLabel")}
                                             </label>
                                             <div className="relative">
@@ -304,9 +314,9 @@ const SignUp = () => {
 
                                 {/* Divider */}
                                 <div className="flex items-center mt-0 mb-6">
-                                    <hr className="flex-grow border-t border-gray-300" />
+                                    <hr className="flex-grow border-t border-gray-300"/>
                                     <span className="px-4 text-sm text-gray-500">O</span>
-                                    <hr className="flex-grow border-t border-gray-300" />
+                                    <hr className="flex-grow border-t border-gray-300"/>
                                 </div>
 
 

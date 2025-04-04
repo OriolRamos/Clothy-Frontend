@@ -4,31 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da1a1d65-fd44-4e09-8dc4-bd35cbb307fe" name="Changes" comment="v0.0.5">
-      <change afterPath="$PROJECT_DIR$/app/components/CameraModal/CameraCaptureModal.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/components/CameraModal/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/history/[id]/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/history/page.tsx" afterDir="false" />
+    <list default="true" id="da1a1d65-fd44-4e09-8dc4-bd35cbb307fe" name="Changes" comment="v0.0.7(Afegit historial de cerques)">
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Banner/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Banner/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/components/Filters/FilterModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Filters/FilterModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Filters/RenderColorFilter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Filters/RenderColorFilter.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Filters/RenderFilter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Filters/RenderFilter.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Filters/RenderMultipleFilter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Filters/RenderMultipleFilter.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Filters/cloth_filters.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Filters/cloth_filters.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/ImageModal/ExternalPageModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/ImageModal/ExternalPageModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Footer/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Footer/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/components/ImageModal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/ImageModal/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Modals/Filter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Modals/Filter.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Navbar/UserMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Navbar/UserMenu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Navbar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Navbar/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/ScrapedBrands/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/ScrapedBrands/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Login/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Login/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/components/SignUp/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/SignUp/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/history/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/history/[id]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/profile/favorites/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/profile/favorites/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/search_cloth/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/search_cloth/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/terms&amp;conditions/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/terms&amp;conditions/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/i18n.js" beforeDir="false" afterPath="$PROJECT_DIR$/i18n.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/verification/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/verification/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/locales/ar/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/ar/common.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/locales/bn/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/bn/common.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/locales/ca/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/ca/common.json" afterDir="false" />
@@ -161,7 +148,8 @@
       <workItem from="1740336341776" duration="5433000" />
       <workItem from="1740352151160" duration="70989000" />
       <workItem from="1743115003766" duration="1909000" />
-      <workItem from="1743282360371" duration="6793000" />
+      <workItem from="1743282360371" duration="8955000" />
+      <workItem from="1743702612304" duration="12715000" />
     </task>
     <task id="LOCAL-00001" summary="v2.0">
       <option name="closed" value="true" />
@@ -387,7 +375,23 @@
       <option name="project" value="LOCAL" />
       <updated>1740525418721</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="v0.0.6">
+      <option name="closed" value="true" />
+      <created>1743516371373</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1743516371373</updated>
+    </task>
+    <task id="LOCAL-00030" summary="v0.0.7(Afegit historial de cerques)">
+      <option name="closed" value="true" />
+      <created>1743519941253</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1743519941253</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -414,6 +418,8 @@
     <MESSAGE value="v0.4" />
     <MESSAGE value="v0.0.4 (filters add)" />
     <MESSAGE value="v0.0.5" />
-    <option name="LAST_COMMIT_MESSAGE" value="v0.0.5" />
+    <MESSAGE value="v0.0.6" />
+    <MESSAGE value="v0.0.7(Afegit historial de cerques)" />
+    <option name="LAST_COMMIT_MESSAGE" value="v0.0.7(Afegit historial de cerques)" />
   </component>
 </project>

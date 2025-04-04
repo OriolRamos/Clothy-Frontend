@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "../AuthContext/index"; // Assegura't que el path és correcte
 import Link from "next/link";
@@ -97,20 +97,22 @@ const Login = () => {
             {/* Contenidor principal */}
             <div className="absolute inset-0 lg:grid grid-cols-2">
                 {/* Columna de la imatge */}
-                <div className="relative h-full hidden lg:block">
-                    <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-tr from-blue-400 to-blue-600 clip-path-diagonal">
+                <div className="relative h-[900px] w-[900px] max-w-full hidden lg:block">
+                    <div
+                        className="absolute top-0 left-0 w-full h-full bg-gradient-to-tr from-blue-400 to-blue-600 clip-path-diagonal">
                         <Image
                             src="/images/login.png"
                             alt={t("login.image_alt")}
-                            fill
-                            style={{ objectFit: "cover" }}
-                            className="opacity-90"
+                            width={800}  // Definir amplada màxima
+                            height={800} // Definir alçada màxima
+                            style={{objectFit: "cover"}}
+                            className="opacity-90 max-w-full max-h-full"
                         />
                     </div>
                 </div>
 
                 {/* Columna del formulari */}
-                <div className="relative flex justify-center items-center">
+                <div className="relative flex justify-center items-start pt-24">
                     <div className="rounded-2xl p-10 w-full max-w-lg bg-white shadow-md">
                         <h2 className="text-3xl font-bold text-blue-600 text-center mb-6">
                             {t("login.title")}

@@ -352,6 +352,7 @@
   },
   "searchcloth": {
     "title": "衣物搜索",
+    "start_search": "搜索服装",
     "description": "发现我们的智能衣物搜索！只需上传一张图片，我们的系统将与互联网上的可用选项进行比较。",
     "uploadButton": "上传图片",
     "imageAlt": "上传的图片",
@@ -388,7 +389,10 @@
     "aboutus": "关于我们",
     "FAQ": "常见问题",
     "joinus": "加入我们",
-    "others": "其他"
+    "others": "其他",
+    "allRights": "版权所有，保留所有权利",
+    "pricavyPolicy": "隐私政策",
+    "termsConditions": "条款和条件"
   },
   "termsandconditions": {
     "title": "CLOTHY 使用条款与条件",
@@ -629,5 +633,28 @@
       "israel": "以色列",
       "palestina": "巴勒斯坦"
     }
+  },
+  "historial": {
+    "totalCloth": "服装总数",
+    "filters": "已应用的筛选条件",
+    "noHistory": "没有搜索历史。",
+    "error": "获取历史记录时出错。",
+    "title": "搜索历史"
+  },
+  "searchDetail": {
+    "title": "搜索详情",
+    "noResults": "未找到符合此搜索条件的服装。",
+    "error": "加载搜索结果时出错。"
+  },
+  "filtermodal": {
+    "title": "高级筛选",
+    "orderPrice": "按价格排序",
+    "priceRang": "价格区间",
+    "menorMayor": "从低到高",
+    "mayorMenor": "从高到低",
+    "aditionalFilters": "更多筛选条件",
+    "soloOfferts": "仅限优惠",
+    "reset": "重置",
+    "search": "搜索"
   }
 }

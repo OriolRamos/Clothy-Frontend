@@ -4,14 +4,10 @@ import React, { useState, useEffect, useCallback, useRef } from "react";
 import { useParams } from "next/navigation";
 import { useAuth } from "@/app/components/AuthContext";
 import ImageModel from "@/app/components/ImageModal/index";
-import FilterModal from "@/app/components/Filters/FilterModal";
 import { useTranslation } from "react-i18next";
 import ErrorModal from "@/app/components/Notifications/ErrorModal";
 import { Cloth } from "@/app/components/Modals/Cloth";
 import { Filters, defaultFilters } from "@/app/components/Modals/Filter";
-import RenderFilter from "@/app/components/Filters/RenderFilter";
-import ImageUploadModal from "@/app/components/CameraModal/index";
-import RenderMultipleFilter from "@/app/components/Filters/RenderMultipleFilter";
 
 const SearchDetailPage = () => {
     const { t } = useTranslation("common");
@@ -87,43 +83,6 @@ const SearchDetailPage = () => {
         return () => window.removeEventListener("scroll", onScroll);
     }, [loadMoreResults, hasMoreResults]);
 
-    // Funció per alternar favorits (com en el component original)
-    const handleFavoriteToggle = async (cloth: Cloth) => {
-        try {
-            const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-            const isFavorite = results.some((item) => item.purchase_url === cloth.purchase_url && item.favorite);
-            if (isFavorite) {
-                const response = await fetchWithAuth(`${apiUrl}/profile/favorites/delete`, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ purchase_url: cloth.purchase_url, color: cloth.color }),
-                });
-                if (response.ok) {
-                    setResults((prevResults) =>
-                        prevResults.map((item) =>
-                            item.purchase_url === cloth.purchase_url ? { ...item, favorite: false } : item
-                        )
-                    );
-                }
-            } else {
-                const response = await fetchWithAuth(`${apiUrl}/profile/favorites/add`, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ purchase_url: cloth.purchase_url, color: cloth.color }),
-                });
-                if (response.ok) {
-                    setResults((prevResults) =>
-                        prevResults.map((item) =>
-                            item.purchase_url === cloth.purchase_url ? { ...item, favorite: true } : item
-                        )
-                    );
-                }
-            }
-        } catch (error) {
-            console.error("Error gestionant els favorits:", error);
-        }
-    };
-
     return (
         <div className="min-h-screen bg-gray-100 px-8 py-12">
             {/* Opcional: mostra informació de la cerca (p.e. filtres aplicats, pàgina de cerca, etc.) */}
@@ -148,7 +107,6 @@ const SearchDetailPage = () => {
                             key={result.purchase_url}
                             cloth={result}
                             country={filtersState.country}
-                            onFavoriteToggle={() => handleFavoriteToggle(result)}
                         />
                     ))}
                 </div>

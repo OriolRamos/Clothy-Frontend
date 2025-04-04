@@ -345,7 +345,10 @@
     "aboutus": "私たちについて",
     "FAQ": "よくある質問",
     "joinus": "参加する",
-    "others": "その他"
+    "others": "その他",
+    "allRights": "全著作権所有",
+    "pricavyPolicy": "プライバシーポリシー",
+    "termsConditions": "利用規約"
   },
   "termsandconditions": {
     "title": "CLOTHY 利用規約",
@@ -587,5 +590,31 @@
         "israel": "イスラエル",
         "palestina": "パレスチナ"
       }
-    }
+    },
+  "historial": {
+    "totalCloth": "服の合計",
+    "filters": "適用されたフィルター",
+    "noHistory": "検索履歴がありません。",
+    "error": "履歴の取得中にエラーが発生しました。",
+    "title": "検索履歴"
+  },
+  "searchDetail": {
+    "title": "検索の詳細",
+    "noResults": "この検索に一致する服が見つかりませんでした。",
+    "error": "検索の読み込み中にエラーが発生しました。"
+  },
+  "searchcloth": {
+    "start_search": "服を検索"
+  },
+  "filtermodal": {
+    "title": "高度なフィルター",
+    "orderPrice": "価格順に並べ替え",
+    "priceRang": "価格範囲",
+    "menorMayor": "低価格から高価格へ",
+    "mayorMenor": "高価格から低価格へ",
+    "aditionalFilters": "追加のフィルター",
+    "soloOfferts": "オファーのみ",
+    "reset": "リセット",
+    "search": "検索"
+  }
 }

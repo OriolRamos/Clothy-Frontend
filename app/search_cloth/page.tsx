@@ -265,70 +265,6 @@ const CercaRoba = () => {
         }
     };
 
-    const handleFavoriteToggle = async (cloth: Cloth) => {
-        // Mètode per afegir o eliminar de favorits (sense canvis en aquesta part)
-        try {
-            const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-            const isFavorite = results.some((item) => item.purchase_url === cloth.purchase_url && item.favorite);
-            if (isFavorite) {
-                const response = await fetchWithAuth(`${apiUrl}/profile/favorites/delete`, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({ purchase_url: cloth.purchase_url, color: cloth.color }),
-                });
-                if (response.ok) {
-                    setResults((prevResults) =>
-                        prevResults.map((item) =>
-                            item.purchase_url === cloth.purchase_url ? { ...item, favorite: false } : item
-                        )
-                    );
-                } else {
-                    console.error("Error eliminant dels favorits.");
-                }
-            } else {
-                const response = await fetchWithAuth(`${apiUrl}/profile/favorites/add`, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({ purchase_url: cloth.purchase_url, color: cloth.color }),
-                });
-                if (response.ok) {
-                    setResults((prevResults) =>
-                        prevResults.map((item) =>
-                            item.purchase_url === cloth.purchase_url ? { ...item, favorite: true } : item
-                        )
-                    );
-                } else {
-                    console.error("Error afegint als favorits.");
-                }
-            }
-        } catch (error) {
-            console.error("Error gestionant els favorits:", error);
-        }
-    };
-
-    const onReload = async () => {
-        try {
-            setLoading(true);
-            const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-            const response = await fetchWithAuth(`${apiUrl}/profile/favorites`, {
-                method: "GET",
-            });
-            if (response.ok) {
-                const data = await response.json();
-                setResults(data);
-            } else {
-                console.error("Error al obtenir els favorits.");
-            }
-        } catch (error) {
-            console.error("Error al recarregar les imatges:", error);
-        } finally {
-            setLoading(false);
-        }
-    };
 
     const [modalVisible, setModalVisible] = useState(false);
 
@@ -337,8 +273,10 @@ const CercaRoba = () => {
         <div className="min-h-screen bg-gray-100 px-8 py-12">
             {/* Contenidor de filtres i botons */}
             <div className="mb-8">
+                {/* Vista per a pantalles grans */}
                 <div
-                    className="hidden lg:flex flex-col sm:flex-row items-center justify-evenly bg-white p-4 rounded-lg shadow-md space-y-4 sm:space-y-0">
+                    className="hidden lg:flex flex-col sm:flex-row items-center justify-evenly bg-white p-4 rounded-lg shadow-md space-y-4 sm:space-y-0"
+                >
                     {/* Botó de càmera */}
                     <div className="flex items-center">
                         <label
@@ -346,16 +284,30 @@ const CercaRoba = () => {
                             onClick={() => setModalVisible(true)}
                             className="flex items-center justify-center w-10 h-10 rounded-full bg-faqblue cursor-pointer hover:opacity-90 shadow-lg hover:scale-105 focus:outline-none focus:ring-2 focus:ring-btnblue focus:ring-offset-2 transition transform duration-200"
                         >
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none"
-                                 viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                                      d="M3 7h4l2-3h6l2 3h4v11H3V7z"/>
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                                      d="M12 11a4 4 0 100 8 4 4 0 000-8z"/>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="h-5 w-5 text-white"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M3 7h4l2-3h6l2 3h4v11H3V7z"
+                                />
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M12 11a4 4 0 100 8 4 4 0 000-8z"
+                                />
                             </svg>
                         </label>
                     </div>
 
+                    {/* Filtres */}
                     {Object.keys(filters).map((filterKey) => {
                         if (filterKey === "brand") {
                             return (
@@ -387,6 +339,8 @@ const CercaRoba = () => {
                             return null;
                         }
                     })}
+
+                    {/* Botó per més filtres */}
                     <button
                         onClick={() => setIsModalOpen(true)}
                         className="flex items-center cursor-pointer text-black text-sm font-medium transition-transform duration-200 hover:scale-105 focus:outline-none"
@@ -394,6 +348,8 @@ const CercaRoba = () => {
                         {t("searchcloth.more_filters")}
                         <span className="ml-2 text-sm transform transition-transform duration-200">▼</span>
                     </button>
+
+                    {/* Botó de cerca */}
                     <button
                         onClick={handleSearch}
                         className="block relative cursor-pointer text-center py-3 px-6 text-white bg-faqblue rounded-lg font-medium shadow-lg hover:scale-105 hover:bg-faqblue/90 hover:backdrop-blur-sm hover:opacity-95 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-btnblue focus:ring-offset-2 active:bg-hoblue transition transform duration-200"
@@ -401,35 +357,63 @@ const CercaRoba = () => {
                         {t("searchcloth.search")}
                     </button>
                 </div>
+
+                {/* Vista per a pantalles petites */}
                 <div
-                    className="lg:hidden flex items-center justify-center w-full py-3 px-6 bg-white text-black rounded-lg shadow-md font-medium border border-gray-300 hover:scale-105 transition-transform duration-200">
-                    {/* Botó de càmera */}
-                    <div className="flex items-center">
+                    className="lg:hidden flex items-center bg-white p-3 rounded-lg shadow-md border border-gray-300 transition-transform duration-200"
+                >
+                    {/* Botó de càmera sempre a l'esquerra */}
+                    <div className="flex-shrink-0">
                         <button
                             onClick={() => setModalVisible(true)}
                             className="flex items-center justify-center w-10 h-10 rounded-full bg-faqblue cursor-pointer hover:opacity-90"
                         >
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none"
-                                 viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                                      d="M3 7h4l2-3h6l2 3h4v11H3V7z"/>
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                                      d="M12 11a4 4 0 100 8 4 4 0 000-8z"/>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="h-5 w-5 text-white"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M3 7h4l2-3h6l2 3h4v11H3V7z"
+                                />
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M12 11a4 4 0 100 8 4 4 0 000-8z"
+                                />
                             </svg>
                         </button>
                     </div>
-                    <button onClick={() => setIsModalOpen(true)}>
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-500 mr-2"
-                             viewBox="0 0 20 20" fill="currentColor">
-                            <path fillRule="evenodd"
-                                  d="M8 2a6 6 0 014.47 10.24l4.28 4.28a1 1 0 11-1.42 1.42l-4.28-4.28A6 6 0 118 2zm0 2a4 4 0 100 8 4 4 0 000-8z"
-                                  clipRule="evenodd"/>
-                        </svg>
-                        {t("searchcloth.start_search")}
-                    </button>
-                </div>
 
+                    <div className="flex-1 pl-4">
+                        <button
+                            onClick={() => setIsModalOpen(true)}
+                            className="flex items-center justify-center w-full py-3 px-4 text-white bg-faqblue hover:bg-faqblue/90 rounded-full shadow-md transition-colors duration-200"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="h-6 w-6 mr-2"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                strokeWidth={2}
+                            >
+                                <circle cx="11" cy="11" r="8"/>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                            </svg>
+                            {t("searchcloth.start_search" , "Buscar Ropa")}
+                        </button>
+                    </div>
+
+                </div>
             </div>
+
 
             <ErrorModal
                 isOpen={errorModalOpen}
@@ -471,19 +455,19 @@ const CercaRoba = () => {
 
             {results.length > 0 && (
                 <>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 justify-center place-items-center mx-auto max-w-[1200px]">
+                    <div
+                        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 justify-center place-items-center mx-auto max-w-[1200px]">
                         {results.map((result) => (
                             <ImageModel
                                 key={result.purchase_url}
                                 cloth={result}
                                 country={filtersState.country}
-                                onFavoriteToggle={() => handleFavoriteToggle(result)}
-                                onReload={onReload}
                             />
                         ))}
                     </div>
                     {!hasMoreResults && (
                         <div className="text-center mt-4">
+
                             <p className="text-gray-600">No hi han més resultats</p>
                         </div>
                     )}

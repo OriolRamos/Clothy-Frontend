@@ -12,11 +12,10 @@ import {
 import React, { useState, useEffect } from "react";
 import ImageModel from "../../components/ImageModal/index";
 import { useAuth } from "@/app/components/AuthContext";
-import {filters} from "../../components/Filters/cloth_filters";
+import { filters } from "../../components/Filters/cloth_filters";
 import { useTranslation } from "react-i18next";
 import { Cloth } from "../../components/Modals/Cloth.ts";
 import { Filters, defaultFilters } from "../../components/Modals/Filter.ts";
-
 
 const Favoritos = () => {
     const [filtersState, setFiltersState] = useState<{ [key: string]: string }>({
@@ -24,12 +23,16 @@ const Favoritos = () => {
         color: '',
         brand: '',
     });
-
     const [expandedFilter, setExpandedFilter] = useState("");
     const [loading, setLoading] = useState(true);
     const { fetchWithAuth } = useAuth();
     const [results, setResults] = useState<Cloth[]>([]);
+    const [showMoreFilters, setShowMoreFilters] = useState(false);
 
+    // Els tres filtres més importants
+    const mainFilterKeys = ["brand", "type", "color"];
+    // Els filtres extra: els que no siguin brand, type ni color
+    const extraFilterKeys = Object.keys(filters).filter(key => !mainFilterKeys.includes(key));
 
     // useEffect per obtenir els favorits i les imatges
     useEffect(() => {
@@ -42,9 +45,9 @@ const Favoritos = () => {
 
                 if (response.ok) {
                     // Obtenim els favorits inicials
-                    const data: Cloth[] = await response.json();
-
-                    setResults(data); // Actualitzem l'estat amb les dades i les imatges
+                    const data = await response.json();
+                    // Assegurem que data sigui un array
+                    setResults(Array.isArray(data) ? data : []);
                 } else {
                     throw new Error('Error al obtenir els favorits.');
                 }
@@ -56,30 +59,27 @@ const Favoritos = () => {
         };
 
         fetchFavorites();
-    }, []); // Assegurem-nos que només s'executi una vegada en el muntatge
-
+    }, []); // S'executa una sola vegada en el muntatge
 
     // Funció per actualitzar les imatges
     const onReload = async () => {
         try {
-            setLoading(true); // Inicia la càrrega
+            setLoading(true);
             const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-            // Fer una nova petició per obtenir les últimes dades de les imatges
             const response = await fetchWithAuth(`${apiUrl}/profile/favorites/get`, {
                 method: 'GET',
             });
 
             if (response.ok) {
-                const data: Cloth[] = await response.json();
-                // Actualitzar les imatges amb les noves dades
-                setResults(data);
+                const data = await response.json();
+                setResults(Array.isArray(data) ? data : []);
             } else {
                 console.error('Error al obtenir els favorits.');
             }
         } catch (error) {
             console.error('Error al recarregar les imatges:', error);
         } finally {
-            setLoading(false); // Finalitza la càrrega
+            setLoading(false);
         }
     };
 
@@ -101,8 +101,8 @@ const Favoritos = () => {
 
     const { t } = useTranslation('common');
 
-
-    const filteredImages = results.filter((image) => {
+    // Fix: Assegurem que results és un array abans de filtrar
+    const filteredImages = (Array.isArray(results) ? results : []).filter((image) => {
         const matchesType = filtersState.type
             ? (image.type || "").toLowerCase().includes(filtersState.type.toLowerCase())
             : true;
@@ -116,7 +116,7 @@ const Favoritos = () => {
     });
 
     const renderFilter = (filterKey: string, filterOptions: string[]) => {
-        const filterValue = filtersState[filterKey] || ''; // Assegurem que el valor sigui una cadena
+        const filterValue = filtersState[filterKey] || '';
         const filteredOptions = filterOptions.filter((option) =>
             option.toLowerCase().includes(filterValue.toLowerCase())
         );
@@ -174,24 +174,62 @@ const Favoritos = () => {
                 {t('favorites.title')}
             </h1>
 
-            {/* Filtros */}
+            {/* Filtres principals */}
             <div className="flex flex-col sm:flex-row items-center justify-evenly bg-white p-4 rounded-lg shadow-md mb-8 space-y-4 sm:space-y-0">
-                {Object.keys(filters).map((filterKey) =>
-                    renderFilter(
-                        filterKey,
-                        filters[filterKey].map((option) => option.translation) // Convertim en un array de strings
-                    )
-                )}
+                {mainFilterKeys.map((filterKey) => (
+                    <div key={filterKey} className="mx-2 min-w-[200px] max-[1199px]:hidden">
+                        {renderFilter(
+                            filterKey,
+                            filters[filterKey].map((option) => option.translation)
+                        )}
+                    </div>
+                ))}
+                {/*
+                <button
+                    onClick={() => setShowMoreFilters(true)}
+                    className="flex items-center justify-center w-full py-3 px-4 text-white bg-faqblue hover:bg-faqblue/90 rounded-full shadow-md transition-colors duration-200"
+                >
+                    {t('favorites.more_filters')}
+                </button>*/}
                 <button
                     onClick={() => setFiltersState({ type: "", color: "", brand: "" })}
-                    className="bg-blue-500 text-black px-4 py-2 rounded-md text-sm transition hover:bg-gray-300"
+                    className="bg-blue-500 text-black px-4 py-2 rounded-md text-sm transition hover:bg-gray-300 mx-2"
                 >
                     {t('favorites.reset')}
                 </button>
             </div>
 
 
-            {/* Contenido principal */}
+
+            {/* Modal per als filtres extra */}
+            {showMoreFilters && (
+                <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+                    <div className="bg-white p-6 rounded-md shadow-md max-w-md w-full">
+                        <div className="flex justify-between items-center mb-4">
+                            <h2 className="text-xl font-bold">{t('favorites.more_filters')}</h2>
+                            <button onClick={() => setShowMoreFilters(false)} className="text-gray-500 hover:text-gray-700">
+                                X
+                            </button>
+                        </div>
+                        {extraFilterKeys.map((filterKey) =>
+                            renderFilter(
+                                filterKey,
+                                filters[filterKey].map((option) => option.translation)
+                            )
+                        )}
+                        <div className="mt-4">
+                            <button
+                                onClick={() => setShowMoreFilters(false)}
+                                className="bg-blue-500 text-white px-4 py-2 rounded-md text-sm transition hover:bg-blue-600 w-full"
+                            >
+                                {t('favorites.apply_filters')}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Contingut principal */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {loading ? (
                     <div className="col-span-full flex justify-center items-center">
@@ -202,8 +240,7 @@ const Favoritos = () => {
                         <ImageModel
                             key={image.purchase_url}
                             cloth={image}
-                            onFavoriteToggle={() => handleFavoriteToggle(image.purchase_url)}
-                            onReload={onReload}
+                            country={filtersState.country}
                         />
                     ))
                 ) : (

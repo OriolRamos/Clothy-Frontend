@@ -355,6 +355,7 @@
         "description": "Discover our smart clothing search! Just upload an image and our system will compare it with available options on the Internet.",
         "uploadButton": "Upload Image",
         "imageAlt": "Uploaded Image",
+        "start_search": "Search Clothes",
         "detectedInfoTitle": "Detected Information",
         "descriptionLabel": "Description:",
         "typeLabel": "Type:",
@@ -445,7 +446,10 @@
         "aboutus": "About Us",
         "FAQ": "FAQ",
         "joinus": "Join Us",
-        "others": "Others"
+        "others": "Others",
+        "allRights": "All Rights Reserved by",
+        "pricavyPolicy": "Privacy Policy",
+        "termsConditions": "Terms & Conditions"
     },
     "defaultSelect": "Select",
     "disponibleBrans": "Available brands",
@@ -630,5 +634,28 @@
             "israel": "Israel",
             "palestina": "Palestine"
         }
+    },
+    "historial": {
+        "totalCloth": "Total Clothing",
+        "filters": "Applied Filters",
+        "noHistory": "No search history available.",
+        "error": "An error occurred while retrieving the history.",
+        "title": "Search History"
+    },
+    "searchDetail": {
+        "title": "Search Details",
+        "noResults": "No clothes found for this search.",
+        "error": "An error occurred while loading the search."
+    },
+    "filtermodal": {
+        "title": "Advanced Filters",
+        "orderPrice": "Sort by Price",
+        "priceRang": "Price Range",
+        "menorMayor": "Low to High",
+        "mayorMenor": "High to Low",
+        "aditionalFilters": "Additional Filters",
+        "soloOfferts": "Only Offers",
+        "reset": "Reset",
+        "search": "Search"
     }
 }

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import {useRouter} from "next/navigation";
 
 const Verification = () => {
     const { t } = useTranslation("common");
@@ -11,6 +12,8 @@ const Verification = () => {
     const [verificationCode, setVerificationCode] = useState("");
     const [error, setError] = useState("");
     const [success, setSuccess] = useState(false);
+    const router = useRouter();
+
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -28,6 +31,7 @@ const Verification = () => {
             if (response.ok) {
                 setSuccess(true);
                 setError("");
+                router.push("/login");
             } else {
                 const errorData = await response.json();
                 setError(errorData.detail || t("verification.error.verification"));

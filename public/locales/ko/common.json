@@ -158,6 +158,7 @@
   },
   "searchcloth": {
     "title": "옷 검색",
+    "start_search": "의류 검색",
     "description": "스마트한 옷 검색을 만나보세요! 이미지를 업로드하면 시스템이 인터넷에 있는 옵션과 비교합니다.",
     "uploadButton": "이미지 업로드",
     "imageAlt": "업로드된 이미지",
@@ -278,7 +279,10 @@
     "aboutus": "회사 소개",
     "FAQ": "자주 묻는 질문",
     "joinus": "가입하기",
-    "others": "기타"
+    "others": "기타",
+    "allRights": "모든 권리 보유",
+    "pricavyPolicy": "개인정보 보호정책",
+    "termsConditions": "이용 약관"
   },
   "filters": {
     "type": {
@@ -519,6 +523,29 @@
       "title": "13. 연락처 및 지원",
       "content": "본 이용 약관에 대해 궁금한 사항, 의견 또는 제안이 있으시면 다음을 통해 당사에 연락할 수 있습니다:\n- 연락처 양식: https://www.clothy.com/contacto\n- 이메일: support@clothy.com\n\nClothy를 이용함으로써 귀하는 본 약관에 명시적으로 동의하며, 플랫폼 사용 및 Clothy와 제3자가 부과한 조건을 준수할 책임이 전적으로 본인에게 있음을 인정합니다.\nClothy 브랜드의 모든 권리는 명시적으로 보유됩니다."
     }
+  },
+  "historial": {
+    "totalCloth": "전체 의류 수",
+    "filters": "적용된 필터",
+    "noHistory": "검색 기록이 없습니다.",
+    "error": "기록을 가져오는 중 오류가 발생했습니다.",
+    "title": "검색 기록"
+  },
+  "searchDetail": {
+    "title": "검색 세부 정보",
+    "noResults": "이 검색과 일치하는 의류를 찾을 수 없습니다.",
+    "error": "검색 로딩 중 오류가 발생했습니다."
+  },
+  "filtermodal": {
+    "title": "고급 필터",
+    "orderPrice": "가격순 정렬",
+    "priceRang": "가격 범위",
+    "menorMayor": "낮은 가격에서 높은 가격 순",
+    "mayorMenor": "높은 가격에서 낮은 가격 순",
+    "aditionalFilters": "추가 필터",
+    "soloOfferts": "오퍼만",
+    "reset": "초기화",
+    "search": "검색"
   }
 
 }

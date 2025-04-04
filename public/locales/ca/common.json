@@ -351,6 +351,7 @@
     },
     "searchcloth": {
         "title": "Buscador de roba",
+        "start_search": "Cercar roba",
         "description": "Descobreix el nostre buscador intel·ligent de roba! Només has de pujar una imatge i el nostre sistema la compararà amb opcions disponibles a Internet.",
         "uploadButton": "Pujar imatge",
         "imageAlt": "Imatge carregada",
@@ -387,7 +388,10 @@
         "aboutus": "Sobre nosaltres",
         "FAQ": "PMF",
         "joinus": "Uneix-te",
-        "others": "Altres"
+        "others": "Altres",
+        "allRights": "Tots els drets reservats per",
+        "pricavyPolicy": "Política de privacitat",
+        "termsConditions": "Termes i condicions"
     },
     "termsandconditions": {
         "title": "TERMES I CONDICIONS D'ÚS DE CLOTHY",
@@ -628,6 +632,29 @@
             "israel": "Israel",
             "palestina": "Palestina"
         }
+    },
+    "historial": {
+        "totalCloth": "Total de peces",
+        "filters": "Filtres aplicats",
+        "noHistory": "No hi ha historial de cerques.",
+        "error": "S'ha produït un error en obtenir l'historial.",
+        "title": "Historial de cerques"
+    },
+    "searchDetail": {
+        "title": "Detall de la cerca",
+        "noResults": "No s'han trobat robes per aquesta cerca.",
+        "error": "S'ha produït un error en carregar la cerca."
+    },
+    "filtermodal": {
+        "title": "Filtres avançats",
+        "orderPrice": "Ordenar per preu",
+        "priceRang": "Rang de preu",
+        "menorMayor": "De menor a major",
+        "mayorMenor": "De major a menor",
+        "aditionalFilters": "Filtres addicionals",
+        "soloOfferts": "Només ofertes",
+        "reset": "Restablir",
+        "search": "Cercar"
     }
 
 }

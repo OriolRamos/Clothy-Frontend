@@ -393,6 +393,7 @@
   },
   "searchcloth": {
     "title": "Kleidungssuche",
+    "start_search": "Kleidung suchen",
     "description": "Entdecken Sie unsere intelligente Kleidersuche! Laden Sie einfach ein Bild hoch und unser System vergleicht es mit verfügbaren Optionen im Internet.",
     "uploadButton": "Bild hochladen",
     "imageAlt": "Hochgeladenes Bild",
@@ -429,7 +430,10 @@
     "aboutus": "Über uns",
     "FAQ": "FAQ",
     "joinus": "Tritt bei",
-    "others": "Andere"
+    "others": "Andere",
+    "allRights": "Alle Rechte vorbehalten von",
+    "pricavyPolicy": "Datenschutzrichtlinie",
+    "termsConditions": "Allgemeine Geschäftsbedingungen"
   },
   "filters": {
     "type": {
@@ -614,5 +618,28 @@
     "signupbutton": "Registrieren",
     "loginbutton": "Anmelden"
 
+  },
+  "historial": {
+    "totalCloth": "Gesamtzahl der Kleidungsstücke",
+    "filters": "Angewendete Filter",
+    "noHistory": "Keine Suchhistorie vorhanden.",
+    "error": "Beim Abrufen der Historie ist ein Fehler aufgetreten.",
+    "title": "Suchverlauf"
+  },
+  "searchDetail": {
+    "title": "Suchdetails",
+    "noResults": "Für diese Suche wurden keine Kleidungsstücke gefunden.",
+    "error": "Beim Laden der Suche ist ein Fehler aufgetreten."
+  },
+  "filtermodal": {
+    "title": "Erweiterte Filter",
+    "orderPrice": "Nach Preis sortieren",
+    "priceRang": "Preisspanne",
+    "menorMayor": "Niedrig zu Hoch",
+    "mayorMenor": "Hoch zu Niedrig",
+    "aditionalFilters": "Zusätzliche Filter",
+    "soloOfferts": "Nur Angebote",
+    "reset": "Zurücksetzen",
+    "search": "Suchen"
   }
 }

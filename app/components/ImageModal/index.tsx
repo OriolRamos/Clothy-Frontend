@@ -2,21 +2,64 @@ import React, { useState } from "react";
 import ExternalPageModal from "./ExternalPageModal";
 import { Cloth } from "../Modals/Cloth"; // Importa la interfície Cloth centralitzada
 import Image from "next/image";
-import {filters} from "../Filters/cloth_filters";
+import { filters } from "../Filters/cloth_filters";
+import { useAuth } from "@/app/components/AuthContext";
 
 interface ImageModelProps {
     cloth: Cloth;
-    country: string | null,
-    onFavoriteToggle: () => void;
-    onReload: () => void;
+    country: string | null;
 }
 
-const ImageModel: React.FC<ImageModelProps> = ({ cloth,country,  onFavoriteToggle, onReload }) => {
+const ImageModel: React.FC<ImageModelProps> = ({ cloth, country }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    // Creem una variable d'estat per gestionar el favorit, inicialitzada amb el valor de cloth.favorite
+    const [isFavorite, setIsFavorite] = useState(cloth.favorite);
     const isOnSale = cloth.discount_price !== undefined;
+    const { fetchWithAuth } = useAuth();
+
+    const handleFavoriteToggle = async (cloth: Cloth) => {
+        try {
+            const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+            let response;
+            if (isFavorite) {
+                // Si l'element ja és favorit, el treu de favorits
+                response = await fetchWithAuth(`${apiUrl}/profile/favorites/delete`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ purchase_url: cloth.purchase_url, color: cloth.color }),
+                });
+                if (!response.ok) {
+                    console.error("Error eliminant dels favorits.");
+                    return;
+                }
+                // Actualitzem l'estat a false
+                setIsFavorite(false);
+            } else {
+                // Si l'element no és favorit, l'afegeix als favorits
+                response = await fetchWithAuth(`${apiUrl}/profile/favorites/add`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ purchase_url: cloth.purchase_url, color: cloth.color }),
+                });
+                if (!response.ok) {
+                    console.error("Error afegint als favorits.");
+                    return;
+                }
+                // Actualitzem l'estat a true
+                setIsFavorite(true);
+            }
+        } catch (error) {
+            console.error("Error gestionant els favorits:", error);
+        }
+    };
 
     // Buscar la divisa segons el país seleccionat
-    const currencySymbol = filters.currency.find(c => c.value === country)?.translation || "€";
+    const currencySymbol =
+        filters.currency.find(c => c.value === country)?.translation || "€";
     const brandLogoPath = `/images/brands/${cloth.brand.toLowerCase()}.png`;
 
     return (
@@ -36,42 +79,48 @@ const ImageModel: React.FC<ImageModelProps> = ({ cloth,country,  onFavoriteToggl
 
                 {/* Logo de la marca */}
                 <div className="absolute top-2 left-2 p-1">
-                    <Image src={brandLogoPath} alt="logo-brand" width={50} height={50} className="mb-5" />
+                    <Image
+                        src={brandLogoPath}
+                        alt="logo-brand"
+                        width={50}
+                        height={50}
+                        className="mb-5"
+                    />
                 </div>
-
 
                 {/* Preu flotant sobre la imatge */}
                 {cloth.in_discount ? (
                     <div
                         className="absolute bottom-2 left-2 px-3 py-1 rounded-full text-white bg-black font-semibold text-sm flex items-center space-x-2">
-                    {/* Preu original amb un efecte de línia tachada */}
-                        <span className="line-through text-gray-500">{cloth.price}{currencySymbol}</span>
-                        {/* Preu amb descompte en vermell */}
-                        <span className="text-red-500">{cloth.discount_price}{currencySymbol}</span>
-                        {/* Percentatge de descompte en vermell */}
+                        <span className="line-through text-gray-500">
+                            {cloth.price}
+                            {currencySymbol}
+                        </span>
+                        <span className="text-red-500">
+                            {cloth.discount_price}
+                            {currencySymbol}
+                        </span>
                         <span className="text-red-500 text-xs">- {cloth.discount}%</span>
-                        {/* S'afegirà el signe de % al descompte */}
                     </div>
                 ) : (
-                    // Si no hi ha descompte, només mostrem el preu regular
                     <div
                         className="absolute bottom-2 left-2 px-3 py-1 rounded-full text-white font-semibold text-sm bg-black">
-                        {cloth.price}{currencySymbol}
+                        {cloth.price}
+                        {currencySymbol}
                     </div>
                 )}
             </div>
 
-
             {/* Botó Favorits */}
             <button
                 className={`absolute top-2 right-2 rounded-full p-2 ${
-                    cloth.favorite ? "bg-red-500" : "bg-gray-300"
+                    isFavorite ? "bg-red-500" : "bg-gray-300"
                 } hover:scale-110 transition`}
-                onClick={onFavoriteToggle}
+                onClick={() => handleFavoriteToggle(cloth)}
             >
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    fill={cloth.favorite ? "white" : "none"}
+                    fill={isFavorite ? "white" : "none"}
                     viewBox="0 0 24 24"
                     strokeWidth="2"
                     stroke="currentColor"
@@ -86,7 +135,9 @@ const ImageModel: React.FC<ImageModelProps> = ({ cloth,country,  onFavoriteToggl
             </button>
 
             {/* Descripció curta */}
-            <p className="m-2 text-center text-black font-medium">{cloth.description}</p>
+            <p className="m-2 text-center text-black font-medium">
+                {cloth.description}
+            </p>
 
             {/* Modal amb la informació del producte */}
             {isModalOpen && (

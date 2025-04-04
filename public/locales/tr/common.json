@@ -400,6 +400,7 @@
     "descriptionLabel": "Açıklama:",
     "typeLabel": "Tür:",
     "colorLabel": "Renk:",
+    "start_search": "Giysi Ara",
     "noInfoDetected": "Hiç bilgi tespit edilmedi.",
     "noResult": "Hiç sonuç bulunamadı.",
     "sample": {
@@ -429,7 +430,10 @@
     "aboutus": "Hakkımızda",
     "FAQ": "SSS",
     "joinus": "Bize Katılın",
-    "others": "Diğerleri"
+    "others": "Diğerleri",
+    "allRights": "Tüm Hakları Saklıdır",
+    "pricavyPolicy": "Gizlilik Politikası",
+    "termsConditions": "Şartlar ve Koşullar"
   },
   "filters": {
     "type": {
@@ -670,7 +674,37 @@
   "termsText": "Okudum ve kabul ediyorum ",
   "termsLink": "şartlar ve koşullar",
   "signupbutton": "Kayıt Ol",
-  "loginbutton": "Giriş Yap"
+  "loginbutton": "Giriş Yap",
+  "historial": {
+    "totalCloth": "Toplam Giysi Sayısı",
+    "filters": "Uygulanan Filtreler",
+    "noHistory": "Arama geçmişi yok.",
+    "error": "Geçmiş alınırken bir hata oluştu.",
+    "title": "Arama Geçmişi"
+  },
+  "searchDetail": {
+    "title": "Arama Detayları",
+    "noResults": "Bu arama için herhangi bir giysi bulunamadı.",
+    "error": "Arama yüklenirken bir hata oluştu."
+  },
+  "footer": {
+
+  },
+  "searchcloth": {
+  },
+  "filtermodal": {
+    "title": "Gelişmiş Filtreler",
+    "orderPrice": "Fiyata Göre Sırala",
+    "priceRang": "Fiyat Aralığı",
+    "menorMayor": "Düşükten Yükseğe",
+    "mayorMenor": "Yüksekten Düşüğe",
+    "aditionalFilters": "Ek Filtreler",
+    "soloOfferts": "Sadece Teklifler",
+    "reset": "Sıfırla",
+    "search": "Ara"
+  }
+
+
 
 
 }

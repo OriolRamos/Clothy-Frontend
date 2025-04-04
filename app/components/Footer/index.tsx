@@ -105,16 +105,16 @@ const Footer = () => {
                     <div className="mt-4 grid grid-cols-1 gap-y-10 gap-x-16 sm:grid-cols-2 xl:gap-x-8">
                         <div>
                             <h3 className="text-center md:text-start text-offwhite text-lg">
-                                @{currentYear} - All Rights Reserved by{' '}
+                                @{currentYear} - {t("footer.allRights", "All Rights Reserved by")} {' '}
                                 <Link href="https://clothy.es" target="_blank">Clothy.es</Link>
                             </h3>
                         </div>
                         <div className="flex justify-center md:justify-end">
                             <Link href="/privacy-policy">
-                                <h3 className="text-offwhite pr-6" onClick={handlePrivacyPolicy}>Privacy policy</h3>
+                                <h3 className="text-offwhite pr-6" onClick={handlePrivacyPolicy}>{t("footer.pricavyPolicy", "Privacy policy")}</h3>
                             </Link>
                             <Link href="/terms&conditions">
-                                <h3 className="text-offwhite pl-6 border-solid border-l border-footer" onClick={handleTermsConditions}>Terms & conditions</h3>
+                                <h3 className="text-offwhite pl-6 border-solid border-l border-footer" onClick={handleTermsConditions}>{t("footer.termsConditions", "Terms & conditions")}</h3>
                             </Link>
                         </div>
                     </div>

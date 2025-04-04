@@ -345,7 +345,10 @@
     "aboutus": "من نحن",
     "FAQ": "الأسئلة الشائعة",
     "joinus": "انضم إلينا",
-    "others": "أخرى"
+    "others": "أخرى",
+    "allRights": "جميع الحقوق محفوظة لـ",
+    "pricavyPolicy": "سياسة الخصوصية",
+    "termsConditions": "الشروط والأحكام"
   },
   "termsandconditions": {
     "title": "شروط وأحكام استخدام CLOTHY",
@@ -586,5 +589,31 @@
       "israel": "إسرائيل",
       "palestina": "فلسطين"
     }
+  },
+  "historial": {
+    "totalCloth": "إجمالي الملابس",
+    "filters": "المرشحات المطبقة",
+    "noHistory": "لا يوجد سجل للبحث.",
+    "error": "حدث خطأ أثناء استرجاع السجل.",
+    "title": "سجل البحث"
+  },
+  "searchDetail": {
+    "title": "تفاصيل البحث",
+    "noResults": "لم يتم العثور على أي ملابس لهذا البحث.",
+    "error": "حدث خطأ أثناء تحميل البحث."
+  },
+  "searchcloth": {
+    "start_search": "البحث عن الملابس"
+  },
+  "filtermodal": {
+    "title": "مرشحات متقدمة",
+    "orderPrice": "ترتيب حسب السعر",
+    "priceRang": "نطاق السعر",
+    "menorMayor": "من الأقل إلى الأعلى",
+    "mayorMenor": "من الأعلى إلى الأقل",
+    "aditionalFilters": "مرشحات إضافية",
+    "soloOfferts": "العروض فقط",
+    "reset": "إعادة تعيين",
+    "search": "بحث"
   }
 }

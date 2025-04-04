@@ -365,6 +365,7 @@
   },
   "searchcloth": {
     "title": "Recherche de vêtements",
+    "start_search": "Rechercher des vêtements",
     "description": "Découvrez notre recherche de vêtements intelligente ! Téléchargez simplement une image et notre système la comparera avec les options disponibles sur Internet.",
     "uploadButton": "Télécharger l'image",
     "imageAlt": "Image téléchargée",
@@ -401,7 +402,10 @@
     "aboutus": "À propos",
     "FAQ": "FAQ",
     "joinus": "Rejoignez-nous",
-    "others": "Autres"
+    "others": "Autres",
+    "allRights": "Tous droits réservés par",
+    "pricavyPolicy": "Politique de confidentialité",
+    "termsConditions": "Conditions générales"
   },
   "filters": {
     "type": {
@@ -642,6 +646,29 @@
       "title": "13. CONTACT ET SUPPORT",
       "content": "Si vous avez la moindre question, commentaire ou suggestion concernant ces Conditions, vous pouvez nous contacter via :\n- Formulaire de contact : https://www.clothy.com/contacto\n- Courriel : support@clothy.com\n\nEn utilisant Clothy, vous acceptez expressément ces Conditions, reconnaissant que vous êtes le seul responsable de l'utilisation que vous faites de la plateforme et de respecter les conditions imposées tant par Clothy que par des tiers.\nTous les droits de la marque Clothy sont expressément réservés."
     }
+  },
+  "historial": {
+    "totalCloth": "Total de vêtements",
+    "filters": "Filtres appliqués",
+    "noHistory": "Aucun historique de recherche.",
+    "error": "Une erreur est survenue lors de la récupération de l'historique.",
+    "title": "Historique des recherches"
+  },
+  "searchDetail": {
+    "title": "Détail de la recherche",
+    "noResults": "Aucun vêtement trouvé pour cette recherche.",
+    "error": "Une erreur est survenue lors du chargement de la recherche."
+  },
+  "filtermodal": {
+    "title": "Filtres avancés",
+    "orderPrice": "Trier par prix",
+    "priceRang": "Tranche de prix",
+    "menorMayor": "Du moins cher au plus cher",
+    "mayorMenor": "Du plus cher au moins cher",
+    "aditionalFilters": "Filtres supplémentaires",
+    "soloOfferts": "Offres uniquement",
+    "reset": "Réinitialiser",
+    "search": "Rechercher"
   }
 
 }

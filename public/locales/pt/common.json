@@ -358,6 +358,7 @@
     "detectedInfoTitle": "Informações Detectadas",
     "descriptionLabel": "Descrição:",
     "typeLabel": "Tipo:",
+    "start_search": "Buscar roupas",
     "colorLabel": "Cor:",
     "noInfoDetected": "Nenhuma informação detectada.",
     "noResult": "Nenhum resultado encontrado.",
@@ -388,7 +389,10 @@
     "aboutus": "Sobre nós",
     "FAQ": "Perguntas frequentes",
     "joinus": "Junte-se a nós",
-    "others": "Outros"
+    "others": "Outros",
+    "allRights": "Todos os direitos reservados por",
+    "pricavyPolicy": "Política de Privacidade",
+    "termsConditions": "Termos e condições"
   },
   "filters": {
     "type": {
@@ -629,6 +633,29 @@
       "title": "13. CONTATO E SUPORTE",
       "content": "Se você tiver qualquer dúvida, comentário ou sugestão sobre estes Termos e Condições, poderá entrar em contato conosco através de:\n- Formulário de Contato: https://www.clothy.com/contacto\n- Email: support@clothy.com\n\nAo utilizar o Clothy, você expressamente aceita estes Termos e Condições, reconhecendo que é o único responsável pelo uso da plataforma e pelo cumprimento das condições impostas tanto pelo Clothy quanto por terceiros.\nTodos os direitos da marca Clothy são expressamente reservados."
     }
+  },
+  "historial": {
+    "totalCloth": "Total de peças",
+    "filters": "Filtros aplicados",
+    "noHistory": "Não há histórico de buscas.",
+    "error": "Ocorreu um erro ao obter o histórico.",
+    "title": "Histórico de buscas"
+  },
+  "searchDetail": {
+    "title": "Detalhe da busca",
+    "noResults": "Nenhuma peça encontrada para esta busca.",
+    "error": "Ocorreu um erro ao carregar a busca."
+  },
+  "filtermodal": {
+    "title": "Filtros avançados",
+    "orderPrice": "Ordenar por preço",
+    "priceRang": "Faixa de preço",
+    "menorMayor": "Do menor para o maior",
+    "mayorMenor": "Do maior para o menor",
+    "aditionalFilters": "Filtros adicionais",
+    "soloOfferts": "Somente ofertas",
+    "reset": "Redefinir",
+    "search": "Buscar"
   }
 
 

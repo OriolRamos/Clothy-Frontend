@@ -416,6 +416,7 @@
     },
     "searchcloth": {
         "title": "Buscador de ropa",
+        "start_search": "Buscar ropa",
         "description": "¡Descubre nuestro buscador inteligente de ropa! Solo sube una imagen y nuestro sistema la comparará con opciones disponibles en Internet.",
         "uploadButton": "Subir imagen",
         "imageAlt": "Imagen cargada",
@@ -452,7 +453,10 @@
         "aboutus": "Sobre nosotros",
         "FAQ": "FAQ",
         "joinus": "Unete",
-        "others": "Otros"
+        "others": "Otros",
+        "allRights": "Todos los derechos reservados por",
+        "pricavyPolicy": "Política de privacidad",
+        "termsConditions": "Términos y condiciones"
     },
     "filters": {
         "type": {
@@ -630,6 +634,29 @@
             "israel": "Israel",
             "palestina": "Palestina"
         }
+    },
+    "historial": {
+        "totalCloth": "Total de prendas",
+        "filters": "Filtros aplicados",
+        "noHistory": "No hay historial de búsquedas.",
+        "error": "Se produjo un error al obtener el historial.",
+        "title": "Historial de búsquedas"
+    },
+    "searchDetail": {
+        "title": "Detalle de la búsqueda",
+        "noResults": "No se encontraron prendas para esta búsqueda.",
+        "error": "Se produjo un error al cargar la búsqueda."
+    },
+    "filtermodal": {
+        "title": "Filtros avanzados",
+        "orderPrice": "Ordenar por precio",
+        "priceRang": "Rango de precio",
+        "menorMayor": "De menor a mayor",
+        "mayorMenor": "De mayor a menor",
+        "aditionalFilters": "Filtros adicionales",
+        "soloOfferts": "Solo ofertas",
+        "reset": "Restablecer",
+        "search": "Buscar"
     }
 
 }

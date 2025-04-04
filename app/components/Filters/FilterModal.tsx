@@ -4,6 +4,7 @@ import './FilterModal.css';  // Importa el fitxer CSS
 import RenderFilter from "./RenderFilter";
 import RenderMultipleFilter from "./RenderMultipleFilter";
 import RenderColorFilter from "./RenderColorFilter";
+import {useTranslation} from "react-i18next";
 
 
 interface FilterModalProps {
@@ -31,6 +32,8 @@ const FilterModal: React.FC<FilterModalProps> = ({ isOpen, onClose, filters, fil
     const [expandedFilter, setExpandedFilter] = useState<string>("");
     const [minPrice, setMinPrice] = useState<number>(filtersState.minPrice || 0);
     const [maxPrice, setMaxPrice] = useState<number>(filtersState.maxPrice || 1000);
+    const { t } = useTranslation("common");
+
 
     useEffect(() => {
         if (isOpen) {
@@ -79,7 +82,7 @@ const FilterModal: React.FC<FilterModalProps> = ({ isOpen, onClose, filters, fil
                     >
                         ✕
                     </button>
-                    <h2 className="text-2xl font-bold mx-auto">Filtros Avanzados</h2>
+                    <h2 className="text-2xl font-bold mx-auto">{t("filtermodal.title" , "Filtros Avanzados")}</h2>
                 </div>
 
                 <div className="space-y-6 px-2 p-6 m-6">
@@ -128,7 +131,7 @@ const FilterModal: React.FC<FilterModalProps> = ({ isOpen, onClose, filters, fil
                     </div>
 
                     <div className="mt-8"></div>
-                    <label className="text-lg font-medium">Rango de Precio</label>
+                    <label className="text-lg font-medium">{t("filtermodal.priceRang" , "Rango de Precio")}</label>
                     <MultiRangeSlider
                         min={0}
                         max={1000}
@@ -142,24 +145,24 @@ const FilterModal: React.FC<FilterModalProps> = ({ isOpen, onClose, filters, fil
                     />
 
                     <div className="flex flex-col gap-2">
-                        <label className="text-lg font-medium">Ordenar por precio</label>
+                        <label className="text-lg font-medium">{t("filtermodal.orderPrice" , "Ordenar por precio")}</label>
                             <div className="flex gap-4">
                                 <button
                                     className={`px-4 py-2 rounded-md border transition-all duration-300 transform hover:scale-105 
                                                 ${filtersState.orderMajorMenor ? "bg-faqblue text-white" : "bg-gray-200"}`}
                                     onClick={() => handleOrderSelection("orderMajorMenor")}>
-                                    Mayor a Menor
+                                    {t("filtermodal.mayorMenor" , "Mayor a Menor")}
                                 </button>
                                 <button
                                     className={`px-4 py-2 rounded-md border transition-all duration-300 transform hover:scale-105 
                                                 ${filtersState.orderMenorMajor ? "bg-faqblue text-white" : "bg-gray-200"}`}
                                     onClick={() => handleOrderSelection("orderMenorMajor")}>
-                                    Menor a Mayor
+                                    {t("filtermodal.menorMayor" , "Menor a Mayor")}
                                 </button>
                             </div>
                     </div>
                     <div className="flex flex-col gap-2">
-                        <label className="text-lg font-medium">Filtros adicionales</label>
+                        <label className="text-lg font-medium">{t("filtermodal.aditionalFilters" , "Filtros adicionales")}</label>
                         <div className="grid grid-cols-2 gap-4">
                             <label className="flex items-center mb-4">
                                 <div
@@ -167,7 +170,7 @@ const FilterModal: React.FC<FilterModalProps> = ({ isOpen, onClose, filters, fil
                                                 ${filtersState.onlyOfferts ? "bg-faqblue text-white" : "bg-gray-200"}`}
                                     onClick={() => toggleBooleanFilter("onlyOffers")}
                                 >
-                                    Solo ofertas
+                                    {t("filtermodal.soloOfferts" , "Solo ofertas")}
                                 </div>
                             </label>
                         </div>
@@ -184,7 +187,7 @@ const FilterModal: React.FC<FilterModalProps> = ({ isOpen, onClose, filters, fil
                                 maxPrice: 1000,
                             })}
                             className="py-3 px-6 text-black bg-gray-200 rounded-lg font-medium shadow-lg hover:scale-105 hover:bg-gray-300 transition transform duration-200">
-                            Reset
+                        {t("filtermodal.reset" , "Reset")}
                         </button>
 
                         <button
@@ -193,7 +196,7 @@ const FilterModal: React.FC<FilterModalProps> = ({ isOpen, onClose, filters, fil
                                 onClose();
                             }}
                             className="py-3 px-6 text-white bg-faqblue rounded-lg font-medium shadow-lg hover:scale-105 hover:bg-faqblue/90 transition transform duration-200">
-                            Buscar
+                            {t("filtermodal.search" , "Buscar")}
                         </button>
                     </div>
                 </div>
