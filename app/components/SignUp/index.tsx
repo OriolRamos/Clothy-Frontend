@@ -18,7 +18,7 @@ const SignUp = () => {
     const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
     const [expandedFilter, setExpandedFilter] = useState<string>("");
-    const [filtersState, setFiltersState] = useState({ country: "" });
+    const [filtersState, setFiltersState] = useState<Record<string, string>>({ country: "" });
     const [termsAccepted, setTermsAccepted] = useState(false);
     const [showEmailForm, setShowEmailForm] = useState(false);
     const router = useRouter();

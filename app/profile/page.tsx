@@ -29,7 +29,7 @@ const UserProfile = () => {
 
     // Estats per gestionar el RenderFilter del país
     const [expandedFilter, setExpandedFilter] = React.useState<string>(""); // Estat a nivell global
-    const [filtersState, setFiltersState] = useState({ country: userData.country });
+    const [filtersState, setFiltersState] = useState<Record<string, string>>({ country: userData.country });
 
     // Sincronitzar el valor de userData.country amb filtersState quan es carrega el perfil
     useEffect(() => {

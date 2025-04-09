@@ -14,8 +14,7 @@ import ImageModel from "../../components/ImageModal/index";
 import { useAuth } from "@/app/components/AuthContext";
 import { filters } from "../../components/Filters/cloth_filters";
 import { useTranslation } from "react-i18next";
-import { Cloth } from "../../components/Modals/Cloth.ts";
-import { Filters, defaultFilters } from "../../components/Modals/Filter.ts";
+import { Cloth } from "../../components/Modals/Cloth";
 
 const Favoritos = () => {
     const [filtersState, setFiltersState] = useState<{ [key: string]: string }>({

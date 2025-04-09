@@ -1,8 +1,13 @@
 import React, { useRef, useEffect } from 'react';
 
-const CameraCaptureModal = ({ onCapture, onClose }) => {
-    const videoRef = useRef(null);
-    const canvasRef = useRef(null);
+interface CameraCaptureModalProps {
+    onCapture: (blob: Blob) => void; // 👈 Acceptem blob, no string
+    onClose: () => void;
+}
+
+const CameraCaptureModal: React.FC<CameraCaptureModalProps> = ({ onCapture, onClose }) => {
+    const videoRef = useRef<HTMLVideoElement>(null);
+    const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
     useEffect(() => {
         async function startCamera() {
@@ -19,14 +24,14 @@ const CameraCaptureModal = ({ onCapture, onClose }) => {
         }
         startCamera();
 
-        // Neteja: atura tots els tracks de la càmera quan el component es desmunti
         return () => {
             if (videoRef.current && videoRef.current.srcObject) {
-                const tracks = videoRef.current.srcObject.getTracks();
+                const stream = videoRef.current.srcObject as MediaStream;
+                const tracks = stream.getTracks();
                 tracks.forEach(track => track.stop());
             }
         };
-    }, []); // l'array buit assegura que l'efecte només s'executa una vegada
+    }, []);
 
     const capturePhoto = () => {
         const video = videoRef.current;
@@ -35,14 +40,17 @@ const CameraCaptureModal = ({ onCapture, onClose }) => {
             canvas.width = video.videoWidth;
             canvas.height = video.videoHeight;
             const ctx = canvas.getContext('2d');
-            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-            canvas.toBlob(blob => {
-                if (blob) {
-                    onCapture(blob);
-                }
-            }, 'image/jpeg');
+            if (ctx) {
+                ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+                canvas.toBlob(blob => {
+                    if (blob) {
+                        onCapture(blob); // Enviem el blob directament
+                    }
+                }, 'image/jpeg');
+            }
         }
     };
+
 
     return (
         <div className="fixed inset-0 z-60 flex flex-col items-center justify-center bg-black bg-opacity-70">

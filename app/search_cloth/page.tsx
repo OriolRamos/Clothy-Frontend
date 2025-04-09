@@ -7,8 +7,8 @@ import { filters } from "../components/Filters/cloth_filters";
 import FilterModal from "../components/Filters/FilterModal";
 import { useTranslation } from "react-i18next";
 import ErrorModal from "../components/Notifications/ErrorModal";
-import { Cloth } from "../components/Modals/Cloth.ts";
-import { Filters, defaultFilters } from "../components/Modals/Filter.ts";
+import { Cloth } from "../components/Modals/Cloth";
+import { Filters, defaultFilters } from "../components/Modals/Filter";
 import RenderFilter from "../components/Filters/RenderFilter";
 import ImageUploadModal from "../components/CameraModal/index";
 import RenderMultipleFilter from "../components/Filters/RenderMultipleFilter";
@@ -20,7 +20,7 @@ const CercaRoba = () => {
     const [uploadedImageUrl, setUploadedImageUrl] = useState<string | null>(null);
     const [detectedInfo, setDetectedInfo] = useState<Record<string, string | number>>({});
     const [results, setResults] = useState<Cloth[]>([]);
-    const [filtersState, setFiltersState] = useState<Filters>(defaultFilters);
+    const [filtersState, setFiltersState] = useState<Record<string, string | string[]>>({});
     const [expandedFilter, setExpandedFilter] = useState<string>(""); // Estat a nivell global
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -232,9 +232,12 @@ const CercaRoba = () => {
 
                 // Filtra i ordena els resultats segons els filtres de preu i descomptes
                 const filteredResults = data.results.filter((item: Cloth) => {
+                    const rawMin = filtersState.minPrice;
+                    const rawMax = filtersState.maxPrice;
                     const productPrice = item.discount_price ?? item.price;
-                    const minPrice = filtersState.minPrice ?? 0;
-                    const maxPrice = filtersState.maxPrice ?? Infinity;
+
+                    const minPrice = rawMin ? parseFloat(Array.isArray(rawMin) ? rawMin[0] : rawMin) : 0;
+                    const maxPrice = rawMax ? parseFloat(Array.isArray(rawMax) ? rawMax[0] : rawMax) : Infinity;
                     const isWithinPriceRange = productPrice >= minPrice && productPrice <= maxPrice;
                     const matchesOfferFilter = filtersState.onlyOfferts ? item.in_discount === true : true;
                     return isWithinPriceRange && matchesOfferFilter;

@@ -1,13 +1,24 @@
 import React, { useRef, useState } from 'react';
 import CameraCaptureModal from '../CameraModal/CameraCaptureModal'; // Assegura't que la ruta és correcta
 
-const ImageUploadModal = ({ onFileSelect, onClose }) => {
-    const fileInputGallery = useRef(null);
+interface ImageUploadModalProps {
+    onFileSelect: (file: File | string) => void;
+    onClose: () => void;
+}
+
+
+
+
+const ImageUploadModal: React.FC<ImageUploadModalProps> = ({ onFileSelect, onClose }) => {
+    const fileInputGallery = useRef<HTMLInputElement | null>(null);
     const [showCameraCapture, setShowCameraCapture] = useState(false);
 
     const handleGalleryClick = () => {
-        fileInputGallery.current.click();
+        if (fileInputGallery.current) {
+            fileInputGallery.current.click();
+        }
     };
+
 
     const handleCameraClick = () => {
         // En comptes d'activar l'input, obrim el modal de càmera

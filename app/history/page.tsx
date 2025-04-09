@@ -6,11 +6,20 @@ import { useAuth } from "@/app/components/AuthContext";
 import { useTranslation } from "react-i18next";
 import ErrorModal from "../components/Notifications/ErrorModal";
 
+type HistoryEntry = {
+    search_id: string;
+    search_date: string;
+    cloth_count?: number;
+    filters?: Record<string, any>;
+};
+
+
+
 const HistorialBusquedas = () => {
     const { t } = useTranslation("common");
     const { fetchWithAuth } = useAuth();
     const router = useRouter();
-    const [history, setHistory] = useState([]);
+    const [history, setHistory] = useState<HistoryEntry[]>([]);
     const [loading, setLoading] = useState(false);
     const [errorModalOpen, setErrorModalOpen] = useState(false);
 
@@ -26,8 +35,9 @@ const HistorialBusquedas = () => {
                 const data = await response.json();
                 // Ordenem de més recent a menys recent
                 const sortedHistory = data.sort(
-                    (a, b) => new Date(b.search_date) - new Date(a.search_date)
+                    (a: HistoryEntry, b: HistoryEntry) => new Date(b.search_date).getTime() - new Date(a.search_date).getTime()
                 );
+
                 setHistory(sortedHistory);
             } else {
                 setErrorModalOpen(true);
@@ -46,9 +56,10 @@ const HistorialBusquedas = () => {
     }, []);
 
     // Quan l'usuari fa click en una entrada, redirigeix a la pàgina dinàmica
-    const handleClick = (searchId) => {
+    const handleClick = (searchId: string) => {
         router.push(`/history/${searchId}`);
     };
+
 
     return (
         <div className="min-h-screen bg-gray-100 px-8 py-12">

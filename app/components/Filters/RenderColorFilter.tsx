@@ -12,29 +12,32 @@ interface RenderFilterProps {
     filterOptions: FilterOption[];
     expandedFilter: string;
     setExpandedFilter: (key: string) => void;
-    filtersState: Record<string, string[]>;
-    setFiltersState: React.Dispatch<React.SetStateAction<Record<string, string[]>>>;
+    filtersState: Record<string, string | string[]>;
+    setFiltersState: React.Dispatch<React.SetStateAction<Record<string, string | string[]>>>;
 }
 
 const RenderColorFilter: React.FC<RenderFilterProps> = ({
-                                                               filterKey,
-                                                               filterOptions,
-                                                               expandedFilter,
-                                                               setExpandedFilter,
-                                                               filtersState,
-                                                               setFiltersState,
-                                                           }) => {
+                                                            filterKey,
+                                                            filterOptions,
+                                                            expandedFilter,
+                                                            setExpandedFilter,
+                                                            filtersState,
+                                                            setFiltersState,
+                                                        }) => {
     const { t } = useTranslation("common");
     const filterRef = useRef<HTMLDivElement>(null); // 🔑 Referència al filtre
 
     const selectedValues = filtersState[filterKey] || [];
-    const searchValue = filtersState[`${filterKey}Search`] || "";
+    const rawSearchValue = filtersState[`${filterKey}Search`] || "";
+    const searchValue = Array.isArray(rawSearchValue) ? rawSearchValue.join(" ") : rawSearchValue;
 
-    const filteredOptions = filterOptions.filter(option =>
-        t(`filters.${filterKey}.${option.value}`)
-            .toLowerCase()
-            .includes(searchValue.toLowerCase())
-    );
+    const filteredOptions = filterOptions.filter(option => {
+        const translation: string | string[] = t(`filters.${filterKey}.${option.value}`);
+        const text: string = Array.isArray(translation)
+            ? translation.join(" ")
+            : translation;
+        return text.toLowerCase().includes(searchValue.toLowerCase());
+    });
 
     // Funció per alternar les opcions seleccionades
     const toggleSelection = (value: string) => {
@@ -54,7 +57,7 @@ const RenderColorFilter: React.FC<RenderFilterProps> = ({
 
         // 🔄 Neteja la cerca només quan s'obre el modal
         if (expandedFilter !== filterKey) {
-            setFiltersState((prev) => ({
+            setFiltersState(prev => ({
                 ...prev,
                 [`${filterKey}Search`]: "",
             }));
@@ -107,7 +110,7 @@ const RenderColorFilter: React.FC<RenderFilterProps> = ({
                         placeholder={t("filters.searchPlaceholder", "Buscar...")}
                         value={searchValue}
                         onChange={(e) =>
-                            setFiltersState((prev) => ({
+                            setFiltersState(prev => ({
                                 ...prev,
                                 [`${filterKey}Search`]: e.target.value,
                             }))
@@ -137,7 +140,9 @@ const RenderColorFilter: React.FC<RenderFilterProps> = ({
                                                 transition: "transform 0.2s ease-in-out",
                                             }}
                                         ></div>
-                                        <span>{t(`filters.${filterKey}.${option.value}`, option.translation)}</span>
+                                        <span>
+                                            {t(`filters.${filterKey}.${option.value}`, option.translation)}
+                                        </span>
                                     </div>
                                 </button>
                             );
@@ -150,4 +155,3 @@ const RenderColorFilter: React.FC<RenderFilterProps> = ({
 };
 
 export default RenderColorFilter;
-
