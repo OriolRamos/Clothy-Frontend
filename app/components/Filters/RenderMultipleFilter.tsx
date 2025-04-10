@@ -11,8 +11,11 @@ interface RenderFilterProps {
     filterOptions: FilterOption[];
     expandedFilter: string;
     setExpandedFilter: (key: string) => void;
-    filtersState: Record<string, string[]>;
-    setFiltersState: React.Dispatch<React.SetStateAction<Record<string, string[]>>>;
+    // Permetem que els valors siguin string o string[]
+    filtersState: Record<string, string | string[]>;
+    setFiltersState: React.Dispatch<
+        React.SetStateAction<Record<string, string | string[]>>
+    >;
 }
 
 const RenderMultipleFilter: React.FC<RenderFilterProps> = ({
@@ -24,25 +27,44 @@ const RenderMultipleFilter: React.FC<RenderFilterProps> = ({
                                                                setFiltersState,
                                                            }) => {
     const { t } = useTranslation("common");
-    const filterRef = useRef<HTMLDivElement>(null); // 🔑 Referència al filtre
+    const filterRef = useRef<HTMLDivElement>(null);
 
-    const selectedValues = filtersState[filterKey] || [];
-    const searchValue = filtersState[`${filterKey}Search`] || "";
+    // Assegurem que els filtres per a aquesta clau són un array (si no, s'inicialitza a l'array buit)
+    const selectedValues = Array.isArray(filtersState[filterKey])
+        ? (filtersState[filterKey] as string[])
+        : [];
 
-    const filteredOptions = filterOptions.filter(option =>
-        t(`filters.${filterKey}.${option.value}`)
-            .toLowerCase()
-            .includes(searchValue.toLowerCase())
-    );
+    // Obtenim el valor de cerca; si és un array, el convertim a cadena
+    const rawSearchValue = filtersState[`${filterKey}Search`];
+    const searchValue =
+        typeof rawSearchValue === "string"
+            ? rawSearchValue
+            : Array.isArray(rawSearchValue)
+                ? rawSearchValue.join(" ")
+                : "";
+
+    // Filtratge de les opcions segons la cerca
+    const filteredOptions = filterOptions.filter(option => {
+        const translationResult = t(`filters.${filterKey}.${option.value}`);
+        const translationText = Array.isArray(translationResult)
+            ? translationResult.join(" ")
+            : translationResult;
+        const translationString =
+            typeof translationText === "string" ? translationText : "";
+        return translationString.toLowerCase().includes(searchValue.toLowerCase());
+    });
 
     // Funció per alternar les opcions seleccionades
     const toggleSelection = (value: string) => {
         setFiltersState(prev => {
-            const selectedSet = new Set(prev[filterKey] || []);
+            const currentValues = Array.isArray(prev[filterKey])
+                ? (prev[filterKey] as string[])
+                : [];
+            const selectedSet = new Set(currentValues);
             if (selectedSet.has(value)) {
-                selectedSet.delete(value); // Eliminar si ja està seleccionat
+                selectedSet.delete(value);
             } else {
-                selectedSet.add(value); // Afegir si no està seleccionat
+                selectedSet.add(value);
             }
             return { ...prev, [filterKey]: Array.from(selectedSet) };
         });
@@ -51,20 +73,21 @@ const RenderMultipleFilter: React.FC<RenderFilterProps> = ({
     const handleModalToggle = () => {
         setExpandedFilter(expandedFilter === filterKey ? "" : filterKey);
 
-        // 🔄 Neteja la cerca només quan s'obre el modal
+        // Neteja la cerca només quan s'obre el modal
         if (expandedFilter !== filterKey) {
-            setFiltersState((prev) => ({
+            setFiltersState(prev => ({
                 ...prev,
+                // Ara podem assignar una cadena
                 [`${filterKey}Search`]: "",
             }));
         }
     };
 
-    // 🧲 Detecta clics fora per tancar el modal
+    // Detecta clics fora per tancar el modal
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             if (filterRef.current && !filterRef.current.contains(event.target as Node)) {
-                setExpandedFilter(""); // 🚪 Tanca si clic fora
+                setExpandedFilter("");
             }
         };
 
@@ -73,7 +96,7 @@ const RenderMultipleFilter: React.FC<RenderFilterProps> = ({
         }
 
         return () => {
-            document.removeEventListener("mousedown", handleClickOutside); // 🧹 Neteja l’escoltador
+            document.removeEventListener("mousedown", handleClickOutside);
         };
     }, [expandedFilter, filterKey, setExpandedFilter]);
 
@@ -85,18 +108,18 @@ const RenderMultipleFilter: React.FC<RenderFilterProps> = ({
                 } focus:outline-none transition-all ease-in-out duration-200 hover:bg-blue-50`}
                 onClick={handleModalToggle}
             >
-                <span className="font-semibold text-black">
-                    {filterKey.charAt(0).toUpperCase() + filterKey.slice(1)}:
-                </span>
+        <span className="font-semibold text-black">
+          {filterKey.charAt(0).toUpperCase() + filterKey.slice(1)}:
+        </span>
                 <span
                     className={`px-2 py-1 ml-2 rounded-md ${
                         selectedValues.length > 0 ? "text-black" : "text-black"
                     }`}
                 >
-                    {selectedValues.length > 0
-                        ? `${selectedValues.length} seleccionat${selectedValues.length > 1 ? "s" : ""}`
-                        : t("defaultSelect")}
-                </span>
+          {selectedValues.length > 0
+              ? `${selectedValues.length} seleccionat${selectedValues.length > 1 ? "s" : ""}`
+              : t("defaultSelect")}
+        </span>
             </button>
 
             {expandedFilter === filterKey && (
@@ -105,8 +128,8 @@ const RenderMultipleFilter: React.FC<RenderFilterProps> = ({
                         type="text"
                         placeholder={t("filters.searchPlaceholder", "Buscar...")}
                         value={searchValue}
-                        onChange={(e) =>
-                            setFiltersState((prev) => ({
+                        onChange={e =>
+                            setFiltersState(prev => ({
                                 ...prev,
                                 [`${filterKey}Search`]: e.target.value,
                             }))

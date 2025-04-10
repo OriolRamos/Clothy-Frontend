@@ -20,19 +20,56 @@ const CercaRoba = () => {
     const [uploadedImageUrl, setUploadedImageUrl] = useState<string | null>(null);
     const [detectedInfo, setDetectedInfo] = useState<Record<string, string | number>>({});
     const [results, setResults] = useState<Cloth[]>([]);
+    // Estat global amb filtres únics i múltiples
     const [filtersState, setFiltersState] = useState<Record<string, string | string[]>>({});
-    const [expandedFilter, setExpandedFilter] = useState<string>(""); // Estat a nivell global
+    const [expandedFilter, setExpandedFilter] = useState<string>(""); // Estat global per al modal
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [loading, setLoading] = useState(false);
     const [searching, setSearching] = useState(false);
     const [page, setPage] = useState(1); // Pàgina actual per a la càrrega
     const [hasMoreResults, setHasMoreResults] = useState(true); // Si hi ha més resultats per carregar
     const [errorModalOpen, setErrorModalOpen] = useState(false); // Estat per al modal d'error
-    // Nou estat per saber si s'ha iniciat la cerca
     const [searchInitiated, setSearchInitiated] = useState(false);
-
-    // Ref per bloquejar crides multiples de scroll de forma síncrona
     const loadingRef = useRef(false);
+
+    // Funcions "wrapper" per als filtres únics (per RenderFilter)
+    const getUniqueFilters = (): Record<string, string> => {
+        return {
+            type: typeof filtersState.type === "string"
+                ? filtersState.type
+                : Array.isArray(filtersState.type)
+                    ? filtersState.type[0] || ""
+                    : "",
+            section: typeof filtersState.section === "string"
+                ? filtersState.section
+                : Array.isArray(filtersState.section)
+                    ? filtersState.section[0] || ""
+                    : "",
+            // Afegeix altres filtres únics si cal...
+        };
+    };
+
+    // Definim el setter wrapper per als filtres únics amb el tipus correcte:
+    const setUniqueFilters: React.Dispatch<React.SetStateAction<Record<string, string>>> = (
+        valueOrUpdater
+    ) => {
+        setFiltersState((prev) => {
+            // Obtenim els filtres únics actuals
+            const uniquePrev: Record<string, string> = getUniqueFilters();
+            // Determinem el nou valor segons si valueOrUpdater és una funció o un valor directe
+            const newUnique =
+                typeof valueOrUpdater === "function"
+                    ? (valueOrUpdater as (prev: Record<string, string>) => Record<string, string>)(uniquePrev)
+                    : valueOrUpdater;
+            return {
+                ...prev,
+                // Actualitzem només les claus dels filtres únics
+                type: newUnique.type,
+                section: newUnique.section,
+            };
+        });
+    };
+
 
     // Funció per carregar més resultats fent una crida al backend
     const loadMoreResults = useCallback(async () => {
@@ -182,15 +219,6 @@ const CercaRoba = () => {
     };
 
 
-
-// Aquesta funció es crida quan es selecciona la imatge des de la galeria (canvi d'input)
-    const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-        if (event.target.files && event.target.files[0]) {
-            const file = event.target.files[0];
-            uploadImageFile(file);
-        }
-    };
-
 // Aquesta funció es crida quan s'obté la imatge des de la càmera (el fitxer ja és un File)
     const onFileSelect = (file: File) => {
         uploadImageFile(file);
@@ -201,8 +229,10 @@ const CercaRoba = () => {
     const handleSearch = async () => {
         console.log("Info", filtersState);
 
-        if (!filtersState.type || !filtersState.brand || !filtersState.section) {
-            console.error("Error: Els valors de type, brand i section són obligatoris.");
+        // Comprovem que els filtres obligatoris estiguin presents en els filtres únics
+        const unique = getUniqueFilters();
+        if (!unique.type || !filtersState.brand || !unique.section) {
+            console.error("Error: Els filtres 'type', 'brand' i 'section' són obligatoris.");
             setErrorModalOpen(true);
             setLoading(false);
             return;
@@ -218,12 +248,13 @@ const CercaRoba = () => {
 
         try {
             const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+            const combinedFilters = { ...getUniqueFilters(), ...filtersState };
             const response = await fetchWithAuth(`${apiUrl}/search/results/filter`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(filtersState),
+                body: JSON.stringify(combinedFilters),
             });
 
             if (response.ok) {
@@ -320,12 +351,14 @@ const CercaRoba = () => {
                                         filterOptions={filters[filterKey]}
                                         expandedFilter={expandedFilter}
                                         setExpandedFilter={setExpandedFilter}
+                                        // Per filtres múltiples, passem l'estat tal com està (s'espera un array)
                                         filtersState={filtersState}
                                         setFiltersState={setFiltersState}
                                     />
                                 </div>
                             );
                         } else if (filterKey === "type" || filterKey === "section") {
+                            // Filtres únics
                             return (
                                 <div className="max-w-[250px] w-full" key={filterKey}>
                                     <RenderFilter
@@ -333,8 +366,9 @@ const CercaRoba = () => {
                                         filterOptions={filters[filterKey]}
                                         expandedFilter={expandedFilter}
                                         setExpandedFilter={setExpandedFilter}
-                                        filtersState={filtersState}
-                                        setFiltersState={setFiltersState}
+                                        // Aquí passem els filtres normalitzats (Record<string, string>)
+                                        filtersState={getUniqueFilters()}
+                                        setFiltersState={setUniqueFilters}
                                     />
                                 </div>
                             );
