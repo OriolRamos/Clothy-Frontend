@@ -220,10 +220,17 @@ const CercaRoba = () => {
 
 
 // Aquesta funció es crida quan s'obté la imatge des de la càmera (el fitxer ja és un File)
-    const onFileSelect = (file: File) => {
-        uploadImageFile(file);
-        setModalVisible(false);
+    const onFileSelect = (file: string | File) => {
+        // Comprovem si el paràmetre és un File, ja que només en processarem aquest cas.
+        if (typeof file !== "string") {
+            uploadImageFile(file);
+            setModalVisible(false);
+        } else {
+            // Opcional: gestiona el cas on el valor és una cadena si cal.
+            console.warn("S'ha rebut una cadena, però s'esperava un File.");
+        }
     };
+
 
     // Funció de cerca: reinicialitza els resultats i carrega la primera pàgina
     const handleSearch = async () => {
@@ -498,7 +505,7 @@ const CercaRoba = () => {
                             <ImageModel
                                 key={result.purchase_url}
                                 cloth={result}
-                                country={filtersState.country}
+                                country={Array.isArray(filtersState.country) ? filtersState.country[0] : filtersState.country}
                             />
                         ))}
                     </div>
