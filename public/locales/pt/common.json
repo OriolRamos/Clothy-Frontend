@@ -656,7 +656,59 @@
     "soloOfferts": "Somente ofertas",
     "reset": "Redefinir",
     "search": "Buscar"
-  }
-
-
+  },
+  "seo": {
+    "verification": {
+      "title": "Verifica a sua conta - Clothy",
+      "description": "Acesse sua conta no Clothy verificando seu e-mail. Digite o código de verificação para continuar."
+    },
+    "terms": {
+      "title": "Clothy - Termos e Condições",
+      "description": "Consulte os termos e condições de uso do Clothy, sua loja online de moda. Descubra as regras que regem o uso da plataforma e os seus direitos como consumidor."
+    },
+    "signup": {
+      "title": "Cadastre-se no Clothy - Crie sua conta",
+      "description": "Crie sua conta no Clothy, a loja de moda online. Cadastre-se agora e aproveite descontos exclusivos, novidades e ofertas especiais."
+    },
+    "search": {
+      "title": "Pesquise Moda Inteligente no Clothy",
+      "description": "Pesquise sua moda preferida com filtros avançados ou utilizando uma foto. Descubra roupas inteligentes e tendências de moda no Clothy."
+    },
+    "history": {
+      "title": "Histórico de buscas - Clothy",
+      "description": "Consulte o histórico de buscas no Clothy. Reveja todas as buscas realizadas e acompanhe sua trajetória na moda."
+    },
+    "donations": {
+      "title": "Faça uma doação - Clothy",
+      "description": "Ajude o Clothy a crescer com uma doação. Contribua para o desenvolvimento do projeto e aproveite benefícios exclusivos."
+    },
+    "aboutus": {
+      "title": "Sobre o Clothy - Quem somos e o que fazemos",
+      "description": "Descubra quem somos no Clothy, nossa missão e como trazemos um rosto humano para o mundo da moda online."
+    },
+    "home": {
+      "title": "Bem-vindo ao Clothy - Sua loja de moda online",
+      "description": "Descubra as últimas tendências da moda e acesse login ou cadastre-se no Clothy. Tudo o que você precisa em um só lugar."
+    },
+    "profile": {
+      "title": "Clothy - Seu Perfil Pessoal",
+      "description": "Acesse as configurações da sua conta pessoal no Clothy. Atualize suas informações, preferências e gerencie sua experiência de moda online."
+    },
+    "login": {
+      "title": "Faça login ou cadastre-se - Clothy",
+      "description": "Faça login ou crie uma conta no Clothy, sua loja de moda online. Cadastre-se e aproveite descontos e promoções exclusivas."
+    },
+    "recover": {
+      "title": "Recupere sua senha - Clothy",
+      "description": "Esqueceu sua senha? Recupere o acesso à sua conta no Clothy de maneira rápida e segura."
+    },
+    "maintenance": {
+      "title": "Página de manutenção - Clothy",
+      "description": "Atualmente estamos realizando tarefas de manutenção. Volte a nos visitar em breve!"
+    },
+    "privacypolicy": {
+      "title": "Política de Privacidade - Clothy",
+      "description": "Consulte nossa política de privacidade para saber como protegemos e usamos seus dados pessoais no Clothy."
+    }
+    }
 }

@@ -1,50 +1,50 @@
 import Head from "next/head";
 import ResetPassword from "@/app/components/Recover-Password/reset"; // Assegura't que el path sigui correcte
-import Link from "next/link";
 
 const ResetPage = () => {
     return (
         <div>
-            {/* Metadatos per millorar el SEO */}
             <Head>
-                <title>Recupera la teva contrasenya - Clothy</title>
+                <title>Restableix la teva contrasenya - Clothy</title>
                 <meta
                     name="description"
-                    content="Has oblidat la teva contrasenya? Recupera l'accés al teu compte de Clothy de manera ràpida i segura."
+                    content="Has rebut un enllaç per restablir la teva contrasenya? Introdueix la nova contrasenya per recuperar l'accés al teu compte Clothy."
                 />
                 <meta name="robots" content="index, follow" />
-                <meta
-                    property="og:title"
-                    content="Recupera la teva contrasenya - Clothy"
-                />
+
+                {/* Open Graph */}
+                <meta property="og:title" content="Restableix la teva contrasenya - Clothy" />
                 <meta
                     property="og:description"
-                    content="Has oblidat la teva contrasenya? Recupera l'accés al teu compte de Clothy de manera ràpida i segura."
+                    content="Has rebut un enllaç per restablir la teva contrasenya? Introdueix la nova contrasenya per recuperar l'accés al teu compte Clothy."
                 />
-                <meta
-                    property="og:image"
-                    content="/images/og-image.jpg"
-                />
-                <meta
-                    property="og:url"
-                    content="https://www.clothy.com/recover-password"
-                />
+                <meta property="og:image" content="/images/og-image.jpg" />
+                <meta property="og:url" content="https://www.clothy.com/reset-password" />
+
+                {/* Twitter Card */}
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta
-                    name="twitter:title"
-                    content="Recupera la teva contrasenya - Clothy"
-                />
+                <meta name="twitter:title" content="Restableix la teva contrasenya - Clothy" />
                 <meta
                     name="twitter:description"
-                    content="Has oblidat la teva contrasenya? Recupera l'accés al teu compte de Clothy de manera ràpida i segura."
+                    content="Has rebut un enllaç per restablir la teva contrasenya? Introdueix la nova contrasenya per recuperar l'accés al teu compte Clothy."
                 />
-                <meta
-                    name="twitter:image"
-                    content="/images/og-image.jpg"
-                />
+                <meta name="twitter:image" content="/images/og-image.jpg" />
+
+                {/* Idiomes alternatius - hreflang */}
+                <link rel="alternate" href="https://www.clothy.es/reset-password" hrefLang="ca" />
+                <link rel="alternate" href="https://www.clothy.es/reset-password" hrefLang="es" />
+                <link rel="alternate" href="https://www.clothy.es/reset-password" hrefLang="en" />
+                <link rel="alternate" href="https://www.clothy.es/reset-password" hrefLang="fr" />
+                <link rel="alternate" href="https://www.clothy.es/reset-password" hrefLang="de" />
+                <link rel="alternate" href="https://www.clothy.es/reset-password" hrefLang="it" />
+                <link rel="alternate" href="https://www.clothy.es/reset-password" hrefLang="pt" />
+                <link rel="alternate" href="https://www.clothy.es/reset-password" hrefLang="ar" />
+                <link rel="alternate" href="https://www.clothy.es/reset-password" hrefLang="hi" />
+                <link rel="alternate" href="https://www.clothy.es/reset-password" hrefLang="zh" />
+                <link rel="alternate" href="https://www.clothy.es/reset-password" hrefLang="x-default" />
             </Head>
 
-            {/* Component de Recuperació de Contrasenya */}
+            {/* Component de Reset de contrasenya */}
             <ResetPassword />
         </div>
     );

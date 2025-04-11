@@ -656,5 +656,63 @@
     "soloOfferts": "仅限优惠",
     "reset": "重置",
     "search": "搜索"
+  },
+  "seo": {
+    "verification": {
+      "title": "验证您的账户 - Clothy",
+      "description": "通过验证您的电子邮件来访问您的Clothy账户。请输入验证码以继续。"
+    },
+    "terms": {
+      "title": "Clothy - 使用条款与条件",
+      "description": "查看Clothy的使用条款与条件，您的在线时尚商店。了解平台的使用规则和您的消费者权益。"
+    },
+    "signup": {
+      "title": "在Clothy注册 - 创建您的账户",
+      "description": "在Clothy创建您的账户，这是一家在线时尚商店。立即注册，享受独家折扣、最新动态及特别优惠。"
+    },
+    "search": {
+      "title": "Clothy智能时尚搜索",
+      "description": "使用高级筛选器或拍照搜索您喜爱的时尚。探索Clothy上的智能服装及时尚潮流。"
+    },
+    "history": {
+      "title": "搜索历史记录 - Clothy",
+      "description": "查看您在Clothy上的搜索历史。检查所有搜索记录并跟踪您的时尚之旅。"
+    },
+    "donations": {
+      "title": "捐赠 - Clothy",
+      "description": "通过捐赠支持Clothy的发展。为项目发展做出贡献并享受独家优惠。"
+    },
+    "aboutus": {
+      "title": "关于Clothy - 我们是谁以及我们做什么",
+      "description": "了解Clothy，我们的使命以及如何为在线时尚赋予人性化。"
+    },
+    "home": {
+      "title": "欢迎来到Clothy - 您的在线时尚商店",
+      "description": "发现最新的时尚潮流，并在Clothy登录或注册。所有您需要的，都在这里。"
+    },"profile": {
+      "title": "Clothy - 您的个人资料",
+      "description": "访问您的Clothy账户设置。更新您的信息和偏好，管理您的在线时尚体验。"
+    },
+    "login": {
+      "title": "登录或注册 - Clothy",
+      "description": "登录或在Clothy创建一个账户。享受独家折扣和促销活动。"
+    },
+    "recover": {
+      "title": "找回您的密码 - Clothy",
+      "description": "忘记密码？快速、安全地恢复您在Clothy的账户访问权限。"
+    },
+    "maintenance": {
+      "title": "维护页面 - Clothy",
+      "description": "我们正在进行维护工作。请稍后再访问！"
+    },
+    "privacypolicy": {
+      "title": "隐私政策 - Clothy",
+      "description": "查看我们的隐私政策，了解我们如何保护和使用您在Clothy上的个人信息。"
+    },
+    "maintenancePage": {
+      "title": "我们正在努力改进",
+      "message": "由于维护工作，我们的商店暂时无法服务。感谢您的耐心等待。",
+      "imageAlt": "维护插图"
+    }
   }
 }

@@ -7,6 +7,7 @@ import ErrorModal from "../components/Notifications/ErrorModal";
 import { useTranslation } from "react-i18next";
 import RenderFilter from "../components/Filters/RenderFilter"; // Importem el component de filtres
 import { filters } from "../components/Filters/cloth_filters";
+import Head from "next/head";
 
 
 const UserProfile = () => {
@@ -134,7 +135,44 @@ const UserProfile = () => {
     };
 
     return (
-        <div className="text-gray-900 min-h-screen flex flex-col">
+            <>
+                {/* SEO i metadades per la pàgina de perfil */}
+                <Head>
+                    <title>{t("seo.profile.title")}</title>
+                    <meta name="description" content={t("seo.profile.description")} />
+                    <meta name="robots" content="index, follow" />
+
+                    {/* Open Graph */}
+                    <meta property="og:title" content={t("seo.profile.title")} />
+                    <meta property="og:description" content={t("seo.profile.description")} />
+                    <meta property="og:image" content="/images/og-image-profile.jpg" />
+                    <meta property="og:url" content="https://www.clothy.es/profile" />
+
+                    {/* Twitter Cards */}
+                    <meta name="twitter:card" content="summary_large_image" />
+                    <meta name="twitter:title" content={t("seo.profile.title")} />
+                    <meta name="twitter:description" content={t("seo.profile.description")} />
+                    <meta name="twitter:image" content="/images/og-image-profile.jpg" />
+
+                    {/* Enllaços alternatius per als idiomes */}
+                    <link rel="alternate" href="https://www.clothy.es/profile" hrefLang="es" />
+                    <link rel="alternate" href="https://www.clothy.es/profile" hrefLang="en" />
+                    <link rel="alternate" href="https://www.clothy.es/profile" hrefLang="ca" />
+                    <link rel="alternate" href="https://www.clothy.es/profile" hrefLang="ch" />
+                    <link rel="alternate" href="https://www.clothy.es/profile" hrefLang="ar" />
+                    <link rel="alternate" href="https://www.clothy.es/profile" hrefLang="bn" />
+                    <link rel="alternate" href="https://www.clothy.es/profile" hrefLang="de" />
+                    <link rel="alternate" href="https://www.clothy.es/profile" hrefLang="fr" />
+                    <link rel="alternate" href="https://www.clothy.es/profile" hrefLang="hi" />
+                    <link rel="alternate" href="https://www.clothy.es/profile" hrefLang="ja" />
+                    <link rel="alternate" href="https://www.clothy.es/profile" hrefLang="ko" />
+                    <link rel="alternate" href="https://www.clothy.es/profile" hrefLang="pt" />
+                    <link rel="alternate" href="https://www.clothy.es/profile" hrefLang="ru" />
+                    <link rel="alternate" href="https://www.clothy.es/profile" hrefLang="tr" />
+                    <link rel="alternate" href="https://www.clothy.es/profile" hrefLang="x-default" />
+                </Head>
+
+                <div className="text-gray-900 min-h-screen flex flex-col">
             {/* Header */}
             <header className="bg-blue-600 py-6">
                 <div className="max-w-7xl mx-auto text-center text-black">
@@ -299,6 +337,7 @@ const UserProfile = () => {
                 </div>
             </main>
         </div>
+        </>
     );
 };
 

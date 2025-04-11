@@ -546,6 +546,64 @@
     "soloOfferts": "오퍼만",
     "reset": "초기화",
     "search": "검색"
+  },
+  "seo": {
+    "verification": {
+      "title": "계정을 인증하세요 - Clothy",
+      "description": "이메일을 통해 Clothy 계정을 인증하세요. 계속하려면 인증 코드를 입력하세요."
+    },
+    "terms": {
+      "title": "Clothy - 이용 약관",
+      "description": "Clothy의 이용 약관을 확인하세요. 온라인 패션 스토어의 규칙과 소비자 권리를 알아보세요."
+    },
+    "signup": {
+      "title": "Clothy에서 회원가입 - 계정 만들기",
+      "description": "Clothy에서 계정을 생성하세요. 지금 가입하고 독점 할인, 업데이트 및 특별 프로모션을 누리세요."
+    },
+    "search": {
+      "title": "Clothy에서 스마트 패션 검색",
+      "description": "고급 필터나 사진을 사용해 좋아하는 패션을 검색하세요. Clothy에서 스마트 의류와 패션 트렌드를 발견하세요."
+    },
+    "history": {
+      "title": "검색 기록 - Clothy",
+      "description": "Clothy에서 검색 기록을 확인하세요. 모든 이전 검색을 검토하고 패션 여정을 따라가세요."
+    },
+    "donations": {
+      "title": "기부하기 - Clothy",
+      "description": "기부를 통해 Clothy의 성장을 도와주세요. 프로젝트 개발에 기여하고 독점 혜택을 누리세요."
+    },
+    "aboutus": {
+      "title": "Clothy 소개 - 우리가 누구이며 무엇을 하는지",
+      "description": "Clothy에 대해 알아보고, 우리의 미션과 온라인 패션에 인간적인 터치를 더하는 방법을 확인하세요."
+    },
+    "home": {
+      "title": "Clothy에 오신 것을 환영합니다 - 온라인 패션 스토어",
+      "description": "최신 패션 트렌드를 발견하고 Clothy에서 로그인 또는 회원가입하세요. 필요한 모든 것이 한 곳에 있습니다."
+    },
+    "profile": {
+      "title": "Clothy - 당신의 개인 프로필",
+      "description": "Clothy에서 계정 설정에 접근하세요. 정보를 업데이트하고 선호도를 관리하여 온라인 패션 경험을 개선하세요."
+    },
+    "login": {
+      "title": "로그인 또는 회원가입 - Clothy",
+      "description": "Clothy에 로그인하거나 계정을 생성하세요. 독점 할인 및 프로모션을 누리세요."
+    },
+    "recover": {
+      "title": "비밀번호 복구 - Clothy",
+      "description": "비밀번호를 잊으셨나요? Clothy 계정 접근을 빠르고 안전하게 복구하세요."
+    },
+    "maintenance": {
+      "title": "유지보수 페이지 - Clothy",
+      "description": "현재 유지보수 작업을 진행 중입니다. 잠시 후 다시 방문해 주세요."
+    },
+    "privacypolicy": {
+      "title": "개인정보 보호정책 - Clothy",
+      "description": "Clothy에서 귀하의 개인 정보를 보호하고 사용하는 방법에 대해 개인정보 보호정책을 확인하세요."
+    },
+    "maintenancePage": {
+      "title": "개선 작업 진행 중입니다",
+      "message": "당사 스토어는 유지보수로 인해 일시적으로 서비스 중지 상태입니다. 인내해 주셔서 감사합니다.",
+      "imageAlt": "유지보수 일러스트"
+    }
   }
-
 }

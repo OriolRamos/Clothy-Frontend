@@ -702,9 +702,59 @@
     "soloOfferts": "Sadece Teklifler",
     "reset": "Sıfırla",
     "search": "Ara"
+  },
+  "seo": {
+    "verification": {
+      "title": "Hesabınızı Doğrulayın - Clothy",
+      "description": "E-postanızı doğrulayarak Clothy hesabınıza erişin. Devam etmek için doğrulama kodunu girin."
+    },
+    "terms": {
+      "title": "Clothy - Şartlar ve Koşullar",
+      "description": "Clothy'nin kullanım şartlarını ve koşullarını inceleyin, çevrimiçi moda mağazanız. Platform kullanım kurallarını ve tüketici haklarınızı keşfedin."
+    },
+    "signup": {
+      "title": "Clothy'e Kayıt Olun - Hesabınızı Oluşturun",
+      "description": "Clothy'de bir hesap oluşturun, çevrimiçi moda mağazanız. Şimdi kayıt olun ve özel indirimlerin, güncellemelerin ve özel tekliflerin tadını çıkarın."
+    },
+    "search": {
+      "title": "Clothy'de Akıllı Moda Araması",
+      "description": "Gelişmiş filtreler veya fotoğraf kullanarak favori modanızı arayın. Clothy'de akıllı giyim ve moda trendlerini keşfedin."
+    },
+    "history": {
+      "title": "Arama Geçmişi - Clothy",
+      "description": "Clothy'deki arama geçmişinizi görüntüleyin. Tüm yapılan aramaları gözden geçirin ve moda yolculuğunuzu takip edin."
+    },
+    "donations": {
+      "title": "Bağış Yapın - Clothy",
+      "description": "Bağışınızla Clothy'nin büyümesine yardımcı olun. Projenin gelişimine katkıda bulunun ve özel avantajların tadını çıkarın."
+    },
+    "aboutus": {
+      "title": "Clothy Hakkında - Biz Kimiz ve Ne Yapıyoruz",
+      "description": "Clothy'de kim olduğumuzu, misyonumuzu ve çevrimiçi moda dünyasına nasıl insani bir dokunuş kattığımızı keşfedin."
+    },
+    "home": {
+      "title": "Clothy'ye Hoşgeldiniz - Çevrimiçi Moda Mağazanız",
+      "description": "En son moda trendlerini keşfedin ve Clothy'de giriş yapın veya kayıt olun. İhtiyacınız olan her şey tek bir yerde."
+    },
+    "profile": {
+      "title": "Clothy - Kişisel Profiliniz",
+      "description": "Clothy'de kişisel hesap ayarlarınıza erişin. Bilgilerinizi, tercihlerinizi güncelleyin ve çevrimiçi moda deneyiminizi yönetin."
+    },
+    "login": {
+      "title": "Giriş Yap veya Kayıt Ol - Clothy",
+      "description": "Clothy'de giriş yapın veya bir hesap oluşturun. Özel indirimler ve promosyonlardan yararlanın."
+    },
+    "recover": {
+      "title": "Şifrenizi Kurtarın - Clothy",
+      "description": "Şifrenizi mi unuttunuz? Clothy hesabınıza hızlı ve güvenli bir şekilde erişimi geri kazanın."
+    },
+    "maintenance": {
+      "title": "Bakım Sayfası - Clothy",
+      "description": "Şu anda bakım çalışmaları yapıyoruz. Lütfen yakında tekrar ziyaret edin!"
+    },
+    "privacypolicy": {
+      "title": "Gizlilik Politikası - Clothy",
+      "description": "Clothy'de kişisel verilerinizi nasıl koruduğumuzu ve kullandığımızı öğrenmek için gizlilik politikamızı inceleyin."
+    }
   }
-
-
-
-
 }

@@ -616,5 +616,64 @@
     "soloOfferts": "オファーのみ",
     "reset": "リセット",
     "search": "検索"
+  },
+  "seo": {
+    "verification": {
+      "title": "アカウントを確認 - Clothy",
+      "description": "メールを確認してClothyのアカウントにアクセスしてください。認証コードを入力して続行してください。"
+    },
+    "terms": {
+      "title": "Clothy - 利用規約",
+      "description": "Clothyの利用規約をご確認ください。オンラインファッションストアとしてのルールとお客様の権利をご覧ください。"
+    },
+    "signup": {
+      "title": "Clothyにサインアップ - アカウント作成",
+      "description": "Clothyでアカウントを作成してください。今すぐ登録して、限定割引、最新情報、特別オファーをお楽しみください。"
+    },
+    "search": {
+      "title": "Clothyでスマートファッション検索",
+      "description": "高度なフィルターまたは写真を使用して、お好きなファッションを検索してください。Clothyでスマートな衣類とファッショントレンドを発見しましょう。"
+    },
+    "history": {
+      "title": "検索履歴 - Clothy",
+      "description": "Clothyでの検索履歴をご確認ください。過去のすべての検索を見直し、あなたのファッションジャーニーを追跡してください。"
+    },
+    "donations": {
+      "title": "寄付する - Clothy",
+      "description": "寄付によってClothyの成長を支援してください。プロジェクトの発展に貢献し、限定特典をお楽しみください。"
+    },
+    "aboutus": {
+      "title": "Clothyについて - 私たちについて",
+      "description": "Clothyとは何か、私たちのミッション、そしてオンラインファッションにどのように人間味をもたらしているかをご覧ください。"
+    },
+    "home": {
+      "title": "Clothyへようこそ - オンラインファッションストア",
+      "description": "最新のファッショントレンドを発見し、Clothyでログインまたはサインアップしてください。すべてが1か所に。"
+    },
+    "profile": {
+      "title": "Clothy - あなたの個人プロフィール",
+      "description": "Clothyのアカウント設定にアクセスしてください。情報、好みを更新し、オンラインファッション体験を管理しましょう。"
+    },
+    "login": {
+      "title": "ログインまたはサインアップ - Clothy",
+      "description": "Clothyにログインするか、アカウントを作成してください。限定割引とプロモーションをお楽しみください。"
+    },
+    "recover": {
+      "title": "パスワードをリセット - Clothy",
+      "description": "パスワードをお忘れですか？Clothyアカウントへのアクセスを迅速かつ安全に回復してください。"
+    },
+    "maintenance": {
+      "title": "メンテナンスページ - Clothy",
+      "description": "現在、メンテナンス作業中です。しばらくしてから再度アクセスしてください。"
+    },
+    "privacypolicy": {
+      "title": "プライバシーポリシー - Clothy",
+      "description": "Clothyにおける個人情報の保護と利用方法について、プライバシーポリシーをご確認ください。"
+    },
+    "maintenancePage": {
+      "title": "改善に向けて取り組んでいます",
+      "message": "当店はメンテナンスのため一時的に停止しています。ご理解いただきありがとうございます。",
+      "imageAlt": "メンテナンスのイラスト"
+    }
   }
 }

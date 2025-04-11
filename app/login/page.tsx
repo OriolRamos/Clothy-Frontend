@@ -1,54 +1,53 @@
+"use client";
+
 import Head from "next/head";
+import { useTranslation } from "react-i18next";
 import Login from "@/app/components/Login";
 
 const LoginPage = () => {
+    const { t } = useTranslation("common");
+
     return (
-        <div>
-            {/* Metadatos para mejorar el SEO */}
+        <>
             <Head>
-                <title>Inicia Sessió o Registra&#39;t - Clothy</title>
-                <meta
-                    name="description"
-                    content="Inicia sessió o crea un compte a Clothy, la teva botiga de moda en línia. Registra&#39;t i gaudeix de descomptes i promocions exclusives."
-                />
+                {/* Títol i Meta Descripció traduïts */}
+                <title>{t("seo.login.title")}</title>
+                <meta name="description" content={t("seo.login.description")} />
                 <meta name="robots" content="index, follow" />
-                <meta
-                    property="og:title"
-                    content="Inicia Sessió o Registra&#39;t - Clothy"
-                />
-                <meta
-                    property="og:description"
-                    content="Inicia sessió o crea un compte a Clothy, la teva botiga de moda en línia. Registra&#39;t i gaudeix de descomptes i promocions exclusives."
-                />
-                <meta
-                    property="og:image"
-                    content="/images/og-image.jpg"
-                />
-                <meta
-                    property="og:url"
-                    content="https://www.clothy.com/login"
-                />
-                <meta
-                    name="twitter:card"
-                    content="summary_large_image"
-                />
-                <meta
-                    name="twitter:title"
-                    content="Inicia Sessió o Registra&#39;t - Clothy"
-                />
-                <meta
-                    name="twitter:description"
-                    content="Inicia sessió o crea un compte a Clothy, la teva botiga de moda en línia. Registra&#39;t i gaudeix de descomptes i promocions exclusives."
-                />
-                <meta
-                    name="twitter:image"
-                    content="/images/og-image.jpg"
-                />
+
+                {/* Open Graph */}
+                <meta property="og:title" content={t("seo.login.title")} />
+                <meta property="og:description" content={t("seo.login.description")} />
+                <meta property="og:image" content="/images/og-image-login.jpg" />
+                <meta property="og:url" content="https://www.clothy.es/login" />
+
+                {/* Twitter Cards */}
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content={t("seo.login.title")} />
+                <meta name="twitter:description" content={t("seo.login.description")} />
+                <meta name="twitter:image" content="/images/og-image-login.jpg" />
+
+                {/* Enllaços alternatius per als idiomes */}
+                <link rel="alternate" href="https://www.clothy.es/login" hrefLang="es" />
+                <link rel="alternate" href="https://www.clothy.es/login" hrefLang="en" />
+                <link rel="alternate" href="https://www.clothy.es/login" hrefLang="ca" />
+                <link rel="alternate" href="https://www.clothy.es/login" hrefLang="ch" />
+                <link rel="alternate" href="https://www.clothy.es/login" hrefLang="ar" />
+                <link rel="alternate" href="https://www.clothy.es/login" hrefLang="bn" />
+                <link rel="alternate" href="https://www.clothy.es/login" hrefLang="de" />
+                <link rel="alternate" href="https://www.clothy.es/login" hrefLang="fr" />
+                <link rel="alternate" href="https://www.clothy.es/login" hrefLang="hi" />
+                <link rel="alternate" href="https://www.clothy.es/login" hrefLang="ja" />
+                <link rel="alternate" href="https://www.clothy.es/login" hrefLang="ko" />
+                <link rel="alternate" href="https://www.clothy.es/login" hrefLang="pt" />
+                <link rel="alternate" href="https://www.clothy.es/login" hrefLang="ru" />
+                <link rel="alternate" href="https://www.clothy.es/login" hrefLang="tr" />
+                <link rel="alternate" href="https://www.clothy.es/login" hrefLang="x-default" />
             </Head>
 
-            {/* Componente Login */}
+            {/* Component Login */}
             <Login />
-        </div>
+        </>
     );
 };
 

@@ -12,6 +12,8 @@ import { Filters, defaultFilters } from "../components/Modals/Filter";
 import RenderFilter from "../components/Filters/RenderFilter";
 import ImageUploadModal from "../components/CameraModal/index";
 import RenderMultipleFilter from "../components/Filters/RenderMultipleFilter";
+import Head from "next/head";
+
 
 const CercaRoba = () => {
     const { t } = useTranslation("common");
@@ -311,6 +313,43 @@ const CercaRoba = () => {
 
 
     return (
+        <>
+            {/* Metadades SEO amb traduccions */}
+            <Head>
+                {/* Títol i meta-descripció dinàmiques */}
+                <title>{t("seo.search.title")}</title>
+                <meta name="description" content={t("seo.search.description")} />
+                <meta name="robots" content="index, follow" />
+
+                {/* Open Graph */}
+                <meta property="og:title" content={t("seo.search.title")} />
+                <meta property="og:description" content={t("seo.search.description")} />
+                <meta property="og:image" content="/images/og-image-search.jpg" />
+                <meta property="og:url" content="https://www.clothy.es/search_cloth" />
+
+                {/* Twitter Cards */}
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content={t("seo.search.title")} />
+                <meta name="twitter:description" content={t("seo.search.description")} />
+                <meta name="twitter:image" content="/images/og-image-search.jpg" />
+
+                {/* Enllaços alternatius per als diversos idiomes (URL invariant perquè la traducció és dinàmica) */}
+                <link rel="alternate" href="https://www.clothy.es/search_cloth" hrefLang="es" />
+                <link rel="alternate" href="https://www.clothy.es/search_cloth" hrefLang="en" />
+                <link rel="alternate" href="https://www.clothy.es/search_cloth" hrefLang="ca" />
+                <link rel="alternate" href="https://www.clothy.es/search_cloth" hrefLang="ch" />
+                <link rel="alternate" href="https://www.clothy.es/search_cloth" hrefLang="ar" />
+                <link rel="alternate" href="https://www.clothy.es/search_cloth" hrefLang="bn" />
+                <link rel="alternate" href="https://www.clothy.es/search_cloth" hrefLang="de" />
+                <link rel="alternate" href="https://www.clothy.es/search_cloth" hrefLang="fr" />
+                <link rel="alternate" href="https://www.clothy.es/search_cloth" hrefLang="hi" />
+                <link rel="alternate" href="https://www.clothy.es/search_cloth" hrefLang="ja" />
+                <link rel="alternate" href="https://www.clothy.es/search_cloth" hrefLang="ko" />
+                <link rel="alternate" href="https://www.clothy.es/search_cloth" hrefLang="pt" />
+                <link rel="alternate" href="https://www.clothy.es/search_cloth" hrefLang="ru" />
+                <link rel="alternate" href="https://www.clothy.es/search_cloth" hrefLang="tr" />
+                <link rel="alternate" href="https://www.clothy.es/search_cloth" hrefLang="x-default" />
+            </Head>
         <div className="min-h-screen bg-gray-100 px-8 py-12">
             {/* Contenidor de filtres i botons */}
             <div className="mb-8">
@@ -518,6 +557,7 @@ const CercaRoba = () => {
                 </>
             )}
         </div>
+        </>
     );
 };
 

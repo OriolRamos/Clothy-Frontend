@@ -3,11 +3,10 @@
 import Image from "next/image";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import {useRouter} from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const Verification = () => {
     const { t } = useTranslation("common");
-
     const [email, setEmail] = useState("");
     const [verificationCode, setVerificationCode] = useState("");
     const [error, setError] = useState("");
@@ -45,88 +44,84 @@ const Verification = () => {
     };
 
     return (
-        <div className="relative h-screen flex items-center bg-gray-100">
-            {/* Contenidor principal */}
-            <div className="absolute inset-0 lg:grid grid-cols-2">
-                {/* Columna de la imatge */}
-                <div className="relative h-full hidden lg:block">
-                    <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-tr from-teal-400 to-blue-600 clip-path-diagonal">
-                        <Image
-                            src="/images/verification.png"
-                            alt={t("verification.imageAlt")}
-                            fill
-                            style={{ objectFit: "cover" }}
-                            className="opacity-90"
-                        />
+        <>
+
+
+            <div className="relative h-screen flex items-center bg-gray-100">
+                <div className="absolute inset-0 lg:grid grid-cols-2">
+                    <div className="relative h-full hidden lg:block">
+                        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-tr from-teal-400 to-blue-600 clip-path-diagonal">
+                            <Image
+                                src="/images/verification.png"
+                                alt={t("verification.imageAlt")}
+                                fill
+                                style={{ objectFit: "cover" }}
+                                className="opacity-90"
+                            />
+                        </div>
                     </div>
-                </div>
 
-                {/* Columna del formulari */}
-                <div className="relative flex justify-center items-center">
-                    <div className="rounded-2xl p-10 w-full max-w-lg bg-white shadow-md">
-                        <h2 className="text-3xl font-bold text-blue-600 text-center mb-6">
-                            {t("verification.title")}
-                        </h2>
-                        <p className="text-gray-500 text-center mb-4">
-                            {t("verification.instructions")}
-                        </p>
-                        <form className="space-y-6" onSubmit={handleSubmit}>
-                            {/* Input de correu electrònic */}
-                            <div>
-                                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                                    {t("verification.emailLabel")}
-                                </label>
-                                <input
-                                    type="email"
-                                    id="email"
-                                    name="email"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    required
-                                    className="mt-2 block w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                                    placeholder={t("verification.emailPlaceholder")}
-                                />
-                            </div>
+                    <div className="relative flex justify-center items-center">
+                        <div className="rounded-2xl p-10 w-full max-w-lg bg-white shadow-md">
+                            <h2 className="text-3xl font-bold text-blue-600 text-center mb-6">
+                                {t("verification.title")}
+                            </h2>
+                            <p className="text-gray-500 text-center mb-4">
+                                {t("verification.instructions")}
+                            </p>
+                            <form className="space-y-6" onSubmit={handleSubmit}>
+                                <div>
+                                    <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                                        {t("verification.emailLabel")}
+                                    </label>
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        name="email"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        required
+                                        className="mt-2 block w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                                        placeholder={t("verification.emailPlaceholder")}
+                                    />
+                                </div>
 
-                            {/* Input del codi de verificació */}
-                            <div>
-                                <label htmlFor="verificationCode" className="block text-sm font-medium text-gray-700">
-                                    {t("verification.codeLabel")}
-                                </label>
-                                <input
-                                    type="text"
-                                    id="verificationCode"
-                                    name="verificationCode"
-                                    value={verificationCode}
-                                    onChange={(e) => setVerificationCode(e.target.value)}
-                                    required
-                                    className="mt-2 block w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                                    placeholder={t("verification.codePlaceholder")}
-                                />
-                            </div>
+                                <div>
+                                    <label htmlFor="verificationCode" className="block text-sm font-medium text-gray-700">
+                                        {t("verification.codeLabel")}
+                                    </label>
+                                    <input
+                                        type="text"
+                                        id="verificationCode"
+                                        name="verificationCode"
+                                        value={verificationCode}
+                                        onChange={(e) => setVerificationCode(e.target.value)}
+                                        required
+                                        className="mt-2 block w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                                        placeholder={t("verification.codePlaceholder")}
+                                    />
+                                </div>
 
-                            {/* Missatge d'error */}
-                            {error && <p className="text-red-500 text-sm">{error}</p>}
+                                {error && <p className="text-red-500 text-sm">{error}</p>}
 
-                            {/* Missatge d'èxit */}
-                            {success && (
-                                <p className="text-green-500 text-sm">
-                                    {t("verification.successMessage")}
-                                </p>
-                            )}
+                                {success && (
+                                    <p className="text-green-500 text-sm">
+                                        {t("verification.successMessage")}
+                                    </p>
+                                )}
 
-                            {/* Botó de verificació */}
-                            <button
-                                type="submit"
-                                className="w-full bg-teal-400 text-white py-3 px-6 rounded-lg shadow-lg hover:bg-teal-500 transition-colors"
-                            >
-                                {t("verification.buttonText")}
-                            </button>
-                        </form>
+                                <button
+                                    type="submit"
+                                    className="w-full bg-teal-400 text-white py-3 px-6 rounded-lg shadow-lg hover:bg-teal-500 transition-colors"
+                                >
+                                    {t("verification.buttonText")}
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 

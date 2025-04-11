@@ -4,21 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da1a1d65-fd44-4e09-8dc4-bd35cbb307fe" name="Changes" comment="v0.0.7(Afegit historial de cerques)">
+    <list default="true" id="da1a1d65-fd44-4e09-8dc4-bd35cbb307fe" name="Changes" comment="v0.0.9(Pre producction)">
+      <change afterPath="$PROJECT_DIR$/app/recover-password/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Filters/FilterModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Filters/FilterModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Footer/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Footer/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/ImageModal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/ImageModal/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Login/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Login/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/SignUp/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/SignUp/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/history/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/history/[id]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/profile/favorites/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/profile/favorites/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/about-us/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/about-us/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/donaciones/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/donaciones/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/history/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/history/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/login/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/login/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/loss-password/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/maintenance/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/maintenance/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/privacy-policy/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/privacy-policy/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/profile/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/profile/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/reset-password/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/reset-password/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/search_cloth/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/search_cloth/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/signup/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/signup/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/terms&amp;conditions/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/terms&amp;conditions/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/verification/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/verification/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/locales/ar/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/ar/common.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/locales/bn/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/bn/common.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/locales/ca/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/ca/common.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/locales/ch/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/ch/common.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/locales/de/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/de/common.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/locales/en/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/en/common.json" afterDir="false" />
@@ -39,8 +46,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="TypeScript File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -72,6 +79,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.postbuild.executor&quot;: &quot;Run&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Usuario\\Desktop\\University\\Clothy-Frontend\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
@@ -117,6 +125,21 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="postbuild" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="postbuild" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.postbuild" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -149,7 +172,8 @@
       <workItem from="1740352151160" duration="70989000" />
       <workItem from="1743115003766" duration="1909000" />
       <workItem from="1743282360371" duration="8955000" />
-      <workItem from="1743702612304" duration="12715000" />
+      <workItem from="1743702612304" duration="42644000" />
+      <workItem from="1744375287846" duration="5454000" />
     </task>
     <task id="LOCAL-00001" summary="v2.0">
       <option name="closed" value="true" />
@@ -391,7 +415,47 @@
       <option name="project" value="LOCAL" />
       <updated>1743519941253</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="v0.0.8">
+      <option name="closed" value="true" />
+      <created>1743805951953</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1743805951953</updated>
+    </task>
+    <task id="LOCAL-00032" summary="v0.0.9(Pre producction)">
+      <option name="closed" value="true" />
+      <created>1744219379717</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1744219379717</updated>
+    </task>
+    <task id="LOCAL-00033" summary="v0.0.9(Pre producction)">
+      <option name="closed" value="true" />
+      <created>1744269770319</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1744269770320</updated>
+    </task>
+    <task id="LOCAL-00034" summary="v0.0.9(Pre producction)">
+      <option name="closed" value="true" />
+      <created>1744289231891</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1744289231891</updated>
+    </task>
+    <task id="LOCAL-00035" summary="v0.0.9(Pre producction)">
+      <option name="closed" value="true" />
+      <created>1744304986706</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1744304986707</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -420,6 +484,8 @@
     <MESSAGE value="v0.0.5" />
     <MESSAGE value="v0.0.6" />
     <MESSAGE value="v0.0.7(Afegit historial de cerques)" />
-    <option name="LAST_COMMIT_MESSAGE" value="v0.0.7(Afegit historial de cerques)" />
+    <MESSAGE value="v0.0.8" />
+    <MESSAGE value="v0.0.9(Pre producction)" />
+    <option name="LAST_COMMIT_MESSAGE" value="v0.0.9(Pre producction)" />
   </component>
 </project>

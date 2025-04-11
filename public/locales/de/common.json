@@ -641,5 +641,64 @@
     "soloOfferts": "Nur Angebote",
     "reset": "Zurücksetzen",
     "search": "Suchen"
+  },
+  "seo": {
+    "verification": {
+      "title": "Überprüfe dein Konto – Clothy",
+      "description": "Greife auf dein Clothy-Konto zu, indem du deine E-Mail verifizierst. Gib den Verifizierungscode ein, um fortzufahren."
+    },
+    "terms": {
+      "title": "Clothy – Allgemeine Geschäftsbedingungen",
+      "description": "Sieh dir die Nutzungsbedingungen von Clothy an, deinem Online-Modegeschäft. Erfahre die Regeln der Plattform und deine Verbraucherrechte."
+    },
+    "signup": {
+      "title": "Registriere dich bei Clothy – Erstelle dein Konto",
+      "description": "Erstelle dein Konto bei Clothy, dem Online-Modegeschäft. Registriere dich jetzt und genieße exklusive Rabatte, Neuigkeiten und Sonderangebote."
+    },
+    "search": {
+      "title": "Intelligente Kleidersuche auf Clothy",
+      "description": "Suche deine Lieblingsmode mit fortschrittlichen Filtern oder per Foto. Entdecke intelligente Kleidung und Modetrends bei Clothy."
+    },
+    "history": {
+      "title": "Suchverlauf – Clothy",
+      "description": "Sieh dir den Suchverlauf bei Clothy an. Überprüfe alle deine Suchanfragen und verfolge deine Modeentwicklung."
+    },
+    "donations": {
+      "title": "Spende – Clothy",
+      "description": "Hilf dabei, Clothy mit deiner Spende zu unterstützen. Trage zur Entwicklung des Projekts bei und genieße exklusive Vorteile."
+    },
+    "aboutus": {
+      "title": "Über Clothy – Wer wir sind und was wir tun",
+      "description": "Erfahre, wer wir bei Clothy sind, was unsere Mission ist und wie wir dem Online-Modebereich eine menschliche Note verleihen."
+    },
+    "home": {
+      "title": "Willkommen bei Clothy – Dein Online-Modegeschäft",
+      "description": "Entdecke die neuesten Modetrends und melde dich an oder registriere dich bei Clothy. Alles, was du brauchst, an einem Ort."
+    },
+    "profile": {
+      "title": "Clothy – Dein persönliches Profil",
+      "description": "Greife auf deine Clothy-Kontoeinstellungen zu. Aktualisiere deine Informationen, Vorlieben und manage deine Modeerfahrung online."
+    },
+    "login": {
+      "title": "Melde dich an oder registriere dich – Clothy",
+      "description": "Melde dich bei Clothy an oder erstelle ein Konto, deinem Online-Modegeschäft. Registriere dich und genieße exklusive Rabatte und Aktionen."
+    },
+    "recover": {
+      "title": "Setze dein Passwort zurück – Clothy",
+      "description": "Hast du dein Passwort vergessen? Stelle den Zugriff auf dein Clothy-Konto schnell und sicher wieder her."
+    },
+    "maintenance": {
+      "title": "Wartungsseite – Clothy",
+      "description": "Wir führen derzeit Wartungsarbeiten durch. Bitte besuche uns bald wieder!"
+    },
+    "privacypolicy": {
+      "title": "Datenschutzerklärung – Clothy",
+      "description": "Sieh dir unsere Datenschutzerklärung an, um zu erfahren, wie wir deine persönlichen Daten bei Clothy schützen und verwenden."
+    },
+    "maintenancePage": {
+      "title": "Wir arbeiten an Verbesserungen",
+      "message": "Unser Shop ist vorübergehend wegen Wartungsarbeiten offline. Vielen Dank für deine Geduld.",
+      "imageAlt": "Wartungsillustration"
+    }
   }
 }

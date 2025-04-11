@@ -1,10 +1,43 @@
 "use client";
 import { useTranslation } from "react-i18next";
+import Head from "next/head";
 
 const PrivacyPolicy = () => {
     const { t } = useTranslation("common");
 
     return (
+        <>
+            {/* SEO complet */}
+            <Head>
+                <title>{t("seo.privacypolicy.title")}</title>
+                <meta name="description" content={t("seo.privacypolicy.description")} />
+                <meta name="robots" content="index, follow" />
+
+                {/* Open Graph */}
+                <meta property="og:title" content={t("seo.privacypolicy.title")} />
+                <meta property="og:description" content={t("seo.privacypolicy.description")} />
+                <meta property="og:url" content="https://www.clothy.com/privacy-policy" />
+                <meta property="og:image" content="/images/og-image.jpg" />
+
+                {/* Twitter Card */}
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content={t("seo.privacypolicy.title")} />
+                <meta name="twitter:description" content={t("seo.privacypolicy.description")} />
+                <meta name="twitter:image" content="/images/og-image.jpg" />
+
+                {/* Hreflang per idiomes */}
+                <link rel="alternate" href="https://www.clothy.es/privacy-policy" hrefLang="ca" />
+                <link rel="alternate" href="https://www.clothy.es/privacy-policy" hrefLang="es" />
+                <link rel="alternate" href="https://www.clothy.es/privacy-policy" hrefLang="en" />
+                <link rel="alternate" href="https://www.clothy.es/privacy-policy" hrefLang="fr" />
+                <link rel="alternate" href="https://www.clothy.es/privacy-policy" hrefLang="de" />
+                <link rel="alternate" href="https://www.clothy.es/privacy-policy" hrefLang="it" />
+                <link rel="alternate" href="https://www.clothy.es/privacy-policy" hrefLang="pt" />
+                <link rel="alternate" href="https://www.clothy.es/privacy-policy" hrefLang="ar" />
+                <link rel="alternate" href="https://www.clothy.es/privacy-policy" hrefLang="hi" />
+                <link rel="alternate" href="https://www.clothy.es/privacy-policy" hrefLang="zh" />
+                <link rel="alternate" href="https://www.clothy.es/privacy-policy" hrefLang="x-default" />
+            </Head>
         <div className="text-gray-900 min-h-screen flex flex-col">
             {/* Encapçalament */}
             <header className="bg-blue-600 py-6">
@@ -67,6 +100,7 @@ const PrivacyPolicy = () => {
                 </div>
             </main>
         </div>
+        </>
     );
 };
 

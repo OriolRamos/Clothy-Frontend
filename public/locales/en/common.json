@@ -657,5 +657,64 @@
         "soloOfferts": "Only Offers",
         "reset": "Reset",
         "search": "Search"
+    },
+    "seo": {
+        "verification": {
+            "title": "Verify Your Account - Clothy",
+            "description": "Access your Clothy account by verifying your email. Enter the verification code to continue."
+        },
+        "terms": {
+            "title": "Clothy - Terms and Conditions",
+            "description": "Review Clothy's terms and conditions of use, your online fashion store. Discover the rules governing the platform and your consumer rights."
+        },
+        "signup": {
+            "title": "Sign Up at Clothy - Create Your Account",
+            "description": "Create your account at Clothy, the online fashion store. Sign up now and enjoy exclusive discounts, updates, and special offers."
+        },
+        "search": {
+            "title": "Smart Fashion Search on Clothy",
+            "description": "Search for your favorite fashion with advanced filters or by using a photo. Discover smart clothing and fashion trends on Clothy."
+        },
+        "history": {
+            "title": "Search History - Clothy",
+            "description": "View your search history on Clothy. Check all your past searches and follow your fashion journey."
+        },
+        "donations": {
+            "title": "Make a Donation - Clothy",
+            "description": "Help grow Clothy with a donation. Contribute to the project's development and enjoy exclusive benefits."
+        },
+        "aboutus": {
+            "title": "About Clothy - Who We Are and What We Do",
+            "description": "Discover who we are at Clothy, our mission, and how we bring a human touch to the online fashion world."
+        },
+        "home": {
+            "title": "Welcome to Clothy - Your Online Fashion Store",
+            "description": "Discover the latest fashion trends and access login or sign-up with Clothy. Everything you need in one place."
+        },
+        "profile": {
+            "title": "Clothy - Your Personal Profile",
+            "description": "Access your personal account settings on Clothy. Update your information, preferences, and manage your online fashion experience."
+        },
+        "login": {
+            "title": "Log In or Sign Up - Clothy",
+            "description": "Log in or create an account at Clothy, your online fashion store. Sign up and enjoy exclusive discounts and promotions."
+        },
+        "recover": {
+            "title": "Recover Your Password - Clothy",
+            "description": "Forgot your password? Recover access to your Clothy account quickly and securely."
+        },
+        "maintenance": {
+            "title": "Maintenance Page - Clothy",
+            "description": "We are currently performing maintenance tasks. Please check back soon!"
+        },
+        "privacypolicy": {
+            "title": "Privacy Policy - Clothy",
+            "description": "Review our privacy policy to learn how we protect and use your personal data on Clothy."
+        },
+        "maintenancePage": {
+            "title": "We're Working to Improve",
+            "message": "Our store is temporarily offline for maintenance. Thank you for your patience.",
+            "imageAlt": "Maintenance Illustration"
+        }
     }
 }

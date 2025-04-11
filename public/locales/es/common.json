@@ -14,7 +14,6 @@
         "section3": {
             "title": "3. FUNCIONALIDADES Y TECNOLOGÍAS DE CLOTHY",
             "content": "3.1 Web Scraping y Terceros:\nClothy incorpora una herramienta de web scraping para obtener información de moda de distintos sitios web. El usuario reconoce y acepta que: \n - Es el único responsable de iniciar y gestionar las consultas de web scraping. \n - Debe cumplir con las políticas, términos y condiciones de cada sitio web desde el cual se extraigan datos. \n - Cualquier incumplimiento en el uso de la información extraída será de exclusiva responsabilidad del usuario. \n 3.2 Listado de Sitios y Enlaces: \n Actualmente, Clothy integra datos de los siguientes sitios (se recomienda revisar sus Términos y Condiciones): \n Zara: https://www.zara.com/terms\nBershka: https://www.bershka.com/terms\nOysho: https://www.oysho.com/terms\nPull & Bear: https://www.pullandbear.com/terms\nStradivarius: https://www.stradivarius.com/terms\nMassimo Dutti: https://www.massimodutti.com/terms\nMango: https://shop.mango.com/terms\nH&M: https://www2.hm.com/en_us/customer-service/terms.html\nUniqlo: https://www.uniqlo.com/us/en/terms-of-use\nGap: https://www.gap.com/help/terms-conditions.html\nForever 21: https://www.forever21.com/us/shop/info/terms\nPrimark: https://www.primark.com/terms\nTopshop: https://www.topshop.com/terms-and-conditions\nASOS: https://www.asos.com/terms-and-conditions\nNike: https://www.nike.com/legal/terms-of-use\nAdidas: https://www.adidas.com/us/terms-and-conditions\nLevi's: https://www.levi.com/US/en_US/legal/terms-of-use\nPuma: https://us.puma.com/terms-of-use\nCalvin Klein: https://www.calvinklein.us/en/terms-of-use\nTommy Hilfiger: https://usa.tommy.com/terms-of-use 3.3 Funcionalidades Adicionales:\nEn futuras versiones, Clothy permitirá:\n- La gestión de un armario digital personal, donde los usuarios podrán almacenar imágenes de sus prendas.\n- La generación de combinaciones y outfits personalizados.\n- La visualización en tiempo real de cómo quedarían las prendas mediante tecnología de simulación virtual.\nPara estas funciones, el usuario deberá aceptar condiciones específicas sobre el uso y tratamiento de sus imágenes y datos."
-
         },
         "section4": {
             "title": "4. PROTECCIÓN DE DATOS Y PRIVACIDAD",
@@ -256,7 +255,6 @@
     "termsLink": "términos y condiciones",
     "signupbutton": "Regístrate",
     "loginbutton": "Iniciar sesión",
-
     "aboutusModal": {
         "header": {
             "title": "Sobre Nosotros",
@@ -389,7 +387,7 @@
         "country": "País",
         "saveChanges": "Guardar cambios"
     },
-    "favorites" : {
+    "favorites": {
         "title": "Favoritos",
         "empty": "No tienes ropa en favoritos.",
         "type": "Tipo",
@@ -399,7 +397,7 @@
         "search": "Buscar...",
         "reset": "Restablecer"
     },
-    "verification" : {
+    "verification": {
         "title": "Verifica tu cuenta",
         "instructions": "Introduce tu correo y el código de verificación enviado a tu correo electrónico.",
         "emailLabel": "Correo electrónico",
@@ -657,6 +655,64 @@
         "soloOfferts": "Solo ofertas",
         "reset": "Restablecer",
         "search": "Buscar"
+    },
+    "seo": {
+        "verification": {
+            "title": "Verifica tu cuenta - Clothy",
+            "description": "Accede a tu cuenta de Clothy verificando tu correo electrónico. Introduce el código de verificación para continuar."
+        },
+        "terms": {
+            "title": "Clothy - Términos y Condiciones",
+            "description": "Consulta los términos y condiciones de uso de Clothy, tu tienda online de moda. Descubre las normas que rigen el uso de la plataforma y tus derechos como consumidor."
+        },
+        "signup": {
+            "title": "Regístrate en Clothy - Crea tu cuenta",
+            "description": "Crea tu cuenta en Clothy, la tienda de moda online. Regístrate ahora y disfruta de descuentos exclusivos, novedades y ofertas especiales."
+        },
+        "search": {
+            "title": "Busca Ropa Inteligente en Clothy",
+            "description": "Busca tu moda preferida con filtros avanzados o a través de una foto. Descubre ropa inteligente y tendencias de moda en Clothy."
+        },
+        "history": {
+            "title": "Historial de búsquedas - Clothy",
+            "description": "Consulta el historial de búsquedas en Clothy. Revisa todas las búsquedas realizadas y sigue tu trayectoria de moda."
+        },
+        "donations": {
+            "title": "Haz una donación - Clothy",
+            "description": "Ayuda a hacer crecer Clothy con una donación. Contribuye al desarrollo del proyecto y disfruta de beneficios exclusivos."
+        },
+        "aboutus": {
+            "title": "Sobre Clothy - Quiénes somos y qué hacemos",
+            "description": "Descubre quiénes somos en Clothy, nuestra misión y cómo aportamos un rostro humano al mundo de la moda en línea."
+        },
+        "home": {
+            "title": "Bienvenido a Clothy - Tu tienda de moda online",
+            "description": "Descubre las últimas tendencias en moda y accede al inicio de sesión o registro con Clothy. Todo lo que necesitas en un solo lugar."
+        },
+        "profile": {
+            "title": "Clothy - Tu Perfil Personal",
+            "description": "Accede a la configuración de tu cuenta personal en Clothy. Actualiza tu información, preferencias y gestiona tu experiencia de moda online."
+        },
+        "login": {
+            "title": "Inicia Sesión o Regístrate - Clothy",
+            "description": "Inicia sesión o crea una cuenta en Clothy, tu tienda de moda online. Regístrate y disfruta de descuentos y promociones exclusivas."
+        },
+        "recover": {
+            "title": "Recupera tu contraseña - Clothy",
+            "description": "¿Olvidaste tu contraseña? Recupera el acceso a tu cuenta de Clothy de forma rápida y segura."
+        },
+        "maintenance": {
+            "title": "Página en mantenimiento - Clothy",
+            "description": "Actualmente estamos realizando tareas de mantenimiento. ¡Vuelve a visitarnos pronto!"
+        },
+        "privacypolicy": {
+            "title": "Política de privacidad - Clothy",
+            "description": "Consulta nuestra política de privacidad para saber cómo protegemos y utilizamos tus datos personales en Clothy."
+        },
+        "maintenancePage": {
+            "title": "Estamos trabajando para mejorar",
+            "message": "Nuestra tienda está temporalmente fuera de servicio por tareas de mantenimiento. Gracias por tu paciencia.",
+            "imageAlt": "Ilustración de mantenimiento"
+        }
     }
-
 }
