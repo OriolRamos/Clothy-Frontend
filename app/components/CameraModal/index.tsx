@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import CameraCaptureModal from '../CameraModal/CameraCaptureModal'; // Assegura't que la ruta és correcta
 
 interface ImageUploadModalProps {
@@ -6,33 +6,45 @@ interface ImageUploadModalProps {
     onClose: () => void;
 }
 
-
-
-
 const ImageUploadModal: React.FC<ImageUploadModalProps> = ({ onFileSelect, onClose }) => {
     const fileInputGallery = useRef<HTMLInputElement | null>(null);
+    const fileInputCamera = useRef<HTMLInputElement | null>(null);
     const [showCameraCapture, setShowCameraCapture] = useState(false);
 
+    // Detecció simple de dispositius mòbils
+    const [isMobile, setIsMobile] = useState(false);
+    useEffect(() => {
+        setIsMobile(/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent));
+    }, []);
+
     const handleGalleryClick = () => {
-        if (fileInputGallery.current) {
-            fileInputGallery.current.click();
+        fileInputGallery.current?.click();
+    };
+
+    const handleCameraClick = () => {
+        if (isMobile) {
+            // Obrim directament la càmera del dispositiu mòbil
+            fileInputCamera.current?.click();
+        } else {
+            // Obrim el modal de càmera per a escriptoris
+            setShowCameraCapture(true);
         }
     };
 
-
-    const handleCameraClick = () => {
-        // En comptes d'activar l'input, obrim el modal de càmera
-        setShowCameraCapture(true);
+    // Gestió de captura mitjançant input amb "capture"
+    const handleMobileCapture = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            onFileSelect(file);
+        }
     };
 
-    // Quan es captura la imatge, es passa el blob al callback onFileSelect
+    // Captura des del modal de càmera
     const handleCameraCapture = (blob: Blob) => {
-        // Converteix el blob a File
         const file = new File([blob], 'captured.jpg', { type: blob.type });
         onFileSelect(file);
         setShowCameraCapture(false);
     };
-
 
     return (
         <div className="fixed inset-0 z-50 flex items-end justify-center bg-black bg-opacity-50">
@@ -55,19 +67,32 @@ const ImageUploadModal: React.FC<ImageUploadModalProps> = ({ onFileSelect, onClo
                 >
                     Cancel·lar
                 </button>
+
                 {/* Input per seleccionar de la galeria */}
                 <input
                     ref={fileInputGallery}
                     type="file"
                     accept="image/*"
                     className="hidden"
-                    onChange={(e) => {
+                    onChange={e => {
                         if (e.target.files && e.target.files[0]) {
                             onFileSelect(e.target.files[0]);
                         }
                     }}
                 />
+
+                {/* Input per a mòbils: captura directa amb "capture" */}
+                <input
+                    ref={fileInputCamera}
+                    type="file"
+                    accept="image/*"
+                    capture="environment"
+                    className="hidden"
+                    onChange={handleMobileCapture}
+                />
             </div>
+
+            {/* Modal de càmera per a escriptoris */}
             {showCameraCapture && (
                 <CameraCaptureModal
                     onCapture={handleCameraCapture}

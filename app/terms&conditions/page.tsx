@@ -38,10 +38,10 @@ const TermsAndConditions = () => {
                 {/* Header */}
                 <header className="bg-blue-600 py-6">
                     <div className="max-w-7xl mx-auto text-center">
-                        <h1 className="text-4xl font-extrabold text-white">
+                        <h1 className="text-4xl font-extrabold text-black">
                             {t("termsandconditions.title")}
                         </h1>
-                        <p className="mt-2 text-lg text-gray-200">
+                        <p className="mt-2 text-lg text-black">
                             {t("termsandconditions.lastUpdated")}
                         </p>
                     </div>
