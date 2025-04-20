@@ -135,6 +135,7 @@ const FilterModal: React.FC<FilterModalProps> = ({ isOpen, onClose, filters, fil
                     <MultiRangeSlider
                         min={0}
                         max={1000}
+                        start={[filtersState.minPrice, filtersState.maxPrice]}
                         onChange={({ min, max }) => {
                             setFiltersState((prevFilters: FiltersState) => ({
                                 ...prevFilters,
@@ -143,6 +144,7 @@ const FilterModal: React.FC<FilterModalProps> = ({ isOpen, onClose, filters, fil
                             }));
                         }}
                     />
+
 
                     <div className="flex flex-col gap-2">
                         <label className="text-lg font-medium">{t("filtermodal.orderPrice" , "Ordenar por precio")}</label>

@@ -1,95 +1,89 @@
-import React, { useCallback, useEffect, useState, useRef } from "react";
-import PropTypes from "prop-types";
-import "./multiRangeSlider.css";
+import React, { useEffect, useRef, useState } from 'react';
+import PropTypes from 'prop-types';
 
-const MultiRangeSlider = ({ min, max, onChange }) => {
-    const [minVal, setMinVal] = useState(min);
-    const [maxVal, setMaxVal] = useState(max);
-    const minValRef = useRef(min);
-    const maxValRef = useRef(max);
-    const range = useRef(null);
+let $;
 
-    // Convert to percentage
-    const getPercent = useCallback(
-        (value) => Math.round(((value - min) / (max - min)) * 100),
-        [min, max]
-    );
-
-    // Set width of the range to decrease from the left side
-    useEffect(() => {
-        const minPercent = getPercent(minVal);
-        const maxPercent = getPercent(maxValRef.current);
-
-        if (range.current) {
-            range.current.style.left = `${minPercent}%`;
-            range.current.style.width = `${maxPercent - minPercent}%`;
-        }
-    }, [minVal, getPercent]);
-
-    // Set width of the range to decrease from the right side
-    useEffect(() => {
-        const minPercent = getPercent(minValRef.current);
-        const maxPercent = getPercent(maxVal);
-
-        if (range.current) {
-            range.current.style.width = `${maxPercent - minPercent}%`;
-        }
-    }, [maxVal, getPercent]);
-
-    // Get min and max values when their state changes
-    useEffect(() => {
-        onChange({ min: minVal, max: maxVal });
-    }, [minVal, maxVal, onChange]);
+const MultiRangeSlider = ({
+                              min = 0,
+                              max = 1000,
+                              start = [0, 1000],
+                              prefix = '$',
+                              onChange,
+                          }) => {
+    const sliderRef = useRef(null);
+    const [isClient, setIsClient] = useState(false);
 
     useEffect(() => {
-        setMinVal(min);
-        setMaxVal(max);
-        minValRef.current = min;
-        maxValRef.current = max;
-    }, [min, max]);
+        setIsClient(true);
+    }, []);
+
+    useEffect(() => {
+        if (!isClient) return;
+
+        (async () => {
+            if (!window.$) {
+                $ = (await import('jquery')).default;
+                window.$ = window.jQuery = $;
+            } else {
+                $ = window.$;
+            }
+            await import('ion-rangeslider');
+            await import('ion-rangeslider/css/ion.rangeSlider.css');
+
+            const $el = $(sliderRef.current);
+            $el.ionRangeSlider({
+                type: 'double',
+                min,
+                max,
+                from: start[0],
+                to: start[1],
+                prefix,
+                step: 1,
+                grid: false,
+                drag_interval: false,
+                force_edges: true,
+                skin: 'round',
+                onChange: (data) => {
+                    onChange({ min: data.from, max: data.to });
+                },
+                onFinish: (data) => {
+                    onChange({ min: data.from, max: data.to });
+                },
+                onStart: () => {
+                    $('.irs--round .irs-bar, .irs--round .irs-from, .irs--round .irs-to, .irs--round .irs-handle')
+                        .addClass('bg-faqblue');
+                },
+            });
+
+            const sliderInstance = $el.data('ionRangeSlider');
+
+            return () => sliderInstance && sliderInstance.destroy();
+        })();
+    }, [isClient, min, max, start, prefix, onChange]);
+
+
+
 
     return (
-        <div className="container">
-            <input
-                type="range"
-                min={min}
-                max={max}
-                value={minVal}
-                onChange={(event) => {
-                    const value = Math.min(Number(event.target.value), maxVal - 1);
-                    setMinVal(value);
-                    minValRef.current = value;
-                }}
-                className="thumb thumb--left"
-                style={{ zIndex: minVal > max - 100 && "5" }}
-            />
-            <input
-                type="range"
-                min={min}
-                max={max}
-                value={maxVal}
-                onChange={(event) => {
-                    const value = Math.max(Number(event.target.value), minVal + 1);
-                    setMaxVal(value);
-                    maxValRef.current = value;
-                }}
-                className="thumb thumb--right"
-            />
-
-            <div className="slider">
-                <div className="slider__track" />
-                <div ref={range} className="slider__range" />
-                <div className="slider__left-value">{minVal}</div>
-                <div className="slider__right-value">{maxVal}</div>
-            </div>
+        <div>
+            <label className="sr-only">Rango de precios</label>
+            {isClient && (
+                <input
+                    ref={sliderRef}
+                    type="text"
+                    className="js-range-slider w-full"
+                />
+            )}
         </div>
     );
 };
 
 MultiRangeSlider.propTypes = {
-    min: PropTypes.number.isRequired,
-    max: PropTypes.number.isRequired,
-    onChange: PropTypes.func.isRequired
+    min: PropTypes.number,
+    max: PropTypes.number,
+    start: PropTypes.arrayOf(PropTypes.number),
+    prefix: PropTypes.string,
+    onChange: PropTypes.func.isRequired,
 };
 
 export default MultiRangeSlider;

@@ -258,6 +258,7 @@ const CercaRoba = () => {
         try {
             const apiUrl = process.env.NEXT_PUBLIC_API_URL;
             const combinedFilters = { ...getUniqueFilters(), ...filtersState };
+            console.log("Dataa", combinedFilters);
             const response = await fetchWithAuth(`${apiUrl}/search/results/filter`, {
                 method: "POST",
                 headers: {
