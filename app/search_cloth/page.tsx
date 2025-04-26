@@ -13,6 +13,7 @@ import RenderFilter from "../components/Filters/RenderFilter";
 import ImageUploadModal from "../components/CameraModal/index";
 import RenderMultipleFilter from "../components/Filters/RenderMultipleFilter";
 import Head from "next/head";
+import Footer from "@/app/components/Footer";
 
 
 const CercaRoba = () => {
@@ -558,6 +559,7 @@ const CercaRoba = () => {
                 </>
             )}
         </div>
+            <Footer />
         </>
     );
 };

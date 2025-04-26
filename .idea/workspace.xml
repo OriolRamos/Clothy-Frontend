@@ -4,39 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da1a1d65-fd44-4e09-8dc4-bd35cbb307fe" name="Changes" comment="v0.0.9(Pre producction)">
-      <change afterPath="$PROJECT_DIR$/app/recover-password/page.tsx" afterDir="false" />
+    <list default="true" id="da1a1d65-fd44-4e09-8dc4-bd35cbb307fe" name="Changes" comment="v0.0.10(Pre producction)">
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/about-us/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/about-us/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/donaciones/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/donaciones/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/history/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/history/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/login/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/login/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/loss-password/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Login/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Login/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Navbar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Navbar/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/SignUp/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/SignUp/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/history/historial_outfit_assistant/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/history/historial_outfit_assistant/[id]/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/maintenance/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/maintenance/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/outfit-assistant/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/outfit-assistant/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/privacy-policy/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/privacy-policy/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/profile/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/profile/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/reset-password/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/reset-password/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/search_cloth/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/search_cloth/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/signup/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/signup/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/terms&amp;conditions/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/terms&amp;conditions/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/verification/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/verification/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/locales/ar/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/ar/common.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/locales/bn/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/bn/common.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/locales/ch/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/ch/common.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/locales/de/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/de/common.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/locales/en/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/en/common.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/locales/es/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/es/common.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/locales/fr/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/fr/common.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/locales/hi/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/hi/common.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/locales/ja/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/ja/common.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/locales/ko/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/ko/common.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/locales/pt/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/pt/common.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/locales/ru/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/ru/common.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/locales/tr/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/tr/common.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,11 +71,11 @@
       <recent name="C:\Users\Usuario\Desktop\University\Clothy-Frontend\public\images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Usuario\Desktop\University\Clothy-Frontend\app\history\historial_search" />
       <recent name="C:\Users\Usuario\Desktop\University\Clothy-Frontend\public\images\brands" />
       <recent name="C:\Users\Usuario\Desktop\University\Clothy-Frontend\app\components\ImageModal" />
       <recent name="C:\Users\Usuario\Desktop\University\Clothy-Frontend\app\components\AuthContext" />
       <recent name="C:\Users\Usuario\Desktop\University\Clothy-Frontend\public\images" />
-      <recent name="C:\Users\Usuario\Desktop\University\Clothy-Frontend\public\recover-password" />
     </key>
   </component>
   <component name="RunManager">
@@ -173,7 +150,10 @@
       <workItem from="1743115003766" duration="1909000" />
       <workItem from="1743282360371" duration="8955000" />
       <workItem from="1743702612304" duration="42644000" />
-      <workItem from="1744375287846" duration="5454000" />
+      <workItem from="1744375287846" duration="6323000" />
+      <workItem from="1744415589264" duration="39000" />
+      <workItem from="1744666529178" duration="1029000" />
+      <workItem from="1744727903587" duration="40226000" />
     </task>
     <task id="LOCAL-00001" summary="v2.0">
       <option name="closed" value="true" />
@@ -455,7 +435,87 @@
       <option name="project" value="LOCAL" />
       <updated>1744304986707</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="v0.0.9(Pre producction)">
+      <option name="closed" value="true" />
+      <created>1744413086222</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1744413086222</updated>
+    </task>
+    <task id="LOCAL-00037" summary="v0.0.9(Pre producction)">
+      <option name="closed" value="true" />
+      <created>1744666653384</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1744666653384</updated>
+    </task>
+    <task id="LOCAL-00038" summary="v0.0.9(Pre producction)">
+      <option name="closed" value="true" />
+      <created>1744730784270</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1744730784270</updated>
+    </task>
+    <task id="LOCAL-00039" summary="v0.0.9(Pre producction)">
+      <option name="closed" value="true" />
+      <created>1744731028490</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1744731028490</updated>
+    </task>
+    <task id="LOCAL-00040" summary="v0.0.9(Pre producction)">
+      <option name="closed" value="true" />
+      <created>1744739394219</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1744739394219</updated>
+    </task>
+    <task id="LOCAL-00041" summary="v0.0.9(Pre producction)">
+      <option name="closed" value="true" />
+      <created>1745016595146</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1745016595146</updated>
+    </task>
+    <task id="LOCAL-00042" summary="v0.0.9(Pre producction)">
+      <option name="closed" value="true" />
+      <created>1745162073631</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1745162073631</updated>
+    </task>
+    <task id="LOCAL-00043" summary="v0.0.9(Pre producction)">
+      <option name="closed" value="true" />
+      <created>1745162140950</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1745162140950</updated>
+    </task>
+    <task id="LOCAL-00044" summary="v0.0.9(Pre producction)">
+      <option name="closed" value="true" />
+      <created>1745162208548</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1745162208548</updated>
+    </task>
+    <task id="LOCAL-00045" summary="v0.0.10(Pre producction)">
+      <option name="closed" value="true" />
+      <created>1745666716996</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1745666716996</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -486,6 +546,7 @@
     <MESSAGE value="v0.0.7(Afegit historial de cerques)" />
     <MESSAGE value="v0.0.8" />
     <MESSAGE value="v0.0.9(Pre producction)" />
-    <option name="LAST_COMMIT_MESSAGE" value="v0.0.9(Pre producction)" />
+    <MESSAGE value="v0.0.10(Pre producction)" />
+    <option name="LAST_COMMIT_MESSAGE" value="v0.0.10(Pre producction)" />
   </component>
 </project>

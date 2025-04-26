@@ -3,10 +3,12 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { useAuth } from "../AuthContext/index"; // Assegura't que el path és correcte
+import { useAuth } from "../AuthContext/index";
 import Link from "next/link";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 import { useTranslation } from "react-i18next";
+import Footer from "@/app/components/Footer";
+
 
 
 
@@ -188,6 +190,7 @@ const Login = () => {
                 </div>
             </div>
         </div>
+            <Footer/>
         </GoogleOAuthProvider>
     );
 };

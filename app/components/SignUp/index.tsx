@@ -8,6 +8,7 @@ import { useTranslation } from "react-i18next";
 import Link from "next/link";
 import RenderFilter from "../Filters/RenderFilter";
 import { filters } from "../Filters/cloth_filters";
+import Footer from "@/app/components/Footer";
 
 const SignUp = () => {
     const [password, setPassword] = useState("");
@@ -23,6 +24,37 @@ const SignUp = () => {
     const [showEmailForm, setShowEmailForm] = useState(false);
     const router = useRouter();
     const { t } = useTranslation("common");
+
+    // al costat de router i t:
+    // true només si hi ha país i s’han acceptat els termes
+    const canProceed = Boolean(filtersState.country && termsAccepted);
+
+    // substitueix l’anterior per:
+    const updateFiltersState = (
+        stateOrUpdater: Record<string, any> | ((prev: Record<string, any>) => Record<string, any>)
+    ) => {
+        if (typeof stateOrUpdater === "function") {
+            // rebem un updater funció
+            setFiltersState((prev) => {
+                const newState = (stateOrUpdater as Function)(prev);
+                const raw = newState.country;
+                const country =
+                    raw && typeof raw === "object" && raw.value !== undefined
+                        ? raw.value
+                        : raw;
+                return { ...newState, country };
+            });
+        } else {
+            // rebem un objecte directe
+            const raw = stateOrUpdater.country;
+            const country =
+                raw && typeof raw === "object" && raw.value !== undefined
+                    ? raw.value
+                    : raw;
+            setFiltersState({ ...stateOrUpdater, country });
+        }
+    };
+
 
     const validatePassword = (password: string) => {
         const regex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
@@ -148,9 +180,7 @@ const SignUp = () => {
                                 {t("signUp.title")}
                             </h2>
                             <form className="space-y-6" onSubmit={handleSubmit}>
-                                <h4 className="text-sm font-medium text-gray-700 font-bold">
-                                    {t("signUp.obligated_camps")}
-                                </h4>
+
                                 {/* Sección de información necesaria (país y términos) */}
                                 <div className="space-y-4">
                                     <div className="flex items-center">
@@ -176,7 +206,7 @@ const SignUp = () => {
                                             expandedFilter={expandedFilter}
                                             setExpandedFilter={setExpandedFilter}
                                             filtersState={filtersState}
-                                            setFiltersState={setFiltersState}
+                                            setFiltersState={updateFiltersState}
                                         />
                                     </div>
                                     <div className="flex items-center">
@@ -199,137 +229,142 @@ const SignUp = () => {
                                         </label>
                                     </div>
                                 </div>
+                                {canProceed && (
+                                       <>
 
-                                {/* Divider */}
-                                <div className="flex items-center my-6">
-                                    <hr className="flex-grow border-t border-gray-300"/>
-                                </div>
-
-                                {/* Fila para desplegar el formulario de correo */}
-                                <div
-                                    onClick={() => setShowEmailForm(!showEmailForm)}
-                                    className="block w-full relative cursor-pointer text-center py-3 px-6 text-white bg-faqblue rounded-lg font-medium shadow-lg hover:scale-105 hover:bg-faqblue/90 hover:backdrop-blur-sm hover:opacity-95 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-btnblue focus:ring-offset-2 active:bg-hoblue transition transform duration-200"
-                                >
-                                    <p className="text-blue-600 hover:underline">
-                                        {t("signUp.createEmailSession") || "Crea sessió amb correu"}
-                                    </p>
-                                </div>
-
-                                {/* Contenedor animado para el formulario de correo */}
-                                <div
-                                    className={`overflow-hidden transition-all duration-500 ${showEmailForm ? "max-h-[1000px] mt-4" : "max-h-0"}`}
-                                >
-                                    <div className="space-y-6">
-                                        <div>
-                                            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                                                {t("signUp.emailLabel")}
-                                            </label>
-                                            <input
-                                                type="email"
-                                                id="email"
-                                                name="email"
-                                                value={email}
-                                                onChange={(e) => setEmail(e.target.value)}
-                                                className="mt-2 block w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                                                placeholder={t("signUp.emailPlaceholder") as string}
-                                            />
+                                        {/* Divider */}
+                                        <div className="flex items-center my-6">
+                                            <hr className="flex-grow border-t border-gray-300"/>
                                         </div>
-                                        <div>
-                                            <label htmlFor="username"
-                                                   className="block text-sm font-medium text-gray-700">
-                                                {t("signUp.usernameLabel")}
-                                            </label>
-                                            <input
-                                                type="text"
-                                                id="username"
-                                                name="username"
-                                                value={username}
-                                                onChange={(e) => setUsername(e.target.value)}
-                                                className="mt-2 block w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                                                placeholder={t("signUp.usernamePlaceholder") as string}
-                                            />
-                                        </div>
-                                        <div>
-                                            <label htmlFor="password"
-                                                   className="block text-sm font-medium text-gray-700">
-                                                {t("signUp.passwordLabel")}
-                                            </label>
-                                            <div className="relative">
-                                                <input
-                                                    type={showPassword ? "text" : "password"}
-                                                    id="password"
-                                                    name="password"
-                                                    value={password}
-                                                    onChange={(e) => setPassword(e.target.value)}
-                                                    className="mt-2 block w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                                                    placeholder={t("signUp.passwordPlaceholder") as string}
-                                                />
-                                                <button
-                                                    type="button"
-                                                    onClick={() => setShowPassword(!showPassword)}
-                                                    className="absolute right-3 top-3 text-sm text-gray-500"
-                                                >
-                                                    {showPassword ? t("signUp.hidePassword") : t("signUp.showPassword")}
-                                                </button>
-                                            </div>
-                                            <p className="text-xs text-gray-500 mt-1">
-                                                {t("signUp.passwordHint")}
+
+                                        {/* Fila para desplegar el formulario de correo */}
+                                        <div
+                                            onClick={() => setShowEmailForm(!showEmailForm)}
+                                            className="block w-full relative cursor-pointer text-center py-3 px-6 text-white bg-faqblue rounded-lg font-medium shadow-lg hover:scale-105 hover:bg-faqblue/90 hover:backdrop-blur-sm hover:opacity-95 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-btnblue focus:ring-offset-2 active:bg-hoblue transition transform duration-200"
+                                        >
+                                            <p className="text-blue-600 hover:underline">
+                                                {t("signUp.registerButton") || "Crea sessió amb correu"}
                                             </p>
                                         </div>
-                                        <div>
-                                            <label htmlFor="confirmPassword"
-                                                   className="block text-sm font-medium text-gray-700">
-                                                {t("signUp.confirmPasswordLabel")}
-                                            </label>
-                                            <div className="relative">
-                                                <input
-                                                    type={showConfirmPassword ? "text" : "password"}
-                                                    id="confirmPassword"
-                                                    name="confirmPassword"
-                                                    value={confirmPassword}
-                                                    onChange={(e) => setConfirmPassword(e.target.value)}
-                                                    className="mt-2 block w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                                                    placeholder={t("signUp.confirmPasswordPlaceholder") as string}
-                                                />
+
+                                        {/* Contenedor animado para el formulario de correo */}
+                                        <div
+                                            className={`overflow-hidden transition-all duration-500 ${showEmailForm ? "max-h-[1000px] mt-4" : "max-h-0"}`}
+                                        >
+                                            <div className="space-y-6">
+                                                <div>
+                                                    <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                                                        {t("signUp.emailLabel")}
+                                                    </label>
+                                                    <input
+                                                        type="email"
+                                                        id="email"
+                                                        name="email"
+                                                        value={email}
+                                                        onChange={(e) => setEmail(e.target.value)}
+                                                        className="mt-2 block w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                                                        placeholder={t("signUp.emailPlaceholder") as string}
+                                                    />
+                                                </div>
+                                                <div>
+                                                    <label htmlFor="username"
+                                                           className="block text-sm font-medium text-gray-700">
+                                                        {t("signUp.usernameLabel")}
+                                                    </label>
+                                                    <input
+                                                        type="text"
+                                                        id="username"
+                                                        name="username"
+                                                        value={username}
+                                                        onChange={(e) => setUsername(e.target.value)}
+                                                        className="mt-2 block w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                                                        placeholder={t("signUp.usernamePlaceholder") as string}
+                                                    />
+                                                </div>
+                                                <div>
+                                                    <label htmlFor="password"
+                                                           className="block text-sm font-medium text-gray-700">
+                                                        {t("signUp.passwordLabel")}
+                                                    </label>
+                                                    <div className="relative">
+                                                        <input
+                                                            type={showPassword ? "text" : "password"}
+                                                            id="password"
+                                                            name="password"
+                                                            value={password}
+                                                            onChange={(e) => setPassword(e.target.value)}
+                                                            className="mt-2 block w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                                                            placeholder={t("signUp.passwordPlaceholder") as string}
+                                                        />
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => setShowPassword(!showPassword)}
+                                                            className="absolute right-3 top-3 text-sm text-gray-500"
+                                                        >
+                                                            {showPassword ? t("signUp.hidePassword") : t("signUp.showPassword")}
+                                                        </button>
+                                                    </div>
+                                                    <p className="text-xs text-gray-500 mt-1">
+                                                        {t("signUp.passwordHint")}
+                                                    </p>
+                                                </div>
+                                                <div>
+                                                    <label htmlFor="confirmPassword"
+                                                           className="block text-sm font-medium text-gray-700">
+                                                        {t("signUp.confirmPasswordLabel")}
+                                                    </label>
+                                                    <div className="relative">
+                                                        <input
+                                                            type={showConfirmPassword ? "text" : "password"}
+                                                            id="confirmPassword"
+                                                            name="confirmPassword"
+                                                            value={confirmPassword}
+                                                            onChange={(e) => setConfirmPassword(e.target.value)}
+                                                            className="mt-2 block w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                                                            placeholder={t("signUp.confirmPasswordPlaceholder") as string}
+                                                        />
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                                                            className="absolute right-3 top-3 text-sm text-gray-500"
+                                                        >
+                                                            {showConfirmPassword ? t("signUp.hidePassword") : t("signUp.showPassword")}
+                                                        </button>
+                                                    </div>
+                                                </div>
                                                 <button
-                                                    type="button"
-                                                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                                                    className="absolute right-3 top-3 text-sm text-gray-500"
+                                                    type="submit"
+                                                    className="block w-full relative cursor-pointer text-center py-3 px-6 text-white bg-faqblue rounded-lg font-medium shadow-lg hover:scale-105 hover:bg-faqblue/90 transition transform duration-200"
                                                 >
-                                                    {showConfirmPassword ? t("signUp.hidePassword") : t("signUp.showPassword")}
+                                                    {t("signUp.registerButton")}
                                                 </button>
                                             </div>
                                         </div>
-                                        <button
-                                            type="submit"
-                                            className="block w-full relative cursor-pointer text-center py-3 px-6 text-white bg-faqblue rounded-lg font-medium shadow-lg hover:scale-105 hover:bg-faqblue/90 transition transform duration-200"
-                                        >
-                                            {t("signUp.registerButton")}
-                                        </button>
-                                    </div>
-                                </div>
 
-                                {/* Mostrar error si existe */}
-                                {error && <p className="text-red-500 text-sm">{error}</p>}
+                                        {/* Mostrar error si existe */}
+                                        {error && <p className="text-red-500 text-sm">{error}</p>}
 
-                                {/* Divider */}
-                                <div className="flex items-center mt-0 mb-6">
-                                    <hr className="flex-grow border-t border-gray-300"/>
-                                    <span className="px-4 text-sm text-gray-500">O</span>
-                                    <hr className="flex-grow border-t border-gray-300"/>
-                                </div>
+                                        {/* Divider */}
+                                        <div className="flex items-center mt-0 mb-6">
+                                            <hr className="flex-grow border-t border-gray-300"/>
+                                            <span className="px-4 text-sm text-gray-500">O</span>
+                                            <hr className="flex-grow border-t border-gray-300"/>
+                                        </div>
 
 
-                                {/* Botón de Google */}
-                                <GoogleLogin
-                                    onSuccess={handleGoogleSuccess}
-                                    onError={() => setError(t("signUp.errorGoogle"))}
-                                />
+                                        {/* Botón de Google */}
+                                        <GoogleLogin
+                                            onSuccess={handleGoogleSuccess}
+                                            onError={() => setError(t("signUp.errorGoogle"))}
+                                        />
+                                       </>
+                                     )}
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
+            <Footer />
         </GoogleOAuthProvider>
     );
 };

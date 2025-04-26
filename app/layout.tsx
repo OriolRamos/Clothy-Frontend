@@ -28,7 +28,6 @@ export default function RootLayout({
         <AuthProvider>
             <Navbar />
             {children}
-            <Footer />
         </AuthProvider>
         </I18nextProvider>
         </body>

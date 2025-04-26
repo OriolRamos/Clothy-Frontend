@@ -2,8 +2,6 @@
 
 import Head from "next/head";
 import { useTranslation } from "react-i18next";
-
-// Components de la pàgina principal
 import Banner from "./components/Banner/index";
 import Aboutus from "./components/Aboutus/index";
 import Dedicated from "./components/Dedicated/index";
@@ -14,6 +12,8 @@ import Ourteam from "./components/Ourteam/index";
 import Featured from "./components/Featured/index";
 import FAQ from "./components/FAQ/index";
 import Joinus from "./components/Joinus/index";
+import Footer from "@/app/components/Footer";
+import React from "react";
 
 export default function Home() {
     const { t } = useTranslation("common");
@@ -72,6 +72,7 @@ export default function Home() {
                 <Featured />
                 <FAQ />
                 <Joinus />
+                <Footer />
             </main>
         </>
     );

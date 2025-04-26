@@ -16,6 +16,7 @@ import {LogoDesktop, LogoMobile} from "./LogoComponents"
 import UserMenu from "./UserMenu"
 import LanguageSwitcher from "./LanguageSwitcher";
 import { useTranslation } from 'react-i18next';
+import { ShirtIcon } from "lucide-react";
 
 
 
@@ -113,6 +114,26 @@ const Navbar: React.FC = () => {
                                 </Link>
                             </li>
                         )}
+
+                        {isAuthenticated && (
+                            <li key="outfit_assistant">
+                                <Link href="/outfit-assistant" passHref>
+                                    <Typography
+                                        as="a"
+                                        variant="paragraph"
+                                        color="gray"
+                                        className="flex items-center gap-2 font-medium text-gray-900"
+                                        {...({} as any)} // Ignora altres propietats no passades
+                                    >
+                                        {/* Icona des de Lucide */}
+                                        <ShirtIcon className="h-5 w-5" />
+                                        {/* O un logo personalitzat */}
+                                        {/* <img src="/images/outfit-assistant-icon.png" alt="Outfit Assistant" className="h-5 w-5" /> */}
+                                        {t("navbar.outfitAssistant", "Outfit Assistant")}
+                                    </Typography>
+                                </Link>
+                            </li>
+                        )}
                     </ul>
 
                     {/* Accions d'usuari a la dreta */}
@@ -176,6 +197,26 @@ const Navbar: React.FC = () => {
                                         >
                                             <MagnifyingGlassIcon className="h-5 w-5"/>
                                             {t("navbar.search")}
+                                        </Typography>
+                                    </Link>
+                                </li>
+                            )}
+
+                            {isAuthenticated && (
+                                <li key="outfit_assistant">
+                                    <Link href="/outfit-assistant" passHref>
+                                        <Typography
+                                            as="a"
+                                            variant="paragraph"
+                                            color="gray"
+                                            className="flex items-center gap-2 font-medium text-gray-900"
+                                            {...({} as any)} // Ignora altres propietats no passades
+                                        >
+                                            {/* Icona des de Lucide */}
+                                            <ShirtIcon className="h-5 w-5" />
+                                            {/* O un logo personalitzat */}
+                                            {/* <img src="/images/outfit-assistant-icon.png" alt="Outfit Assistant" className="h-5 w-5" /> */}
+                                            {t("navbar.outfitAssistant", "Outfit Assistant")}
                                         </Typography>
                                     </Link>
                                 </li>

@@ -3,6 +3,8 @@
 import Head from "next/head";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
+import Footer from "@/app/components/Footer";
+
 
 const MaintenancePage = () => {
     const { t } = useTranslation("common"); // Si fas servir i18n
@@ -64,6 +66,7 @@ const MaintenancePage = () => {
                 />
 
             </div>
+            <Footer/>
         </>
     );
 };

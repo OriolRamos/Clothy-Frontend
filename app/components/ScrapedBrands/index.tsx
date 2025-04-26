@@ -9,11 +9,14 @@ const ScrapedBrands = () => {
     // Llista d’imatges manualment
     const logos = useMemo(() => {
         return [
-            "/images/brands/nike.png",
-            "/images/brands/adidas.png",
+            "/images/brands/bershka.png",
+            "/images/brands/oysho.png",
             "/images/brands/zara.png",
             "/images/brands/hm.png",
             "/images/brands/uniqlo.png",
+            "/images/brands/mango.png",
+            "/images/brands/pullandbear.png",
+            "/images/brands/stradivarius.png",
             // Afegeix més aquí segons els fitxers reals
         ];
     }, []);
