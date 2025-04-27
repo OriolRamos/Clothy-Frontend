@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ExternalPageModal from "./ExternalPageModal";
-import { Cloth } from "../Modals/Cloth"; // Importa la interfície Cloth centralitzada
+import { Cloth } from "../Modals/Cloth";
 import Image from "next/image";
 import { filters } from "../Filters/cloth_filters";
 import { useAuth } from "@/app/components/AuthContext";
@@ -66,16 +66,19 @@ const ImageModel: React.FC<ImageModelProps> = ({ cloth, country }) => {
         <div className="relative rounded-lg shadow-lg bg-white hover:shadow-xl transition max-w-[300px]">
             {/* Miniatura de la imatge */}
             <div className="relative">
-                <img
-                    src={cloth.image_url}
-                    alt={cloth.description || "Product image"}
-                    className="cursor-pointer object-cover w-[300px] h-[400px] rounded-lg"
-                    onClick={() => setIsModalOpen(true)} // Obre el modal
-                    onError={(e) =>
-                        (e.currentTarget.src =
-                            "https://via.placeholder.com/300x400?text=No+Image")
-                    }
-                />
+
+                <div className="relative w-[300px] h-[400px] cursor-pointer" onClick={() => setIsModalOpen(true)}>
+                    <Image
+                        src={cloth.image_url || "https://via.placeholder.com/300x400?text=No+Image"}
+                        alt={cloth.description || "Product image"}
+                        fill
+                        className="object-cover rounded-lg"
+                        onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.src = "https://via.placeholder.com/300x400?text=No+Image";
+                        }}
+                    />
+                </div>
 
                 {/* Logo de la marca */}
                 <div className="absolute top-2 left-2 p-1">

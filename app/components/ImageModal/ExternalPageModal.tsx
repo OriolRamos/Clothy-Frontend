@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { Cloth } from "../Modals/Cloth";
 import { filters, getTranslation } from "../Filters/cloth_filters";
 import { useAuth } from "@/app/components/AuthContext";
+import Image from "next/image";
+
 
 interface ExternalPageModalProps {
     cloth: Cloth;
@@ -59,9 +61,11 @@ const ExternalPageModal: React.FC<ExternalPageModalProps> = ({ cloth, country, i
                 <div className="mt-16 flex flex-col lg:flex-row flex-grow overflow-auto">
                     {/* Imatge del producte */}
                     <div className="w-full lg:w-1/2 flex justify-end items-start">
-                        <img
+                        <Image
                             src={cloth.image_url}
                             alt={cloth.brand}
+                            width={500} // pots ajustar-ho
+                            height={500} // pots ajustar-ho
                             className="w-full h-full object-contain"
                         />
                     </div>

@@ -56,12 +56,16 @@ const Footer = () => {
                     {/* COLUMN-1 */}
                     <div className="col-span-4">
                         <h3 className="text-white text-4xl font-semibold leading-9 mb-4 lg:mb-20 flex items-center justify-start">
-                            <img
-                                src="/images/clothy_white.png" // Ruta a la imatge
-                                alt="Clothy Logo"
-                                className="h-12 w-12 object-contain mr-3" // Mida més gran per a la imatge i un espai entre la imatge i el text
-                            />
-                            Clothy Labs
+                            <div className="relative h-12 w-12 mr-3">
+
+                                <Image
+                                    src="/images/clothy_white.png"
+                                    alt="Clothy Logo"
+                                    fill
+                                    className="object-contain"
+                                />
+                            </div>
+                                Clothy Labs
                         </h3>
                         <div className="flex gap-4">
                             <div className="footer-icons">

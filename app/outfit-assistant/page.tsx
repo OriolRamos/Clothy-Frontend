@@ -5,6 +5,8 @@ import Head from "next/head";
 import ImageUploadModal from "../components/CameraModal/index";
 import { useAuth } from "@/app/components/AuthContext";
 import { Camera, Send, Sun, Cloud, CloudRain, CloudLightning, CloudSnow, CloudDrizzle } from "lucide-react";
+import Image from "next/image";
+
 
 interface Message {
     id: number;
@@ -136,20 +138,24 @@ export default function OutfitAssistantPage({
     const handleSend = async () => {
         if (!inputText.trim() && !imageFile) return;
 
-        // Create conversation if not exists
-        if (!conversationId) {
+        let currentConversationId = conversationId;
+
+        // 1. Crear la conversa si no existeix
+        if (!currentConversationId) {
             try {
                 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
                 const res = await fetchWithAuth(`${apiUrl}/outfit-assistant/conversations`, { method: "POST" });
                 if (!res.ok) throw new Error(`Error creating conversation ${res.status}`);
                 const data = await res.json();
-                setConversationId(data.conversation_id);
+                currentConversationId = data.conversation_id;
+                setConversationId(currentConversationId);
             } catch (err) {
                 console.error("Failed to create conversation:", err);
                 return;
             }
         }
 
+        // 2. Crear el missatge de l'usuari
         const userMessage: Message = {
             id: Date.now(),
             content: inputText.trim(),
@@ -159,7 +165,7 @@ export default function OutfitAssistantPage({
         setMessages(prev => [...prev, userMessage]);
         setInputText("");
 
-        // Weather context
+        // 3. Crear la informació de context (temps, localització)
         let weatherString = "";
         if (weather) {
             const instant = weather.properties.timeseries[0].data.instant.details;
@@ -168,20 +174,21 @@ export default function OutfitAssistantPage({
         }
 
         const formData = new FormData();
-        formData.append("conversation_id", conversationId!);
+        formData.append("conversation_id", currentConversationId!);
         formData.append("text", userMessage.content);
         formData.append("weather", weatherString);
         const locStr = location ? `${location.latitude},${location.longitude}` : "";
         formData.append("location", locStr);
         if (imageFile) formData.append("image", imageFile);
 
+        // 4. Enviar la petició
         setLoading(true);
         try {
             const apiUrl = process.env.NEXT_PUBLIC_API_URL;
             const res = await fetchWithAuth(`${apiUrl}/outfit-assistant`, { method: "POST", body: formData });
             if (!res.ok) throw new Error(`Server responded with ${res.status}`);
             const data = await res.json();
-            setMessages(prev => [...prev, { id: Date.now()+1, content: data.reply, role: "assistant" }]);
+            setMessages(prev => [...prev, { id: Date.now() + 1, content: data.reply, role: "assistant" }]);
         } catch (err) {
             console.error(err);
         } finally {
@@ -190,6 +197,7 @@ export default function OutfitAssistantPage({
             setPreviewUrl(null);
         }
     };
+
 
     // Derive modal data
     let currentTemp = weather?.properties.timeseries[0].data.instant.details.air_temperature;
@@ -253,10 +261,14 @@ export default function OutfitAssistantPage({
                                 }`}
                             >
                                 {msg.imageUrl && (
-                                    <img
+                                    <Image
                                         src={msg.imageUrl}
                                         alt="User upload"
-                                        className="mb-2 rounded max-h-[150px] w-auto"
+                                        width={0}
+                                        height={0}
+                                        sizes="100vw"
+                                        className="mb-2 rounded max-h-[150px] w-auto h-auto" // afegim h-auto per assegurar el comportament
+                                        style={{ height: 'auto', width: 'auto', maxHeight: '150px' }}
                                     />
                                 )}
                                 <span>{msg.content}</span>
@@ -270,10 +282,13 @@ export default function OutfitAssistantPage({
                     <div className="flex items-center space-x-2">
                         {previewUrl ? (
                             <div className="relative">
-                                <img
+                                <Image
                                     src={previewUrl}
                                     alt="Preview"
-                                    className="h-10 w-10 rounded object-cover"
+                                    width={40} // equival a h-10 (2.5rem) i w-10 (2.5rem)
+                                    height={40}
+                                    className="rounded object-cover"
+                                    style={{ height: '40px', width: '40px' }} // Si vols forçar-ho més explícitament
                                 />
                                 <button
                                     onClick={handleRemoveImage}

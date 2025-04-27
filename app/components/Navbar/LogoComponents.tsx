@@ -1,6 +1,8 @@
 "use client";
 import React from "react";
 import { Typography } from "@material-tailwind/react";
+import Image from "next/image";
+
 
 const LogoDesktop: React.FC = () => (
     <Typography
@@ -10,7 +12,13 @@ const LogoDesktop: React.FC = () => (
         className="text-lg font-bold flex items-center gap-2"
         {...({} as any)}
     >
-        <img src="/images/clothy_black.png" alt="Clothy Logo" className="h-8 w-8 object-contain" />
+        <Image
+            src="/images/clothy_black.png"
+            alt="Clothy Logo"
+            width={32}
+            height={32}
+            className="h-8 w-8 object-contain"
+        />
         Clothy
     </Typography>
 );
@@ -24,7 +32,13 @@ const LogoMobile: React.FC = () => (
         className="text-lg font-bold flex items-center gap-2 mx-auto"
         {...({} as any)}
     >
-        <img src="/images/clothy_black.png" alt="Clothy Logo" className="h-8 w-8 object-contain" />
+        <Image
+            src="/images/clothy_black.png"
+            alt="Clothy Logo"
+            width={32}
+            height={32}
+            className="h-8 w-8 object-contain"
+        />
     </Typography>
 );
 
