@@ -91,13 +91,17 @@ export default function OutfitAssistantPage({
 
     const handleLocationAgree = () => {
         setShowLocationModal(false);
-        requestLocation();
+        if (!navigator.geolocation) {
+            console.warn("Geolocation not supported");
+            return;
+        }
         navigator.geolocation.getCurrentPosition(
-            (pos) => setLocation({ latitude: pos.coords.latitude, longitude: pos.coords.longitude }),
-            (err) => console.warn(err),
-            { enableHighAccuracy: true }
+            pos => setLocation({ latitude: pos.coords.latitude, longitude: pos.coords.longitude }),
+            err => console.warn("Geolocation error:", err.message),
+            { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 }
         );
     };
+
     const handleLocationDecline = () => setShowLocationModal(false);
 
     // Choose weather icon based on symbol code
@@ -168,10 +172,20 @@ export default function OutfitAssistantPage({
         // 3. Crear la informació de context (temps, localització)
         let weatherString = "";
         if (weather) {
-            const instant = weather.properties.timeseries[0].data.instant.details;
-            const next = weather.properties.timeseries[0].data.next_1_hours?.summary;
-            weatherString = `Current weather at your location: ${instant.air_temperature}°C, ${next?.symbol_code}, wind ${instant.wind_speed} m/s, humidity ${instant.relative_humidity}%.`;
+            // Prenem fins a 24 punts horaris (depèn de cada 1h en la resposta)
+            const timeseries = weather.properties.timeseries.slice(0, 24);
+            // Convertim-los en línies de text
+            const lines = timeseries.map((entry: any) => {
+                const { time } = entry;
+                const temp = entry.data.instant.details.air_temperature;
+                const symbol = entry.data.next_1_hours?.summary.symbol_code;
+                // Ex: "2025-04-29T15:00:00Z: 18°C, rain"
+                return `${time}: ${Math.round(temp)}°C, ${symbol}`;
+            });
+            // Unim-les en un sol string separades per nova línia
+            weatherString = lines.join("\\n");
         }
+
 
         const formData = new FormData();
         formData.append("conversation_id", currentConversationId!);
@@ -215,7 +229,7 @@ export default function OutfitAssistantPage({
 
             <div className="flex flex-col min-h-screen bg-gray-50">
                 {showLocationModal && (
-                    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+                    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-60">
                         <div className="bg-white rounded-lg shadow-2xl p-6 max-w-sm text-center">
                             <h2 className="text-2xl font-semibold mb-4">Permitir ubicación</h2>
                             <p className="mb-6">
