@@ -658,6 +658,10 @@
     "search": "搜索"
   },
   "seo": {
+    "cookiespolicy": {
+      "title": "Cookie 政策 – Clothy",
+      "description": "了解我们如何在 Arroba 搜索引擎中使用技术 Cookie 进行登录和会话维护。"
+    },
     "verification": {
       "title": "验证您的账户 - Clothy",
       "description": "通过验证您的电子邮件来访问您的Clothy账户。请输入验证码以继续。"
@@ -713,6 +717,86 @@
       "title": "我们正在努力改进",
       "message": "由于维护工作，我们的商店暂时无法服务。感谢您的耐心等待。",
       "imageAlt": "维护插图"
+    }
+  },
+  "cookiespolicy": {
+    "header": {
+      "title": "Cookie 政策",
+      "date": "更新于 2025/05/01"
+    },
+    "intro": "在此页面中，您将找到有关 Clothy 使用的 Cookie 的所有信息，包括它们的工作原理以及如何管理它们以符合欧洲法规（ePrivacy 指令 2002/58/EC 和 GDPR – 2016/679 号条例）。",
+    "section1": {
+      "title": "1. 什么是 Cookie？",
+      "text": "Cookie 是浏览器在您访问网站时存储在设备上的小型文本文件。它们有助于简化和优化您的浏览体验，使网站“记住”您的会话、偏好和其他数据。Cookie 通常不包含直接的个人数据，而是匿名标识符。"
+    },
+    "section2": {
+      "title": "2. Cookie 类型",
+      "table": {
+        "header": {
+          "type": "类型",
+          "description": "描述",
+          "consent": "同意"
+        },
+        "row1": {
+          "type": "技术性或必需",
+          "description": "启用网站导航和基本功能（身份验证、保持会话）。",
+          "consent": "无需同意"
+        },
+        "row2": {
+          "type": "分析型",
+          "description": "收集有关网站使用情况的匿名信息以进行改进。",
+          "consent": "需要同意"
+        },
+        "row3": {
+          "type": "广告型",
+          "description": "根据您的兴趣展示个性化广告。",
+          "consent": "需要同意"
+        },
+        "row4": {
+          "type": "第三方",
+          "description": "外部集成（视频、社交网络…）。",
+          "consent": "需要同意"
+        }
+      }
+    },
+    "section3": {
+      "title": "3. 我们使用的 Cookie",
+      "item1": "身份验证：存储用于识别您会话的加密 JSON Web Token (JWT)。",
+      "item2": "自动登录：这样，登录后您无需重新输入凭据，直到您退出登录为止。",
+      "note": "我们不使用分析型、广告型或第三方 Cookie。"
+    },
+    "section4": {
+      "title": "4. 法律依据和目的",
+      "item1": "法律依据：GDPR 第 6.1.b 条款（合同履行或用户请求）。",
+      "item2": "目的：确保身份验证系统的安全性和功能性，避免您每次使用搜索引擎时都需要重新登录。"
+    },
+    "section5": {
+      "title": "5. 管理与禁用 Cookie",
+      "intro": "您可以在浏览器中禁用或删除技术性 Cookie，但这可能会影响会话的正确识别和维护。以下是常见浏览器的指南链接：",
+      "chrome": {
+        "title": "Google Chrome",
+        "step1": "菜单 ⋮ ▶ “设置” ▶ “隐私与安全” ▶ “Cookie 及其他网站数据”。",
+        "step2": "管理或删除所需的 Cookie。"
+      },
+      "firefox": {
+        "title": "Mozilla Firefox",
+        "step1": "菜单 ☰ ▶ “选项” ▶ “隐私与安全” ▶ “Cookie 与网站数据”。",
+        "step2": "单击“管理数据…”或“清除数据…”。"
+      },
+      "safari": {
+        "title": "Safari (macOS/iOS)",
+        "step1": "“偏好设置” ▶ “隐私” ▶ “管理网站数据…”。",
+        "step2": "选择并删除 Cookie。"
+      },
+      "edge": {
+        "title": "Microsoft Edge",
+        "step1": "菜单 … ▶ “设置” ▶ “隐私、搜索和服务” ▶ “选择要清除的内容”。"
+      },
+      "note": "请注意，如果您删除身份验证 Cookie，则返回网站时需要重新登录。"
+    },
+    "section6": {
+      "title": "6. 更新与联系",
+      "text": "由于法律变化或网站功能调整，我们可能会修改本 Cookie 政策。建议定期查看。如有任何有关隐私或 Cookie 的问题与请求，请通过以下方式联系我们：\n\n数据保护\nsupport@clothy.es"
     }
   }
 }

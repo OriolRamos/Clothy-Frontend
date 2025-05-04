@@ -655,6 +655,91 @@
         "soloOfferts": "Només ofertes",
         "reset": "Restablir",
         "search": "Cercar"
+    },
+    "seo": {
+        "cookiespolicy": {
+            "title": "Política de Cookies – Clothy",
+            "description": "Descobreix com utilitzem cookies tècniques per al login i manteniment de sessió al cercador d’arroba."
+        }
+    },
+    "cookiespolicy": {
+        "header": {
+            "title": "Política de Cookies",
+            "date": "Actualitzat el 01/05/2025"
+        },
+        "intro": "En aquesta pàgina trobaràs tota la informació sobre les cookies que utilitza Clothy, com funcionen i com pots gestionar-les per complir amb la normativa europea (Directiva ePrivacy 2002/58/CE i Reglament (UE) 2016/679 – RGPD).",
+        "section1": {
+            "title": "1. Què són les cookies?",
+            "text": "Les cookies són petits fitxers de text que el navegador guarda al teu dispositiu quan visites un lloc web. Serveixen per facilitar i optimitzar la teva experiència de navegació, perquè el lloc \"recordi\" la teva sessió, les preferències i altres dades. Les cookies no solen contenir dades personals directes, sinó identificadors anònims."
+        },
+        "section2": {
+            "title": "2. Tipus de cookies",
+            "table": {
+                "header": {
+                    "type": "Tipus",
+                    "description": "Descripció",
+                    "consent": "Consentiment"
+                },
+                "row1": {
+                    "type": "Tècniques o Essencials",
+                    "description": "Permeten la navegació i la utilitat bàsica del lloc (autenticació, mantenir la sessió oberta).",
+                    "consent": "No cal consentiment"
+                },
+                "row2": {
+                    "type": "Analítiques",
+                    "description": "Recullen informació anònima sobre l’ús del lloc per millorar-lo.",
+                    "consent": "Cal consentiment"
+                },
+                "row3": {
+                    "type": "Publicitàries",
+                    "description": "Mostren anuncis personalitzats segons els teus interessos.",
+                    "consent": "Cal consentiment"
+                },
+                "row4": {
+                    "type": "de Tercers",
+                    "description": "Integracions externes (vídeos, xarxes socials…).",
+                    "consent": "Cal consentiment"
+                }
+            }
+        },
+        "section3": {
+            "title": "3. Cookies que utilitzem",
+            "item1": "Autenticació: emmagatzemar el JSON Web Token (JWT) encriptat que identifica la teva sessió.",
+            "item2": "Login automàtic: perquè, un cop hagis iniciat sessió, no hagis de tornar a introduir les teves credencials fins que tanquis sessió.",
+            "note": "No utilitzem cookies d’anàlisi, publicitàries ni de tercers."
+        },
+        "section4": {
+            "title": "4. Base legal i finalitat",
+            "item1": "Base legal: article 6.1.b del RGPD (execució d’un contracte o sol·licitud de l’usuari).",
+            "item2": "Finalitat: garantir la seguretat i la funcionalitat del sistema d’autenticació, evitant que hages de tornar a fer login cada vegada que fas servir el cercador."
+        },
+        "section5": {
+            "title": "5. Gestió i desactivació de cookies",
+            "intro": "Pots desactivar o esborrar les cookies tècniques des del teu navegador, però això pot afectar la correcta identificació i manteniment de la sessió. A continuació tens enllaços amb guies dels navegadors més habituals:",
+            "chrome": {
+                "title": "Google Chrome",
+                "step1": "Menú ⋮ ▶ “Configuració” ▶ “Privacitat i seguretat” ▶ “Cookies i altres dades de llocs”.",
+                "step2": "Gestiona o elimina les cookies desitjades."
+            },
+            "firefox": {
+                "title": "Mozilla Firefox",
+                "step1": "Menú ☰ ▶ “Opcions” ▶ “Privacitat i seguretat” ▶ “Cookies i dades del lloc”.",
+                "step2": "Fes clic a “Gestiona dades…” o “Esborra dades…”."
+            },
+            "safari": {
+                "title": "Safari (macOS/iOS)",
+                "step1": "“Preferències” ▶ “Privadesa” ▶ “Gestiona dades del lloc web…”.",
+                "step2": "Selecciona i elimina les cookies."
+            },
+            "edge": {
+                "title": "Microsoft Edge",
+                "step1": "Menú … ▶ “Configuració” ▶ “Privacitat, cerca i serveis” ▶ “Trieu què voleu esborrar”."
+            },
+            "note": "Recorda que si esborras les cookies d’autenticació, et demanarem que tornis a iniciar sessió quan tornis al lloc."
+        },
+        "section6": {
+            "title": "6. Actualitzacions i contacte",
+            "text": "Podem modificar aquesta política de cookies en funció de canvis legislatius o de la funcionalitat del lloc. Et recomanem revisar-la periòdicament. Per qualsevol dubte o sol·licitud relacionada amb la privacitat o les cookies, pots contactar-nos a:\n\nProtecció de Dades\nsupport@clothy.es"
+        }
     }
-
 }

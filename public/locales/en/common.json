@@ -659,6 +659,10 @@
         "search": "Search"
     },
     "seo": {
+        "cookiespolicy": {
+            "title": "Cookies Policy – Clothy",
+            "description": "Discover how we use technical cookies for login and session maintenance on the arroba search engine."
+        },
         "verification": {
             "title": "Verify Your Account - Clothy",
             "description": "Access your Clothy account by verifying your email. Enter the verification code to continue."
@@ -715,6 +719,86 @@
             "title": "We're Working to Improve",
             "message": "Our store is temporarily offline for maintenance. Thank you for your patience.",
             "imageAlt": "Maintenance Illustration"
+        }
+    },
+    "cookiespolicy": {
+        "header": {
+            "title": "Cookies Policy",
+            "date": "Updated on 05/01/2025"
+        },
+        "intro": "On this page you will find all the information about the cookies used by Clothy, how they work and how you can manage them to comply with European regulations (ePrivacy Directive 2002/58/EC and GDPR – Regulation (EU) 2016/679).",
+        "section1": {
+            "title": "1. What are cookies?",
+            "text": "Cookies are small text files that the browser stores on your device when you visit a website. They help facilitate and optimize your browsing experience, so the site “remembers” your session, preferences, and other data. Cookies generally do not contain direct personal data, but anonymous identifiers."
+        },
+        "section2": {
+            "title": "2. Types of cookies",
+            "table": {
+                "header": {
+                    "type": "Type",
+                    "description": "Description",
+                    "consent": "Consent"
+                },
+                "row1": {
+                    "type": "Technical or Essential",
+                    "description": "Enable site navigation and basic functionality (authentication, keeping the session open).",
+                    "consent": "No consent required"
+                },
+                "row2": {
+                    "type": "Analytical",
+                    "description": "Collect anonymous information about site usage to improve it.",
+                    "consent": "Consent required"
+                },
+                "row3": {
+                    "type": "Advertising",
+                    "description": "Display personalized ads based on your interests.",
+                    "consent": "Consent required"
+                },
+                "row4": {
+                    "type": "Third-party",
+                    "description": "External integrations (videos, social networks…).",
+                    "consent": "Consent required"
+                }
+            }
+        },
+        "section3": {
+            "title": "3. Cookies we use",
+            "item1": "Authentication: store the encrypted JSON Web Token (JWT) that identifies your session.",
+            "item2": "Automatic login: so that once you have logged in, you do not have to re-enter your credentials until you log out.",
+            "note": "We do not use analytical, advertising, or third-party cookies."
+        },
+        "section4": {
+            "title": "4. Legal basis and purpose",
+            "item1": "Legal basis: Article 6.1.b of the GDPR (execution of a contract or user request).",
+            "item2": "Purpose: ensure the security and functionality of the authentication system, preventing you from having to log in again every time you use the search engine."
+        },
+        "section5": {
+            "title": "5. Managing and disabling cookies",
+            "intro": "You can disable or delete technical cookies from your browser, but this may affect proper session identification and maintenance. Below are links to guides for the most common browsers:",
+            "chrome": {
+                "title": "Google Chrome",
+                "step1": "Menu ⋮ ▶ “Settings” ▶ “Privacy and security” ▶ “Cookies and other site data”.",
+                "step2": "Manage or delete the cookies you want."
+            },
+            "firefox": {
+                "title": "Mozilla Firefox",
+                "step1": "Menu ☰ ▶ “Options” ▶ “Privacy & Security” ▶ “Cookies and Site Data”.",
+                "step2": "Click “Manage Data…” or “Clear Data…”."
+            },
+            "safari": {
+                "title": "Safari (macOS/iOS)",
+                "step1": "“Preferences” ▶ “Privacy” ▶ “Manage Website Data…”.",
+                "step2": "Select and remove the cookies."
+            },
+            "edge": {
+                "title": "Microsoft Edge",
+                "step1": "Menu … ▶ “Settings” ▶ “Privacy, search, and services” ▶ “Choose what to clear”."
+            },
+            "note": "Remember that if you delete authentication cookies, you will be asked to log in again when you return to the site."
+        },
+        "section6": {
+            "title": "6. Updates and contact",
+            "text": "We may modify this cookies policy due to legislative changes or site functionality. We recommend reviewing it periodically. For any questions or requests regarding privacy or cookies, you can contact us at:\n\nData Protection\nsupport@clothy.es"
         }
     }
 }

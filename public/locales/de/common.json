@@ -643,6 +643,10 @@
     "search": "Suchen"
   },
   "seo": {
+    "cookiespolicy": {
+      "title": "Cookie-Richtlinie – Clothy",
+      "description": "Erfahren Sie, wie wir technische Cookies für die Anmeldung und Sitzungsverwaltung in der Arroba-Suchmaschine verwenden."
+    },
     "verification": {
       "title": "Überprüfe dein Konto – Clothy",
       "description": "Greife auf dein Clothy-Konto zu, indem du deine E-Mail verifizierst. Gib den Verifizierungscode ein, um fortzufahren."
@@ -699,6 +703,86 @@
       "title": "Wir arbeiten an Verbesserungen",
       "message": "Unser Shop ist vorübergehend wegen Wartungsarbeiten offline. Vielen Dank für deine Geduld.",
       "imageAlt": "Wartungsillustration"
+    }
+  },
+  "cookiespolicy": {
+    "header": {
+      "title": "Cookie-Richtlinie",
+      "date": "Aktualisiert am 01.05.2025"
+    },
+    "intro": "Auf dieser Seite finden Sie alle Informationen zu den von Clothy verwendeten Cookies, wie sie funktionieren und wie Sie sie verwalten können, um die europäischen Vorschriften (ePrivacy-Richtlinie 2002/58/EG und DSGVO – Verordnung (EU) 2016/679) einzuhalten.",
+    "section1": {
+      "title": "1. Was sind Cookies?",
+      "text": "Cookies sind kleine Textdateien, die der Browser auf Ihrem Gerät speichert, wenn Sie eine Website besuchen. Sie erleichtern und optimieren Ihre Browser-Erfahrung, indem die Seite Ihre Sitzung, Einstellungen und andere Daten „erinnert“. Cookies enthalten in der Regel keine direkten persönlichen Daten, sondern anonyme Kennungen."
+    },
+    "section2": {
+      "title": "2. Arten von Cookies",
+      "table": {
+        "header": {
+          "type": "Art",
+          "description": "Beschreibung",
+          "consent": "Einwilligung"
+        },
+        "row1": {
+          "type": "Technisch oder Essenziell",
+          "description": "Ermöglichen die Navigation und Grundfunktionen der Website (Authentifizierung, Sitzung offen halten).",
+          "consent": "Keine Einwilligung erforderlich"
+        },
+        "row2": {
+          "type": "Analytisch",
+          "description": "Sammeln anonyme Informationen über die Nutzung der Website zur Verbesserung.",
+          "consent": "Einwilligung erforderlich"
+        },
+        "row3": {
+          "type": "Werbung",
+          "description": "Zeigen personalisierte Werbung basierend auf Ihren Interessen an.",
+          "consent": "Einwilligung erforderlich"
+        },
+        "row4": {
+          "type": "Drittanbieter",
+          "description": "Externe Integrationen (Videos, soziale Netzwerke…).",
+          "consent": "Einwilligung erforderlich"
+        }
+      }
+    },
+    "section3": {
+      "title": "3. Verwendete Cookies",
+      "item1": "Authentifizierung: Speichern des verschlüsselten JSON Web Tokens (JWT), das Ihre Sitzung identifiziert.",
+      "item2": "Automatische Anmeldung: Damit Sie nach der Anmeldung Ihre Anmeldedaten nicht erneut eingeben müssen, bis Sie sich abmelden.",
+      "note": "Wir verwenden keine Analyse-, Werbe- oder Drittanbieter-Cookies."
+    },
+    "section4": {
+      "title": "4. Rechtsgrundlage und Zweck",
+      "item1": "Rechtsgrundlage: Artikel 6 Abs. 1 B DSGVO (Vertragserfüllung oder Benutzeranfrage).",
+      "item2": "Zweck: Gewährleistung der Sicherheit und Funktionalität des Authentifizierungssystems, damit Sie sich nicht bei jeder Nutzung der Suchmaschine erneut anmelden müssen."
+    },
+    "section5": {
+      "title": "5. Verwaltung und Deaktivierung von Cookies",
+      "intro": "Sie können technische Cookies in Ihrem Browser deaktivieren oder löschen. Dies kann jedoch die korrekte Sitzungsverwaltung beeinträchtigen. Nachfolgend finden Sie Anleitungen für gängige Browser:",
+      "chrome": {
+        "title": "Google Chrome",
+        "step1": "Menü ⋮ ▶ „Einstellungen“ ▶ „Datenschutz und Sicherheit“ ▶ „Cookies und andere Websitedaten“.",
+        "step2": "Verwalten oder Löschen Sie die gewünschten Cookies."
+      },
+      "firefox": {
+        "title": "Mozilla Firefox",
+        "step1": "Menü ☰ ▶ „Einstellungen“ ▶ „Datenschutz & Sicherheit“ ▶ „Cookies und Websitedaten“.",
+        "step2": "Klicken Sie auf „Daten verwalten…“ oder „Daten löschen…“."
+      },
+      "safari": {
+        "title": "Safari (macOS/iOS)",
+        "step1": "„Einstellungen“ ▶ „Datenschutz“ ▶ „Website-Daten verwalten…“.",
+        "step2": "Wählen und entfernen Sie die Cookies."
+      },
+      "edge": {
+        "title": "Microsoft Edge",
+        "step1": "Menü … ▶ „Einstellungen“ ▶ „Datenschutz, Suche und Dienste“ ▶ „Zu löschende Elemente auswählen“."
+      },
+      "note": "Denken Sie daran, dass Sie sich erneut anmelden müssen, wenn Sie Authentifizierungs-Cookies löschen."
+    },
+    "section6": {
+      "title": "6. Aktualisierungen und Kontakt",
+      "text": "Wir können diese Cookie-Richtlinie bei gesetzlichen Änderungen oder Änderungen der Website-Funktionalität anpassen. Wir empfehlen, sie regelmäßig zu überprüfen. Bei Fragen oder Anliegen zum Datenschutz oder zu Cookies kontaktieren Sie uns unter:\n\nDatenschutzbeauftragter\nsupport@clothy.es"
     }
   }
 }

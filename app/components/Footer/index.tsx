@@ -48,6 +48,10 @@ const Footer = () => {
         // Redirigeix a la pàgina de login
         router.push('/privacy-policy');
     };
+    const handleCookiesPolicy = () => {
+        // Redirigeix a la pàgina de login
+        router.push('/cookies');
+    };
 
     return (
         <div className="bg-black" id="first-section">
@@ -118,7 +122,10 @@ const Footer = () => {
                                 <h3 className="text-offwhite pr-6" onClick={handlePrivacyPolicy}>{t("footer.pricavyPolicy", "Privacy policy")}</h3>
                             </Link>
                             <Link href="/terms&conditions">
-                                <h3 className="text-offwhite pl-6 border-solid border-l border-footer" onClick={handleTermsConditions}>{t("footer.termsConditions", "Terms & conditions")}</h3>
+                                <h3 className="text-offwhite pl-6 pr-6 border-solid border-l border-footer" onClick={handleTermsConditions}>{t("footer.termsConditions", "Terms & conditions")}</h3>
+                            </Link>
+                            <Link href="/cookies">
+                                <h3 className="text-offwhite pl-6 border-solid border-l border-footer" onClick={handleCookiesPolicy}>{t("footer.cookies", "Cookies Policy")}</h3>
                             </Link>
                         </div>
                     </div>

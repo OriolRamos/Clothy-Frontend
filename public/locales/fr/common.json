@@ -671,6 +671,10 @@
     "search": "Rechercher"
   },
   "seo": {
+    "cookiespolicy": {
+      "title": "Politique de Cookies – Clothy",
+      "description": "Découvrez comment nous utilisons les cookies techniques pour la connexion et la gestion de session sur le moteur de recherche Arroba."
+    },
     "verification": {
       "title": "Vérifiez votre compte - Clothy",
       "description": "Accédez à votre compte Clothy en vérifiant votre email. Entrez le code de vérification pour continuer."
@@ -727,6 +731,86 @@
       "title": "Nous travaillons à l'amélioration",
       "message": "Notre boutique est temporairement indisponible en raison de travaux de maintenance. Merci de votre patience.",
       "imageAlt": "Illustration de maintenance"
+    }
+  },
+  "cookiespolicy": {
+    "header": {
+      "title": "Politique de Cookies",
+      "date": "Mis à jour le 01/05/2025"
+    },
+    "intro": "Sur cette page, vous trouverez toutes les informations concernant les cookies utilisés par Clothy, leur fonctionnement et comment vous pouvez les gérer pour vous conformer à la réglementation européenne (directive ePrivacy 2002/58/CE et RGPD – règlement (UE) 2016/679).",
+    "section1": {
+      "title": "1. Qu'est-ce que les cookies ?",
+      "text": "Les cookies sont de petits fichiers texte que le navigateur enregistre sur votre appareil lorsque vous visitez un site web. Ils facilitent et optimisent votre expérience de navigation, permettant au site de “se souvenir” de votre session, de vos préférences et d’autres données. Les cookies ne contiennent généralement pas de données personnelles directes, mais des identifiants anonymes."
+    },
+    "section2": {
+      "title": "2. Types de cookies",
+      "table": {
+        "header": {
+          "type": "Type",
+          "description": "Description",
+          "consent": "Consentement"
+        },
+        "row1": {
+          "type": "Techniques ou Essentiels",
+          "description": "Permettent la navigation et les fonctionnalités de base du site (authentification, maintien de la session).",
+          "consent": "Pas de consentement requis"
+        },
+        "row2": {
+          "type": "Analytiques",
+          "description": "Recueillent des informations anonymes sur l’utilisation du site pour l’améliorer.",
+          "consent": "Consentement requis"
+        },
+        "row3": {
+          "type": "Publicitaires",
+          "description": "Affichent des publicités personnalisées selon vos centres d’intérêt.",
+          "consent": "Consentement requis"
+        },
+        "row4": {
+          "type": "Tierces Parties",
+          "description": "Intégrations externes (vidéos, réseaux sociaux…).",
+          "consent": "Consentement requis"
+        }
+      }
+    },
+    "section3": {
+      "title": "3. Cookies utilisés",
+      "item1": "Authentification : stockage du JSON Web Token (JWT) chiffré qui identifie votre session.",
+      "item2": "Connexion automatique : afin que, une fois connecté, vous n’ayez pas à ressaisir vos identifiants jusqu’à déconnexion.",
+      "note": "Nous n’utilisons pas de cookies analytiques, publicitaires ou tierces parties."
+    },
+    "section4": {
+      "title": "4. Base légale et finalité",
+      "item1": "Base légale : article 6.1.b du RGPD (exécution d’un contrat ou demande de l’utilisateur).",
+      "item2": "Finalité : garantir la sécurité et la fonctionnalité du système d’authentification, vous évitant de vous reconnecter à chaque utilisation du moteur de recherche."
+    },
+    "section5": {
+      "title": "5. Gestion et désactivation des cookies",
+      "intro": "Vous pouvez désactiver ou supprimer les cookies techniques depuis votre navigateur, mais cela peut affecter l’identification et le maintien correct de la session. Vous trouverez ci-dessous des guides pour les navigateurs les plus courants :",
+      "chrome": {
+        "title": "Google Chrome",
+        "step1": "Menu ⋮ ▶ “Paramètres” ▶ “Confidentialité et sécurité” ▶ “Cookies et autres données de site”.",
+        "step2": "Gérez ou supprimez les cookies souhaités."
+      },
+      "firefox": {
+        "title": "Mozilla Firefox",
+        "step1": "Menu ☰ ▶ “Options” ▶ “Confidentialité & Sécurité” ▶ “Cookies et données de site”.",
+        "step2": "Cliquez sur “Gérer les données…” ou “Effacer les données…”."
+      },
+      "safari": {
+        "title": "Safari (macOS/iOS)",
+        "step1": "“Préférences” ▶ “Confidentialité” ▶ “Gérer les données du site web…”.",
+        "step2": "Sélectionnez et supprimez les cookies."
+      },
+      "edge": {
+        "title": "Microsoft Edge",
+        "step1": "Menu … ▶ “Paramètres” ▶ “Confidentialité, recherche et services” ▶ “Choisissez ce que vous voulez effacer”."
+      },
+      "note": "N’oubliez pas que si vous supprimez les cookies d’authentification, vous devrez vous reconnecter lors de votre prochaine visite."
+    },
+    "section6": {
+      "title": "6. Mises à jour et contact",
+      "text": "Nous pouvons modifier cette politique de cookies en cas de changements législatifs ou de fonctionnalités du site. Nous vous recommandons de la consulter régulièrement. Pour toute question ou demande relative à la confidentialité ou aux cookies, contactez-nous à :\n\nDélégué à la protection des données\nsupport@clothy.es"
     }
   }
 }

@@ -704,6 +704,10 @@
     "search": "Ara"
   },
   "seo": {
+    "cookiespolicy": {
+      "title": "Çerez Politikası – Clothy",
+      "description": "Arroba arama motorunda giriş ve oturum sürdürme için teknik çerezleri nasıl kullandığımızı öğrenin."
+    },
     "verification": {
       "title": "Hesabınızı Doğrulayın - Clothy",
       "description": "E-postanızı doğrulayarak Clothy hesabınıza erişin. Devam etmek için doğrulama kodunu girin."
@@ -755,6 +759,86 @@
     "privacypolicy": {
       "title": "Gizlilik Politikası - Clothy",
       "description": "Clothy'de kişisel verilerinizi nasıl koruduğumuzu ve kullandığımızı öğrenmek için gizlilik politikamızı inceleyin."
+    }
+  },
+  "cookiespolicy": {
+    "header": {
+      "title": "Çerez Politikası",
+      "date": "01/05/2025 tarihinde güncellendi"
+    },
+    "intro": "Bu sayfada Clothy’nin kullandığı çerezler, nasıl çalıştıkları ve Avrupa düzenlemelerine (ePrivacy Direktifi 2002/58/EC ve GDPR – Yönetmelik (EU) 2016/679) uyum için bunları nasıl yöneteceğiniz hakkında tüm bilgileri bulacaksınız.",
+    "section1": {
+      "title": "1. Çerezler nedir?",
+      "text": "Çerezler, bir web sitesini ziyaret ettiğinizde tarayıcının cihazınıza kaydettiği küçük metin dosyalarıdır. Site, oturumunuzu, tercihleriniz ve diğer verileri “hatırlayarak” gezinme deneyiminizi kolaylaştırır ve optimize eder. Çerezler genellikle doğrudan kişisel veri değil, anonim tanımlayıcı içerir."
+    },
+    "section2": {
+      "title": "2. Çerez türleri",
+      "table": {
+        "header": {
+          "type": "Tür",
+          "description": "Açıklama",
+          "consent": "Onay"
+        },
+        "row1": {
+          "type": "Teknik veya Temel",
+          "description": "Site gezinimini ve temel işlevleri (kimlik doğrulama, oturumu açık tutma) sağlar.",
+          "consent": "Onay gerekmez"
+        },
+        "row2": {
+          "type": "Analitik",
+          "description": "Site kullanımına ilişkin anonim bilgi toplar ve iyileştirmeye yardımcı olur.",
+          "consent": "Onay gerekir"
+        },
+        "row3": {
+          "type": "Reklam",
+          "description": "İlgi alanlarınıza göre kişiselleştirilmiş reklamlar gösterir.",
+          "consent": "Onay gerekir"
+        },
+        "row4": {
+          "type": "Üçüncü Taraf",
+          "description": "Harici entegrasyonlar (videolar, sosyal ağlar…).",
+          "consent": "Onay gerekir"
+        }
+      }
+    },
+    "section3": {
+      "title": "3. Kullandığımız çerezler",
+      "item1": "Kimlik Doğrulama: Oturumunuzu tanımlayan şifrelenmiş JSON Web Token (JWT) saklar.",
+      "item2": "Otomatik giriş: Bir kez giriş yaptıktan sonra oturumu kapatana kadar kimlik bilgilerinizi yeniden girmenize gerek kalmaz.",
+      "note": "Analitik, reklam veya üçüncü taraf çerezleri kullanmıyoruz."
+    },
+    "section4": {
+      "title": "4. Hukuki dayanak ve amaç",
+      "item1": "Hukuki dayanak: GDPR Madde 6.1.b (sözleşmenin ifası veya kullanıcı talebi).",
+      "item2": "Amaç: Kimlik doğrulama sisteminin güvenliğini ve işlevselliğini sağlamak, arama motorunu her kullandığınızda tekrar giriş yapmanızı önlemek."
+    },
+    "section5": {
+      "title": "5. Çerez yönetimi ve devre dışı bırakma",
+      "intro": "Tarayıcınızda teknik çerezleri devre dışı bırakabilir veya silebilirsiniz, ancak bu oturumun doğru şekilde tanınmasını ve sürdürülmesini etkileyebilir. Aşağıda yaygın tarayıcılar için kılavuzlar bulabilirsiniz:",
+      "chrome": {
+        "title": "Google Chrome",
+        "step1": "Menü ⋮ ▶ “Ayarlar” ▶ “Gizlilik ve güvenlik” ▶ “Çerezler ve diğer site verileri”.",
+        "step2": "İstediğiniz çerezleri yönetin veya silin."
+      },
+      "firefox": {
+        "title": "Mozilla Firefox",
+        "step1": "Menü ☰ ▶ “Seçenekler” ▶ “Gizlilik ve güvenlik” ▶ “Çerezler ve site verileri”.",
+        "step2": "“Verileri yönet…” veya “Verileri temizle…” öğesine tıklayın."
+      },
+      "safari": {
+        "title": "Safari (macOS/iOS)",
+        "step1": "“Tercihler” ▶ “Gizlilik” ▶ “Web sitesi verilerini yönet…”.",
+        "step2": "Çerezleri seçin ve silin."
+      },
+      "edge": {
+        "title": "Microsoft Edge",
+        "step1": "Menü … ▶ “Ayarlar” ▶ “Gizlilik, arama ve hizmetler” ▶ “Silinecek öğeleri seçin”."
+      },
+      "note": "Kimlik doğrulama çerezlerini silerseniz, siteye geri döndüğünüzde yeniden giriş yapmanız gerekir."
+    },
+    "section6": {
+      "title": "6. Güncellemeler ve iletişim",
+      "text": "Yasal değişiklikler veya site işlevselliği nedeniyle bu çerez politikasını değiştirebiliriz. Düzenli olarak gözden geçirmenizi öneririz. Gizlilik veya çerezlerle ilgili sorularınız için bize ulaşın:\n\nVeri Koruma Yetkilisi\nsupport@clothy.es"
     }
   }
 }
