@@ -89,38 +89,39 @@ const HistorialBusquedas = () => {
         <>
             <Head>
                 <title>{t("seo.history.title")}</title>
-                <meta name="description" content={t("seo.history.description")} />
-                <meta name="robots" content="index, follow" />
-                <meta property="og:title" content={t("seo.history.title")} />
-                <meta property="og:description" content={t("seo.history.description")} />
-                <meta property="og:image" content="/images/og-image-history.jpg" />
-                <meta property="og:url" content="https://www.clothy.com/history" />
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content={t("seo.history.title")} />
-                <meta name="twitter:description" content={t("seo.history.description")} />
-                <meta name="twitter:image" content="/images/og-image-history.jpg" />
+                <meta name="description" content={t("seo.history.description")}/>
+                <meta name="robots" content="index, follow"/>
+                <meta property="og:title" content={t("seo.history.title")}/>
+                <meta property="og:description" content={t("seo.history.description")}/>
+                <meta property="og:image" content="/images/og-image-history.jpg"/>
+                <meta property="og:url" content="https://www.clothy.com/history"/>
+                <meta name="twitter:card" content="summary_large_image"/>
+                <meta name="twitter:title" content={t("seo.history.title")}/>
+                <meta name="twitter:description" content={t("seo.history.description")}/>
+                <meta name="twitter:image" content="/images/og-image-history.jpg"/>
                 {/* Enllaços alternatius multilíngües */}
-                {['ca','es','en','fr','de','it','pt','ar','hi','zh','x-default'].map(lang => (
-                    <link key={lang} rel="alternate" hrefLang={lang} href="https://www.clothy.com/history" />
+                {['ca', 'es', 'en', 'fr', 'de', 'it', 'pt', 'ar', 'hi', 'zh', 'x-default'].map(lang => (
+                    <link key={lang} rel="alternate" hrefLang={lang} href="https://www.clothy.com/history"/>
                 ))}
             </Head>
 
-            <div className="min-h-screen bg-gray-100 px-8 py-12">
+            <div className="min-h-screen bg-gray-100 dark:bg-gray-900 px-8 py-12">
                 {/* Pestanyes */}
                 <div className="flex space-x-4 mb-8">
                     <button
-                        className={`${activeTab === 0 ? 'border-b-2 border-faqblue text-faqblue' : 'text-gray-600'} pb-2 font-semibold`}
+                        className={`${activeTab === 0 ? 'border-b-2 border-faqblue text-faqblue' : 'text-gray-600 dark:text-gray-400'} pb-2 font-semibold`}
                         onClick={() => setActiveTab(0)}
                     >{t("historial.title", "Historial de cerques")}</button>
                     <button
-                        className={`${activeTab === 1 ? 'border-b-2 border-faqblue text-faqblue' : 'text-gray-600'} pb-2 font-semibold`}
+                        className={`${activeTab === 1 ? 'border-b-2 border-faqblue text-faqblue' : 'text-gray-600 dark:text-gray-400'} pb-2 font-semibold`}
                         onClick={() => setActiveTab(1)}
                     >{t("historial.assistantTitle", "Historial de l'assistent")}</button>
                 </div>
 
                 {loading ? (
                     <div className="flex justify-center items-center">
-                        <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+                        <div
+                            className="w-16 h-16 border-4 border-blue-500 dark:border-blue-300 border-t-transparent rounded-full animate-spin"></div>
                     </div>
                 ) : (
                     activeTab === 0 ? (
@@ -129,18 +130,19 @@ const HistorialBusquedas = () => {
                                 {searchHistory.map(entry => (
                                     <li
                                         key={entry.search_id}
-                                        className="bg-white p-4 rounded-lg shadow-md cursor-pointer hover:bg-gray-50 transition-colors"
+                                        className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
                                         onClick={() => handleClickSearch(entry.search_id)}
                                     >
                                         <div className="flex flex-col sm:flex-row sm:justify-between">
                                             <div>
-                                                <p className="text-sm text-gray-600">{new Date(entry.search_date).toLocaleString()}</p>
-                                                <p className="text-sm">{t("historial.totalCloth", "Total de prendes")}:{entry.cloth_count||0}</p>
+                                                <p className="text-sm text-gray-600 dark:text-gray-400">{new Date(entry.search_date).toLocaleString()}</p>
+                                                <p className="text-sm text-gray-900 dark:text-gray-100">{t("historial.totalCloth", "Total de prendes")}:{entry.cloth_count || 0}</p>
                                             </div>
                                             {entry.filters && (
                                                 <div className="mt-2 sm:mt-0">
-                                                    <p className="text-sm font-medium">{t("historial.filters", "Filtres aplicats")}:</p>
-                                                    <pre className="bg-gray-100 p-2 rounded text-xs">{JSON.stringify(entry.filters,null,2)}</pre>
+                                                    <p className="text-sm font-medium text-gray-900 dark:text-gray-100">{t("historial.filters", "Filtres aplicats")}:</p>
+                                                    <pre
+                                                        className="bg-gray-100 dark:bg-gray-700 p-2 rounded text-xs text-gray-900 dark:text-gray-100">{JSON.stringify(entry.filters, null, 2)}</pre>
                                                 </div>
                                             )}
                                         </div>
@@ -148,7 +150,7 @@ const HistorialBusquedas = () => {
                                 ))}
                             </ul>
                         ) : (
-                            <p className="text-center text-gray-600">{t("historial.noHistory","No hi ha historial de cerques.")}</p>
+                            <p className="text-center text-gray-600 dark:text-gray-400">{t("historial.noHistory", "No hi ha historial de cerques.")}</p>
                         )
                     ) : (
                         convHistory.length > 0 ? (
@@ -156,18 +158,18 @@ const HistorialBusquedas = () => {
                                 {convHistory.map(conv => (
                                     <li
                                         key={conv.id}
-                                        className="bg-white p-4 rounded-lg shadow-md cursor-pointer hover:bg-gray-50 transition-colors"
+                                        className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
                                         onClick={() => handleClickConversation(conv.id)}
                                     >
                                         <div className="flex justify-between">
-                                            <p className="text-sm text-gray-600">{new Date(conv.created_at).toLocaleString()}</p>
-                                            <p className="text-sm font-medium">{t("historial.messageCount","Missatges")}:{conv.message_count}</p>
+                                            <p className="text-sm text-gray-600 dark:text-gray-400">{new Date(conv.created_at).toLocaleString()}</p>
+                                            <p className="text-sm font-medium text-gray-900 dark:text-gray-100">{t("historial.messageCount", "Missatges")}:{conv.message_count}</p>
                                         </div>
                                     </li>
                                 ))}
                             </ul>
                         ) : (
-                            <p className="text-center text-gray-600">{t("historial.noAssistantHistory","No hi ha historial de converses.")}</p>
+                            <p className="text-center text-gray-600 dark:text-gray-400">{t("historial.noAssistantHistory", "No hi ha historial de converses.")}</p>
                         )
                     )
                 )}
@@ -175,7 +177,7 @@ const HistorialBusquedas = () => {
                 <ErrorModal
                     isOpen={errorModalOpen}
                     onClose={() => setErrorModalOpen(false)}
-                    text={t("historial.error","S'ha produït un error en obtenir l'historial.")}
+                    text={t("historial.error", "S'ha produït un error en obtenir l'historial.")}
                     duration={5}
                 />
             </div>

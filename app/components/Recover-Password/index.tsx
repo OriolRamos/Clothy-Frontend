@@ -130,7 +130,7 @@ const RecoverPassword = () => {
     return (
         <div className="relative h-screen flex">
             {/* Columna de la imatge */}
-            <div className="hidden lg:flex lg:w-1/2 bg-blue-500 relative justify-center items-center">
+            <div className="hidden lg:flex lg:w-1/2 bg-blue-500 dark:bg-blue-800 relative justify-center items-center">
                 <Image
                     src="/images/recover-password/rb_7876.png"
                     alt={t("recover.imageAlt")}
@@ -142,19 +142,19 @@ const RecoverPassword = () => {
             </div>
 
             {/* Columna del formulari */}
-            <div className="flex flex-col justify-center items-center lg:w-1/2 p-8 bg-gray-100">
-                <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md">
-                    <h2 className="text-2xl font-bold text-blue-600 text-center mb-4">
+            <div className="flex flex-col justify-center items-center lg:w-1/2 p-8 bg-gray-100 dark:bg-gray-900">
+                <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md w-full max-w-md">
+                    <h2 className="text-2xl font-bold text-blue-600 dark:text-blue-400 text-center mb-4">
                         {t("recover.title")}
                     </h2>
 
                     {step === 1 && (
                         <form onSubmit={handleEmailSubmit}>
-                            <p className="text-gray-700 text-sm mb-4">
+                            <p className="text-gray-700 dark:text-gray-300 text-sm mb-4">
                                 {t("recover.emailInstruction")}
                             </p>
                             <div className="mb-4">
-                                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                                <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                                     {t("recover.emailLabel")}
                                 </label>
                                 <input
@@ -163,15 +163,15 @@ const RecoverPassword = () => {
                                     name="email"
                                     required
                                     value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    className="mt-1 block w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500"
+                                    onChange={e => setEmail(e.target.value)}
+                                    className="mt-1 block w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500 bg-white dark:bg-gray-700 text-black dark:text-gray-100"
                                     placeholder={t("recover.emailPlaceholder")}
                                 />
                             </div>
                             {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
                             <button
                                 type="submit"
-                                className="w-full bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition-colors"
+                                className="w-full bg-green-500 dark:bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-600 dark:hover:bg-green-700 transition-colors"
                             >
                                 {t("recover.sendCode")}
                             </button>
@@ -180,11 +180,11 @@ const RecoverPassword = () => {
 
                     {step === 2 && (
                         <form onSubmit={handleCodeSubmit}>
-                            <p className="text-gray-700 text-sm mb-4">
+                            <p className="text-gray-700 dark:text-gray-300 text-sm mb-4">
                                 {t("recover.codeInstruction")}
                             </p>
                             <div className="mb-4">
-                                <label htmlFor="code" className="block text-sm font-medium text-gray-700">
+                                <label htmlFor="code" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                                     {t("recover.codeLabel")}
                                 </label>
                                 <input
@@ -193,13 +193,13 @@ const RecoverPassword = () => {
                                     name="code"
                                     required
                                     value={code}
-                                    onChange={(e) => setCode(e.target.value)}
-                                    className="mt-1 block w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500"
+                                    onChange={e => setCode(e.target.value)}
+                                    className="mt-1 block w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500 bg-white dark:bg-gray-700 text-black dark:text-gray-100"
                                     placeholder={t("recover.codePlaceholder")}
                                 />
                             </div>
                             <div className="mb-4">
-                                <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+                                <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                                     {t("recover.newPasswordLabel")}
                                 </label>
                                 <input
@@ -208,13 +208,13 @@ const RecoverPassword = () => {
                                     name="password"
                                     required
                                     value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                    className="mt-1 block w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500"
+                                    onChange={e => setPassword(e.target.value)}
+                                    className="mt-1 block w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500 bg-white dark:bg-gray-700 text-black dark:text-gray-100"
                                     placeholder={t("recover.newPasswordPlaceholder")}
                                 />
                             </div>
                             <div className="mb-4">
-                                <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">
+                                <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                                     {t("recover.confirmPasswordLabel")}
                                 </label>
                                 <input
@@ -223,15 +223,15 @@ const RecoverPassword = () => {
                                     name="confirmPassword"
                                     required
                                     value={confirmPassword}
-                                    onChange={(e) => setConfirmPassword(e.target.value)}
-                                    className="mt-1 block w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500"
+                                    onChange={e => setConfirmPassword(e.target.value)}
+                                    className="mt-1 block w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500 bg-white dark:bg-gray-700 text-black dark:text-gray-100"
                                     placeholder={t("recover.confirmPasswordPlaceholder")}
                                 />
                             </div>
                             {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
                             <button
                                 type="submit"
-                                className="w-full bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition-colors"
+                                className="w-full bg-green-500 dark:bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-600 dark:hover:bg-green-700 transition-colors"
                             >
                                 {t("recover.verifyCode")}
                             </button>
@@ -242,9 +242,8 @@ const RecoverPassword = () => {
                         <p className="text-green-500 text-sm mt-4 text-center">{successMessage}</p>
                     )}
 
-                    {/* Botó per tornar a enviar el codi si han passat 5 minuts */}
                     {step === 2 && !canResend && (
-                        <p className="text-sm text-gray-500 mt-4">
+                        <p className="text-sm text-gray-500 dark:text-gray-400 mt-4">
                             {t("recover.resendTimer", { timer })}
                         </p>
                     )}
@@ -252,7 +251,7 @@ const RecoverPassword = () => {
                         <button
                             type="button"
                             onClick={handleResendCode}
-                            className="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors"
+                            className="w-full bg-blue-500 dark:bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-600 dark:hover:bg-blue-700 transition-colors"
                         >
                             {t("recover.resendCode")}
                         </button>

@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 
 interface CameraCaptureModalProps {
-    onCapture: (blob: Blob) => void; // 👈 Acceptem blob, no string
+    onCapture: (blob: Blob) => void;
     onClose: () => void;
 }
 
@@ -44,29 +44,28 @@ const CameraCaptureModal: React.FC<CameraCaptureModalProps> = ({ onCapture, onCl
                 ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
                 canvas.toBlob(blob => {
                     if (blob) {
-                        onCapture(blob); // Enviem el blob directament
+                        onCapture(blob);
                     }
                 }, 'image/jpeg');
             }
         }
     };
 
-
     return (
         <div className="fixed inset-0 z-60 flex flex-col items-center justify-center bg-black bg-opacity-70">
-            <div className="bg-white p-4 rounded-lg">
+            <div className="bg-white dark:bg-gray-800 p-4 rounded-lg">
                 <video ref={videoRef} autoPlay className="w-full h-auto rounded-lg" />
                 <canvas ref={canvasRef} style={{ display: 'none' }} />
                 <div className="mt-4 flex justify-between space-x-4">
                     <button
                         onClick={capturePhoto}
-                        className="px-4 py-2 bg-faqblue text-white rounded hover:scale-105 transition transform duration-200"
+                        className="px-4 py-2 bg-faqblue dark:bg-faqblue/80 text-white rounded hover:scale-105 transition transform duration-200"
                     >
                         Capturar
                     </button>
                     <button
                         onClick={onClose}
-                        className="px-4 py-2 bg-red-500 text-white rounded hover:scale-105 transition transform duration-200"
+                        className="px-4 py-2 bg-red-500 dark:bg-red-600 text-white rounded hover:scale-105 transition transform duration-200"
                     >
                         Cancel·lar
                     </button>

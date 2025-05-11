@@ -4,10 +4,9 @@ import { filters, getTranslation } from "../Filters/cloth_filters";
 import { useAuth } from "@/app/components/AuthContext";
 import Image from "next/image";
 
-
 interface ExternalPageModalProps {
     cloth: Cloth;
-    country: string | null; // Corregit el nom de la propietat
+    country: string | null;
     isOpen: boolean;
     onClose: () => void;
 }
@@ -31,16 +30,11 @@ const ExternalPageModal: React.FC<ExternalPageModalProps> = ({ cloth, country, i
             const apiUrl = process.env.NEXT_PUBLIC_API_URL;
             const response = await fetchWithAuth(`${apiUrl}/search/redirecting/log`, {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ cloth }),
             });
-            if (response.ok) {
-                console.log("Log de reenviament correcte!");
-            } else {
-                console.error("Error en el log de reenviament.");
-            }
+            if (response.ok) console.log("Log de reenviament correcte!");
+            else console.error("Error en el log de reenviament.");
         } catch (error) {
             console.error("Error gestionant el log:", error);
         }
@@ -48,9 +42,9 @@ const ExternalPageModal: React.FC<ExternalPageModalProps> = ({ cloth, country, i
 
     return (
         <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
-            <div className="relative bg-white w-full h-full flex flex-col">
+            <div className="relative bg-white dark:bg-gray-800 w-full h-full flex flex-col">
                 {/* Capçalera del modal */}
-                <div className="absolute top-0 left-0 right-0 p-4 flex justify-between items-center bg-gray-900 text-white">
+                <div className="absolute top-0 left-0 right-0 p-4 flex justify-between items-center bg-gray-900 dark:bg-gray-700 text-white">
                     <h2 className="font-semibold text-lg">Clothy Search</h2>
                     <button onClick={onClose} className="text-2xl font-bold">
                         &times;
@@ -64,19 +58,19 @@ const ExternalPageModal: React.FC<ExternalPageModalProps> = ({ cloth, country, i
                         <Image
                             src={cloth.image_url}
                             alt={cloth.brand}
-                            width={500} // pots ajustar-ho
-                            height={500} // pots ajustar-ho
+                            width={500}
+                            height={500}
                             className="w-full h-full object-contain"
                         />
                     </div>
 
                     {/* Informació del producte */}
-                    <div className="w-full lg:w-1/2 flex flex-col p-6">
+                    <div className="w-full lg:w-1/2 flex flex-col p-6 bg-white dark:bg-gray-800 text-black dark:text-gray-100">
                         {/* Brand i secció */}
-                        <div className="text-center border-b pb-4">
+                        <div className="text-center border-b border-gray-300 dark:border-gray-600 pb-4">
                             <h2 className="text-3xl font-bold uppercase">
                                 {getTranslation("brand", cloth.brand)}
-                                <span className="text-lg text-gray-600">
+                                <span className="text-lg text-gray-600 dark:text-gray-400">
                                     {getTranslation("section", cloth.section)}
                                 </span>
                             </h2>
@@ -111,7 +105,7 @@ const ExternalPageModal: React.FC<ExternalPageModalProps> = ({ cloth, country, i
                         <div className="mt-4 text-right">
                             {cloth.in_discount ? (
                                 <p className="text-2xl font-bold">
-                                    <span className="line-through text-gray-500 mr-2">
+                                    <span className="line-through text-gray-500 dark:text-gray-300 mr-2">
                                         {cloth.price}{currencySymbol}
                                     </span>
                                     <span className="text-red-500">
@@ -133,7 +127,7 @@ const ExternalPageModal: React.FC<ExternalPageModalProps> = ({ cloth, country, i
                                 href={cloth.purchase_url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-block px-6 py-3 bg-black text-white rounded-lg shadow-md font-semibold hover:scale-105 transition-transform duration-200"
+                                className="inline-block px-6 py-3 bg-black dark:bg-gray-900 text-white rounded-lg shadow-md font-semibold hover:scale-105 transition-transform duration-200"
                             >
                                 Comprar
                             </a>

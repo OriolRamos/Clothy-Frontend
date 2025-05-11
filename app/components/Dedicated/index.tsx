@@ -6,7 +6,7 @@ const Dedicated = () => {
     const { t } = useTranslation('common');
 
     return (
-        <div id="dedicated-section" className="relative bg-lightgray py-20">
+        <div id="dedicated-section" className="relative bg-lightgray dark:bg-gray-900 py-20">
             {/* Fondo decorativo */}
             <Image
                 src="/images/dedicated/spiral.svg"
@@ -41,13 +41,13 @@ const Dedicated = () => {
                         />
 
                         {/* Contenido principal */}
-                        <h2 className="text-4xl lg:text-6xl font-bold text-darkpurple leading-snug text-center lg:text-start">
+                        <h2 className="text-4xl lg:text-6xl font-bold text-darkpurple dark:text-gray-100 leading-snug text-center lg:text-start">
                             {t("dedicated.title")}
                         </h2>
-                        <p className="text-2xl font-medium text-gray-700 mt-5 text-center lg:text-start">
+                        <p className="text-2xl font-medium text-gray-700 dark:text-gray-400 mt-5 text-center lg:text-start">
                             {t("dedicated.description")}
                         </p>
-                        <p className="text-2xl font-semibold mt-12 text-darkpurple text-center lg:text-start">
+                        <p className="text-2xl font-semibold mt-12 text-darkpurple dark:text-gray-200 text-center lg:text-start">
                             {t("dedicated.ceoName")}
                         </p>
                     </div>

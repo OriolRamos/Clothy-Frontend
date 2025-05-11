@@ -7,6 +7,7 @@ import Head from 'next/head'; // Importa Head desde next/head
 import { AuthProvider } from "./components/AuthContext/index"; // Importa el AuthProvider
 import { I18nextProvider } from 'react-i18next';
 import i18n from '../i18n.js'; // Asegúrate de importar tu configuración de i18n
+import { ThemeProvider } from "next-themes";
 
 export default function RootLayout({
                                        children,
@@ -24,12 +25,14 @@ export default function RootLayout({
             <link rel="icon" href="/icon.png" />
         </Head>
         <body>
+        <ThemeProvider attribute="class" defaultTheme="system">
         <I18nextProvider i18n={i18n}>
         <AuthProvider>
             <Navbar />
             {children}
         </AuthProvider>
         </I18nextProvider>
+        </ThemeProvider>
         </body>
         </html>
     );

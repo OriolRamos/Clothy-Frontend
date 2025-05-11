@@ -71,140 +71,144 @@ const FilterModal: React.FC<FilterModalProps> = ({ isOpen, onClose, filters, fil
         });
     };
 
-    return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-            <div className="bg-white rounded-lg w-full max-w-4xl shadow-2xl relative overflow-hidden max-h-[90vh] overflow-y-auto m-4 scrollbar-hidden">
-                <div
-                    className="sticky top-0 bg-white shadow-md border-b border-gray-300 z-10 p-4 flex items-center relative">
-                    <button
-                        onClick={onClose}
-                        className="absolute right-4 inset-y-0 my-auto text-black hover:text-gray-700 focus:outline-none"
-                    >
-                        ✕
-                    </button>
-                    <h2 className="text-2xl font-bold mx-auto">{t("filtermodal.title" , "Filtros Avanzados")}</h2>
-                </div>
+return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+        <div className="bg-white dark:bg-gray-800 rounded-lg w-full max-w-4xl shadow-2xl relative overflow-hidden max-h-[90vh] overflow-y-auto m-4 scrollbar-hidden">
+            <div
+                className="sticky top-0 bg-white dark:bg-gray-800 shadow-md border-b border-gray-300 dark:border-gray-600 z-10 p-4 flex items-center relative">
+                <button
+                    onClick={onClose}
+                    className="absolute right-4 inset-y-0 my-auto text-black dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none"
+                >
+                    ✕
+                </button>
+                <h2 className="text-2xl font-bold mx-auto text-black dark:text-gray-100">{t("filtermodal.title", "Filtros Avanzados")}</h2>
+            </div>
 
-                <div className="space-y-6 px-2 p-6 m-6">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-black">
-                        {Object.keys(filters).map((filterKey) => {
-                            if (filterKey === "color") {
-                                // Si el filtre és de tipus color, renderitzem amb la funció renderColorFilter
-                                return (
-                                    <RenderColorFilter
-                                        key={filterKey}
-                                        filterKey={filterKey}
-                                        filterOptions={filters[filterKey]} // Opcions per al filtre de colors
-                                        expandedFilter={expandedFilter}
-                                        setExpandedFilter={setExpandedFilter}
-                                        filtersState={filtersState}
-                                        setFiltersState={setFiltersState}
-                                    />
-                                );
-                            } else if (filterKey === "brand" || filterKey === "size") {
-                                // Si és un filtre string (que no sigui color), renderitzem amb renderFilter
-                                return (
-                                    <RenderMultipleFilter
-                                        key={filterKey}
-                                        filterKey={filterKey}
-                                        filterOptions={filters[filterKey]} // Ens passem les opcions per aquest filtre
-                                        expandedFilter={expandedFilter}
-                                        setExpandedFilter={setExpandedFilter}
-                                        filtersState={filtersState}
-                                        setFiltersState={setFiltersState}
-                                    />
-                                );
-                            }else if (typeof filters[filterKey][0]?.translation === "string") {
-                                // Si és un filtre string (que no sigui color), renderitzem amb renderFilter
-                                return (<RenderFilter
+            <div className="space-y-6 px-2 p-6 m-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-black dark:text-gray-100">
+                    {Object.keys(filters).map((filterKey) => {
+                        if (filterKey === "color") {
+                            return (
+                                <RenderColorFilter
                                     key={filterKey}
                                     filterKey={filterKey}
-                                    filterOptions={filters[filterKey]} // Ens passem les opcions per aquest filtre
+                                    filterOptions={filters[filterKey]}
                                     expandedFilter={expandedFilter}
                                     setExpandedFilter={setExpandedFilter}
                                     filtersState={filtersState}
                                     setFiltersState={setFiltersState}
-                                />);
-                            }
-                            return null;
-                        })}
-                    </div>
+                                />
+                            );
+                        } else if (filterKey === "brand" || filterKey === "size") {
+                            return (
+                                <RenderMultipleFilter
+                                    key={filterKey}
+                                    filterKey={filterKey}
+                                    filterOptions={filters[filterKey]}
+                                    expandedFilter={expandedFilter}
+                                    setExpandedFilter={setExpandedFilter}
+                                    filtersState={filtersState}
+                                    setFiltersState={setFiltersState}
+                                />
+                            );
+                        } else if (typeof filters[filterKey][0]?.translation === "string") {
+                            return (
+                                <RenderFilter
+                                    key={filterKey}
+                                    filterKey={filterKey}
+                                    filterOptions={filters[filterKey]}
+                                    expandedFilter={expandedFilter}
+                                    setExpandedFilter={setExpandedFilter}
+                                    filtersState={filtersState}
+                                    setFiltersState={setFiltersState}
+                                />
+                            );
+                        }
+                        return null;
+                    })}
+                </div>
 
-                    <div className="mt-8"></div>
-                    <label className="text-lg font-medium">{t("filtermodal.priceRang" , "Rango de Precio")}</label>
-                    <MultiRangeSlider
-                        min={0}
-                        max={1000}
-                        start={[filtersState.minPrice, filtersState.maxPrice]}
-                        onChange={({ min, max }) => {
-                            setFiltersState((prevFilters: FiltersState) => ({
-                                ...prevFilters,
-                                minPrice: min,
-                                maxPrice: max,
-                            }));
-                        }}
-                    />
+                <div className="mt-8"></div>
+                <label className="text-lg font-medium text-black dark:text-gray-100">
+                    {t("filtermodal.priceRang", "Rango de Precio")}
+                </label>
+                <MultiRangeSlider
+                    min={0}
+                    max={1000}
+                    start={[filtersState.minPrice, filtersState.maxPrice]}
+                    onChange={({ min, max }) => {
+                        setFiltersState((prevFilters: FiltersState) => ({
+                            ...prevFilters,
+                            minPrice: min,
+                            maxPrice: max,
+                        }));
+                    }}
+                />
 
-
-                    <div className="flex flex-col gap-2">
-                        <label className="text-lg font-medium">{t("filtermodal.orderPrice" , "Ordenar por precio")}</label>
-                            <div className="flex gap-4">
-                                <button
-                                    className={`px-4 py-2 rounded-md border transition-all duration-300 transform hover:scale-105 
-                                                ${filtersState.orderMajorMenor ? "bg-faqblue text-white" : "bg-gray-200"}`}
-                                    onClick={() => handleOrderSelection("orderMajorMenor")}>
-                                    {t("filtermodal.mayorMenor" , "Mayor a Menor")}
-                                </button>
-                                <button
-                                    className={`px-4 py-2 rounded-md border transition-all duration-300 transform hover:scale-105 
-                                                ${filtersState.orderMenorMajor ? "bg-faqblue text-white" : "bg-gray-200"}`}
-                                    onClick={() => handleOrderSelection("orderMenorMajor")}>
-                                    {t("filtermodal.menorMayor" , "Menor a Mayor")}
-                                </button>
-                            </div>
-                    </div>
-                    <div className="flex flex-col gap-2">
-                        <label className="text-lg font-medium">{t("filtermodal.aditionalFilters" , "Filtros adicionales")}</label>
-                        <div className="grid grid-cols-2 gap-4">
-                            <label className="flex items-center mb-4">
-                                <div
-                                    className={`px-4 py-2 rounded-md border transition-all duration-300 transform hover:scale-105 
-                                                ${filtersState.onlyOfferts ? "bg-faqblue text-white" : "bg-gray-200"}`}
-                                    onClick={() => toggleBooleanFilter("onlyOffers")}
-                                >
-                                    {t("filtermodal.soloOfferts" , "Solo ofertas")}
-                                </div>
-                            </label>
-                        </div>
+                <div className="flex flex-col gap-2">
+                    <label className="text-lg font-medium text-black dark:text-gray-100">
+                        {t("filtermodal.orderPrice", "Ordenar por precio")}
+                    </label>
+                    <div className="flex gap-4">
+                        <button
+                            className={`px-4 py-2 rounded-md border transition-all duration-300 transform hover:scale-105 ${filtersState.orderMajorMenor ? "bg-faqblue text-white dark:bg-blue-500" : "bg-gray-200 dark:bg-gray-700"}`}
+                            onClick={() => handleOrderSelection("orderMajorMenor")}
+                        >
+                            {t("filtermodal.mayorMenor", "Mayor a Menor")}
+                        </button>
+                        <button
+                            className={`px-4 py-2 rounded-md border transition-all duration-300 transform hover:scale-105 ${filtersState.orderMenorMajor ? "bg-faqblue text-white dark:bg-blue-500" : "bg-gray-200 dark:bg-gray-700"}`}
+                            onClick={() => handleOrderSelection("orderMenorMajor")}
+                        >
+                            {t("filtermodal.menorMayor", "Menor a Mayor")}
+                        </button>
                     </div>
                 </div>
-                <div
-                    className="sticky bottom-0 bg-white shadow-md border-t border-gray-300 z-20 p-4 flex justify-between items-center">
-                    <div className="flex justify-between items-center w-full">
-                    <button
-                            onClick={() => setFiltersState({
-                                onlyOffers: false,
-                                officialBrands: false,
-                                minPrice: 0,
-                                maxPrice: 1000,
-                            })}
-                            className="py-3 px-6 text-black bg-gray-200 rounded-lg font-medium shadow-lg hover:scale-105 hover:bg-gray-300 transition transform duration-200">
-                        {t("filtermodal.reset" , "Reset")}
-                        </button>
-
-                        <button
-                            onClick={() => {
-                                handleSearch();
-                                onClose();
-                            }}
-                            className="py-3 px-6 text-white bg-faqblue rounded-lg font-medium shadow-lg hover:scale-105 hover:bg-faqblue/90 transition transform duration-200">
-                            {t("filtermodal.search" , "Buscar")}
-                        </button>
+                <div className="flex flex-col gap-2">
+                    <label className="text-lg font-medium text-black dark:text-gray-100">
+                        {t("filtermodal.aditionalFilters", "Filtros adicionales")}
+                    </label>
+                    <div className="grid grid-cols-2 gap-4">
+                        <label className="flex items-center mb-4">
+                            <div
+                                className={`px-4 py-2 rounded-md border transition-all duration-300 transform hover:scale-105 ${filtersState.onlyOfferts ? "bg-faqblue text-white dark:bg-blue-500" : "bg-gray-200 dark:bg-gray-700"}`}
+                                onClick={() => toggleBooleanFilter("onlyOffers")}
+                            >
+                                {t("filtermodal.soloOfferts", "Solo ofertas")}
+                            </div>
+                        </label>
                     </div>
                 </div>
             </div>
+            <div className="sticky bottom-0 bg-white dark:bg-gray-800 shadow-md border-t border-gray-300 dark:border-gray-600 z-20 p-4 flex justify-between items-center">
+                <div className="flex justify-between items-center w-full">
+                    <button
+                        onClick={() => setFiltersState({
+                            onlyOffers: false,
+                            officialBrands: false,
+                            minPrice: 0,
+                            maxPrice: 1000,
+                        })}
+                        className="py-3 px-6 text-black dark:text-gray-100 bg-gray-200 dark:bg-gray-700 rounded-lg font-medium shadow-lg hover:scale-105 hover:bg-gray-300 dark:hover:bg-gray-600 transition transform duration-200"
+                    >
+                        {t("filtermodal.reset", "Reset")}
+                    </button>
+
+                    <button
+                        onClick={() => {
+                            handleSearch();
+                            onClose();
+                        }}
+                        className="py-3 px-6 text-white bg-faqblue dark:bg-blue-700 rounded-lg font-medium shadow-lg hover:scale-105 hover:bg-faqblue/90 dark:hover:bg-blue-600 transition transform duration-200"
+                    >
+                        {t("filtermodal.search", "Buscar")}
+                    </button>
+                </div>
+            </div>
+        </div>
         </div>
     );
 };
 
-export default FilterModal;
+    export default FilterModal;

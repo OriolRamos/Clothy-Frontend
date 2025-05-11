@@ -6,24 +6,20 @@ import { useTranslation } from "react-i18next";
 const ScrapedBrands = () => {
     const { t } = useTranslation("common");
 
-    // Llista d’imatges manualment
-    const logos = useMemo(() => {
-        return [
-            "/images/brands/bershka.png",
-            "/images/brands/oysho.png",
-            "/images/brands/zara.png",
-            "/images/brands/hm.png",
-            "/images/brands/uniqlo.png",
-            "/images/brands/mango.png",
-            "/images/brands/pullandbear.png",
-            "/images/brands/stradivarius.png",
-            // Afegeix més aquí segons els fitxers reals
-        ];
-    }, []);
+    const logos = useMemo(() => [
+        "/images/brands/bershka.png",
+        "/images/brands/oysho.png",
+        "/images/brands/zara.png",
+        "/images/brands/hm.png",
+        "/images/brands/uniqlo.png",
+        "/images/brands/mango.png",
+        "/images/brands/pullandbear.png",
+        "/images/brands/stradivarius.png",
+    ], []);
 
     return (
-        <div className="relative w-full h-[300px] overflow-hidden rounded-2xl bg-white/70 backdrop-blur-md">
-            <h2 className="text-4xl font-semibold text-center text-gray-800 mb-2">
+        <div className="relative w-full h-[300px] overflow-hidden rounded-2xl bg-white/70 dark:bg-gray-800/70 backdrop-blur-md">
+            <h2 className="text-4xl font-semibold text-center text-gray-800 dark:text-gray-100 mb-2">
                 {t("disponibleBrans")}
             </h2>
             <div className="relative w-full h-[250px] overflow-hidden">
@@ -42,19 +38,15 @@ const ScrapedBrands = () => {
                 </div>
             </div>
             <style jsx>{`
-                @keyframes marquee {
-                    0% {
-                        transform: translateX(0);
-                    }
-                    100% {
-                        transform: translateX(-50%);
-                    }
-                }
-                .animate-marquee {
-                    width: calc(200% + 16px);
-                    animation: marquee 20s linear infinite;
-                }
-            `}</style>
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+    width: calc(200% + 16px);
+    animation: marquee 20s linear infinite;
+}
+`}</style>
         </div>
     );
 };

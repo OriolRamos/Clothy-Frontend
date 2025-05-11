@@ -37,75 +37,75 @@ const CookiesPolicy = () => {
                 <link rel="alternate" href="https://www.clothy.es/cookies-policy" hrefLang="x-default" />
             </Head>
 
-            <div className="text-gray-900 min-h-screen flex flex-col">
+            <div className="text-gray-900 dark:text-gray-100 min-h-screen flex flex-col">
                 {/* Encapçalament */}
-                <header className="bg-white py-6">
-                    <div className="max-w-7xl mx-auto text-center text-black">
+                <header className="bg-white dark:bg-gray-800 py-6">
+                    <div className="max-w-7xl mx-auto text-center text-black dark:text-white">
                         <h1 className="text-4xl font-extrabold">{t("cookiespolicy.header.title")}</h1>
                         <p className="mt-2 text-lg">{t("cookiespolicy.header.date")}</p>
                     </div>
                 </header>
 
                 {/* Contingut principal */}
-                <main className="flex-1 bg-white py-16">
+                <main className="flex-1 bg-white dark:bg-gray-900 py-16">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="rounded-lg p-8 space-y-6">
-                            <p className="text-lg">{t("cookiespolicy.intro")}</p>
+                        <div className="rounded-lg p-8 space-y-6 bg-white dark:bg-gray-800">
+                            <p className="text-lg text-gray-900 dark:text-gray-100">{t("cookiespolicy.intro")}</p>
 
-                            <h2 className="text-3xl font-semibold text-black">{t("cookiespolicy.section1.title")}</h2>
-                            <p className="text-lg">{t("cookiespolicy.section1.text")}</p>
+                            <h2 className="text-3xl font-semibold text-black dark:text-gray-100">{t("cookiespolicy.section1.title")}</h2>
+                            <p className="text-lg text-gray-900 dark:text-gray-100">{t("cookiespolicy.section1.text")}</p>
 
-                            <h2 className="text-3xl font-semibold text-black">{t("cookiespolicy.section2.title")}</h2>
+                            <h2 className="text-3xl font-semibold text-black dark:text-gray-100">{t("cookiespolicy.section2.title")}</h2>
                             <div className="overflow-x-auto">
-                                <table className="min-w-full border">
+                                <table className="min-w-full border border-gray-200 dark:border-gray-700">
                                     <thead>
-                                    <tr className="bg-gray-100">
-                                        <th className="p-3 text-left">{t("cookiespolicy.section2.table.header.type")}</th>
-                                        <th className="p-3 text-left">{t("cookiespolicy.section2.table.header.description")}</th>
-                                        <th className="p-3 text-left">{t("cookiespolicy.section2.table.header.consent")}</th>
+                                    <tr className="bg-gray-100 dark:bg-gray-700">
+                                        <th className="p-3 text-left text-gray-900 dark:text-gray-100">{t("cookiespolicy.section2.table.header.type")}</th>
+                                        <th className="p-3 text-left text-gray-900 dark:text-gray-100">{t("cookiespolicy.section2.table.header.description")}</th>
+                                        <th className="p-3 text-left text-gray-900 dark:text-gray-100">{t("cookiespolicy.section2.table.header.consent")}</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr>
-                                        <td className="p-3">{t("cookiespolicy.section2.table.row1.type")}</td>
-                                        <td className="p-3">{t("cookiespolicy.section2.table.row1.description")}</td>
-                                        <td className="p-3">{t("cookiespolicy.section2.table.row1.consent")}</td>
+                                        <td className="p-3 text-gray-900 dark:text-gray-100">{t("cookiespolicy.section2.table.row1.type")}</td>
+                                        <td className="p-3 text-gray-900 dark:text-gray-100">{t("cookiespolicy.section2.table.row1.description")}</td>
+                                        <td className="p-3 text-gray-900 dark:text-gray-100">{t("cookiespolicy.section2.table.row1.consent")}</td>
                                     </tr>
-                                    <tr className="bg-gray-50">
-                                        <td className="p-3">{t("cookiespolicy.section2.table.row2.type")}</td>
-                                        <td className="p-3">{t("cookiespolicy.section2.table.row2.description")}</td>
-                                        <td className="p-3">{t("cookiespolicy.section2.table.row2.consent")}</td>
+                                    <tr className="bg-gray-50 dark:bg-gray-800">
+                                        <td className="p-3 text-gray-900 dark:text-gray-100">{t("cookiespolicy.section2.table.row2.type")}</td>
+                                        <td className="p-3 text-gray-900 dark:text-gray-100">{t("cookiespolicy.section2.table.row2.description")}</td>
+                                        <td className="p-3 text-gray-900 dark:text-gray-100">{t("cookiespolicy.section2.table.row2.consent")}</td>
                                     </tr>
                                     <tr>
-                                        <td className="p-3">{t("cookiespolicy.section2.table.row3.type")}</td>
-                                        <td className="p-3">{t("cookiespolicy.section2.table.row3.description")}</td>
-                                        <td className="p-3">{t("cookiespolicy.section2.table.row3.consent")}</td>
+                                        <td className="p-3 text-gray-900 dark:text-gray-100">{t("cookiespolicy.section2.table.row3.type")}</td>
+                                        <td className="p-3 text-gray-900 dark:text-gray-100">{t("cookiespolicy.section2.table.row3.description")}</td>
+                                        <td className="p-3 text-gray-900 dark:text-gray-100">{t("cookiespolicy.section2.table.row3.consent")}</td>
                                     </tr>
-                                    <tr className="bg-gray-50">
-                                        <td className="p-3">{t("cookiespolicy.section2.table.row4.type")}</td>
-                                        <td className="p-3">{t("cookiespolicy.section2.table.row4.description")}</td>
-                                        <td className="p-3">{t("cookiespolicy.section2.table.row4.consent")}</td>
+                                    <tr className="bg-gray-50 dark:bg-gray-800">
+                                        <td className="p-3 text-gray-900 dark:text-gray-100">{t("cookiespolicy.section2.table.row4.type")}</td>
+                                        <td className="p-3 text-gray-900 dark:text-gray-100">{t("cookiespolicy.section2.table.row4.description")}</td>
+                                        <td className="p-3 text-gray-900 dark:text-gray-100">{t("cookiespolicy.section2.table.row4.consent")}</td>
                                     </tr>
                                     </tbody>
                                 </table>
                             </div>
 
-                            <h2 className="text-3xl font-semibold text-black">{t("cookiespolicy.section3.title")}</h2>
-                            <ul className="list-disc pl-6 space-y-2 text-lg">
+                            <h2 className="text-3xl font-semibold text-black dark:text-gray-100">{t("cookiespolicy.section3.title")}</h2>
+                            <ul className="list-disc pl-6 space-y-2 text-lg text-gray-900 dark:text-gray-100">
                                 <li>{t("cookiespolicy.section3.item1")}</li>
                                 <li>{t("cookiespolicy.section3.item2")}</li>
                             </ul>
-                            <p className="text-lg">{t("cookiespolicy.section3.note")}</p>
+                            <p className="text-lg text-gray-900 dark:text-gray-100">{t("cookiespolicy.section3.note")}</p>
 
-                            <h2 className="text-3xl font-semibold text-black">{t("cookiespolicy.section4.title")}</h2>
-                            <ul className="list-disc pl-6 space-y-2 text-lg">
+                            <h2 className="text-3xl font-semibold text-black dark:text-gray-100">{t("cookiespolicy.section4.title")}</h2>
+                            <ul className="list-disc pl-6 space-y-2 text-lg text-gray-900 dark:text-gray-100">
                                 <li>{t("cookiespolicy.section4.item1")}</li>
                                 <li>{t("cookiespolicy.section4.item2")}</li>
                             </ul>
 
-                            <h2 className="text-3xl font-semibold text-black">{t("cookiespolicy.section5.title")}</h2>
-                            <p className="text-lg">{t("cookiespolicy.section5.intro")}</p>
-                            <div className="space-y-4 text-lg">
+                            <h2 className="text-3xl font-semibold text-black dark:text-gray-100">{t("cookiespolicy.section5.title")}</h2>
+                            <p className="text-lg text-gray-900 dark:text-gray-100">{t("cookiespolicy.section5.intro")}</p>
+                            <div className="space-y-4 text-lg text-gray-900 dark:text-gray-100">
                                 <div>
                                     <strong>{t("cookiespolicy.section5.chrome.title")}:</strong>
                                     <ol className="list-decimal pl-6">
@@ -134,10 +134,10 @@ const CookiesPolicy = () => {
                                     </ol>
                                 </div>
                             </div>
-                            <p className="text-lg">{t("cookiespolicy.section5.note")}</p>
+                            <p className="text-lg text-gray-900 dark:text-gray-100">{t("cookiespolicy.section5.note")}</p>
 
-                            <h2 className="text-3xl font-semibold text-black">{t("cookiespolicy.section6.title")}</h2>
-                            <p className="text-lg">{t("cookiespolicy.section6.text")}</p>
+                            <h2 className="text-3xl font-semibold text-black dark:text-gray-100">{t("cookiespolicy.section6.title")}</h2>
+                            <p className="text-lg text-gray-900 dark:text-gray-100">{t("cookiespolicy.section6.text")}</p>
                         </div>
                     </div>
                 </main>

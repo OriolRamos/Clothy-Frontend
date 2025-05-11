@@ -45,15 +45,15 @@ const ImageModel: React.FC<ImageModelProps> = ({ cloth, country }) => {
     const brandLogoPath = `/images/brands/${cloth.brand.toLowerCase()}.png`;
 
     return (
-        <div className="relative rounded-lg shadow-lg bg-white hover:shadow-xl transition max-w-[300px]">
+        <div className="relative rounded-lg shadow-lg bg-white dark:bg-gray-800 hover:shadow-xl transition max-w-[300px]">
             <div className="relative">
                 <div
-                    className="relative w-[300px] h-[400px] cursor-pointer bg-gray-100 rounded-lg overflow-hidden"
+                    className="relative w-[300px] h-[400px] cursor-pointer bg-gray-100 dark:bg-gray-700 rounded-lg overflow-hidden"
                     onClick={() => setIsModalOpen(true)}
                 >
                     {imgLoading && (
                         <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="loader" /> {/* Spinner CSS o component */}
+                            <div className="loader" />
                         </div>
                     )}
                     <Image
@@ -83,10 +83,9 @@ const ImageModel: React.FC<ImageModelProps> = ({ cloth, country }) => {
                     />
                 </div>
 
-                {/* Preu flotant... */}
                 {cloth.in_discount ? (
-                    <div className="absolute bottom-2 left-2 px-3 py-1 rounded-full text-white bg-black font-semibold text-sm flex items-center space-x-2">
-                        <span className="line-through text-gray-500">
+                    <div className="absolute bottom-2 left-2 px-3 py-1 rounded-full text-white bg-black dark:bg-gray-900 font-semibold text-sm flex items-center space-x-2">
+                        <span className="line-through text-gray-500 dark:text-gray-400">
                             {cloth.price}{currencySymbol}
                         </span>
                         <span className="text-red-500">
@@ -95,36 +94,35 @@ const ImageModel: React.FC<ImageModelProps> = ({ cloth, country }) => {
                         <span className="text-red-500 text-xs">- {cloth.discount}%</span>
                     </div>
                 ) : (
-                    <div className="absolute bottom-2 left-2 px-3 py-1 rounded-full text-white font-semibold text-sm bg-black">
+                    <div className="absolute bottom-2 left-2 px-3 py-1 rounded-full text-white bg-black dark:bg-gray-900 font-semibold text-sm">
                         {cloth.price}{currencySymbol}
                     </div>
                 )}
             </div>
 
-             {/* Botó Favorits */}
-                        <button
-                            className={`absolute top-2 right-2 rounded-full p-2 ${
-                                isFavorite ? "bg-red-500" : "bg-gray-300"
-                            } hover:scale-110 transition`}
-                            onClick={() => handleFavoriteToggle(cloth)}
-                        >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill={isFavorite ? "white" : "none"}
-                                viewBox="0 0 24 24"
-                                strokeWidth="2"
-                                stroke="currentColor"
-                                className="w-5 h-5 text-white"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M3.172 6.828a4 4 0 015.656 0L12 9.999l3.172-3.172a4 4 0 115.656 5.656L12 21.485l-8.828-8.828a4 4 0 010-5.656z"
-                                />
-                            </svg>
-                        </button>
+            <button
+                className={`absolute top-2 right-2 rounded-full p-2 ${
+                    isFavorite ? "bg-red-500" : "bg-gray-300 dark:bg-gray-600"
+                } hover:scale-110 transition`}
+                onClick={() => handleFavoriteToggle(cloth)}
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill={isFavorite ? "white" : "none"}
+                    viewBox="0 0 24 24"
+                    strokeWidth="2"
+                    stroke="currentColor"
+                    className="w-5 h-5 text-white"
+                >
+                    <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M3.172 6.828a4 4 0 015.656 0L12 9.999l3.172-3.172a4 4 0 115.656 5.656L12 21.485l-8.828-8.828a4 4 0 010-5.656z"
+                    />
+                </svg>
+            </button>
 
-            <p className="m-2 text-center text-black font-medium">
+            <p className="m-2 text-center text-black dark:text-gray-100 font-medium">
                 {cloth.description}
             </p>
 

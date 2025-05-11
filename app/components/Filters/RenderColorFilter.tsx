@@ -84,17 +84,17 @@ const RenderColorFilter: React.FC<RenderFilterProps> = ({
     return (
         <div ref={filterRef} key={filterKey} className="relative w-full scrollbar-hidden">
             <button
-                className={`w-full text-black px-6 py-3 rounded-lg border ${
-                    expandedFilter === filterKey ? "border-blue-600" : "border-gray-300"
-                } focus:outline-none transition-all ease-in-out duration-200 hover:bg-blue-50`}
+                className={`w-full text-black dark:text-gray-100 px-6 py-3 rounded-lg border dark:border-gray-600 ${
+                    expandedFilter === filterKey ? "border-blue-600 dark:border-blue-400" : "border-gray-300"
+                } focus:outline-none transition-all ease-in-out duration-200 hover:bg-blue-50 dark:hover:bg-gray-700`}
                 onClick={handleModalToggle}
             >
-                <span className="font-semibold text-black">
+                <span className="font-semibold">
                     {filterKey.charAt(0).toUpperCase() + filterKey.slice(1)}:
                 </span>
                 <span
                     className={`px-2 py-1 ml-2 rounded-md ${
-                        selectedValues.length > 0 ? "text-black" : "text-black"
+                        selectedValues.length > 0 ? "text-black dark:text-gray-100" : "text-black dark:text-gray-100"
                     }`}
                 >
                     {selectedValues.length > 0
@@ -104,7 +104,7 @@ const RenderColorFilter: React.FC<RenderFilterProps> = ({
             </button>
 
             {expandedFilter === filterKey && (
-                <div className="absolute top-full left-0 w-full bg-white border border-gray-300 rounded-lg shadow-lg mt-2 z-10 max-h-48 overflow-y-auto scrollbar-hidden filter">
+                <div className="absolute top-full left-0 w-full bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg shadow-lg mt-2 z-10 max-h-48 overflow-y-auto scrollbar-hidden filter">
                     <input
                         type="text"
                         placeholder={t("filters.searchPlaceholder", "Buscar...")}
@@ -115,7 +115,7 @@ const RenderColorFilter: React.FC<RenderFilterProps> = ({
                                 [`${filterKey}Search`]: e.target.value,
                             }))
                         }
-                        className="w-full px-4 py-3 border-b border-gray-200 focus:outline-none text-black rounded-t-lg"
+                        className="w-full px-4 py-3 border-b border-gray-200 dark:border-gray-700 focus:outline-none text-black dark:text-gray-100 rounded-t-lg bg-white dark:bg-gray-800"
                     />
                     <div className="py-1">
                         {filteredOptions.map((option, idx) => {
@@ -125,8 +125,8 @@ const RenderColorFilter: React.FC<RenderFilterProps> = ({
                                     key={`${filterKey}-${idx}`}
                                     className={`w-full text-left px-6 py-2 transition rounded-lg ${
                                         isSelected
-                                            ? "bg-faqblue text-white hover:bg-blue-300 border border-b-cyan-900"
-                                            : "bg-white hover:bg-gray-100"
+                                            ? "bg-faqblue text-white dark:bg-blue-500 hover:bg-blue-300"  
+                                            : "bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700"
                                     }`}
                                     onClick={() => toggleSelection(option.value)}
                                 >
@@ -140,7 +140,7 @@ const RenderColorFilter: React.FC<RenderFilterProps> = ({
                                                 transition: "transform 0.2s ease-in-out",
                                             }}
                                         ></div>
-                                        <span>
+                                        <span className="text-black dark:text-gray-100">
                                             {t(`filters.${filterKey}.${option.value}`, option.translation)}
                                         </span>
                                     </div>

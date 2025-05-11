@@ -227,25 +227,25 @@ export default function OutfitAssistantPage({
                 />
             </Head>
 
-            <div className="flex flex-col min-h-screen bg-gray-50">
+            <div className="flex flex-col min-h-screen bg-gray-50 dark:bg-gray-900">
                 {showLocationModal && (
                     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-60">
-                        <div className="bg-white rounded-lg shadow-2xl p-6 max-w-sm text-center">
-                            <h2 className="text-2xl font-semibold mb-4">Permitir ubicación</h2>
-                            <p className="mb-6">
+                        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-2xl p-6 max-w-sm text-center">
+                            <h2 className="text-2xl font-semibold mb-4 text-black dark:text-white">Permitir ubicación</h2>
+                            <p className="mb-6 text-gray-900 dark:text-gray-100">
                                 Para ofrecerte sugerencias de outfit más precisas según tu clima y región,
                                 necesitamos acceder a tu ubicación.
                             </p>
                             <div className="flex justify-around">
                                 <button
                                     onClick={handleLocationDecline}
-                                    className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300"
+                                    className="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-black dark:text-white rounded hover:bg-gray-300 dark:hover:bg-gray-600"
                                 >
                                     No, gracias
                                 </button>
                                 <button
                                     onClick={handleLocationAgree}
-                                    className="px-4 py-2 bg-faqblue text-white rounded hover:bg-blue-600"
+                                    className="px-4 py-2 bg-faqblue dark:bg-faqblue/80 text-white rounded hover:bg-blue-600 dark:hover:bg-blue-700"
                                 >
                                     Permitir
                                 </button>
@@ -254,14 +254,14 @@ export default function OutfitAssistantPage({
                     </div>
                 )}
 
-                <header className="bg-white shadow p-6 text-center">
-                    <h1 className="text-3xl font-bold text-black">Outfit Assistant</h1>
-                    <p className="mt-1 text-gray-700">
+                <header className="bg-white dark:bg-gray-800 shadow p-6 text-center">
+                    <h1 className="text-3xl font-bold text-black dark:text-white">Outfit Assistant</h1>
+                    <p className="mt-1 text-gray-700 dark:text-gray-300">
                         Haz una foto a tu outfit y te ayudo a decidir si es correcto y sugerencias de mejora.
                     </p>
                 </header>
 
-                <main className="flex-1 p-6 space-y-4 pb-24 bg-gray-200">
+                <main className="flex-1 p-6 space-y-4 pb-24 bg-gray-200 dark:bg-gray-700">
                     {messages.map((msg) => (
                         <div
                             key={msg.id}
@@ -271,7 +271,7 @@ export default function OutfitAssistantPage({
                                 className={`max-w-[80%] p-4 rounded-lg break-words whitespace-pre-wrap ${
                                     msg.role === "user"
                                         ? "bg-faqblue text-white rounded-br-none"
-                                        : "bg-white text-black rounded-bl-none shadow-lg"
+                                        : "bg-white dark:bg-gray-800 text-black dark:text-white rounded-bl-none shadow-lg"
                                 }`}
                             >
                                 {msg.imageUrl && (
@@ -281,7 +281,7 @@ export default function OutfitAssistantPage({
                                         width={0}
                                         height={0}
                                         sizes="100vw"
-                                        className="mb-2 rounded max-h-[150px] w-auto h-auto" // afegim h-auto per assegurar el comportament
+                                        className="mb-2 rounded max-h-[150px] w-auto h-auto"
                                         style={{ height: 'auto', width: 'auto', maxHeight: '150px' }}
                                     />
                                 )}
@@ -292,21 +292,21 @@ export default function OutfitAssistantPage({
                     <div ref={messageEndRef} />
                 </main>
 
-                <footer className="border-t-2 border-gray-300 fixed bottom-0 left-0 w-full bg-white p-4 z-50">
+                <footer className="border-t-2 border-gray-300 dark:border-gray-600 fixed bottom-0 left-0 w-full bg-white dark:bg-gray-800 p-4 z-50">
                     <div className="flex items-center space-x-2">
                         {previewUrl ? (
                             <div className="relative">
                                 <Image
                                     src={previewUrl}
                                     alt="Preview"
-                                    width={40} // equival a h-10 (2.5rem) i w-10 (2.5rem)
+                                    width={40}
                                     height={40}
                                     className="rounded object-cover"
-                                    style={{ height: '40px', width: '40px' }} // Si vols forçar-ho més explícitament
+                                    style={{ height: '40px', width: '40px' }}
                                 />
                                 <button
                                     onClick={handleRemoveImage}
-                                    className="absolute -top-2 -right-2 bg-white rounded-full p-1 shadow"
+                                    className="absolute -top-2 -right-2 bg-white dark:bg-gray-800 rounded-full p-1 shadow"
                                 >
                                     &times;
                                 </button>
@@ -314,14 +314,14 @@ export default function OutfitAssistantPage({
                         ) : (
                             <button
                                 onClick={() => setShowImageModal(true)}
-                                className="p-2 rounded-full bg-gray-200 hover:bg-gray-300"
+                                className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600"
                             >
-                                <Camera className="h-6 w-6 text-gray-600" />
+                                <Camera className="h-6 w-6 text-gray-600 dark:text-gray-300" />
                             </button>
                         )}
                         <input
                             type="text"
-                            className="flex-1 border rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                            className="flex-1 border rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                             placeholder="Escribe tu mensaje..."
                             value={inputText}
                             onChange={(e) => setInputText(e.target.value)}
@@ -330,7 +330,7 @@ export default function OutfitAssistantPage({
                         <button
                             onClick={handleSend}
                             disabled={loading}
-                            className="p-2 bg-faqblue text-white rounded-full hover:bg-blue-600 disabled:opacity-50"
+                            className="p-2 bg-faqblue dark:bg-faqblue/80 text-white rounded-full hover:bg-blue-600 dark:hover:bg-blue-700 disabled:opacity-50"
                         >
                             {loading ? (
                                 <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -338,14 +338,14 @@ export default function OutfitAssistantPage({
                                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
                                 </svg>
                             ) : (
-                                <Send className="h-6 w-6" />
+                                <Send className="h-6 w-6 text-gray-900 dark:text-gray-100" />
                             )}
                         </button>
                     </div>
                     {/* --- Mini-modal meteorològic --- */}
                     {currentTemp !== undefined && currentSymbol && (
-                        <div className="absolute -top-16 right-4 bg-white rounded-xl shadow-lg px-3 py-2 flex items-center space-x-1">
-                            <span className="font-medium text-gray-800">{Math.round(currentTemp)}°C</span>
+                        <div className="absolute -top-16 right-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg px-3 py-2 flex items-center space-x-1">
+                            <span className="font-medium text-gray-800 dark:text-gray-200">{Math.round(currentTemp)}°C</span>
                             {getWeatherIcon(currentSymbol)}
                         </div>
                     )}
@@ -362,4 +362,4 @@ export default function OutfitAssistantPage({
             </div>
         </>
     );
-}
+};

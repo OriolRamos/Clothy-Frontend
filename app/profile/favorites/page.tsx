@@ -168,13 +168,13 @@ const Favoritos = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gray-100 px-8 py-12">
-            <h1 className="text-4xl font-bold text-center text-black mb-8">
+        <div className="min-h-screen bg-gray-100 dark:bg-gray-900 px-8 py-12">
+            <h1 className="text-4xl font-bold text-center text-black dark:text-white mb-8">
                 {t('favorites.title')}
             </h1>
 
             {/* Filtres principals */}
-            <div className="flex flex-col sm:flex-row items-center justify-evenly bg-white p-4 rounded-lg shadow-md mb-8 space-y-4 sm:space-y-0">
+            <div className="flex flex-col sm:flex-row items-center justify-evenly bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md mb-8 space-y-4 sm:space-y-0">
                 {mainFilterKeys.map((filterKey) => (
                     <div key={filterKey} className="mx-2 min-w-[200px] max-[1199px]:hidden">
                         {renderFilter(
@@ -184,29 +184,27 @@ const Favoritos = () => {
                     </div>
                 ))}
                 {/*
-                <button
-                    onClick={() => setShowMoreFilters(true)}
-                    className="flex items-center justify-center w-full py-3 px-4 text-white bg-faqblue hover:bg-faqblue/90 rounded-full shadow-md transition-colors duration-200"
-                >
-                    {t('favorites.more_filters')}
-                </button>*/}
+            <button
+                onClick={() => setShowMoreFilters(true)}
+                className="flex items-center justify-center w-full py-3 px-4 text-white bg-faqblue hover:bg-faqblue/90 rounded-full shadow-md transition-colors duration-200"
+            >
+                {t('favorites.more_filters')}
+            </button>*/}
                 <button
                     onClick={() => setFiltersState({ type: "", color: "", brand: "" })}
-                    className="bg-blue-500 text-black px-4 py-2 rounded-md text-sm transition hover:bg-gray-300 mx-2"
+                    className="bg-blue-500 dark:bg-blue-700 text-black dark:text-white px-4 py-2 rounded-md text-sm transition hover:bg-gray-300 dark:hover:bg-gray-600 mx-2"
                 >
                     {t('favorites.reset')}
                 </button>
             </div>
 
-
-
             {/* Modal per als filtres extra */}
             {showMoreFilters && (
                 <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-                    <div className="bg-white p-6 rounded-md shadow-md max-w-md w-full">
+                    <div className="bg-white dark:bg-gray-800 p-6 rounded-md shadow-md max-w-md w-full">
                         <div className="flex justify-between items-center mb-4">
-                            <h2 className="text-xl font-bold">{t('favorites.more_filters')}</h2>
-                            <button onClick={() => setShowMoreFilters(false)} className="text-gray-500 hover:text-gray-700">
+                            <h2 className="text-xl font-bold text-black dark:text-white">{t('favorites.more_filters')}</h2>
+                            <button onClick={() => setShowMoreFilters(false)} className="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">
                                 X
                             </button>
                         </div>
@@ -219,7 +217,7 @@ const Favoritos = () => {
                         <div className="mt-4">
                             <button
                                 onClick={() => setShowMoreFilters(false)}
-                                className="bg-blue-500 text-white px-4 py-2 rounded-md text-sm transition hover:bg-blue-600 w-full"
+                                className="bg-blue-500 dark:bg-blue-600 text-white px-4 py-2 rounded-md text-sm transition hover:bg-blue-600 dark:hover:bg-blue-700 w-full"
                             >
                                 {t('favorites.apply_filters')}
                             </button>
@@ -232,7 +230,7 @@ const Favoritos = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {loading ? (
                     <div className="col-span-full flex justify-center items-center">
-                        <div className="w-16 h-16 border-4 border-gray-700 border-dashed rounded-full animate-spin"></div>
+                        <div className="w-16 h-16 border-4 border-gray-700 dark:border-gray-300 border-dashed rounded-full animate-spin"></div>
                     </div>
                 ) : filteredImages.length > 0 ? (
                     filteredImages.map((image) => (
@@ -243,7 +241,7 @@ const Favoritos = () => {
                         />
                     ))
                 ) : (
-                    <div className="col-span-full text-center text-gray-600">
+                    <div className="col-span-full text-center text-gray-600 dark:text-gray-400">
                         {t('favorites.empty')}
                     </div>
                 )}

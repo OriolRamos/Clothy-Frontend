@@ -352,213 +352,163 @@ const CercaRoba = () => {
                 <link rel="alternate" href="https://www.clothy.es/search_cloth" hrefLang="tr" />
                 <link rel="alternate" href="https://www.clothy.es/search_cloth" hrefLang="x-default" />
             </Head>
-        <div className="min-h-screen bg-gray-100 px-8 py-12">
-            {/* Contenidor de filtres i botons */}
-            <div className="mb-8">
-                {/* Vista per a pantalles grans */}
-                <div
-                    className="hidden lg:flex flex-col sm:flex-row items-center justify-evenly bg-white p-4 rounded-lg shadow-md space-y-4 sm:space-y-0"
-                >
-                    {/* Botó de càmera */}
-                    <div className="flex items-center">
-                        <label
-                            htmlFor="image-upload"
-                            onClick={() => setModalVisible(true)}
-                            className="flex items-center justify-center w-10 h-10 rounded-full bg-faqblue cursor-pointer hover:opacity-90 shadow-lg hover:scale-105 focus:outline-none focus:ring-2 focus:ring-btnblue focus:ring-offset-2 transition transform duration-200"
-                        >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="h-5 w-5 text-white"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
+            <div className="min-h-screen bg-gray-100 dark:bg-gray-900 px-8 py-12 text-gray-900 dark:text-gray-100">
+                {/* Contenidor de filtres i botons */}
+                <div className="mb-8">
+                    {/* Vista per a pantalles grans */}
+                    <div className="hidden lg:flex flex-col sm:flex-row items-center justify-evenly bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md space-y-4 sm:space-y-0">
+                        {/* Botó de càmera */}
+                        <div className="flex items-center">
+                            <label
+                                htmlFor="image-upload"
+                                onClick={() => setModalVisible(true)}
+                                className="flex items-center justify-center w-10 h-10 rounded-full bg-faqblue dark:bg-faqblue/80 cursor-pointer hover:opacity-90 shadow-lg hover:scale-105 focus:outline-none focus:ring-2 focus:ring-btnblue focus:ring-offset-2 transition transform duration-200"
                             >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M3 7h4l2-3h6l2 3h4v11H3V7z"
-                                />
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M12 11a4 4 0 100 8 4 4 0 000-8z"
-                                />
-                            </svg>
-                        </label>
-                    </div>
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7h4l2-3h6l2 3h4v11H3V7z" />
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 11a4 4 0 100 8 4 4 0 000-8z" />
+                                </svg>
+                            </label>
+                        </div>
 
-                    {/* Filtres */}
-                    {Object.keys(filters).map((filterKey) => {
-                        if (filterKey === "brand") {
-                            return (
-                                <div className="max-w-[250px] w-full" key={filterKey}>
-                                    <RenderMultipleFilter
-                                        filterKey={filterKey}
-                                        filterOptions={filters[filterKey]}
-                                        expandedFilter={expandedFilter}
-                                        setExpandedFilter={setExpandedFilter}
-                                        // Per filtres múltiples, passem l'estat tal com està (s'espera un array)
-                                        filtersState={filtersState}
-                                        setFiltersState={setFiltersState}
-                                    />
-                                </div>
-                            );
-                        } else if (filterKey === "type" || filterKey === "section") {
-                            // Filtres únics
-                            return (
-                                <div className="max-w-[250px] w-full" key={filterKey}>
-                                    <RenderFilter
-                                        filterKey={filterKey}
-                                        filterOptions={filters[filterKey]}
-                                        expandedFilter={expandedFilter}
-                                        setExpandedFilter={setExpandedFilter}
-                                        // Aquí passem els filtres normalitzats (Record<string, string>)
-                                        filtersState={getUniqueFilters()}
-                                        setFiltersState={setUniqueFilters}
-                                    />
-                                </div>
-                            );
-                        } else {
-                            return null;
-                        }
-                    })}
+                        {/* Filtres */}
+                        {Object.keys(filters).map((filterKey) => {
+                            if (filterKey === "brand") {
+                                return (
+                                    <div className="max-w-[250px] w-full" key={filterKey}>
+                                        <RenderMultipleFilter
+                                            filterKey={filterKey}
+                                            filterOptions={filters[filterKey]}
+                                            expandedFilter={expandedFilter}
+                                            setExpandedFilter={setExpandedFilter}
+                                            filtersState={filtersState}
+                                            setFiltersState={setFiltersState}
+                                        />
+                                    </div>
+                                );
+                            } else if (filterKey === "type" || filterKey === "section") {
+                                return (
+                                    <div className="max-w-[250px] w-full" key={filterKey}>
+                                        <RenderFilter
+                                            filterKey={filterKey}
+                                            filterOptions={filters[filterKey]}
+                                            expandedFilter={expandedFilter}
+                                            setExpandedFilter={setExpandedFilter}
+                                            filtersState={getUniqueFilters()}
+                                            setFiltersState={setUniqueFilters}
+                                        />
+                                    </div>
+                                );
+                            } else {
+                                return null;
+                            }
+                        })}
 
-                    {/* Botó per més filtres */}
-                    <button
-                        onClick={() => setIsModalOpen(true)}
-                        className="flex items-center cursor-pointer text-black text-sm font-medium transition-transform duration-200 hover:scale-105 focus:outline-none"
-                    >
-                        {t("searchcloth.more_filters")}
-                        <span className="ml-2 text-sm transform transition-transform duration-200">▼</span>
-                    </button>
-
-                    {/* Botó de cerca */}
-                    <button
-                        onClick={handleSearch}
-                        className="block relative cursor-pointer text-center py-3 px-6 text-white bg-faqblue rounded-lg font-medium shadow-lg hover:scale-105 hover:bg-faqblue/90 hover:backdrop-blur-sm hover:opacity-95 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-btnblue focus:ring-offset-2 active:bg-hoblue transition transform duration-200"
-                    >
-                        {t("searchcloth.search")}
-                    </button>
-                </div>
-
-                {/* Vista per a pantalles petites */}
-                <div
-                    className="lg:hidden flex items-center bg-white p-3 rounded-lg shadow-md border border-gray-300 transition-transform duration-200"
-                >
-                    {/* Botó de càmera sempre a l'esquerra */}
-                    <div className="flex-shrink-0">
-                        <button
-                            onClick={() => setModalVisible(true)}
-                            className="flex items-center justify-center w-10 h-10 rounded-full bg-faqblue cursor-pointer hover:opacity-90"
-                        >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="h-5 w-5 text-white"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M3 7h4l2-3h6l2 3h4v11H3V7z"
-                                />
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M12 11a4 4 0 100 8 4 4 0 000-8z"
-                                />
-                            </svg>
-                        </button>
-                    </div>
-
-                    <div className="flex-1 pl-4">
+                        {/* Botó per més filtres */}
                         <button
                             onClick={() => setIsModalOpen(true)}
-                            className="flex items-center justify-center w-full py-3 px-4 text-white bg-faqblue hover:bg-faqblue/90 rounded-full shadow-md transition-colors duration-200"
+                            className="flex items-center cursor-pointer text-black dark:text-white text-sm font-medium transition-transform duration-200 hover:scale-105 focus:outline-none"
                         >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="h-6 w-6 mr-2"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                                strokeWidth={2}
-                            >
-                                <circle cx="11" cy="11" r="8"/>
-                                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-                            </svg>
-                            {t("searchcloth.start_search" , "Buscar Ropa")}
+                            {t("searchcloth.more_filters")}
+                            <span className="ml-2 text-sm transform transition-transform duration-200">▼</span>
+                        </button>
+
+                        {/* Botó de cerca */}
+                        <button
+                            onClick={handleSearch}
+                            className="block relative cursor-pointer text-center py-3 px-6 text-white bg-faqblue dark:bg-faqblue/90 rounded-lg font-medium shadow-lg hover:scale-105 hover:bg-faqblue/90 hover:backdrop-blur-sm hover:opacity-95 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-btnblue focus:ring-offset-2 active:bg-hoblue transition transform duration-200"
+                        >
+                            {t("searchcloth.search")}
                         </button>
                     </div>
 
-                </div>
-            </div>
-
-
-            <ErrorModal
-                isOpen={errorModalOpen}
-                onClose={() => setErrorModalOpen(false)}
-                text="Els filtres 'type', 'brand' i 'section' són obligatoris."
-                duration={5}
-            />
-
-            {!loading && !searching && (
-                <div className="text-center mb-8">
-                    <h1 className="text-4xl font-bold text-black mb-4">{t("searchcloth.title")}</h1>
-                    <p className="text-gray-600 max-w-3xl mx-auto">{t("searchcloth.description")}</p>
-                </div>
-            )}
-
-            {/* Modal per seleccionar entre càmera o galeria */}
-            {modalVisible && (
-                <ImageUploadModal
-                    onFileSelect={onFileSelect}
-                    onClose={() => setModalVisible(false)}
-                />
-            )}
-
-            <FilterModal
-                isOpen={isModalOpen}
-                onClose={() => setIsModalOpen(false)}
-                filters={filters}
-                filtersState={filtersState}
-                setFiltersState={setFiltersState}
-                handleSearch={handleSearch}
-            />
-
-            {loading && (
-                <div className="fixed inset-0 flex justify-center items-center bg-white bg-opacity-70 z-50">
-                    <div
-                        className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
-                </div>
-            )}
-
-            {results.length > 0 && (
-                <>
-                    <div
-                        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 justify-center place-items-center mx-auto max-w-[1200px]">
-                        {results.map((result) => (
-                            <ImageModel
-                                key={result.purchase_url}
-                                cloth={result}
-                                country={Array.isArray(filtersState.country) ? filtersState.country[0] : filtersState.country}
-                            />
-                        ))}
-                    </div>
-                    {!hasMoreResults && (
-                        <div className="text-center mt-4">
-
-                            <p className="text-gray-600">No hi han més resultats</p>
+                    {/* Vista per a pantalles petites */}
+                    <div className="lg:hidden flex items-center bg-white dark:bg-gray-800 p-3 rounded-lg shadow-md border border-gray-300 dark:border-gray-600 transition-transform duration-200">
+                        {/* Botó de càmera sempre a l'esquerra */}
+                        <div className="flex-shrink-0">
+                            <button
+                                onClick={() => setModalVisible(true)}
+                                className="flex items-center justify-center w-10 h-10 rounded-full bg-faqblue dark:bg-faqblue/80 cursor-pointer hover:opacity-90"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7h4l2-3h6l2 3h4v11H3V7z" />
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 11a4 4 0 100 8 4 4 0 000-8z" />
+                                </svg>
+                            </button>
                         </div>
-                    )}
-                </>
-            )}
-        </div>
+
+                        <div className="flex-1 pl-4">
+                            <button
+                                onClick={() => setIsModalOpen(true)}
+                                className="flex items-center justify-center w-full py-3 px-4 text-white bg-faqblue dark:bg-faqblue/90 hover:bg-faqblue/90 rounded-full shadow-md transition-colors duration-200"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                    <circle cx="11" cy="11" r="8" />
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                                </svg>
+                                {t("searchcloth.start_search", "Buscar Ropa")}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <ErrorModal
+                    isOpen={errorModalOpen}
+                    onClose={() => setErrorModalOpen(false)}
+                    text="Els filtres 'type', 'brand' i 'section' són obligatoris."
+                    duration={5}
+                />
+
+                {!loading && !searching && (
+                    <div className="text-center mb-8">
+                        <h1 className="text-4xl font-bold text-black dark:text-white mb-4">
+                            {t("searchcloth.title")}
+                        </h1>
+                        <p className="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                            {t("searchcloth.description")}
+                        </p>
+                    </div>
+                )}
+
+                {/* Modal per seleccionar entre càmera o galeria */}
+                {modalVisible && (
+                    <ImageUploadModal onFileSelect={onFileSelect} onClose={() => setModalVisible(false)} />
+                )}
+
+                <FilterModal
+                    isOpen={isModalOpen}
+                    onClose={() => setIsModalOpen(false)}
+                    filters={filters}
+                    filtersState={filtersState}
+                    setFiltersState={setFiltersState}
+                    handleSearch={handleSearch}
+                />
+
+                {loading && (
+                    <div className="fixed inset-0 flex justify-center items-center bg-white bg-opacity-70 z-50">
+                        <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+                    </div>
+                )}
+
+                {results.length > 0 && (
+                    <>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 justify-center place-items-center mx-auto max-w-[1200px]">
+                            {results.map((result) => (
+                                <ImageModel
+                                    key={result.purchase_url}
+                                    cloth={result}
+                                    country={Array.isArray(filtersState.country) ? filtersState.country[0] : filtersState.country}
+                                />
+                            ))}
+                        </div>
+                        {!hasMoreResults && (
+                            <div className="text-center mt-4">
+                                <p className="text-gray-600 dark:text-gray-400">No hi han més resultats</p>
+                            </div>
+                        )}
+                    </>
+                )}
+            </div>
             <Footer />
         </>
     );
