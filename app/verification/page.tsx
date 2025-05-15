@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useRouter } from "next/navigation";
+import {useAuth} from "@/app/components/AuthContext";
 
 const Verification = () => {
     const { t } = useTranslation("common");
@@ -12,6 +13,8 @@ const Verification = () => {
     const [error, setError] = useState("");
     const [success, setSuccess] = useState(false);
     const router = useRouter();
+    const { login } = useAuth();
+
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -22,11 +25,17 @@ const Verification = () => {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email, verification_code: verificationCode }),
             });
+            const data = await response.json();
 
             if (response.ok) {
                 setSuccess(true);
                 setError("");
-                router.push("/login");
+
+                console.log("Usuari loguejat correctament!");
+                const token = data.access_token; // Obtenir el token del backend
+                login(token); // Utilitzar la funció login del context
+
+                router.push("/");
             } else {
                 const errorData = await response.json();
                 setError(errorData.detail || t("verification.error.verification"));
