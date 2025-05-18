@@ -72,22 +72,55 @@ const Footer = () => {
                                 Clothy Labs
                         </h3>
                         <div className="flex gap-4">
+                            {/* X (ex-Twitter) */}
                             <div className="footer-icons">
-                                <Link href="https://facebook.com">
-                                    <Image src={'/images/footer/vec.svg'} alt="facebook" width={15} height={20}/>
+                                <Link href="https://x.com/clothylabs?s=21">
+                                    <Image
+                                        src="/images/footer/logo_X.png"
+                                        alt="X"
+                                        width={20}
+                                        height={20}
+                                    />
                                 </Link>
                             </div>
+
+                            {/* YouTube */}
                             <div className="footer-icons">
-                                <Link href="https://twitter.com">
-                                    <Image src={'/images/footer/twitter.svg'} alt="twitter" width={20} height={20} />
+                                <Link href="https://www.youtube.com/@Clothy-Labs">
+                                    <Image
+                                        src="/images/footer/logo_youtube.png"
+                                        alt="YouTube"
+                                        width={20}
+                                        height={20}
+                                    />
                                 </Link>
                             </div>
+
+                            {/* Instagram */}
                             <div className="footer-icons">
-                                <Link href="https://instagram.com">
-                                    <Image src={'/images/footer/instagram.svg'} alt="instagram" width={20} height={20} />
+                                <Link href="https://www.instagram.com/clothy.labs?igsh=MWVnd3gya3MwcRjdQ%3D%3D&utm_source=qr">
+                                    <Image
+                                        src="/images/footer/instagram.svg"
+                                        alt="Instagram"
+                                        width={20}
+                                        height={20}
+                                    />
+                                </Link>
+                            </div>
+
+                            {/* TikTok */}
+                            <div className="footer-icons">
+                                <Link href="https://www.tiktok.com/@clothylabs?_t=ZN-8wSA80jvCBq&_r=1">
+                                    <Image
+                                        src="/images/footer/logo_tiktok.png"
+                                        alt="TikTok"
+                                        width={20}
+                                        height={20}
+                                    />
                                 </Link>
                             </div>
                         </div>
+
                     </div>
 
                     {/* CLOUMN-2/3 */}
