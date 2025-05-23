@@ -1,5 +1,6 @@
 export interface Cloth {
     id: string;
+    title:string;
     description: string;
     price: number;
     discount_price?: number;

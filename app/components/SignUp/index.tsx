@@ -10,6 +10,7 @@ import RenderFilter from "../Filters/RenderFilter";
 import { filters } from "../Filters/cloth_filters";
 import Footer from "@/app/components/Footer";
 import {useAuth} from "@/app/components/AuthContext";
+import { Eye, EyeOff } from "lucide-react"; // o usa icones que prefereixis
 
 const SignUp = () => {
     const [password, setPassword] = useState("");
@@ -26,6 +27,7 @@ const SignUp = () => {
     const router = useRouter();
     const { login } = useAuth();
     const { t } = useTranslation("common");
+
 
     // al costat de router i t:
     // true només si hi ha país i s’han acceptat els termes
@@ -93,7 +95,7 @@ const SignUp = () => {
 
         try {
             const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-            console.log("country", filtersState.country);
+            console.log("API URL:", apiUrl);
             const response = await fetch(`${apiUrl}/users/register`, {
                 method: "POST",
                 headers: {
@@ -106,6 +108,8 @@ const SignUp = () => {
                     country
                 }),
             });
+
+            console.log("response", response);
 
             if (!response.ok) {
                 const errorData = await response.json();
@@ -163,7 +167,7 @@ const SignUp = () => {
 
     return (
             <GoogleOAuthProvider clientId="677361179666-ae2o6mhsi2fq7g6ri1hiktap6mjrkaqs.apps.googleusercontent.com">
-                <div className="relative h-[900px] flex items-center bg-gray-100 dark:bg-gray-900">
+                <div className="relative h-[1200px] flex items-center bg-gray-100 dark:bg-gray-900">
                 <div className="absolute inset-0 lg:grid grid-cols-2">
                 {/* Columna de la imatge */}
             <div className="relative h-[900px] w-[900px] max-w-full hidden lg:block">
@@ -229,7 +233,7 @@ const SignUp = () => {
                                 />
                                 <label htmlFor="terms" className="ml-2 block text-sm text-gray-900 dark:text-gray-200">
                                     {t("termsText")}{" "}
-                                    <Link href="/terms">
+                                    <Link href="/terms&conditions">
                             <span className="underline text-blue-600 dark:text-blue-400 cursor-pointer">
                               {t("termsLink")}
                             </span>
@@ -247,7 +251,7 @@ const SignUp = () => {
                                 {/* Fila para desplegar el formulario de correo */}
                                 <div
                                     onClick={() => setShowEmailForm(!showEmailForm)}
-                                    className="block w-full relative cursor-pointer text-center py-3 px-6 text-white bg-faqblue dark:bg-faqblue/80 rounded-lg font-medium shadow-lg hover:scale-105 hover:bg-faqblue/90 transition transform duration-200"
+                                    className="block w-full relative cursor-pointer text-center py-3 px-6 text-black bg-white dark:bg-faqblue/80 rounded-lg font-medium shadow-lg hover:scale-105 hover:bg-faqblue/90 transition transform duration-200 border border-black"
                                 >
                                     <p className="text-blue-600 dark:text-blue-200 hover:underline">
                                         {t("signUp.registerButton") || "Crea sessió amb correu"}
@@ -309,21 +313,23 @@ const SignUp = () => {
                                                     name="password"
                                                     value={password}
                                                     onChange={(e) => setPassword(e.target.value)}
-                                                    className="mt-2 block w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
+                                                    className="mt-2 block w-full px-4 py-2 pr-10 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
                                                     placeholder={t("signUp.passwordPlaceholder") as string}
                                                 />
                                                 <button
                                                     type="button"
                                                     onClick={() => setShowPassword(!showPassword)}
-                                                    className="absolute right-3 top-3 text-sm text-gray-500 dark:text-gray-400"
+                                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400"
+                                                    aria-label={showPassword ? "Oculta la contrasenya" : "Mostra la contrasenya"}
                                                 >
-                                                    {showPassword ? t("signUp.hidePassword") : t("signUp.showPassword")}
+                                                    {showPassword ? <Eye size={20} /> : <EyeOff size={20} />}
                                                 </button>
                                             </div>
                                             <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                                                 {t("signUp.passwordHint")}
                                             </p>
                                         </div>
+
                                         <div>
                                             <label
                                                 htmlFor="confirmPassword"
@@ -338,23 +344,22 @@ const SignUp = () => {
                                                     name="confirmPassword"
                                                     value={confirmPassword}
                                                     onChange={(e) => setConfirmPassword(e.target.value)}
-                                                    className="mt-2 block w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
+                                                    className="mt-2 block w-full px-4 py-2 pr-10 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
                                                     placeholder={t("signUp.confirmPasswordPlaceholder") as string}
                                                 />
                                                 <button
                                                     type="button"
                                                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                                                    className="absolute right-3 top-3 text-sm text-gray-500 dark:text-gray-400"
+                                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400"
+                                                    aria-label={showConfirmPassword ? "Oculta la contrasenya" : "Mostra la contrasenya"}
                                                 >
-                                                    {showConfirmPassword
-                                                        ? t("signUp.hidePassword")
-                                                        : t("signUp.showPassword")}
+                                                    {showConfirmPassword ? <Eye size={20} /> : <EyeOff size={20} />}
                                                 </button>
                                             </div>
                                         </div>
                                         <button
                                             type="submit"
-                                            className="block w-full relative cursor-pointer text-center py-3 px-6 text-white bg-faqblue dark:bg-faqblue/80 rounded-lg font-medium shadow-lg hover:scale-105 hover:bg-faqblue/90 transition transform duration-200"
+                                            className="block w-full relative z-10 cursor-pointer text-center py-3 px-6 text-white bg-faqblue dark:bg-faqblue/80 rounded-lg font-medium shadow-lg hover:scale-105 hover:bg-faqblue/90 transition-transform duration-200"
                                         >
                                             {t("signUp.registerButton")}
                                         </button>
@@ -374,10 +379,12 @@ const SignUp = () => {
                                 </div>
 
                                 {/* Botón de Google */}
-                                <GoogleLogin
-                                    onSuccess={handleGoogleSuccess}
-                                    onError={() => setError(t("signUp.errorGoogle"))}
-                                />
+                                <div className="border border-black rounded-lg overflow-hidden">
+                                    <GoogleLogin
+                                        onSuccess={handleGoogleSuccess}
+                                        onError={() => setError(t("signUp.errorGoogle"))}
+                                    />
+                                </div>
 
                             </>
                         )}

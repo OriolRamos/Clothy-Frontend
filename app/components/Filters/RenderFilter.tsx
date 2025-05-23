@@ -9,7 +9,7 @@ interface FilterOption {
 
 interface RenderFilterProps {
     filterKey: string;
-    filterOptions: FilterOption[];
+    filterOptions?: FilterOption[];
     expandedFilter: string;
     setExpandedFilter: (key: string) => void;
     filtersState: Record<string, string>;
@@ -18,7 +18,7 @@ interface RenderFilterProps {
 
 const RenderFilter: React.FC<RenderFilterProps> = ({
     filterKey,
-    filterOptions,
+    filterOptions = [],
     expandedFilter,
     setExpandedFilter,
     filtersState,

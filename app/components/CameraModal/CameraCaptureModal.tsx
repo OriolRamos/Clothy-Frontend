@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from 'react';
+import { useTranslation } from "react-i18next";
 
 interface CameraCaptureModalProps {
     onCapture: (blob: Blob) => void;
@@ -8,6 +9,7 @@ interface CameraCaptureModalProps {
 const CameraCaptureModal: React.FC<CameraCaptureModalProps> = ({ onCapture, onClose }) => {
     const videoRef = useRef<HTMLVideoElement>(null);
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
+    const { t } = useTranslation("common");
 
     useEffect(() => {
         async function startCamera() {
@@ -61,13 +63,13 @@ const CameraCaptureModal: React.FC<CameraCaptureModalProps> = ({ onCapture, onCl
                         onClick={capturePhoto}
                         className="px-4 py-2 bg-faqblue dark:bg-faqblue/80 text-white rounded hover:scale-105 transition transform duration-200"
                     >
-                        Capturar
+                        {t("cameraCapture.capture", "Capturar")}
                     </button>
                     <button
                         onClick={onClose}
                         className="px-4 py-2 bg-red-500 dark:bg-red-600 text-white rounded hover:scale-105 transition transform duration-200"
                     >
-                        Cancel·lar
+                        {t("cameraCapture.cancel", "Cancel·lar")}
                     </button>
                 </div>
             </div>

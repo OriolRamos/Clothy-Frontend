@@ -39,9 +39,12 @@ const ImageModel: React.FC<ImageModelProps> = ({ cloth, country }) => {
             console.error("Error gestionant els favorits:", error);
         }
     };
-
+    const currencyList = filters.currency ?? [];
     const currencySymbol =
-        filters.currency.find(c => c.value === country)?.translation || "€";
+        (country
+            ? currencyList.find(c => c.value === country)?.translation
+            : undefined)
+        || '€';
     const brandLogoPath = `/images/brands/${cloth.brand.toLowerCase()}.png`;
 
     return (
@@ -58,7 +61,7 @@ const ImageModel: React.FC<ImageModelProps> = ({ cloth, country }) => {
                     )}
                     <Image
                         src={cloth.image_url || "/images/image-not-found.png"}
-                        alt={cloth.description || "No Image"}
+                        alt={cloth.title || "No Image"}
                         fill
                         className="object-cover rounded-lg"
                         loading="lazy"
@@ -123,7 +126,7 @@ const ImageModel: React.FC<ImageModelProps> = ({ cloth, country }) => {
             </button>
 
             <p className="m-2 text-center text-black dark:text-gray-100 font-medium">
-                {cloth.description}
+                {cloth.title}
             </p>
 
             {isModalOpen && (

@@ -145,7 +145,11 @@
             "Creador de outfits con la ropa de tu armario.",
             "Buscador de ropa inteligente basado en imágenes.",
             "Explora tendencias personalizadas."
-        ]
+        ],
+        "ourImplementations": "Nuestras implementaciones.",
+        "outfitCreator": "Creador de outfits con la ropa de tu armario.",
+        "smartSearch": "Buscador de ropa inteligente basado en imágenes.",
+        "trendExplorer": "Explora tendencias personalizadas."
     },
     "aboutus": {
         "section_title": "SOBRE NOSOTROS",
@@ -413,6 +417,7 @@
         "imageAlt": "Imagen de verificación"
     },
     "searchcloth": {
+        "noMoreResults": "No hay más resultados",
         "title": "Buscador de ropa",
         "start_search": "Buscar ropa",
         "description": "¡Descubre nuestro buscador inteligente de ropa! Solo sube una imagen y nuestro sistema la comparará con opciones disponibles en Internet.",
@@ -443,7 +448,8 @@
     },
     "navbar": {
         "home": "Inicio",
-        "search": "Buscador"
+        "search": "Buscador",
+        "outfitAssistant": "Asistente de outfits"
     },
     "footer": {
         "menu": "Menu",
@@ -454,7 +460,8 @@
         "others": "Otros",
         "allRights": "Todos los derechos reservados por",
         "pricavyPolicy": "Política de privacidad",
-        "termsConditions": "Términos y condiciones"
+        "termsConditions": "Términos y condiciones",
+        "cookies": "Política de cookies"
     },
     "filters": {
         "type": {
@@ -638,7 +645,10 @@
         "filters": "Filtros aplicados",
         "noHistory": "No hay historial de búsquedas.",
         "error": "Se produjo un error al obtener el historial.",
-        "title": "Historial de búsquedas"
+        "title": "Historial de búsquedas",
+        "assistantTitle": "Historial del asistente",
+        "noAssistantHistory": "No hay historial de conversaciones.",
+        "messageCount": "Mensajes"
     },
     "searchDetail": {
         "title": "Detalle de la búsqueda",
@@ -798,5 +808,31 @@
             "title": "6. Actualizaciones y contacto",
             "text": "Podemos modificar esta política de cookies por cambios legislativos o de funcionalidad del sitio. Te recomendamos revisarla periódicamente. Para cualquier duda o solicitud relacionada con privacidad o cookies, puedes contactarnos en:\n\nProtección de Datos\nsupport@clothy.es"
         }
+    },
+    "externalPage": {
+        "clothySearch": "Búsqueda Clothy",
+        "buy": "Comprar",
+        "type": "Tipo:",
+        "description": "Descripción:",
+        "color": "Color:",
+        "print": "Estampado:",
+        "material": "Material:",
+        "title": "Título:"
+    },
+    "cameraModal": {
+        "photo": "Tomar una foto",
+        "selectGaleri": "Seleccionar de la galería",
+        "cancel": "Cancelar"
+    },
+    "cameraCapture": {
+        "cancel": "Cancelar",
+        "capture": "Capturar"
+    },
+    "outfitassistant": {
+        "ubication": "Permitir ubicación",
+        "ubicationExplication": "Para ofrecerte sugerencias de outfit más precisas según tu clima y región, necesitamos acceder a tu ubicación.",
+        "no": "No, gracias",
+        "permit": "Permitir",
+        "explicatio": "Haz una foto a tu outfit y te ayudo a mejorarlo."
     }
 }

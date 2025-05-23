@@ -3,7 +3,9 @@ import { Cloth } from "../Modals/Cloth";
 import { filters, getTranslation } from "../Filters/cloth_filters";
 import { useAuth } from "@/app/components/AuthContext";
 import Image from "next/image";
-
+import { useTranslation } from "react-i18next";
+import { useState } from "react";
+import HistoryPriceModal from "./../HistoryPriceModal/index";
 interface ExternalPageModalProps {
     cloth: Cloth;
     country: string | null;
@@ -13,6 +15,9 @@ interface ExternalPageModalProps {
 
 const ExternalPageModal: React.FC<ExternalPageModalProps> = ({ cloth, country, isOpen, onClose }) => {
     const { fetchWithAuth } = useAuth();
+    const { t } = useTranslation("common");
+    const [isHistoryOpen, setIsHistoryOpen] = useState(false);
+
 
     useEffect(() => {
         document.body.style.overflow = isOpen ? "hidden" : "auto";
@@ -21,7 +26,12 @@ const ExternalPageModal: React.FC<ExternalPageModalProps> = ({ cloth, country, i
         };
     }, [isOpen]);
 
-    const currencySymbol = filters.currency.find(c => c.value === country)?.translation || "€";
+    const currencyList = filters.currency ?? [];
+    const currencySymbol =
+        (country
+                ? currencyList.find(c => c.value === country)?.translation
+                : undefined
+        ) || "€";
 
     if (!isOpen || !cloth) return null;
 
@@ -45,7 +55,7 @@ const ExternalPageModal: React.FC<ExternalPageModalProps> = ({ cloth, country, i
             <div className="relative bg-white dark:bg-gray-800 w-full h-full flex flex-col">
                 {/* Capçalera del modal */}
                 <div className="absolute top-0 left-0 right-0 p-4 flex justify-between items-center bg-gray-900 dark:bg-gray-700 text-white">
-                    <h2 className="font-semibold text-lg">Clothy Search</h2>
+                    <h2 className="font-semibold text-lg">{t("externalPage.clothySearch", "Clothy Search")}</h2>
                     <button onClick={onClose} className="text-2xl font-bold">
                         &times;
                     </button>
@@ -79,24 +89,29 @@ const ExternalPageModal: React.FC<ExternalPageModalProps> = ({ cloth, country, i
                         {/* Informació detallada */}
                         <div className="text-right mt-4 space-y-2">
                             <p className="text-lg">
-                                <span className="font-semibold">Tipus:</span> {getTranslation("type", cloth.type)}
+                                <span className="font-semibold">{t("externalPage.type", "Tipus:")}</span> {getTranslation("type", cloth.type)}
                             </p>
                             <p className="text-lg">
-                                <span className="font-semibold">Descripció:</span> {cloth.description}
+                                <span className="font-semibold">{t("externalPage.title", "Titulo:")}</span> {cloth.title}
                             </p>
                             {cloth.color && (
                                 <p className="text-lg">
-                                    <span className="font-semibold">Color:</span> {cloth.color}
+                                    <span className="font-semibold">{t("externalPage.color", "Color:")}</span> {cloth.color}
                                 </p>
                             )}
                             {cloth.print && (
                                 <p className="text-lg">
-                                    <span className="font-semibold">Print:</span> {cloth.print}
+                                    <span className="font-semibold">{t("externalPage.print", "Print:")}</span> {cloth.print}
                                 </p>
                             )}
                             {cloth.material && (
                                 <p className="text-lg">
-                                    <span className="font-semibold">Material:</span> {cloth.material}
+                                    <span className="font-semibold">{t("externalPage.material", "Material:")}</span> {cloth.material}
+                                </p>
+                            )}
+                            {cloth.description && (
+                                <p className="text-lg">
+                                    <span className="font-semibold">{t("externalPage.description", "Description:")}</span> {cloth.description}
                                 </p>
                             )}
                         </div>
@@ -120,20 +135,33 @@ const ExternalPageModal: React.FC<ExternalPageModalProps> = ({ cloth, country, i
                             )}
                         </div>
 
-                        {/* Botó comprar */}
-                        <div className="mt-auto text-right">
+                        {/* Botons */}
+                        <div className="mt-auto text-right space-x-2">
+                            <button
+                                onClick={() => setIsHistoryOpen(true)}
+                                className="px-6 py-3 bg-gray-700 dark:bg-gray-300 text-white dark:text-black rounded-lg shadow-md font-semibold hover:scale-105 transition-transform duration-200"
+                            >
+                                {t("externalPage.history", "Historial Preus")}
+                            </button>
                             <a
                                 onClick={() => setRedirectingLog(cloth)}
                                 href={cloth.purchase_url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-block px-6 py-3 bg-black dark:bg-gray-900 text-white rounded-lg shadow-md font-semibold hover:scale-105 transition-transform duration-200"
+                                className="px-6 py-3 bg-black dark:bg-gray-900 text-white rounded-lg shadow-md font-semibold hover:scale-105 transition-transform duration-200"
                             >
-                                Comprar
+                                {t("externalPage.buy", "Comprar")}
                             </a>
                         </div>
                     </div>
                 </div>
+                {/* Historial de preus */}
+                {isHistoryOpen && (
+                    <HistoryPriceModal
+                        clothId={cloth.id}
+                        onClose={() => setIsHistoryOpen(false)}
+                    />
+                )}
             </div>
         </div>
     );

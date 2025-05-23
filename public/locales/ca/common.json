@@ -83,6 +83,10 @@
         }
     },
     "featured": {
+        "ourImplementations": "Les nostres implementacions.",
+        "outfitCreator": "Creador d'outfits amb la roba del teu armari.",
+        "smartSearch": "Buscador de roba intel·ligent basat en imatges.",
+        "trendExplorer": "Explora tendències personalitzades.",
         "title": "Les nostres implementacions.",
         "headings": [
             "Creador d'outfits amb la roba del teu armari.",
@@ -350,6 +354,7 @@
         "imageAlt": "Imatge de verificació"
     },
     "searchcloth": {
+        "noMoreResults": "No hi ha més resultats",
         "title": "Buscador de roba",
         "start_search": "Cercar roba",
         "description": "Descobreix el nostre buscador intel·ligent de roba! Només has de pujar una imatge i el nostre sistema la compararà amb opcions disponibles a Internet.",
@@ -380,9 +385,11 @@
     },
     "navbar": {
         "home": "Inici",
-        "search": "Cercador"
+        "search": "Cercador",
+        "outfitAssistant": "Assistent d'outfits"
     },
     "footer": {
+        "cookies": "Política de galetes",
         "menu": "Menú",
         "home": "Inici",
         "aboutus": "Sobre nosaltres",
@@ -638,7 +645,10 @@
         "filters": "Filtres aplicats",
         "noHistory": "No hi ha historial de cerques.",
         "error": "S'ha produït un error en obtenir l'historial.",
-        "title": "Historial de cerques"
+        "title": "Historial de cerques",
+        "assistantTitle": "Historial de l'assistent",
+        "noAssistantHistory": "No hi ha historial de converses.",
+        "messageCount": "Missatges"
     },
     "searchDetail": {
         "title": "Detall de la cerca",
@@ -741,5 +751,31 @@
             "title": "6. Actualitzacions i contacte",
             "text": "Podem modificar aquesta política de cookies en funció de canvis legislatius o de la funcionalitat del lloc. Et recomanem revisar-la periòdicament. Per qualsevol dubte o sol·licitud relacionada amb la privacitat o les cookies, pots contactar-nos a:\n\nProtecció de Dades\nsupport@clothy.es"
         }
+    },
+    "externalPage": {
+        "clothySearch": "Cerca Clothy",
+        "buy": "Comprar",
+        "type": "Tipus:",
+        "description": "Descripció:",
+        "color": "Color:",
+        "print": "Estampat:",
+        "material": "Material:",
+        "title": "Títol:"
+    },
+    "cameraModal": {
+        "photo": "Fer una foto",
+        "selectGaleri": "Seleccionar de la galeria",
+        "cancel": "Cancel·lar"
+    },
+    "cameraCapture": {
+        "cancel": "Cancel·lar",
+        "capture": "Capturar"
+    },
+    "outfitassistant": {
+        "ubication": "Permetre ubicació",
+        "ubicationExplication": "Per oferir-te suggeriments d'outfit més precisos segons el teu clima i regió, necessitem accedir a la teva ubicació.",
+        "no": "No, gràcies",
+        "permit": "Permetre",
+        "explicatio": "Fes una foto del teu outfit i t'ajudo a millorar-lo."
     }
 }

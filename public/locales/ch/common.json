@@ -84,6 +84,10 @@
     }
   },
   "featured": {
+    "ourImplementations": "我们的实现。",
+    "outfitCreator": "使用您的衣橱服装创建搭配。",
+    "smartSearch": "基于图像的智能服装搜索。",
+    "trendExplorer": "探索个性化趋势。",
     "title": "我们的实现。",
     "headings": [
       "用您的衣橱中的衣物创建服装搭配。",
@@ -351,6 +355,7 @@
     "imageAlt": "验证图片"
   },
   "searchcloth": {
+    "noMoreResults": "没有更多结果",
     "title": "衣物搜索",
     "start_search": "搜索服装",
     "description": "发现我们的智能衣物搜索！只需上传一张图片，我们的系统将与互联网上的可用选项进行比较。",
@@ -381,7 +386,8 @@
   },
   "navbar": {
     "home": "主页",
-    "search": "搜索"
+    "search": "搜索",
+    "outfitAssistant": "搭配助手"
   },
   "footer": {
     "menu": "菜单",
@@ -392,7 +398,8 @@
     "others": "其他",
     "allRights": "版权所有，保留所有权利",
     "pricavyPolicy": "隐私政策",
-    "termsConditions": "条款和条件"
+    "termsConditions": "条款和条件",
+    "cookies": "Cookie政策"
   },
   "termsandconditions": {
     "title": "CLOTHY 使用条款与条件",
@@ -639,7 +646,10 @@
     "filters": "已应用的筛选条件",
     "noHistory": "没有搜索历史。",
     "error": "获取历史记录时出错。",
-    "title": "搜索历史"
+    "title": "搜索历史",
+    "assistantTitle": "助手历史",
+    "noAssistantHistory": "没有对话历史。",
+    "messageCount": "消息"
   },
   "searchDetail": {
     "title": "搜索详情",
@@ -798,5 +808,31 @@
       "title": "6. 更新与联系",
       "text": "由于法律变化或网站功能调整，我们可能会修改本 Cookie 政策。建议定期查看。如有任何有关隐私或 Cookie 的问题与请求，请通过以下方式联系我们：\n\n数据保护\nsupport@clothy.es"
     }
+  },
+  "externalPage": {
+    "clothySearch": "Clothy 搜索",
+    "buy": "购买",
+    "type": "类型：",
+    "description": "描述：",
+    "color": "颜色：",
+    "print": "图案：",
+    "material": "材质：",
+    "title": "标题："
+  },
+  "cameraModal": {
+    "photo": "拍照",
+    "selectGaleri": "从图库选择",
+    "cancel": "取消"
+  },
+  "cameraCapture": {
+    "cancel": "取消",
+    "capture": "拍摄"
+  },
+  "outfitassistant": {
+    "ubication": "允许定位",
+    "ubicationExplication": "为了根据您的天气和地区为您提供更准确的搭配建议，我们需要访问您的位置。",
+    "no": "不，谢谢",
+    "permit": "允许",
+    "explicatio": "拍摄您的搭配照片，我会帮助您改进它。"
   }
 }

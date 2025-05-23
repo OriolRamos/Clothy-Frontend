@@ -10,12 +10,15 @@ const ScrapedBrands = () => {
         "/images/brands/bershka.png",
         "/images/brands/oysho.png",
         "/images/brands/zara.png",
-        "/images/brands/hm.png",
-        "/images/brands/uniqlo.png",
-        "/images/brands/mango.png",
         "/images/brands/pullandbear.png",
         "/images/brands/stradivarius.png",
     ], []);
+
+    /*
+    * "/images/brands/hm.png",
+        "/images/brands/uniqlo.png",
+        "/images/brands/mango.png",
+    * */
 
     return (
         <div className="relative w-full h-[300px] overflow-hidden rounded-2xl bg-white/70 dark:bg-gray-800/70 backdrop-blur-md">

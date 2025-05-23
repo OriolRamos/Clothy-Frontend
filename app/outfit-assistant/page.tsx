@@ -6,6 +6,8 @@ import ImageUploadModal from "../components/CameraModal/index";
 import { useAuth } from "@/app/components/AuthContext";
 import { Camera, Send, Sun, Cloud, CloudRain, CloudLightning, CloudSnow, CloudDrizzle } from "lucide-react";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
+
 
 
 interface Message {
@@ -35,6 +37,8 @@ export default function OutfitAssistantPage({
     const [conversationId, setConversationId] = useState<string | null>(null);
     const messageEndRef = useRef<HTMLDivElement>(null);
     const [weather, setWeather] = useState<any>(null);
+    const { t } = useTranslation('common');
+
 
     // Load existing messages if initialConversationId provided
     useEffect(() => {
@@ -62,7 +66,7 @@ export default function OutfitAssistantPage({
             try {
                 const url = `https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=${location.latitude}&lon=${location.longitude}`;
                 const res = await fetch(url, {
-                    headers: { "User-Agent": "OutfitAssistant/1.0 (https://clothy.es; ceo@clothy.es)" }
+                    headers: { "User-Agent": "OutfitAssistant/1.0 (https://www.clothy.es; ceo@clothy.es)" }
                 });
                 if (!res.ok) throw new Error(`Status ${res.status}`);
                 const json = await res.json();
@@ -231,23 +235,22 @@ export default function OutfitAssistantPage({
                 {showLocationModal && (
                     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-60">
                         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-2xl p-6 max-w-sm text-center">
-                            <h2 className="text-2xl font-semibold mb-4 text-black dark:text-white">Permitir ubicación</h2>
+                            <h2 className="text-2xl font-semibold mb-4 text-black dark:text-white">{t("outfitassistant.ubication", "Permitir ubicación")}</h2>
                             <p className="mb-6 text-gray-900 dark:text-gray-100">
-                                Para ofrecerte sugerencias de outfit más precisas según tu clima y región,
-                                necesitamos acceder a tu ubicación.
+                                {t("outfitassistant.ubicationExplication", "Para ofrecerte sugerencias de outfit más precisas según tu clima y región, necesitamos acceder a tu ubicación.")}
                             </p>
                             <div className="flex justify-around">
                                 <button
                                     onClick={handleLocationDecline}
                                     className="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-black dark:text-white rounded hover:bg-gray-300 dark:hover:bg-gray-600"
                                 >
-                                    No, gracias
+                                    {t("outfitassistant.no", "No, gracias")}
                                 </button>
                                 <button
                                     onClick={handleLocationAgree}
                                     className="px-4 py-2 bg-faqblue dark:bg-faqblue/80 text-white rounded hover:bg-blue-600 dark:hover:bg-blue-700"
                                 >
-                                    Permitir
+                                    {t("outfitassistant.permit", "Permitir")}
                                 </button>
                             </div>
                         </div>
@@ -257,7 +260,7 @@ export default function OutfitAssistantPage({
                 <header className="bg-white dark:bg-gray-800 shadow p-6 text-center">
                     <h1 className="text-3xl font-bold text-black dark:text-white">Outfit Assistant</h1>
                     <p className="mt-1 text-gray-700 dark:text-gray-300">
-                        Haz una foto a tu outfit y te ayudo a decidir si es correcto y sugerencias de mejora.
+                        {t("outfitassistant.explicatio", "Haz una foto a tu outfit y te ayudo a mejorlo.")}
                     </p>
                 </header>
 

@@ -8,6 +8,7 @@ import Link from "next/link";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 import { useTranslation } from "react-i18next";
 import Footer from "@/app/components/Footer";
+import { Eye, EyeOff } from "lucide-react"; // o usa icones que prefereixis
 
 
 
@@ -19,10 +20,11 @@ const Login = () => {
     const router = useRouter();
     const { login } = useAuth();
     const { t } = useTranslation('common');
+    const [showPassword, setShowPassword] = useState(false);
+
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-
         try {
             const apiUrl = process.env.NEXT_PUBLIC_API_URL;
             const response = await fetch(`${apiUrl}/users/login`, {
@@ -49,17 +51,6 @@ const Login = () => {
         } catch (error) {
             console.error("Error:", error);
             setError(t("login.server_error"));
-        }
-    };
-
-    // Funció per gestionar errors d'autenticació o connexió
-    const handleFetchError = (error: any) => {
-        console.error(error);
-
-        // Si l'error és d'autenticació, netegem el token i redirigim al login
-        if (error.message === "Error en obtenir el perfil de l'usuari.") {
-            localStorage.removeItem("authToken");
-            router.push("/login");
         }
     };
 
@@ -129,30 +120,38 @@ const Login = () => {
                                         placeholder={t("login.email_placeholder")}
                                     />
                                 </div>
-                                <div>
+                                <div className="relative">
                                     <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                                         {t("login.password_label")}
                                     </label>
                                     <input
-                                        type="password"
+                                        type={showPassword ? "text" : "password"}
                                         id="password"
                                         name="password"
                                         required
                                         value={password}
                                         onChange={e => setPassword(e.target.value)}
-                                        className="mt-2 block w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-black dark:text-gray-100"
+                                        className="mt-2 block w-full px-4 py-2 pr-10 border rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-black dark:text-gray-100"
                                         placeholder={t("login.password_placeholder")}
                                     />
+                                    <button
+                                        type="button"
+                                        onClick={() => setShowPassword(prev => !prev)}
+                                        className="absolute top-1/2 right-3 -translate-y-1/2 text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-white mt-3"
+                                        aria-label={showPassword ? "Oculta la contrasenya" : "Mostra la contrasenya"}
+                                    >
+                                        {showPassword ? <Eye size={20} /> : <EyeOff size={20} />}
+                                    </button>
                                 </div>
                                 {error && <p className="text-red-500 text-sm">{error}</p>}
                                 <button
                                     type="submit"
-                                    className="block w-full text-center py-3 px-6 text-white bg-faqblue dark:bg-blue-700 rounded-lg font-medium shadow-lg hover:scale-105 hover:bg-faqblue/90 dark:hover:bg-blue-600 transition-transform duration-200"
+                                    className="block w-full text-center py-3 px-6 text-white bg-faqblue dark:bg-blue-700 rounded-lg font-medium shadow-lg hover:scale-105 hover:bg-faqblue/90 dark:hover:bg-blue-600 transition-transform duration-200 border border-black"
                                 >
                                     {t("login.submit_button")}
                                 </button>
                             </form>
-                            <Link href="/loss-password">
+                            <Link href="/reset-password">
                                 <p className="mt-4 text-sm text-gray-500 dark:text-gray-400 text-center hover:text-blue-500 cursor-pointer">
                                     {t("login.forgot_password")}
                                 </p>
@@ -162,10 +161,13 @@ const Login = () => {
                                 <span className="px-4 text-sm text-gray-500 dark:text-gray-400">O</span>
                                 <hr className="flex-grow border-t border-gray-300 dark:border-gray-600" />
                             </div>
-                            <GoogleLogin
-                                onSuccess={handleGoogleSuccess}
-                                onError={() => setError(t("login.google_error"))}
-                            />
+                            {/* Botón de Google */}
+                            <div className="border border-black rounded-lg overflow-hidden">
+                                <GoogleLogin
+                                    onSuccess={handleGoogleSuccess}
+                                    onError={() => setError(t("login.google_error"))}
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>

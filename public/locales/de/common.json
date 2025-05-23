@@ -95,7 +95,12 @@
       "Outfit-Ersteller mit Kleidung aus Ihrem Kleiderschrank.",
       "Intelligente Kleidersuche basierend auf Bildern.",
       "Entdecken Sie personalisierte Trends."
-    ]
+
+    ],
+    "ourImplementations": "Unsere Implementierungen.",
+    "outfitCreator": "Outfit-Ersteller mit deiner Garderobe.",
+    "smartSearch": "Intelligente Kleidersuche basierend auf Bildern.",
+    "trendExplorer": "Entdecke personalisierte Trends."
   },
 
   "aboutus": {
@@ -393,6 +398,7 @@
   },
   "searchcloth": {
     "title": "Kleidungssuche",
+    "noMoreResults": "Keine weiteren Ergebnisse",
     "start_search": "Kleidung suchen",
     "description": "Entdecken Sie unsere intelligente Kleidersuche! Laden Sie einfach ein Bild hoch und unser System vergleicht es mit verfügbaren Optionen im Internet.",
     "uploadButton": "Bild hochladen",
@@ -422,10 +428,13 @@
   },
   "navbar": {
     "home": "Startseite",
-    "search": "Suche"
+    "search": "Suche",
+    "outfitAssistant": "Outfit-Assistent"
+
   },
   "footer": {
     "menu": "Menü",
+    "cookies": "Cookie-Richtlinie",
     "home": "Startseite",
     "aboutus": "Über uns",
     "FAQ": "FAQ",
@@ -624,7 +633,10 @@
     "filters": "Angewendete Filter",
     "noHistory": "Keine Suchhistorie vorhanden.",
     "error": "Beim Abrufen der Historie ist ein Fehler aufgetreten.",
-    "title": "Suchverlauf"
+    "title": "Suchverlauf",
+    "assistantTitle": "Verlauf des Assistenten",
+    "noAssistantHistory": "Es gibt keinen Gesprächsverlauf.",
+    "messageCount": "Nachrichten"
   },
   "searchDetail": {
     "title": "Suchdetails",
@@ -784,5 +796,31 @@
       "title": "6. Aktualisierungen und Kontakt",
       "text": "Wir können diese Cookie-Richtlinie bei gesetzlichen Änderungen oder Änderungen der Website-Funktionalität anpassen. Wir empfehlen, sie regelmäßig zu überprüfen. Bei Fragen oder Anliegen zum Datenschutz oder zu Cookies kontaktieren Sie uns unter:\n\nDatenschutzbeauftragter\nsupport@clothy.es"
     }
+  },
+  "externalPage": {
+    "clothySearch": "Clothy-Suche",
+    "buy": "Kaufen",
+    "type": "Typ:",
+    "description": "Beschreibung:",
+    "color": "Farbe:",
+    "print": "Druck:",
+    "material": "Material:",
+    "title": "Titel:"
+  },
+  "cameraModal": {
+    "photo": "Foto aufnehmen",
+    "selectGaleri": "Aus Galerie auswählen",
+    "cancel": "Abbrechen"
+  },
+  "cameraCapture": {
+    "cancel": "Abbrechen",
+    "capture": "Aufnehmen"
+  },
+  "outfitassistant": {
+    "ubication": "Standort erlauben",
+    "ubicationExplication": "Um dir genauere Outfit-Vorschläge basierend auf deinem Wetter und deiner Region zu bieten, müssen wir auf deinen Standort zugreifen.",
+    "no": "Nein, danke",
+    "permit": "Erlauben",
+    "explicatio": "Mache ein Foto deines Outfits und ich helfe dir, es zu verbessern."
   }
 }

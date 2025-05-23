@@ -95,7 +95,11 @@
       "Kıyafetlerinizle kıyafet oluşturucu.",
       "Görsellerle akıllı giysi arama.",
       "Kişiselleştirilmiş trendleri keşfedin."
-    ]
+    ],
+    "ourImplementations": "Uygulamalarımız.",
+    "outfitCreator": "Dolabınızdaki kıyafetlerle kombin oluşturucu.",
+    "smartSearch": "Görüntülere dayalı akıllı kıyafet arama.",
+    "trendExplorer": "Kişiselleştirilmiş trendleri keşfedin."
   },
 
   "aboutus": {
@@ -348,34 +352,6 @@
     "search": "Ara...",
     "reset": "Sıfırla"
   },
-  "termsandconditions": {
-    "title": "Kullanım ve Koşullar",
-    "welcome": "Clothy'ye hoş geldiniz. Deneyiminiz ve güveniniz bizim için önceliklidir.",
-    "acceptableUse": {
-      "title": "1. Kabul Edilebilir Kullanım",
-      "content": "Clothy, kişisel ve ticari olmayan kullanım için tasarlanmıştır. Şiddetle yasaklanmıştır:"
-    },
-    "privacy": {
-      "title": "2. Gizlilik ve Veri Koruma (GDPR)",
-      "content": "Clothy olarak, Genel Veri Koruma Yönetmeliği'ne (GDPR) sıkı bir şekilde uyarız. Sağladığınız kişisel veriler yalnızca size daha iyi bir hizmet sunmak için kullanılır."
-    },
-    "imagesUse": {
-      "title": "3. Görsellerin Kullanımı",
-      "content": "Clothy'ye bir görsel yüklediğinizde, bu görsel sadece benzer kıyafetleri bulmak ve yapay zeka algoritmamızı iyileştirmek için kullanılır."
-    },
-    "liability": {
-      "title": "4. Sorumluluğun Sınırlanması",
-      "content": "Hizmetimizi güvenli ve güvenilir tutmak için elimizden geleni yapmamıza rağmen, Clothy bazı aksaklıklardan sorumlu değildir."
-    },
-    "modifications": {
-      "title": "5. Şartların Değiştirilmesi",
-      "content": "Bu şartlar ve koşulları yeni hukuki veya teknolojik gereksinimlere uyacak şekilde değiştirme hakkımız saklıdır."
-    },
-    "contact": {
-      "title": "6. İletişim ve Destek",
-      "content": "Bu şartlarla ilgili herhangi bir sorunuz, endişeniz veya öneriniz varsa, bizimle iletişime geçmekten çekinmeyin."
-    }
-  },
   "verification": {
     "title": "Hesabınızı Doğrulayın",
     "instructions": "E-posta adresinizi ve e-posta adresinize gönderilen doğrulama kodunu girin.",
@@ -418,11 +394,14 @@
     "high_rating": "Yüksek puan",
     "official_brands": "Resmi markalar",
     "reset": "Sıfırla",
-    "apply": "Uygula"
+    "apply": "Uygula",
+    "noMoreResults": "Daha fazla sonuç yok"
   },
   "navbar": {
     "home": "Ana Sayfa",
-    "search": "Arama"
+    "search": "Arama",
+    "outfitAssistant": "Kombin Asistanı"
+
   },
   "footer": {
     "menu": "Menü",
@@ -433,7 +412,8 @@
     "others": "Diğerleri",
     "allRights": "Tüm Hakları Saklıdır",
     "pricavyPolicy": "Gizlilik Politikası",
-    "termsConditions": "Şartlar ve Koşullar"
+    "termsConditions": "Şartlar ve Koşullar",
+    "cookies": "Çerez Politikası"
   },
   "filters": {
     "type": {
@@ -614,6 +594,30 @@
   },
   "termsandconditions": {
     "title": "CLOTHY KULLANIM ŞARTLARI VE KOŞULLARI",
+    "acceptableUse": {
+      "title": "1. Kabul Edilebilir Kullanım",
+      "content": "Clothy, kişisel ve ticari olmayan kullanım için tasarlanmıştır. Şiddetle yasaklanmıştır:"
+    },
+    "privacy": {
+      "title": "2. Gizlilik ve Veri Koruma (GDPR)",
+      "content": "Clothy olarak, Genel Veri Koruma Yönetmeliği'ne (GDPR) sıkı bir şekilde uyarız. Sağladığınız kişisel veriler yalnızca size daha iyi bir hizmet sunmak için kullanılır."
+    },
+    "imagesUse": {
+      "title": "3. Görsellerin Kullanımı",
+      "content": "Clothy'ye bir görsel yüklediğinizde, bu görsel sadece benzer kıyafetleri bulmak ve yapay zeka algoritmamızı iyileştirmek için kullanılır."
+    },
+    "liability": {
+      "title": "4. Sorumluluğun Sınırlanması",
+      "content": "Hizmetimizi güvenli ve güvenilir tutmak için elimizden geleni yapmamıza rağmen, Clothy bazı aksaklıklardan sorumlu değildir."
+    },
+    "modifications": {
+      "title": "5. Şartların Değiştirilmesi",
+      "content": "Bu şartlar ve koşulları yeni hukuki veya teknolojik gereksinimlere uyacak şekilde değiştirme hakkımız saklıdır."
+    },
+    "contact": {
+      "title": "6. İletişim ve Destek",
+      "content": "Bu şartlarla ilgili herhangi bir sorunuz, endişeniz veya öneriniz varsa, bizimle iletişime geçmekten çekinmeyin."
+    },
     "lastUpdated": "Son güncelleme: [Tarih]",
     "welcome": "Clothy'ye hoş geldiniz, gelişmiş web kazıma teknikleriyle moda seçeneklerini keşfetmenizi ve karşılaştırmanızı sağlayan, yakında dijital gardırop ve yapay zeka tabanlı sanal deneme kabinleri gibi işlevleri entegre edecek platform. Hizmetlerimize erişerek ve bunları kullanarak, bu Şartlar ve Koşulları ile gelecekteki güncellemeleri açıkça ve koşulsuz olarak kabul etmiş olursunuz. Herhangi bir maddeye katılmıyorsanız, lütfen platformu kullanmaktan kaçının.",
     "section1": {
@@ -680,17 +684,15 @@
     "filters": "Uygulanan Filtreler",
     "noHistory": "Arama geçmişi yok.",
     "error": "Geçmiş alınırken bir hata oluştu.",
-    "title": "Arama Geçmişi"
+    "title": "Arama Geçmişi",
+    "assistantTitle": "Asistan Geçmişi",
+    "noAssistantHistory": "Konuşma geçmişi yok.",
+    "messageCount": "Mesajlar"
   },
   "searchDetail": {
     "title": "Arama Detayları",
     "noResults": "Bu arama için herhangi bir giysi bulunamadı.",
     "error": "Arama yüklenirken bir hata oluştu."
-  },
-  "footer": {
-
-  },
-  "searchcloth": {
   },
   "filtermodal": {
     "title": "Gelişmiş Filtreler",
@@ -840,5 +842,32 @@
       "title": "6. Güncellemeler ve iletişim",
       "text": "Yasal değişiklikler veya site işlevselliği nedeniyle bu çerez politikasını değiştirebiliriz. Düzenli olarak gözden geçirmenizi öneririz. Gizlilik veya çerezlerle ilgili sorularınız için bize ulaşın:\n\nVeri Koruma Yetkilisi\nsupport@clothy.es"
     }
+  },
+
+  "externalPage": {
+    "clothySearch": "Clothy Arama",
+    "buy": "Satın Al",
+    "type": "Tür:",
+    "description": "Açıklama:",
+    "color": "Renk:",
+    "print": "Baskı:",
+    "material": "Malzeme:",
+    "title": "Başlık:"
+  },
+  "cameraModal": {
+    "photo": "Fotoğraf çek",
+    "selectGaleri": "Galeriden seç",
+    "cancel": "İptal"
+  },
+  "cameraCapture": {
+    "cancel": "İptal",
+    "capture": "Yakala"
+  },
+  "outfitassistant": {
+    "ubication": "Konum izni ver",
+    "ubicationExplication": "Hava durumunuza ve bölgenize göre daha doğru kombin önerileri sunmak için konumunuza erişmemiz gerekiyor.",
+    "no": "Hayır, teşekkürler",
+    "permit": "İzin ver",
+    "explicatio": "Kombininizin fotoğrafını çekin, gelişmesi için yardımcı olayım."
   }
 }

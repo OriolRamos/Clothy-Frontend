@@ -1,5 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
-import CameraCaptureModal from '../CameraModal/CameraCaptureModal'; // Assegura't que la ruta és correcta
+import CameraCaptureModal from '../CameraModal/CameraCaptureModal';
+import { useTranslation } from "react-i18next";
+
 
 interface ImageUploadModalProps {
     onFileSelect: (file: File | string) => void;
@@ -10,6 +12,7 @@ const ImageUploadModal: React.FC<ImageUploadModalProps> = ({ onFileSelect, onClo
     const fileInputGallery = useRef<HTMLInputElement | null>(null);
     const fileInputCamera = useRef<HTMLInputElement | null>(null);
     const [showCameraCapture, setShowCameraCapture] = useState(false);
+    const { t } = useTranslation("common");
 
     const [isMobile, setIsMobile] = useState(false);
     useEffect(() => {
@@ -48,19 +51,19 @@ const ImageUploadModal: React.FC<ImageUploadModalProps> = ({ onFileSelect, onClo
                     onClick={handleCameraClick}
                     className="w-full py-3 bg-faqblue text-white rounded-lg mb-2 hover:scale-105 transition transform duration-200"
                 >
-                    Prendre una foto
+                    {t("cameraModal.photo", "Prendre una foto")}
                 </button>
                 <button
                     onClick={handleGalleryClick}
                     className="w-full py-3 bg-faqblue text-white rounded-lg hover:scale-105 transition transform duration-200"
                 >
-                    Seleccionar de la galeria
+                    {t("cameraModal.selectGaleri", "Seleccionar de la galeria")}
                 </button>
                 <button
                     onClick={onClose}
                     className="mt-2 w-full text-center text-red-500 dark:text-red-400"
                 >
-                    Cancel·lar
+                    {t("cameraModal.cancel", "Cancel·lar")}
                 </button>
 
                 <input

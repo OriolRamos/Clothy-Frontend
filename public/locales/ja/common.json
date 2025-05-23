@@ -85,6 +85,10 @@
   },
   "featured": {
     "title": "私たちの実装例。",
+    "ourImplementations": "私たちの実装。",
+    "outfitCreator": "ワードローブの服でコーディネートを作成。",
+    "smartSearch": "画像ベースのスマート洋服検索。",
+    "trendExplorer": "パーソナライズされたトレンドを探索。",
     "headings": [
       "あなたのワードローブから服を使ってアウトフィットを作成。",
       "画像を基にしたスマートな服の検索。",
@@ -337,10 +341,12 @@
   },
   "navbar": {
     "home": "ホーム",
-    "search": "検索"
+    "search": "検索",
+    "outfitAssistant": "コーデアシスタント"
   },
   "footer": {
     "menu": "メニュー",
+    "cookies": "クッキーポリシー",
     "home": "ホーム",
     "aboutus": "私たちについて",
     "FAQ": "よくある質問",
@@ -596,7 +602,10 @@
     "filters": "適用されたフィルター",
     "noHistory": "検索履歴がありません。",
     "error": "履歴の取得中にエラーが発生しました。",
-    "title": "検索履歴"
+    "title": "検索履歴",
+    "assistantTitle": "アシスタント履歴",
+    "noAssistantHistory": "会話履歴はありません。",
+    "messageCount": "メッセージ"
   },
   "searchDetail": {
     "title": "検索の詳細",
@@ -604,7 +613,8 @@
     "error": "検索の読み込み中にエラーが発生しました。"
   },
   "searchcloth": {
-    "start_search": "服を検索"
+    "start_search": "服を検索",
+    "noMoreResults": "これ以上の結果はありません"
   },
   "filtermodal": {
     "title": "高度なフィルター",
@@ -759,5 +769,31 @@
       "title": "6. 更新とお問い合わせ",
       "text": "法令の変更やサイト機能の更新により、このクッキーポリシーを変更する場合があります。定期的な確認をお勧めします。プライバシーやクッキーに関するお問い合わせは以下までご連絡ください：\n\nデータ保護担当者\nsupport@clothy.es"
     }
+  },
+  "externalPage": {
+    "clothySearch": "Clothy検索",
+    "buy": "購入",
+    "type": "タイプ：",
+    "description": "説明：",
+    "color": "色：",
+    "print": "プリント：",
+    "material": "素材：",
+    "title": "タイトル："
+  },
+  "cameraModal": {
+    "photo": "写真を撮る",
+    "selectGaleri": "ギャラリーから選択",
+    "cancel": "キャンセル"
+  },
+  "cameraCapture": {
+    "cancel": "キャンセル",
+    "capture": "キャプチャ"
+  },
+  "outfitassistant": {
+    "ubication": "位置情報を許可",
+    "ubicationExplication": "天候や地域に基づいてより正確なコーデ提案を行うために、位置情報へのアクセスが必要です。",
+    "no": "いいえ、結構です",
+    "permit": "許可する",
+    "explicatio": "コーデの写真を撮っていただければ、改善のお手伝いをします。"
   }
 }

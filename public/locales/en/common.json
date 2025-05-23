@@ -89,7 +89,11 @@
             "Outfit creator with clothes from your wardrobe.",
             "Smart clothing search based on images.",
             "Explore personalized trends."
-        ]
+        ],
+        "ourImplementations": "Our implementations.",
+        "outfitCreator": "Outfit creator with clothes from your wardrobe.",
+        "smartSearch": "Intelligent clothing search based on images.",
+        "trendExplorer": "Explore personalized trends."
     },
     "aboutus": {
         "section_title": "ABOUT US",
@@ -354,6 +358,7 @@
         "title": "Clothing Search",
         "description": "Discover our smart clothing search! Just upload an image and our system will compare it with available options on the Internet.",
         "uploadButton": "Upload Image",
+        "noMoreResults": "No more results",
         "imageAlt": "Uploaded Image",
         "start_search": "Search Clothes",
         "detectedInfoTitle": "Detected Information",
@@ -438,7 +443,8 @@
     },
     "navbar": {
         "home": "Home",
-        "search": "Search"
+        "search": "Search",
+        "outfitAssistant": "Outfit Assistant"
     },
     "footer": {
         "menu": "Menu",
@@ -449,7 +455,8 @@
         "others": "Others",
         "allRights": "All Rights Reserved by",
         "pricavyPolicy": "Privacy Policy",
-        "termsConditions": "Terms & Conditions"
+        "termsConditions": "Terms & Conditions",
+        "cookies": "Cookies Policy"
     },
     "defaultSelect": "Select",
     "disponibleBrans": "Available brands",
@@ -640,7 +647,10 @@
         "filters": "Applied Filters",
         "noHistory": "No search history available.",
         "error": "An error occurred while retrieving the history.",
-        "title": "Search History"
+        "title": "Search History",
+        "assistantTitle": "Assistant History",
+        "noAssistantHistory": "There is no conversation history.",
+        "messageCount": "Messages"
     },
     "searchDetail": {
         "title": "Search Details",
@@ -800,5 +810,31 @@
             "title": "6. Updates and contact",
             "text": "We may modify this cookies policy due to legislative changes or site functionality. We recommend reviewing it periodically. For any questions or requests regarding privacy or cookies, you can contact us at:\n\nData Protection\nsupport@clothy.es"
         }
+    },
+    "externalPage": {
+        "clothySearch": "Clothy Search",
+        "buy": "Buy",
+        "type": "Type:",
+        "description": "Description:",
+        "color": "Color:",
+        "print": "Print:",
+        "material": "Material:",
+        "title": "Title:"
+    },
+    "cameraModal": {
+        "photo": "Take a photo",
+        "selectGaleri": "Select from gallery",
+        "cancel": "Cancel"
+    },
+    "cameraCapture": {
+        "cancel": "Cancel",
+        "capture": "Capture"
+    },
+    "outfitassistant": {
+        "ubication": "Allow location",
+        "ubicationExplication": "To offer you more accurate outfit suggestions based on your weather and region, we need access to your location.",
+        "no": "No, thanks",
+        "permit": "Allow",
+        "explicatio": "Take a photo of your outfit and I'll help you improve it."
     }
 }

@@ -495,7 +495,7 @@ const CercaRoba = () => {
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 justify-center place-items-center mx-auto max-w-[1200px]">
                             {results.map((result) => (
                                 <ImageModel
-                                    key={result.purchase_url}
+                                    key={result.id}
                                     cloth={result}
                                     country={Array.isArray(filtersState.country) ? filtersState.country[0] : filtersState.country}
                                 />
@@ -503,7 +503,7 @@ const CercaRoba = () => {
                         </div>
                         {!hasMoreResults && (
                             <div className="text-center mt-4">
-                                <p className="text-gray-600 dark:text-gray-400">No hi han més resultats</p>
+                                <p className="text-gray-600 dark:text-gray-400">{t("searchcloth.noMoreResults", "No hai mas resultados")}</p>
                             </div>
                         )}
                     </>

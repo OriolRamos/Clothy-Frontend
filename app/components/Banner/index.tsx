@@ -4,16 +4,13 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "next-themes";
+import { useAuth } from "../AuthContext/index";  // Ajusta la ruta
 
 const Banner = () => {
     const router = useRouter();
     const { t, i18n } = useTranslation('common');
     const { resolvedTheme } = useTheme();
-
-    // Espera a que i18n y theme estén listos
-    if (!i18n.isInitialized || !resolvedTheme) {
-        return <div>Loading...</div>;
-    }
+    const { isAuthenticated } = useAuth();
 
     console.log('Idioma actual:', i18n.language);
     console.log('Tema actual:', resolvedTheme);
@@ -47,15 +44,18 @@ const Banner = () => {
                             {t('banner.simpleSustainablePersonalized')}
                         </h2>
                     </div>
-                    <div className="my-7 text-center lg:text-start">
-                        <a
-                            href="/signup"
-                            className="text-xs md:text-sm font-semibold hover:shadow-xl bg-blue dark:bg-blue-800 text-white dark:text-gray-100 py-2 px-4 md:py-3 md:px-10 rounded-full hover:bg-hoblue dark:hover:bg-blue-700"
-                            onClick={handleSignUp}
-                        >
-                            {t('signUp.registerButton')}
-                        </a>
-                    </div>
+                    {/* Sólo mostramos signup si NO está autenticado */}
+                    {!isAuthenticated && (
+                        <div className="my-7 text-center lg:text-start">
+                            <a
+                                href="/signup"
+                                className="text-xs md:text-sm font-semibold hover:shadow-xl bg-blue dark:bg-blue-800 text-white dark:text-gray-100 py-2 px-4 md:py-3 md:px-10 rounded-full hover:bg-hoblue dark:hover:bg-blue-700"
+                                onClick={handleSignUp}
+                            >
+                                {t("signUp.registerButton")}
+                            </a>
+                        </div>
+                    )}
                 </div>
 
                 {/* COLUMN-2 */}
