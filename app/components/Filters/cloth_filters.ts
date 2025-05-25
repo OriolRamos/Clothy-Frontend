@@ -69,7 +69,7 @@ export const filters: { [key: string]: { value: string; translation: string; col
         { value: "beige", translation: "Beige", color: "rgb(245, 245, 220)" },
         { value: "turquoise", translation: "Turquesa", color: "rgb(64, 224, 208)" },
         { value: "lilac", translation: "Lila", color: "rgb(200, 162, 200)" },
-        { value: "gold", translation: "Dorado", color: "rgb(255, 215, 0)" },
+        { value: "gold", translation: "Dorado", color: "#D4AF37" },
         { value: "silver", translation: "Plateado", color: "rgb(192, 192, 192)" },
     ],
     section: [

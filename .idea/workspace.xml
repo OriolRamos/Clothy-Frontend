@@ -7,11 +7,8 @@
     <list default="true" id="da1a1d65-fd44-4e09-8dc4-bd35cbb307fe" name="Changes" comment="Noves traducions i canvis doptimitzacio">
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Filters/RenderFilter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Filters/RenderFilter.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Filters/RenderMultipleFilter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Filters/RenderMultipleFilter.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/search_cloth/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/search_cloth/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Filters/cloth_filters.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Filters/cloth_filters.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/ImageModal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/ImageModal/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,15 +196,7 @@
       <workItem from="1748106068596" duration="331000" />
       <workItem from="1748160018286" duration="4267000" />
       <workItem from="1748164390611" duration="193000" />
-      <workItem from="1748166483202" duration="9079000" />
-    </task>
-    <task id="LOCAL-00004" summary="v2.1">
-      <option name="closed" value="true" />
-      <created>1735379106420</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1735379106420</updated>
+      <workItem from="1748166483202" duration="10667000" />
     </task>
     <task id="LOCAL-00005" summary="v2.1">
       <option name="closed" value="true" />
@@ -593,7 +582,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748188692202</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="Noves traducions i canvis doptimitzacio">
+      <option name="closed" value="true" />
+      <created>1748201018047</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1748201018047</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

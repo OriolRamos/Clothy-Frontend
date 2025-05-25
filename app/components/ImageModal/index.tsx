@@ -105,7 +105,7 @@ const ImageModel: React.FC<ImageModelProps> = ({ cloth, country }) => {
                 {/* ─────────── COLORS AVAILABLE ─────────── */}
                 {availColors.length > 0 && (
                     <div className="absolute bottom-2 right-2 flex items-center space-x-1">
-                        {/* 1) Mostra fins a 3 rodonetetes: */}
+                        {/* 1) Mostra fins a 3 rodonetetes amb tooltip */}
                         {availColors.slice(0, 3).map((col, idx) => {
                             const cfg = filters.color.find(o => o.value === col);
                             return (
@@ -113,6 +113,7 @@ const ImageModel: React.FC<ImageModelProps> = ({ cloth, country }) => {
                                     key={idx}
                                     className="w-4 h-4 rounded-full border border-gray-300"
                                     style={{ backgroundColor: cfg?.color }}
+                                    title={`Conté aquest color: ${cfg?.translation}`}
                                 />
                             );
                         })}
@@ -120,21 +121,21 @@ const ImageModel: React.FC<ImageModelProps> = ({ cloth, country }) => {
                         {/* 2) Si hi ha més colors, posa un “+n” amb tooltip: */}
                         {availColors.length > 3 && (
                             <div className="relative group">
-                                <span className="w-4 h-4 rounded-full flex items-center justify-center text-xs font-semibold bg-gray-200 dark:bg-gray-700">
-                                  +{availColors.length - 3}
-                                </span>
+        <span className="w-4 h-4 rounded-full flex items-center justify-center text-xs font-semibold bg-gray-200 dark:bg-gray-700">
+          +{availColors.length - 3}
+        </span>
                                 <div className="absolute bottom-full mb-2 hidden group-hover:flex flex-col p-2 bg-white dark:bg-gray-800 rounded shadow-lg">
                                     {availColors.slice(3).map((col, i) => {
                                         const cfg = filters.color.find(o => o.value === col)!;
                                         return (
                                             <div key={i} className="flex items-center space-x-2">
-                                            <span
-                                                className="w-3 h-3 rounded-full border"
-                                                style={{ backgroundColor: cfg.color }}
-                                            />
-                                            <span className="text-sm text-gray-800 dark:text-gray-200">
-                                              {cfg.translation}
-                                            </span>
+                <span
+                    className="w-3 h-3 rounded-full border"
+                    style={{ backgroundColor: cfg.color }}
+                />
+                                                <span className="text-sm text-gray-800 dark:text-gray-200">
+                  {cfg.translation}
+                </span>
                                             </div>
                                         );
                                     })}
@@ -144,6 +145,7 @@ const ImageModel: React.FC<ImageModelProps> = ({ cloth, country }) => {
                     </div>
                 )}
                 {/* ───────────────────────────────────────── */}
+
 
             </div>
 
