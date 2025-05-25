@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect, useCallback} from "react";
 import Head from "next/head";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/app/components/AuthContext";
@@ -36,14 +36,13 @@ const HistorialBusquedas = () => {
     const [activeTab, setActiveTab] = useState<0 | 1>(0);
 
     // Carrega historial de cerques
-    const fetchSearchHistory = async () => {
+    const fetchSearchHistory = useCallback(async () => {
         setLoading(true);
         try {
             const apiUrl = process.env.NEXT_PUBLIC_API_URL;
             const res = await fetchWithAuth(`${apiUrl}/profile/history`, { method: "GET" });
             if (!res.ok) throw new Error("Error fetching search history");
             const data: SearchEntry[] = await res.json();
-            // Ordenar per data descendent
             data.sort((a, b) => new Date(b.search_date).getTime() - new Date(a.search_date).getTime());
             setSearchHistory(data);
         } catch (e) {
@@ -52,16 +51,16 @@ const HistorialBusquedas = () => {
         } finally {
             setLoading(false);
         }
-    };
+    }, [fetchWithAuth]);
+
     // Carrega historial de converses
-    const fetchConvHistory = async () => {
+    const fetchConvHistory = useCallback(async () => {
         setLoading(true);
         try {
             const apiUrl = process.env.NEXT_PUBLIC_API_URL;
             const res = await fetchWithAuth(`${apiUrl}/outfit-assistant/conversations`, { method: "GET" });
             if (!res.ok) throw new Error("Error fetching conversation history");
             const data: ConversationEntry[] = await res.json();
-            // Ordenar per data descendent (ja ho fa el backend)
             setConvHistory(data);
         } catch (e) {
             console.error(e);
@@ -69,13 +68,14 @@ const HistorialBusquedas = () => {
         } finally {
             setLoading(false);
         }
-    };
+    }, [fetchWithAuth]);
+
 
     useEffect(() => {
         // Carregar ambdues històries
         fetchSearchHistory();
         fetchConvHistory();
-    }, []);
+    }, [fetchConvHistory, fetchSearchHistory]);
 
     // Handlers per a clic
     const handleClickSearch = (searchId: string) => {

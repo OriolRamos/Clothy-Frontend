@@ -16,4 +16,5 @@ export interface Cloth {
     print?: string;
     in_discount?: boolean;
     favorite?: boolean;
+    available_colors?: string[];
 }

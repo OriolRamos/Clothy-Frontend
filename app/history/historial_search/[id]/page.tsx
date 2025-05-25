@@ -11,7 +11,7 @@ import { Filters, defaultFilters } from "@/app/components/Modals/Filter";
 
 const SearchDetailPage = () => {
     const {t} = useTranslation("common");
-    const {id} = useParams(); // Obté l'id de la URL
+    const { id } = useParams() as { id: string };
     const {fetchWithAuth} = useAuth();
     const [results, setResults] = useState<Cloth[]>([]);
     const [filtersState, setFiltersState] = useState<Filters>(defaultFilters);
@@ -25,12 +25,10 @@ const SearchDetailPage = () => {
     const loadingRef = useRef(false);
 
     // Funció per carregar els resultats de la cerca per l'id
-    const fetchSearchDetails = async (pageToLoad = 1) => {
+    const fetchSearchDetails = useCallback(async (pageToLoad = 1) => {
         setLoading(true);
         try {
             const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-            // Es suposa que aquest endpoint rep l'id de la cerca i retorna les robes associades,
-            // a més de detalls com filtres aplicats, número de pàgina, etc.
             const response = await fetchWithAuth(`${apiUrl}/profile/search_history/${id}?page=${pageToLoad}`, {
                 method: "GET",
             });
@@ -39,7 +37,6 @@ const SearchDetailPage = () => {
                 if (data.results && data.results.length > 0) {
                     if (pageToLoad === 1) {
                         setResults(data.results);
-                        // Actualitza els filtres de la cerca si són enviats per l'endpoint
                         setFiltersState((prev) => ({...prev, ...data.filters}));
                     } else {
                         setResults((prevResults) => [...prevResults, ...data.results]);
@@ -60,11 +57,12 @@ const SearchDetailPage = () => {
             setLoading(false);
             loadingRef.current = false;
         }
-    };
+    }, [fetchWithAuth, id]);
+
 
     useEffect(() => {
         fetchSearchDetails();
-    }, [id]);
+    }, [fetchSearchDetails, id]);
 
     // Funció per carregar més resultats al fer scroll (si escau)
     const loadMoreResults = useCallback(async () => {

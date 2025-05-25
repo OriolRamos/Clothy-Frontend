@@ -17,7 +17,31 @@ const ExternalPageModal: React.FC<ExternalPageModalProps> = ({ cloth, country, i
     const { fetchWithAuth } = useAuth();
     const { t } = useTranslation("common");
     const [isHistoryOpen, setIsHistoryOpen] = useState(false);
+    const [imgLoading, setImgLoading] = useState(true);
 
+    useEffect(() => {
+        const logView = async () => {
+            if (isOpen && cloth?.id) {
+                try {
+                    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+                    const response = await fetchWithAuth(`${apiUrl}/search/cloth/popularity`, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ cloth_id: cloth.id, score: 3 }),
+                    });
+                    if (response.ok) {
+                        console.log("👀 Popularitat de vista registrada (score 3)");
+                    } else {
+                        console.error("❌ Error registrant la vista de la peça");
+                    }
+                } catch (err) {
+                    console.error("❌ Error al registrar vista:", err);
+                }
+            }
+        };
+
+        logView();
+    }, [isOpen, cloth, fetchWithAuth]);
 
     useEffect(() => {
         document.body.style.overflow = isOpen ? "hidden" : "auto";
@@ -38,17 +62,18 @@ const ExternalPageModal: React.FC<ExternalPageModalProps> = ({ cloth, country, i
     const setRedirectingLog = async (cloth: Cloth) => {
         try {
             const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-            const response = await fetchWithAuth(`${apiUrl}/search/redirecting/log`, {
+            const response = await fetchWithAuth(`${apiUrl}/search/cloth/popularity`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ cloth }),
+                body: JSON.stringify({ cloth_id: cloth.id, score: 7 }),
             });
-            if (response.ok) console.log("Log de reenviament correcte!");
-            else console.error("Error en el log de reenviament.");
+            if (response.ok) console.log("✅ Popularitat de compra registrada (score 7)");
+            else console.error("❌ Error registrant la popularitat de compra");
         } catch (error) {
-            console.error("Error gestionant el log:", error);
+            console.error("❌ Error a la crida de popularitat:", error);
         }
     };
+
 
     return (
         <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
@@ -64,15 +89,28 @@ const ExternalPageModal: React.FC<ExternalPageModalProps> = ({ cloth, country, i
                 {/* Contingut principal */}
                 <div className="mt-16 flex flex-col lg:flex-row flex-grow overflow-auto">
                     {/* Imatge del producte */}
-                    <div className="w-full lg:w-1/2 flex justify-end items-start">
+                    {imgLoading && (
+                        <div className="absolute inset-0 flex items-center justify-center z-20">
+                            <div className="w-16 h-16 border-4 border-black dark:border-white border-t-blue-500 rounded-full animate-spin"></div>
+                        </div>
+                    )}
+                    <div className="relative w-full lg:w-1/2 aspect-[3/4] min-h-[400px]">
                         <Image
-                            src={cloth.image_url}
-                            alt={cloth.brand}
-                            width={500}
-                            height={500}
-                            className="w-full h-full object-contain"
+                            src={cloth.image_url || "/images/image-not-found.png"}
+                            alt={cloth.title || "No Image"}
+                            fill
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 300px"
+                            className="object-contain object-top rounded-lg"
+                            loading="lazy"
+                            onLoad={() => setImgLoading(false)}
+                            onError={({ currentTarget }) => {
+                                setImgLoading(false);
+                                currentTarget.src = "/images/image-not-found.png";
+                            }}
                         />
                     </div>
+
+
 
                     {/* Informació del producte */}
                     <div className="w-full lg:w-1/2 flex flex-col p-6 bg-white dark:bg-gray-800 text-black dark:text-gray-100">
@@ -96,9 +134,20 @@ const ExternalPageModal: React.FC<ExternalPageModalProps> = ({ cloth, country, i
                             </p>
                             {cloth.color && (
                                 <p className="text-lg">
-                                    <span className="font-semibold">{t("externalPage.color", "Color:")}</span> {cloth.color}
+                                    <span className="font-semibold">
+                                      {t("externalPage.colorLabel", "Color:")}
+                                    </span>{" "}
+                                    {/*
+                                      fem el lookup a externalPage.color.<valor>,
+                                      i caiguem al fallback (el mateix valor) si no existeix.
+                                    */}
+                                    {t(
+                                        `filters.color.${cloth.color.toLowerCase()}`,
+                                        cloth.color
+                                    )}
                                 </p>
                             )}
+
                             {cloth.print && (
                                 <p className="text-lg">
                                     <span className="font-semibold">{t("externalPage.print", "Print:")}</span> {cloth.print}
@@ -136,10 +185,10 @@ const ExternalPageModal: React.FC<ExternalPageModalProps> = ({ cloth, country, i
                         </div>
 
                         {/* Botons */}
-                        <div className="mt-auto text-right space-x-2">
+                        <div className="mt-auto flex flex-wrap justify-end gap-2">
                             <button
                                 onClick={() => setIsHistoryOpen(true)}
-                                className="px-6 py-3 bg-gray-700 dark:bg-gray-300 text-white dark:text-black rounded-lg shadow-md font-semibold hover:scale-105 transition-transform duration-200"
+                                className="px-4 py-2 text-sm sm:text-base bg-gray-700 dark:bg-gray-300 text-white dark:text-black rounded-lg shadow-md font-semibold hover:scale-105 transition-transform duration-200"
                             >
                                 {t("externalPage.history", "Historial Preus")}
                             </button>
@@ -148,11 +197,12 @@ const ExternalPageModal: React.FC<ExternalPageModalProps> = ({ cloth, country, i
                                 href={cloth.purchase_url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="px-6 py-3 bg-black dark:bg-gray-900 text-white rounded-lg shadow-md font-semibold hover:scale-105 transition-transform duration-200"
+                                className="px-4 py-2 text-sm sm:text-base bg-black dark:bg-gray-900 text-white rounded-lg shadow-md font-semibold hover:scale-105 transition-transform duration-200"
                             >
                                 {t("externalPage.buy", "Comprar")}
                             </a>
                         </div>
+
                     </div>
                 </div>
                 {/* Historial de preus */}

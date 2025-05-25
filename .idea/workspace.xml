@@ -4,25 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da1a1d65-fd44-4e09-8dc4-bd35cbb307fe" name="Changes" comment="v0.0.10(Pre producction)">
-      <change afterPath="$PROJECT_DIR$/app/cookies/page.tsx" afterDir="false" />
+    <list default="true" id="da1a1d65-fd44-4e09-8dc4-bd35cbb307fe" name="Changes" comment="Noves traducions i canvis doptimitzacio">
+      <change afterPath="$PROJECT_DIR$/pages/api/image-proxy.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/logo.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Footer/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Footer/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/locales/ar/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/ar/common.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/locales/bn/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/bn/common.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/locales/ca/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/ca/common.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/locales/ch/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/ch/common.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/locales/de/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/de/common.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/locales/en/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/en/common.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/locales/es/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/es/common.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/locales/fr/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/fr/common.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/locales/hi/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/hi/common.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/locales/ja/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/ja/common.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/locales/ko/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/ko/common.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/locales/pt/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/pt/common.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/locales/ru/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/ru/common.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/locales/tr/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/tr/common.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/CameraModal/CameraCaptureModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/CameraModal/CameraCaptureModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Filters/FilterModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Filters/FilterModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/HistoryPriceModal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/HistoryPriceModal/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/ImageModal/ExternalPageModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/ImageModal/ExternalPageModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/ImageModal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/ImageModal/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Modals/Cloth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Modals/Cloth.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/history/historial_outfit_assistant/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/history/historial_outfit_assistant/[id]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/history/historial_search/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/history/historial_search/[id]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/history/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/history/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/outfit-assistant/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/outfit-assistant/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/profile/favorites/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/profile/favorites/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/search_cloth/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/search_cloth/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +41,22 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;OriolRamos&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/OriolRamos/Clothy-Frontend.git&quot;,
+    &quot;accountId&quot;: &quot;033a12a4-22c2-415a-92be-ef637d4fdb2b&quot;
+  }
+}</component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -48,36 +65,39 @@
   &quot;associatedIndex&quot;: 6
 }</component>
   <component name="ProjectId" id="2qhpftJirO05VgkVnSdRf0auDhF" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Usuario/Desktop/University/Clothy-Frontend/app/images/brand&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.postbuild.executor&quot;: &quot;Run&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Usuario\\Desktop\\University\\Clothy-Frontend\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "js.debugger.nextJs.config.created.client": "true",
+    "js.debugger.nextJs.config.created.server": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/oriol/Desktop/Clothy/Clothy-Frontend/public",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.postbuild.executor": "Run",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "C:\\Users\\oriol\\Desktop\\Clothy\\Clothy-Frontend\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\oriol\Desktop\Clothy\Clothy-Frontend\public" />
       <recent name="C:\Users\Usuario\Desktop\University\Clothy-Frontend\app\images\brand" />
       <recent name="C:\Users\Usuario\Desktop\University\Clothy-Frontend\public\locales\es" />
       <recent name="C:\Users\Usuario\Desktop\University\Clothy-Frontend\public\locales\en" />
       <recent name="C:\Users\Usuario\Desktop\University\Clothy-Frontend\public" />
-      <recent name="C:\Users\Usuario\Desktop\University\Clothy-Frontend\public\images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Usuario\Desktop\University\Clothy-Frontend\app\history\historial_search" />
@@ -87,7 +107,10 @@
       <recent name="C:\Users\Usuario\Desktop\University\Clothy-Frontend\public\images" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="npm.Next.js: server-side">
+    <configuration name="Next.js: debug client-side" type="JavascriptDebugType" uri="http://localhost:3000/">
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="Clothy-Frontend" />
       <option name="ENV_FILES" value="" />
@@ -111,6 +134,16 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="Next.js: server-side" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="postbuild" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -130,7 +163,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-17.0.10-corretto-17.0.10-4caba194b151-5cd809f4" />
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.25410.129" />
+        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-IU-251.25410.129" />
       </set>
     </attachedChunks>
   </component>
@@ -165,22 +199,19 @@
       <workItem from="1744727903587" duration="43334000" />
       <workItem from="1745874767847" duration="4725000" />
       <workItem from="1746266861450" duration="4379000" />
-    </task>
-    <task id="LOCAL-00001" summary="v2.0">
-      <option name="closed" value="true" />
-      <created>1735378005970</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1735378005970</updated>
-    </task>
-    <task id="LOCAL-00002" summary="v2.0">
-      <option name="closed" value="true" />
-      <created>1735378052715</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1735378052715</updated>
+      <workItem from="1747079844070" duration="225000" />
+      <workItem from="1747156572767" duration="2119000" />
+      <workItem from="1747160570456" duration="9272000" />
+      <workItem from="1747555451543" duration="1108000" />
+      <workItem from="1747600806146" duration="2702000" />
+      <workItem from="1747674853158" duration="1380000" />
+      <workItem from="1747751995509" duration="27136000" />
+      <workItem from="1748006399902" duration="9765000" />
+      <workItem from="1748082742255" duration="5048000" />
+      <workItem from="1748106068596" duration="331000" />
+      <workItem from="1748160018286" duration="4267000" />
+      <workItem from="1748164390611" duration="193000" />
+      <workItem from="1748166483202" duration="3795000" />
     </task>
     <task id="LOCAL-00003" summary="v2.1">
       <option name="closed" value="true" />
@@ -550,16 +581,37 @@
       <option name="project" value="LOCAL" />
       <updated>1746032133109</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="canvis en redirecio de loging">
+      <option name="closed" value="true" />
+      <created>1747331227793</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1747331227793</updated>
+    </task>
+    <task id="LOCAL-00050" summary="Canvis logo reds socials">
+      <option name="closed" value="true" />
+      <created>1747556561465</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1747556561465</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Noves traducions i canvis doptimitzacio">
+      <option name="closed" value="true" />
+      <created>1747995786205</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1747995786207</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="v2.0" />
-    <MESSAGE value="v2.1" />
-    <MESSAGE value="v2.2" />
     <MESSAGE value="v2.3" />
     <MESSAGE value="v2.4" />
     <MESSAGE value="v2.5" />
@@ -582,6 +634,9 @@
     <MESSAGE value="v0.0.8" />
     <MESSAGE value="v0.0.9(Pre producction)" />
     <MESSAGE value="v0.0.10(Pre producction)" />
-    <option name="LAST_COMMIT_MESSAGE" value="v0.0.10(Pre producction)" />
+    <MESSAGE value="canvis en redirecio de loging" />
+    <MESSAGE value="Canvis logo reds socials" />
+    <MESSAGE value="Noves traducions i canvis doptimitzacio" />
+    <option name="LAST_COMMIT_MESSAGE" value="Noves traducions i canvis doptimitzacio" />
   </component>
 </project>

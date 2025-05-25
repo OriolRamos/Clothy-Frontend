@@ -7,14 +7,16 @@ import OutfitAssistantPage from '@/app/outfit-assistant/page';
 
 export default function ConversationPage() {
     const params = useParams();
-    // next/navigation can return string or string[] for params
-    console.log("dataa", params);
-    const rawId = params.id;
-    // Ensure it's a single string or undefined
+
+    // next/navigation pot retornar null
+    if (!params || typeof params !== 'object' || !('id' in params)) {
+        return <div><p>No s&apos;ha trobat l&apos;element</p></div>;
+    }
+
+    const rawId = (params as { id: string | string[] }).id;
     const conversationId = Array.isArray(rawId) ? rawId[0] : rawId;
 
     return (
-         <OutfitAssistantPage searchParams={{ initialConversationId: conversationId ?? undefined }}
-      />
+        <OutfitAssistantPage searchParams={{ initialConversationId: conversationId ?? undefined }} />
     );
 }

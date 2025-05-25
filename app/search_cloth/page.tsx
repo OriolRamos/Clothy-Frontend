@@ -2,18 +2,33 @@
 
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { useAuth } from "@/app/components/AuthContext";
-import ImageModel from "../components/ImageModal/index";
 import { filters } from "../components/Filters/cloth_filters";
-import FilterModal from "../components/Filters/FilterModal";
 import { useTranslation } from "react-i18next";
 import ErrorModal from "../components/Notifications/ErrorModal";
 import { Cloth } from "../components/Modals/Cloth";
 import { Filters, defaultFilters } from "../components/Modals/Filter";
 import RenderFilter from "../components/Filters/RenderFilter";
-import ImageUploadModal from "../components/CameraModal/index";
 import RenderMultipleFilter from "../components/Filters/RenderMultipleFilter";
 import Head from "next/head";
-import Footer from "@/app/components/Footer";
+import Footer from "@/app/components/Footer"
+import debounce from "lodash.debounce";
+
+import dynamic from "next/dynamic";
+
+const FilterModal = dynamic(
+    () => import("../components/Filters/FilterModal"),
+    { ssr: false }
+);
+
+const ImageUploadModal = dynamic(
+    () => import("../components/CameraModal/index"),
+    { ssr: false }
+);
+
+const ImageModel = dynamic(
+    () => import("../components/ImageModal/index"),
+    { ssr: false }
+);
 
 
 const CercaRoba = () => {
@@ -34,6 +49,49 @@ const CercaRoba = () => {
     const [errorModalOpen, setErrorModalOpen] = useState(false); // Estat per al modal d'error
     const [searchInitiated, setSearchInitiated] = useState(false);
     const loadingRef = useRef(false);
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
+
+    const fetchResults = useCallback(
+        debounce(async (dynFilters) => {
+            setLoading(true);
+            setPage(1);
+            setHasMoreResults(true);
+            try {
+                const res = await fetchWithAuth(`${apiUrl}/search/results/filter`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ ...dynFilters, page: 1 }),
+                });
+                if (res.ok) {
+                    const { results: items } = await res.json();
+                    setResults(items);
+                    setHasMoreResults(items.length > 0);
+                    setPage(2);
+                }
+            } catch (err) {
+                console.error(err);
+            } finally {
+                setLoading(false);
+            }
+        }, 300),
+        [fetchWithAuth]
+    );
+
+    useEffect(() => {
+        setSearchInitiated(true);
+        const { minPrice: rawMin, maxPrice: rawMax, ...other } = filtersState;
+
+        const minPrice = rawMin ? Number(rawMin) : undefined;
+        const maxPrice = rawMax ? Number(rawMax) : undefined;
+
+        fetchResults({
+            ...other,
+            ...(minPrice !== undefined && { minPrice }),
+            ...(maxPrice !== undefined && { maxPrice }),
+        });
+    }, [filtersState, fetchResults]);
+
 
     // Funcions "wrapper" per als filtres únics (per RenderFilter)
     const getUniqueFilters = (): Record<string, string> => {
@@ -74,84 +132,92 @@ const CercaRoba = () => {
     };
 
 
-    // Funció per carregar més resultats fent una crida al backend
     const loadMoreResults = useCallback(async () => {
-        // No permetem carregar si encara no s'ha iniciat la cerca,
-        // si ja s'està carregant o si no hi ha més resultats.
+        // 1) Si encara no s'ha iniciat, ja s'està fent una crida, o no queden més, sortim
         if (!searchInitiated || loadingRef.current || !hasMoreResults) return;
         loadingRef.current = true;
         setLoading(true);
+
         try {
-            const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+            // 2) Cridem només la pàgina, no cal reenviar filtres
             const response = await fetchWithAuth(`${apiUrl}/search/results/reload`, {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                // Enviem els filtres i la pàgina actual que es troba a l'estat
-                body: JSON.stringify({}),
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ page }),
             });
-            if (response.ok) {
-                const data = await response.json();
 
-                if (data.results && data.results.length > 0) {
-                    // Afegim els nous resultats al final de la cua existent
-                    setResults((prevResults) => [...prevResults, ...data.results]);
-                    // Incrementem la pàgina per a la següent crida
-                    setPage((prevPage) => prevPage + 1);
-                    // Si hem rebut resultats, encara hi pot haver més
-                    setHasMoreResults(true);
-                } else {
-                    // Si la resposta no conté resultats, desactivem noves crides
-                    setHasMoreResults(false);
+            if (!response.ok) {
+                console.error("Error al carregar més resultats.");
+                setHasMoreResults(false);
+                return;
+            }
+
+            const data = await response.json();
+            // 3) El backend retorna data.results (array) i opcionalment data.totalCount
+            const newItems = data.results ?? [];
+
+            if (newItems.length > 0) {
+                // 4) Afegim nous resultats i actualitzem la pàgina
+                setResults(prev => [...prev, ...newItems]);
+                setPage(prev => prev + 1);
+
+                // 5) Si tenim totalCount, comprovem si hem arribat al final
+                if (typeof data.totalCount === "number") {
+                    const loaded = (page) * 30 + newItems.length;
+                    if (loaded >= data.totalCount) {
+                        setHasMoreResults(false);
+                    }
                 }
             } else {
+                // 6) No hi ha més resultats
                 setHasMoreResults(false);
-                console.error("Error al carregar més resultats.");
             }
-        } catch (error) {
-            console.error(error);
-        } finally {
-            setLoading(false);
-            loadingRef.current = false;
-        }
-    }, [searchInitiated, hasMoreResults, page, filtersState, fetchWithAuth]);
 
-    // Afegim un event listener de scroll que només dispara la càrrega si la cerca s'ha iniciat
+        } catch (error) {
+            console.error("Error en loadMoreResults:", error);
+            setHasMoreResults(false);
+        } finally {
+            loadingRef.current = false;
+            setLoading(false);
+        }
+    }, [searchInitiated, hasMoreResults, fetchWithAuth, apiUrl, page]);
+
+// Scroll infinit amb comments
     useEffect(() => {
         const onScroll = () => {
             if (!searchInitiated) return;
-            // Quan arribem a 100px del final de la pàgina
-            if ((window.innerHeight + window.scrollY >= document.documentElement.offsetHeight - 100) && hasMoreResults) {
+            // Quan estiguem a 100px del final, disparem loadMoreResults
+            if (window.innerHeight + window.scrollY >= document.documentElement.offsetHeight - 100
+                && hasMoreResults) {
                 loadMoreResults();
             }
         };
-
         window.addEventListener("scroll", onScroll);
         return () => window.removeEventListener("scroll", onScroll);
-    }, [loadMoreResults, searchInitiated]);
+    }, [loadMoreResults, searchInitiated, hasMoreResults]);
 
+    // 1. Estat específic per country
+    const [country, setCountry] = useState<string | null>(null);
+
+// 2. Al mount: només guardem country, no canviem encara filtersState
     useEffect(() => {
         const fetchCountry = async () => {
-            try {
-                const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-                const response = await fetchWithAuth(`${apiUrl}/users/profile/getCountry`, {
-                    method: "GET",
-                });
-                if (response.ok) {
-                    const data = await response.json();
-                    if (data.country) {
-                        setFiltersState((prev) => ({ ...prev, country: data.country }));
-                    }
-                } else {
-                    console.error("Error obtenint el country del perfil.");
-                }
-            } catch (error) {
-                console.error("Error fetching country:", error);
+            const res = await fetchWithAuth(`${apiUrl}/users/profile/getCountry`, { method: "GET" });
+            if (res.ok) {
+                const data = await res.json();
+                if (data.country) setCountry(data.country);
             }
         };
         fetchCountry();
-    }, [fetchWithAuth]);
+    }, [apiUrl, fetchWithAuth]);
+
+// 3. Quan country canvia de null a un valor, aleshores sí actualitzem filtersState
+    useEffect(() => {
+        if (country !== null) {
+            setFiltersState(prev => ({ ...prev, country }));
+        }
+    }, [country]);
+
 
     // Funció per gestionar la pujada de la imatge, tant des de la galeria com per càmera.
     const uploadImageFile = async (file: File) => {
@@ -172,7 +238,6 @@ const CercaRoba = () => {
         try {
             const formData = new FormData();
             formData.append("image", file);
-            const apiUrl = process.env.NEXT_PUBLIC_API_URL;
             const response = await fetchWithAuth(`${apiUrl}/search/image`, {
                 method: "POST",
                 body: formData,
@@ -231,82 +296,6 @@ const CercaRoba = () => {
         } else {
             // Opcional: gestiona el cas on el valor és una cadena si cal.
             console.warn("S'ha rebut una cadena, però s'esperava un File.");
-        }
-    };
-
-
-    // Funció de cerca: reinicialitza els resultats i carrega la primera pàgina
-    const handleSearch = async () => {
-        console.log("Info", filtersState);
-
-        // Comprovem que els filtres obligatoris estiguin presents en els filtres únics
-        const unique = getUniqueFilters();
-        if (!unique.type || !filtersState.brand || !unique.section) {
-            console.error("Error: Els filtres 'type', 'brand' i 'section' són obligatoris.");
-            setErrorModalOpen(true);
-            setLoading(false);
-            return;
-        }
-
-        // Marquem que la cerca s'ha iniciat
-        setSearchInitiated(true);
-        setLoading(true);
-        setSearching(true);
-        setResults([]); // Neteja els resultats previs
-        setPage(1);
-        setHasMoreResults(true);
-
-        try {
-            const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-            const combinedFilters = { ...getUniqueFilters(), ...filtersState };
-            console.log("Dataa", combinedFilters);
-            const response = await fetchWithAuth(`${apiUrl}/search/results/filter`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(combinedFilters),
-            });
-
-            if (response.ok) {
-                const data = await response.json();
-                console.log("Data", data);
-
-                // Filtra i ordena els resultats segons els filtres de preu i descomptes
-                const filteredResults = data.results.filter((item: Cloth) => {
-                    const rawMin = filtersState.minPrice;
-                    const rawMax = filtersState.maxPrice;
-                    const productPrice = item.discount_price ?? item.price;
-
-                    const minPrice = rawMin ? parseFloat(Array.isArray(rawMin) ? rawMin[0] : rawMin) : 0;
-                    const maxPrice = rawMax ? parseFloat(Array.isArray(rawMax) ? rawMax[0] : rawMax) : Infinity;
-                    const isWithinPriceRange = productPrice >= minPrice && productPrice <= maxPrice;
-                    const matchesOfferFilter = filtersState.onlyOfferts ? item.in_discount === true : true;
-                    return isWithinPriceRange && matchesOfferFilter;
-                });
-
-                let sortedResults = filteredResults;
-                if (filtersState.orderMenorMajor) {
-                    sortedResults = filteredResults.sort(
-                        (a: Cloth, b: Cloth) => (a.discount_price ?? a.price) - (b.discount_price ?? b.price)
-                    );
-                } else if (filtersState.orderMajorMenor) {
-                    sortedResults = filteredResults.sort(
-                        (a: Cloth, b: Cloth) => (b.discount_price ?? b.price) - (a.discount_price ?? a.price)
-                    );
-                }
-
-                setResults(sortedResults);
-                // Incrementem la pàgina per la següent càrrega (ja que s'ha carregat la pàgina 1)
-                setPage(2);
-                setHasMoreResults(sortedResults.length > 0);
-            } else {
-                throw new Error("Error en la cerca de roba.");
-            }
-        } catch (error) {
-            console.error(error);
-        } finally {
-            setLoading(false);
         }
     };
 
@@ -412,14 +401,6 @@ const CercaRoba = () => {
                             {t("searchcloth.more_filters")}
                             <span className="ml-2 text-sm transform transition-transform duration-200">▼</span>
                         </button>
-
-                        {/* Botó de cerca */}
-                        <button
-                            onClick={handleSearch}
-                            className="block relative cursor-pointer text-center py-3 px-6 text-white bg-faqblue dark:bg-faqblue/90 rounded-lg font-medium shadow-lg hover:scale-105 hover:bg-faqblue/90 hover:backdrop-blur-sm hover:opacity-95 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-btnblue focus:ring-offset-2 active:bg-hoblue transition transform duration-200"
-                        >
-                            {t("searchcloth.search")}
-                        </button>
                     </div>
 
                     {/* Vista per a pantalles petites */}
@@ -481,33 +462,35 @@ const CercaRoba = () => {
                     filters={filters}
                     filtersState={filtersState}
                     setFiltersState={setFiltersState}
-                    handleSearch={handleSearch}
                 />
 
-                {loading && (
-                    <div className="fixed inset-0 flex justify-center items-center bg-white bg-opacity-70 z-50">
-                        <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
-                    </div>
-                )}
-
-                {results.length > 0 && (
-                    <>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 justify-center place-items-center mx-auto max-w-[1200px]">
-                            {results.map((result) => (
-                                <ImageModel
-                                    key={result.id}
-                                    cloth={result}
-                                    country={Array.isArray(filtersState.country) ? filtersState.country[0] : filtersState.country}
-                                />
-                            ))}
+                <div className="relative">
+                    {loading && (
+                        <div className="absolute inset-0 bg-white bg-opacity-70 flex items-center justify-center z-10">
+                            <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
                         </div>
-                        {!hasMoreResults && (
-                            <div className="text-center mt-4">
-                                <p className="text-gray-600 dark:text-gray-400">{t("searchcloth.noMoreResults", "No hai mas resultados")}</p>
+                    )}
+                    {results.length > 0 && (
+                        <>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 justify-center place-items-center mx-auto max-w-[1200px]">
+                                {results.map((result) => (
+                                    <ImageModel
+                                        key={result.id}
+                                        cloth={result}
+                                        country={Array.isArray(filtersState.country) ? filtersState.country[0] : filtersState.country}
+                                    />
+                                ))}
                             </div>
-                        )}
-                    </>
-                )}
+                            {!hasMoreResults && (
+                                <div className="text-center mt-4">
+                                    <p className="text-gray-600 dark:text-gray-400">{t("searchcloth.noMoreResults", "No hai mas resultados")}</p>
+                                </div>
+                            )}
+                        </>
+                    )}
+                </div>
+
+
             </div>
             <Footer />
         </>

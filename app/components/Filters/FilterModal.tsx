@@ -13,7 +13,6 @@ interface FilterModalProps {
     filters: { [key: string]: any }; // Pots ajustar segons les estructures concretes de filtres
     filtersState: { [key: string]: any }; // Ajusta els tipus segons el que s'espera de 'filtersState'
     setFiltersState: React.Dispatch<React.SetStateAction<any>>; // tipus per actualitzar 'filtersState'
-    handleSearch: () => void;
 
 }
 
@@ -28,7 +27,7 @@ interface FiltersState {
 }
 
 
-const FilterModal: React.FC<FilterModalProps> = ({ isOpen, onClose, filters, filtersState, setFiltersState, handleSearch }) => {
+const FilterModal: React.FC<FilterModalProps> = ({ isOpen, onClose, filters, filtersState, setFiltersState }) => {
     const [expandedFilter, setExpandedFilter] = useState<string>("");
     const [minPrice, setMinPrice] = useState<number>(filtersState.minPrice || 0);
     const [maxPrice, setMaxPrice] = useState<number>(filtersState.maxPrice || 1000);
@@ -193,16 +192,6 @@ return (
                         className="py-3 px-6 text-black dark:text-gray-100 bg-gray-200 dark:bg-gray-700 rounded-lg font-medium shadow-lg hover:scale-105 hover:bg-gray-300 dark:hover:bg-gray-600 transition transform duration-200"
                     >
                         {t("filtermodal.reset", "Reset")}
-                    </button>
-
-                    <button
-                        onClick={() => {
-                            handleSearch();
-                            onClose();
-                        }}
-                        className="py-3 px-6 text-white bg-faqblue dark:bg-blue-700 rounded-lg font-medium shadow-lg hover:scale-105 hover:bg-faqblue/90 dark:hover:bg-blue-600 transition transform duration-200"
-                    >
-                        {t("filtermodal.search", "Buscar")}
                     </button>
                 </div>
             </div>

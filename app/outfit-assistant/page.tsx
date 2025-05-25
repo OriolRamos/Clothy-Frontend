@@ -1,13 +1,12 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, {useState, useRef, useEffect} from "react";
 import Head from "next/head";
 import ImageUploadModal from "../components/CameraModal/index";
-import { useAuth } from "@/app/components/AuthContext";
-import { Camera, Send, Sun, Cloud, CloudRain, CloudLightning, CloudSnow, CloudDrizzle } from "lucide-react";
+import {useAuth} from "@/app/components/AuthContext";
+import {Camera, Send, Sun, Cloud, CloudRain, CloudLightning, CloudSnow, CloudDrizzle} from "lucide-react";
 import Image from "next/image";
-import { useTranslation } from "react-i18next";
-
+import {useTranslation} from "react-i18next";
 
 
 interface Message {
@@ -25,7 +24,7 @@ export default function OutfitAssistantPage({
                                                 searchParams,
                                             }: { searchParams: OutfitAssistantPageSearchParams }) {
     const initialConversationId = searchParams.initialConversationId;
-    const { fetchWithAuth } = useAuth();
+    const {fetchWithAuth} = useAuth();
     const [messages, setMessages] = useState<Message[]>([]);
     const [inputText, setInputText] = useState("");
     const [imageFile, setImageFile] = useState<File | null>(null);
@@ -37,7 +36,7 @@ export default function OutfitAssistantPage({
     const [conversationId, setConversationId] = useState<string | null>(null);
     const messageEndRef = useRef<HTMLDivElement>(null);
     const [weather, setWeather] = useState<any>(null);
-    const { t } = useTranslation('common');
+    const {t} = useTranslation('common');
 
 
     // Load existing messages if initialConversationId provided
@@ -46,18 +45,18 @@ export default function OutfitAssistantPage({
             if (!searchParams.initialConversationId) return;
             try {
                 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-                const res = await fetchWithAuth(`${apiUrl}/outfit-assistant/conversations/${initialConversationId}`, { method: "GET" });
+                const res = await fetchWithAuth(`${apiUrl}/outfit-assistant/conversations/${initialConversationId}`, {method: "GET"});
                 if (!res.ok) throw new Error("Failed to fetch conversation history");
                 const data: { id: string; role: string; content: string; created_at: string }[] = await res.json();
                 // Map to Message and set
-                const msgs: Message[] = data.map((m, idx) => ({ id: idx, content: m.content, role: m.role as any }));
+                const msgs: Message[] = data.map((m, idx) => ({id: idx, content: m.content, role: m.role as any}));
                 setMessages(msgs);
             } catch (e) {
                 console.error(e);
             }
         };
         loadHistory();
-    }, [searchParams.initialConversationId, fetchWithAuth]);
+    }, [searchParams.initialConversationId, fetchWithAuth, initialConversationId]);
 
     // Efecto que trae el clima de Met.no
     useEffect(() => {
@@ -66,7 +65,7 @@ export default function OutfitAssistantPage({
             try {
                 const url = `https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=${location.latitude}&lon=${location.longitude}`;
                 const res = await fetch(url, {
-                    headers: { "User-Agent": "OutfitAssistant/1.0 (https://www.clothy.es; ceo@clothy.es)" }
+                    headers: {"User-Agent": "OutfitAssistant/1.0 (https://www.clothy.es; ceo@clothy.es)"}
                 });
                 if (!res.ok) throw new Error(`Status ${res.status}`);
                 const json = await res.json();
@@ -78,15 +77,15 @@ export default function OutfitAssistantPage({
     }, [location]);
 
     useEffect(() => {
-        messageEndRef.current?.scrollIntoView({ behavior: "smooth" });
+        messageEndRef.current?.scrollIntoView({behavior: "smooth"});
     }, [messages]);
 
     const requestLocation = () => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
-                (pos) => setLocation({ latitude: pos.coords.latitude, longitude: pos.coords.longitude }),
+                (pos) => setLocation({latitude: pos.coords.latitude, longitude: pos.coords.longitude}),
                 (err) => console.warn("Geolocation error:", err.message),
-                { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 }
+                {enableHighAccuracy: true, timeout: 10000, maximumAge: 60000}
             );
         } else {
             console.warn("Geolocation not supported.");
@@ -100,9 +99,9 @@ export default function OutfitAssistantPage({
             return;
         }
         navigator.geolocation.getCurrentPosition(
-            pos => setLocation({ latitude: pos.coords.latitude, longitude: pos.coords.longitude }),
+            pos => setLocation({latitude: pos.coords.latitude, longitude: pos.coords.longitude}),
             err => console.warn("Geolocation error:", err.message),
-            { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 }
+            {enableHighAccuracy: true, timeout: 10000, maximumAge: 60000}
         );
     };
 
@@ -110,32 +109,33 @@ export default function OutfitAssistantPage({
 
     // Choose weather icon based on symbol code
     const getWeatherIcon = (symbolCode: string) => {
-        if (symbolCode.includes("clear") || symbolCode === "clearsky") return <Sun className="h-6 w-6 text-yellow-500" />;
+        if (symbolCode.includes("clear") || symbolCode === "clearsky") return <Sun
+            className="h-6 w-6 text-yellow-500"/>;
         if (symbolCode.includes("partly") || symbolCode.includes("cloudy")) return (
             <div className="flex -space-x-1">
-                <Sun className="h-5 w-5 text-yellow-500" />
-                <Cloud className="h-6 w-6 text-gray-400" />
+                <Sun className="h-5 w-5 text-yellow-500"/>
+                <Cloud className="h-6 w-6 text-gray-400"/>
             </div>
         );
-        if (symbolCode.includes("rain")) return <CloudRain className="h-6 w-6 text-blue-500" />;
-        if (symbolCode.includes("drizzle")) return <CloudDrizzle className="h-6 w-6 text-blue-300" />;
-        if (symbolCode.includes("thunder")) return <CloudLightning className="h-6 w-6 text-gray-700" />;
-        if (symbolCode.includes("snow")) return <CloudSnow className="h-6 w-6 text-blue-200" />;
-        return <Cloud className="h-6 w-6 text-gray-400" />;
+        if (symbolCode.includes("rain")) return <CloudRain className="h-6 w-6 text-blue-500"/>;
+        if (symbolCode.includes("drizzle")) return <CloudDrizzle className="h-6 w-6 text-blue-300"/>;
+        if (symbolCode.includes("thunder")) return <CloudLightning className="h-6 w-6 text-gray-700"/>;
+        if (symbolCode.includes("snow")) return <CloudSnow className="h-6 w-6 text-blue-200"/>;
+        return <Cloud className="h-6 w-6 text-gray-400"/>;
     };
 
     const onFileSelect = (file: File | string) => {
-            if (typeof file === "string") {
-                // Si et passen un data-URL directament, només el mostrem
-                setPreviewUrl(file);
-                setImageFile(null);
-            } else {
-                setImageFile(file);
-                const reader = new FileReader();
-                reader.onload = () => setPreviewUrl(reader.result as string);
-               reader.readAsDataURL(file);
-           }
-            setShowImageModal(false);
+        if (typeof file === "string") {
+            // Si et passen un data-URL directament, només el mostrem
+            setPreviewUrl(file);
+            setImageFile(null);
+        } else {
+            setImageFile(file);
+            const reader = new FileReader();
+            reader.onload = () => setPreviewUrl(reader.result as string);
+            reader.readAsDataURL(file);
+        }
+        setShowImageModal(false);
     };
 
     const handleRemoveImage = () => {
@@ -152,7 +152,7 @@ export default function OutfitAssistantPage({
         if (!currentConversationId) {
             try {
                 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-                const res = await fetchWithAuth(`${apiUrl}/outfit-assistant/conversations`, { method: "POST" });
+                const res = await fetchWithAuth(`${apiUrl}/outfit-assistant/conversations`, {method: "POST"});
                 if (!res.ok) throw new Error(`Error creating conversation ${res.status}`);
                 const data = await res.json();
                 currentConversationId = data.conversation_id;
@@ -180,7 +180,7 @@ export default function OutfitAssistantPage({
             const timeseries = weather.properties.timeseries.slice(0, 24);
             // Convertim-los en línies de text
             const lines = timeseries.map((entry: any) => {
-                const { time } = entry;
+                const {time} = entry;
                 const temp = entry.data.instant.details.air_temperature;
                 const symbol = entry.data.next_1_hours?.summary.symbol_code;
                 // Ex: "2025-04-29T15:00:00Z: 18°C, rain"
@@ -203,10 +203,10 @@ export default function OutfitAssistantPage({
         setLoading(true);
         try {
             const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-            const res = await fetchWithAuth(`${apiUrl}/outfit-assistant`, { method: "POST", body: formData });
+            const res = await fetchWithAuth(`${apiUrl}/outfit-assistant`, {method: "POST", body: formData});
             if (!res.ok) throw new Error(`Server responded with ${res.status}`);
             const data = await res.json();
-            setMessages(prev => [...prev, { id: Date.now() + 1, content: data.reply, role: "assistant" }]);
+            setMessages(prev => [...prev, {id: Date.now() + 1, content: data.reply, role: "assistant"}]);
         } catch (err) {
             console.error(err);
         } finally {
@@ -285,17 +285,18 @@ export default function OutfitAssistantPage({
                                         height={0}
                                         sizes="100vw"
                                         className="mb-2 rounded max-h-[150px] w-auto h-auto"
-                                        style={{ height: 'auto', width: 'auto', maxHeight: '150px' }}
+                                        style={{height: 'auto', width: 'auto', maxHeight: '150px'}}
                                     />
                                 )}
                                 <span>{msg.content}</span>
                             </div>
                         </div>
                     ))}
-                    <div ref={messageEndRef} />
+                    <div ref={messageEndRef}/>
                 </main>
 
-                <footer className="border-t-2 border-gray-300 dark:border-gray-600 fixed bottom-0 left-0 w-full bg-white dark:bg-gray-800 p-4 z-50">
+                <footer
+                    className="border-t-2 border-gray-300 dark:border-gray-600 fixed bottom-0 left-0 w-full bg-white dark:bg-gray-800 p-4 z-50">
                     <div className="flex items-center space-x-2">
                         {previewUrl ? (
                             <div className="relative">
@@ -305,7 +306,7 @@ export default function OutfitAssistantPage({
                                     width={40}
                                     height={40}
                                     className="rounded object-cover"
-                                    style={{ height: '40px', width: '40px' }}
+                                    style={{height: '40px', width: '40px'}}
                                 />
                                 <button
                                     onClick={handleRemoveImage}
@@ -319,7 +320,7 @@ export default function OutfitAssistantPage({
                                 onClick={() => setShowImageModal(true)}
                                 className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600"
                             >
-                                <Camera className="h-6 w-6 text-gray-600 dark:text-gray-300" />
+                                <Camera className="h-6 w-6 text-gray-600 dark:text-gray-300"/>
                             </button>
                         )}
                         <input
@@ -336,19 +337,23 @@ export default function OutfitAssistantPage({
                             className="p-2 bg-faqblue dark:bg-faqblue/80 text-white rounded-full hover:bg-blue-600 dark:hover:bg-blue-700 disabled:opacity-50"
                         >
                             {loading ? (
-                                <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
+                                <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg"
+                                     fill="none" viewBox="0 0 24 24">
+                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                            strokeWidth="4"/>
+                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"/>
                                 </svg>
                             ) : (
-                                <Send className="h-6 w-6 text-gray-900 dark:text-gray-100" />
+                                <Send className="h-6 w-6 text-gray-900 dark:text-gray-100"/>
                             )}
                         </button>
                     </div>
                     {/* --- Mini-modal meteorològic --- */}
                     {currentTemp !== undefined && currentSymbol && (
-                        <div className="absolute -top-16 right-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg px-3 py-2 flex items-center space-x-1">
-                            <span className="font-medium text-gray-800 dark:text-gray-200">{Math.round(currentTemp)}°C</span>
+                        <div
+                            className="absolute -top-16 right-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg px-3 py-2 flex items-center space-x-1">
+                            <span
+                                className="font-medium text-gray-800 dark:text-gray-200">{Math.round(currentTemp)}°C</span>
                             {getWeatherIcon(currentSymbol)}
                         </div>
                     )}

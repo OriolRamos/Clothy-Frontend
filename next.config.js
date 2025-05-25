@@ -8,7 +8,10 @@ const nextConfig = {
             'static.stradivarius.net',
             'static.pullandbear.com',
             'static.oysho.com'
-        ]
+        ],
+        // Optimització: servir en formats moderns i cache TTL
+        formats: ['image/avif', 'image/webp'],
+        minimumCacheTTL: 60 // segons
     }
 };
 

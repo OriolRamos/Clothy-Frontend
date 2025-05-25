@@ -12,28 +12,31 @@ const CameraCaptureModal: React.FC<CameraCaptureModalProps> = ({ onCapture, onCl
     const { t } = useTranslation("common");
 
     useEffect(() => {
+        let currentVideo: HTMLVideoElement | null = videoRef.current;
+
         async function startCamera() {
             try {
                 const mediaStream = await navigator.mediaDevices.getUserMedia({
                     video: { facingMode: 'environment' }
                 });
-                if (videoRef.current) {
-                    videoRef.current.srcObject = mediaStream;
+                if (currentVideo) {
+                    currentVideo.srcObject = mediaStream;
                 }
             } catch (error) {
                 console.error("Error accedint a la càmera:", error);
             }
         }
+
         startCamera();
 
         return () => {
-            if (videoRef.current && videoRef.current.srcObject) {
-                const stream = videoRef.current.srcObject as MediaStream;
-                const tracks = stream.getTracks();
-                tracks.forEach(track => track.stop());
+            if (currentVideo && currentVideo.srcObject) {
+                const stream = currentVideo.srcObject as MediaStream;
+                stream.getTracks().forEach(track => track.stop());
             }
         };
     }, []);
+
 
     const capturePhoto = () => {
         const video = videoRef.current;

@@ -15,6 +15,7 @@ const ImageModel: React.FC<ImageModelProps> = ({ cloth, country }) => {
     const [isFavorite, setIsFavorite] = useState(cloth.favorite);
     const [imgLoading, setImgLoading] = useState(true);
     const { fetchWithAuth } = useAuth();
+    const availColors = cloth.available_colors ?? [];
 
     const handleFavoriteToggle = async (cloth: Cloth) => {
         try {
@@ -67,8 +68,8 @@ const ImageModel: React.FC<ImageModelProps> = ({ cloth, country }) => {
                         loading="lazy"
                         sizes="(max-width: 768px) 100vw, 300px"
                         placeholder="blur"
-                        blurDataURL="/images/placeholder-blur.png"
-                        onLoadingComplete={() => setImgLoading(false)}
+                        blurDataURL="/images/image-not-found.png"
+                        onLoad={() => setImgLoading(false)}
                         onError={({ currentTarget }) => {
                             setImgLoading(false);
                             currentTarget.src = "/images/image-not-found.png";
@@ -101,6 +102,49 @@ const ImageModel: React.FC<ImageModelProps> = ({ cloth, country }) => {
                         {cloth.price}{currencySymbol}
                     </div>
                 )}
+                {/* ─────────── COLORS AVAILABLE ─────────── */}
+                {availColors.length > 0 && (
+                    <div className="absolute bottom-2 right-2 flex items-center space-x-1">
+                        {/* 1) Mostra fins a 3 rodonetetes: */}
+                        {availColors.slice(0, 3).map((col, idx) => {
+                            const cfg = filters.color.find(o => o.value === col);
+                            return (
+                                <span
+                                    key={idx}
+                                    className="w-4 h-4 rounded-full border border-gray-300"
+                                    style={{ backgroundColor: cfg?.color }}
+                                />
+                            );
+                        })}
+
+                        {/* 2) Si hi ha més colors, posa un “+n” amb tooltip: */}
+                        {availColors.length > 3 && (
+                            <div className="relative group">
+                                <span className="w-4 h-4 rounded-full flex items-center justify-center text-xs font-semibold bg-gray-200 dark:bg-gray-700">
+                                  +{availColors.length - 3}
+                                </span>
+                                <div className="absolute bottom-full mb-2 hidden group-hover:flex flex-col p-2 bg-white dark:bg-gray-800 rounded shadow-lg">
+                                    {availColors.slice(3).map((col, i) => {
+                                        const cfg = filters.color.find(o => o.value === col)!;
+                                        return (
+                                            <div key={i} className="flex items-center space-x-2">
+                                            <span
+                                                className="w-3 h-3 rounded-full border"
+                                                style={{ backgroundColor: cfg.color }}
+                                            />
+                                            <span className="text-sm text-gray-800 dark:text-gray-200">
+                                              {cfg.translation}
+                                            </span>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                )}
+                {/* ───────────────────────────────────────── */}
+
             </div>
 
             <button

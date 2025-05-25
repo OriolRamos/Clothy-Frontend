@@ -58,7 +58,7 @@ const Favoritos = () => {
         };
 
         fetchFavorites();
-    }, []); // S'executa una sola vegada en el muntatge
+    }, [fetchWithAuth]); // S'executa una sola vegada en el muntatge
 
     // Funció per actualitzar les imatges
     const onReload = async () => {
