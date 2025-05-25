@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
+import isEqual from "lodash.isequal";
 
 interface FilterOption {
     value: string;
@@ -50,15 +51,17 @@ const RenderMultipleFilter: React.FC<RenderFilterProps> = ({
 
     const toggleSelection = (value: string) => {
         setFiltersState(prev => {
-            const currentValues = Array.isArray(prev[filterKey])
-                ? (prev[filterKey] as string[])
-                : [];
-            const selectedSet = new Set(currentValues);
-            if (selectedSet.has(value)) selectedSet.delete(value);
-            else selectedSet.add(value);
-            return { ...prev, [filterKey]: Array.from(selectedSet) };
+            const oldArray = Array.isArray(prev[filterKey]) ? prev[filterKey] as string[] : [];
+            // Construïm el nou array:
+            const newSet = new Set(oldArray);
+            newSet.has(value) ? newSet.delete(value) : newSet.add(value);
+            const newArray = Array.from(newSet);
+            // Si no ha canviat res, retornem prev per evitar disparar el useEffect
+            if (isEqual(oldArray, newArray)) return prev;
+            return { ...prev, [filterKey]: newArray };
         });
     };
+
 
     const handleModalToggle = () => {
         setExpandedFilter(expandedFilter === filterKey ? "" : filterKey);
@@ -110,10 +113,13 @@ const RenderMultipleFilter: React.FC<RenderFilterProps> = ({
                         type="text"
                         placeholder={t("filters.searchPlaceholder", "Buscar...")}
                         value={searchValue}
-                        onChange={e => setFiltersState(prev => ({
-                            ...prev,
-                            [`${filterKey}Search`]: e.target.value,
-                        }))}
+                        onChange={e => {
+                            const newSearch = e.target.value;
+                            setFiltersState(prev => {
+                                if (prev[`${filterKey}Search`] === newSearch) return prev;
+                                return { ...prev, [`${filterKey}Search`]: newSearch };
+                            });
+                        }}
                         className="w-full px-4 py-3 border-b border-gray-200 dark:border-gray-700 focus:outline-none text-black dark:text-gray-100 rounded-t-lg bg-white dark:bg-gray-800"
                     />
                     <div className="py-1">

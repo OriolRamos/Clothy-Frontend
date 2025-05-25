@@ -51,6 +51,37 @@ const CercaRoba = () => {
     const loadingRef = useRef(false);
     const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
+    // 1. Estat específic per country
+    const [country, setCountry] = useState<string | null>(null);
+
+// 2. Al mount: només guardem country, no canviem encara filtersState
+    useEffect(() => {
+        const fetchCountry = async () => {
+            const res = await fetchWithAuth(`${apiUrl}/users/profile/getCountry`, { method: "GET" });
+            if (res.ok) {
+                const data = await res.json();
+                if (data.country) setCountry(data.country);
+            }
+        };
+        fetchCountry();
+    }, [apiUrl, fetchWithAuth]);
+
+// 3. Quan country canvia de null a un valor, actualitzem filtersState només si no està posat
+    useEffect(() => {
+        if (country !== null && !filtersState.country) {
+            setFiltersState(prev => ({ ...prev, country }));
+        }
+    }, [country, filtersState.country]);
+
+// 4. Memoització del filtre (sense camps Search)
+    const filtered = React.useMemo(() => {
+        return Object.fromEntries(
+            Object.entries(filtersState).filter(([key]) => !key.endsWith("Search"))
+        );
+    }, [filtersState]);
+
+
+
 
     const fetchResults = useCallback(
         debounce(async (dynFilters) => {
@@ -78,9 +109,11 @@ const CercaRoba = () => {
         [fetchWithAuth]
     );
 
+
     useEffect(() => {
-        setSearchInitiated(true);
-        const { minPrice: rawMin, maxPrice: rawMax, ...other } = filtersState;
+        if (!filtered.country) return;
+
+        const { minPrice: rawMin, maxPrice: rawMax, ...other } = filtered;
 
         const minPrice = rawMin ? Number(rawMin) : undefined;
         const maxPrice = rawMax ? Number(rawMax) : undefined;
@@ -90,7 +123,12 @@ const CercaRoba = () => {
             ...(minPrice !== undefined && { minPrice }),
             ...(maxPrice !== undefined && { maxPrice }),
         });
-    }, [filtersState, fetchResults]);
+
+        // Marquem que s'ha iniciat una cerca real
+        setSearchInitiated(true);
+    }, [JSON.stringify(Object.fromEntries(
+        Object.entries(filtersState).filter(([key]) => !key.endsWith("Search"))
+    )), fetchResults]);
 
 
     // Funcions "wrapper" per als filtres únics (per RenderFilter)
@@ -110,26 +148,32 @@ const CercaRoba = () => {
         };
     };
 
-    // Definim el setter wrapper per als filtres únics amb el tipus correcte:
     const setUniqueFilters: React.Dispatch<React.SetStateAction<Record<string, string>>> = (
         valueOrUpdater
     ) => {
         setFiltersState((prev) => {
-            // Obtenim els filtres únics actuals
-            const uniquePrev: Record<string, string> = getUniqueFilters();
-            // Determinem el nou valor segons si valueOrUpdater és una funció o un valor directe
+            const uniquePrev = getUniqueFilters();
             const newUnique =
                 typeof valueOrUpdater === "function"
-                    ? (valueOrUpdater as (prev: Record<string, string>) => Record<string, string>)(uniquePrev)
+                    ? (valueOrUpdater as (p: Record<string, string>) => Record<string, string>)(uniquePrev)
                     : valueOrUpdater;
+
+            // Si no ha canviat res, retornem l'objecte antic
+            if (
+                uniquePrev.type === newUnique.type &&
+                uniquePrev.section === newUnique.section
+            ) {
+                return prev;
+            }
+
             return {
                 ...prev,
-                // Actualitzem només les claus dels filtres únics
                 type: newUnique.type,
                 section: newUnique.section,
             };
         });
     };
+
 
 
     const loadMoreResults = useCallback(async () => {
@@ -195,28 +239,6 @@ const CercaRoba = () => {
         window.addEventListener("scroll", onScroll);
         return () => window.removeEventListener("scroll", onScroll);
     }, [loadMoreResults, searchInitiated, hasMoreResults]);
-
-    // 1. Estat específic per country
-    const [country, setCountry] = useState<string | null>(null);
-
-// 2. Al mount: només guardem country, no canviem encara filtersState
-    useEffect(() => {
-        const fetchCountry = async () => {
-            const res = await fetchWithAuth(`${apiUrl}/users/profile/getCountry`, { method: "GET" });
-            if (res.ok) {
-                const data = await res.json();
-                if (data.country) setCountry(data.country);
-            }
-        };
-        fetchCountry();
-    }, [apiUrl, fetchWithAuth]);
-
-// 3. Quan country canvia de null a un valor, aleshores sí actualitzem filtersState
-    useEffect(() => {
-        if (country !== null) {
-            setFiltersState(prev => ({ ...prev, country }));
-        }
-    }, [country]);
 
 
     // Funció per gestionar la pujada de la imatge, tant des de la galeria com per càmera.

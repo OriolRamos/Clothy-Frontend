@@ -27,6 +27,7 @@
     "ion-rangeslider": "^2.3.1",
     "jquery": "^3.7.1",
     "lodash.debounce": "^4.0.8",
+    "lodash.isequal": "^4.5.0",
     "lucide-react": "^0.503.0",
     "next": "^14.2.14",
     "next-intl": "^4.0.2",
@@ -47,6 +48,7 @@
   "devDependencies": {
     "@types/jquery": "^3.5.32",
     "@types/lodash.debounce": "^4.0.9",
+    "@types/lodash.isequal": "^4.5.8",
     "@types/react-linkify": "^1.0.4",
     "@types/react-slick": "^0.23.13",
     "next-sitemap": "^4.2.3"

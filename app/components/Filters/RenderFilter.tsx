@@ -30,6 +30,7 @@ const RenderFilter: React.FC<RenderFilterProps> = ({
     const initialValue = String(filtersState[filterKey] ?? "");
     const selectedOption = filterOptions.find(option => option.value === initialValue);
     const searchValue = filtersState[`${filterKey}Search`] || "";
+    const searchKey = `${filterKey}Search`;
 
     const filteredOptions = filterOptions.filter(option =>
         t(`filters.${filterKey}.${option.value}`)
@@ -87,12 +88,13 @@ const RenderFilter: React.FC<RenderFilterProps> = ({
                         type="text"
                         placeholder={t("filters.searchPlaceholder", "Buscar...")}
                         value={searchValue}
-                        onChange={e =>
-                            setFiltersState(prev => ({
-                                ...prev,
-                                [`${filterKey}Search`]: e.target.value,
-                            }))
-                        }
+                        onChange={e => {
+                            const newSearch = e.target.value;
+                            setFiltersState(prev => {
+                                if (prev[searchKey] === newSearch) return prev;
+                                return { ...prev, [searchKey]: newSearch };
+                            });
+                        }}
                         className="w-full px-4 py-3 border-b border-gray-200 dark:border-gray-700 focus:outline-none text-black dark:text-gray-100 rounded-t-lg bg-white dark:bg-gray-800"
                     />
                     <div className="py-1">
@@ -107,13 +109,15 @@ const RenderFilter: React.FC<RenderFilterProps> = ({
                                             : "bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700"
                                     }`}
                                     onClick={() => {
-                                        setFiltersState(prev => ({
-                                            ...prev,
-                                            [filterKey]: isSelected ? "" : option.value,
-                                            [`${filterKey}Search`]: "",
-                                        }));
+                                        setFiltersState(prev => {
+                                            const current = prev[filterKey] || "";
+                                            const newVal = current === option.value ? "" : option.value;
+                                            if (prev[filterKey] === newVal) return prev;
+                                            return { ...prev, [filterKey]: newVal, [searchKey]: "" };
+                                        });
                                         setExpandedFilter("");
                                     }}
+
                                 >
                                     <span className="text-black dark:text-gray-100">
                                         {t(`filters.${filterKey}.${option.value}`, option.translation)}

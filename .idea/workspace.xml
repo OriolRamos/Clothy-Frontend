@@ -5,23 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="da1a1d65-fd44-4e09-8dc4-bd35cbb307fe" name="Changes" comment="Noves traducions i canvis doptimitzacio">
-      <change afterPath="$PROJECT_DIR$/pages/api/image-proxy.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/logo.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/CameraModal/CameraCaptureModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/CameraModal/CameraCaptureModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Filters/FilterModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Filters/FilterModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/HistoryPriceModal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/HistoryPriceModal/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/ImageModal/ExternalPageModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/ImageModal/ExternalPageModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/ImageModal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/ImageModal/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Modals/Cloth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Modals/Cloth.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/history/historial_outfit_assistant/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/history/historial_outfit_assistant/[id]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/history/historial_search/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/history/historial_search/[id]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/history/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/history/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/outfit-assistant/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/outfit-assistant/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/profile/favorites/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/profile/favorites/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Filters/RenderFilter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Filters/RenderFilter.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Filters/RenderMultipleFilter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Filters/RenderMultipleFilter.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/search_cloth/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/search_cloth/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
@@ -211,15 +199,7 @@
       <workItem from="1748106068596" duration="331000" />
       <workItem from="1748160018286" duration="4267000" />
       <workItem from="1748164390611" duration="193000" />
-      <workItem from="1748166483202" duration="3795000" />
-    </task>
-    <task id="LOCAL-00003" summary="v2.1">
-      <option name="closed" value="true" />
-      <created>1735378800926</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1735378800926</updated>
+      <workItem from="1748166483202" duration="9079000" />
     </task>
     <task id="LOCAL-00004" summary="v2.1">
       <option name="closed" value="true" />
@@ -605,7 +585,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747995786207</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="Noves traducions i canvis doptimitzacio">
+      <option name="closed" value="true" />
+      <created>1748188692197</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1748188692202</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
