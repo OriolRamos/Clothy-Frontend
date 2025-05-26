@@ -50,8 +50,7 @@ const CercaRoba = () => {
     const [searchInitiated, setSearchInitiated] = useState(false);
     const loadingRef = useRef(false);
     const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-
-    // 1. Estat específic per country
+    const [searchId, setSearchId]     = useState<string | null>(null);
     const [country, setCountry] = useState<string | null>(null);
 
 // 2. Al mount: només guardem country, no canviem encara filtersState
@@ -81,8 +80,6 @@ const CercaRoba = () => {
     }, [filtersState]);
 
 
-
-
     const fetchResults = useCallback(
         debounce(async (dynFilters) => {
             setLoading(true);
@@ -92,13 +89,16 @@ const CercaRoba = () => {
                 const res = await fetchWithAuth(`${apiUrl}/search/results/filter`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ ...dynFilters, page: 1 }),
+                    body: JSON.stringify({ ...dynFilters, page: 1 , searchId: null}),
                 });
                 if (res.ok) {
-                    const { results: items } = await res.json();
+                    const data = await res.json();
+                    const { results: items, search_id } = data;
+
                     setResults(items);
                     setHasMoreResults(items.length > 0);
                     setPage(2);
+                    setSearchId(search_id);
                 }
             } catch (err) {
                 console.error(err);
@@ -131,6 +131,7 @@ const CercaRoba = () => {
     )), fetchResults]);
 
 
+
     // Funcions "wrapper" per als filtres únics (per RenderFilter)
     const getUniqueFilters = (): Record<string, string> => {
         return {
@@ -144,7 +145,6 @@ const CercaRoba = () => {
                 : Array.isArray(filtersState.section)
                     ? filtersState.section[0] || ""
                     : "",
-            // Afegeix altres filtres únics si cal...
         };
     };
 
@@ -175,70 +175,85 @@ const CercaRoba = () => {
     };
 
 
+    const loadMoreResults = useCallback(
+        async (dynFilters: Record<string, any>) => {
+            if (!searchInitiated || loadingRef.current || !hasMoreResults) return;
 
-    const loadMoreResults = useCallback(async () => {
-        // 1) Si encara no s'ha iniciat, ja s'està fent una crida, o no queden més, sortim
-        if (!searchInitiated || loadingRef.current || !hasMoreResults) return;
-        loadingRef.current = true;
-        setLoading(true);
+            loadingRef.current = true;
+            setLoading(true);
 
-        try {
-            // 2) Cridem només la pàgina, no cal reenviar filtres
-            const response = await fetchWithAuth(`${apiUrl}/search/results/reload`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ page }),
-            });
-
-            if (!response.ok) {
-                console.error("Error al carregar més resultats.");
-                setHasMoreResults(false);
-                return;
-            }
-
-            const data = await response.json();
-            // 3) El backend retorna data.results (array) i opcionalment data.totalCount
-            const newItems = data.results ?? [];
-
-            if (newItems.length > 0) {
-                // 4) Afegim nous resultats i actualitzem la pàgina
-                setResults(prev => [...prev, ...newItems]);
-                setPage(prev => prev + 1);
-
-                // 5) Si tenim totalCount, comprovem si hem arribat al final
-                if (typeof data.totalCount === "number") {
-                    const loaded = (page) * 30 + newItems.length;
-                    if (loaded >= data.totalCount) {
-                        setHasMoreResults(false);
+            try {
+                const response = await fetchWithAuth(
+                    `${apiUrl}/search/results/filter`,
+                    {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            ...dynFilters,
+                            page,
+                            ...(searchId ? { search_id: searchId } : {}),
+                        }),
                     }
+                );
+
+                if (!response.ok) {
+                    console.error("Error al carregar més resultats.");
+                    setHasMoreResults(false);
+                    return;
                 }
-            } else {
-                // 6) No hi ha més resultats
+
+                const data = await response.json();
+                const newItems = data.results ?? [];
+
+                if (newItems.length > 0) {
+                    setResults((prev) => [...prev, ...newItems]);
+                    setPage((prev) => prev + 1);
+
+                    if (typeof data.totalCount === "number") {
+                        const loaded = page * 30 + newItems.length;
+                        if (loaded >= data.totalCount) {
+                            setHasMoreResults(false);
+                        }
+                    }
+                } else {
+                    setHasMoreResults(false);
+                }
+            } catch (error) {
+                console.error("Error en loadMoreResults:", error);
                 setHasMoreResults(false);
+            } finally {
+                loadingRef.current = false;
+                setLoading(false);
             }
+        },
+        [
+            filtered,       // 🔥 afegeix els filtres dinàmics
+            page,
+            searchId,
+            searchInitiated,
+            hasMoreResults,
+            fetchWithAuth,
+            apiUrl,
+        ]
+    );
 
-        } catch (error) {
-            console.error("Error en loadMoreResults:", error);
-            setHasMoreResults(false);
-        } finally {
-            loadingRef.current = false;
-            setLoading(false);
-        }
-    }, [searchInitiated, hasMoreResults, fetchWithAuth, apiUrl, page]);
 
-// Scroll infinit amb comments
+
     useEffect(() => {
         const onScroll = () => {
             if (!searchInitiated) return;
-            // Quan estiguem a 100px del final, disparem loadMoreResults
-            if (window.innerHeight + window.scrollY >= document.documentElement.offsetHeight - 100
-                && hasMoreResults) {
-                loadMoreResults();
+            if (
+                window.innerHeight + window.scrollY >=
+                document.documentElement.offsetHeight - 100 &&
+                hasMoreResults
+            ) {
+                loadMoreResults(filtered); // 🔁 Passar `filtered` explícitament
             }
         };
         window.addEventListener("scroll", onScroll);
         return () => window.removeEventListener("scroll", onScroll);
-    }, [loadMoreResults, searchInitiated, hasMoreResults]);
+    }, [loadMoreResults, searchInitiated, hasMoreResults, filtered]);
+
 
 
     // Funció per gestionar la pujada de la imatge, tant des de la galeria com per càmera.
