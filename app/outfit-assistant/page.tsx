@@ -37,7 +37,39 @@ export default function OutfitAssistantPage({
     const messageEndRef = useRef<HTMLDivElement>(null);
     const [weather, setWeather] = useState<any>(null);
     const {t} = useTranslation('common');
+    const MAX_TEXT_LENGTH = 500; // Máximo de caracteres permitidos
+    const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
+
+    // Manejador de cambio de texto con límite
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const text = e.target.value;
+        if (text.length > MAX_TEXT_LENGTH) {
+            setInputText(text.slice(0, MAX_TEXT_LENGTH));
+            setErrorMessage(`Has alcanzado el límite de ${MAX_TEXT_LENGTH} caracteres.`);
+        } else {
+            setInputText(text);
+            setErrorMessage(null);
+        }
+    };
+
+    // Manejador de pegado (Ctrl+V)
+    const handlePaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
+        e.preventDefault();
+        const pasteText = e.clipboardData.getData('text');
+        const allowedSpace = MAX_TEXT_LENGTH - inputText.length;
+        if (allowedSpace <= 0) {
+            setErrorMessage(`No puedes pegar más texto, has alcanzado el límite de ${MAX_TEXT_LENGTH} caracteres.`);
+            return;
+        }
+        const toPaste = pasteText.slice(0, allowedSpace);
+        setInputText(prev => prev + toPaste);
+        if (pasteText.length > allowedSpace) {
+            setErrorMessage(`Solo se ha pegado parte del texto para respetar el límite de ${MAX_TEXT_LENGTH} caracteres.`);
+        } else {
+            setErrorMessage(null);
+        }
+    };
 
     // Load existing messages if initialConversationId provided
     useEffect(() => {
@@ -292,6 +324,9 @@ export default function OutfitAssistantPage({
                             </div>
                         </div>
                     ))}
+                    {errorMessage && (
+                        <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errorMessage}</p>
+                    )}
                     <div ref={messageEndRef}/>
                 </main>
 
@@ -328,7 +363,8 @@ export default function OutfitAssistantPage({
                             className="flex-1 border rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                             placeholder="Escribe tu mensaje..."
                             value={inputText}
-                            onChange={(e) => setInputText(e.target.value)}
+                            onChange={handleInputChange}
+                            onPaste={handlePaste}
                             onKeyDown={(e) => e.key === "Enter" && !loading && handleSend()}
                         />
                         <button

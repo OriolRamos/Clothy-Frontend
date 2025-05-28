@@ -27,7 +27,7 @@ const ExternalPageModal: React.FC<ExternalPageModalProps> = ({ cloth, country, i
                     const response = await fetchWithAuth(`${apiUrl}/search/cloth/popularity`, {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({ cloth_id: cloth.id, score: 3 }),
+                        body: JSON.stringify({ cloth_id: cloth.id, score: 3, type: "visit" }),
                     });
                     if (response.ok) {
                         console.log("👀 Popularitat de vista registrada (score 3)");
@@ -65,7 +65,7 @@ const ExternalPageModal: React.FC<ExternalPageModalProps> = ({ cloth, country, i
             const response = await fetchWithAuth(`${apiUrl}/search/cloth/popularity`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ cloth_id: cloth.id, score: 7 }),
+                body: JSON.stringify({ cloth_id: cloth.id, score: 7, type: "buy" }),
             });
             if (response.ok) console.log("✅ Popularitat de compra registrada (score 7)");
             else console.error("❌ Error registrant la popularitat de compra");

@@ -14,6 +14,7 @@ import Footer from "@/app/components/Footer"
 import debounce from "lodash.debounce";
 
 import dynamic from "next/dynamic";
+import { Dialog } from "@headlessui/react";
 
 const FilterModal = dynamic(
     () => import("../components/Filters/FilterModal"),
@@ -47,6 +48,7 @@ const CercaRoba = () => {
     const [page, setPage] = useState(1); // Pàgina actual per a la càrrega
     const [hasMoreResults, setHasMoreResults] = useState(true); // Si hi ha més resultats per carregar
     const [errorModalOpen, setErrorModalOpen] = useState(false); // Estat per al modal d'error
+    const [errorModalText, setErrorModalText] = useState(""); // Estat per al modal d'error
     const [searchInitiated, setSearchInitiated] = useState(false);
     const loadingRef = useRef(false);
     const apiUrl = process.env.NEXT_PUBLIC_API_URL;
@@ -99,6 +101,13 @@ const CercaRoba = () => {
                     setHasMoreResults(items.length > 0);
                     setPage(2);
                     setSearchId(search_id);
+                } else {
+                    setErrorModalOpen(true);
+                    setErrorModalText(
+                        "Error en la carga de resultados.\n" +
+                        "Vuelva a intentarlo más tarde o contacte con el administrador."
+                    );
+                    throw new Error("Error en la carga de resultados.");
                 }
             } catch (err) {
                 console.error(err);
@@ -206,7 +215,12 @@ const CercaRoba = () => {
                 const newItems = data.results ?? [];
 
                 if (newItems.length > 0) {
-                    setResults((prev) => [...prev, ...newItems]);
+                    setResults((prev) => {
+                        const existingIds = new Set(prev.map(item => item.id));
+                        const filteredNewItems = newItems.filter((item: { id: string; }) => !existingIds.has(item.id));
+                        return [...prev, ...filteredNewItems];
+                    });
+
                     setPage((prev) => prev + 1);
 
                     if (typeof data.totalCount === "number") {
@@ -237,8 +251,6 @@ const CercaRoba = () => {
         ]
     );
 
-
-
     useEffect(() => {
         const onScroll = () => {
             if (!searchInitiated) return;
@@ -258,7 +270,6 @@ const CercaRoba = () => {
 
     // Funció per gestionar la pujada de la imatge, tant des de la galeria com per càmera.
     const uploadImageFile = async (file: File) => {
-        console.log("s'envia imatge");
         setImageFile(file);
         // Marquem que la cerca s'ha iniciat
         setSearchInitiated(true);
@@ -279,10 +290,8 @@ const CercaRoba = () => {
                 method: "POST",
                 body: formData,
             });
-
             if (response.ok) {
                 const data = await response.json();
-                console.log("Data ", data);
                 // Actualitzem la informació detectada
                 setDetectedInfo(data);
 
@@ -313,7 +322,16 @@ const CercaRoba = () => {
                 // Incrementem la pàgina per la següent càrrega (ja que s'ha carregat la pàgina 1)
                 setPage(2);
                 setHasMoreResults(data.results.length > 0);
+                const { results: items, search_id } = data;
+                setHasMoreResults(items.length > 0);
+                setSearchId(search_id);
+
             } else {
+                setErrorModalOpen(true);
+                setErrorModalText(
+                    "Error en el procesamiento de la imagen.\n" +
+                    "Vuelva a intentarlo más tarde o contacte con el administrador."
+                );
                 throw new Error("Error en el procesamiento de la imagen.");
             }
         } catch (error) {
@@ -473,7 +491,7 @@ const CercaRoba = () => {
                 <ErrorModal
                     isOpen={errorModalOpen}
                     onClose={() => setErrorModalOpen(false)}
-                    text="Els filtres 'type', 'brand' i 'section' són obligatoris."
+                    text={errorModalText}
                     duration={5}
                 />
 
@@ -526,6 +544,30 @@ const CercaRoba = () => {
                         </>
                     )}
                 </div>
+
+                <Dialog
+                    open={errorModalOpen}
+                    onClose={() => setErrorModalOpen(false)}
+                    className="fixed z-50 inset-0 flex items-center justify-center"
+                >
+                    <div className="fixed inset-0 bg-black bg-opacity-40" />
+                    <div className="relative bg-white rounded-2xl p-6 w-full max-w-md shadow-xl z-50">
+                        <Dialog.Title className="text-lg font-semibold text-red-600">
+                            Error de servidor
+                        </Dialog.Title>
+                        <Dialog.Description className="mt-2 text-gray-700">
+                            Recorda enviar una imatge de roba, sinó pot donar error.
+                        </Dialog.Description>
+                        <div className="mt-4 flex justify-end">
+                            <button
+                                onClick={() => setErrorModalOpen(false)}
+                                className="px-4 py-2 bg-red-500 text-white rounded-xl hover:bg-red-600"
+                            >
+                                Tancar
+                            </button>
+                        </div>
+                    </div>
+                </Dialog>
 
 
             </div>
