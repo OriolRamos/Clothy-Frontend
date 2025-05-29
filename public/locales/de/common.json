@@ -10,7 +10,7 @@
 
   "login": {
     "title": "Melden Sie sich in Ihrem Konto an",
-    "email_label": "Benutzername oder E-Mail",
+    "email_label": "E-Mail",
     "email_placeholder": "user@example.com",
     "password_label": "Passwort",
     "password_placeholder": "••••••••",
@@ -822,5 +822,11 @@
     "no": "Nein, danke",
     "permit": "Erlauben",
     "explicatio": "Mache ein Foto deines Outfits und ich helfe dir, es zu verbessern."
-  }
+  },
+  "multipleSearch": {
+    "subtitle": "Es wurden mehrere Kleidungsstücke erkannt, bitte wählen Sie aus, welches Sie verarbeiten möchten:",
+    "title": "Mehrfachsuche",
+    "close": "Schließen"
+  },
+  "reset_filters": "Filter zurücksetzen"
 }

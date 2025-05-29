@@ -9,7 +9,7 @@
   },
   "login": {
     "title": "अपने खाते में लॉग इन करें",
-    "email_label": "उपयोगकर्ता नाम या ईमेल",
+    "email_label": "ईमेल",
     "email_placeholder": "user@example.com",
     "password_label": "पासवर्ड",
     "password_placeholder": "••••••••",
@@ -834,5 +834,11 @@
     "no": "नहीं, धन्यवाद",
     "permit": "अनुमति दें",
     "explicatio": "अपने आउटफिट की एक तस्वीर लें और मैं इसे सुधारने में मदद करूंगा।"
-  }
+  },
+  "multipleSearch": {
+    "subtitle": "कई वस्त्र पाए गए हैं, कृपया चुनें कि आप किसे प्रोसेस करना चाहते हैं:",
+    "title": "एकाधिक खोज",
+    "close": "बंद करें"
+  },
+  "reset_filters": "फ़िल्टर रीसेट करें"
 }

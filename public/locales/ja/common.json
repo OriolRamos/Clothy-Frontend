@@ -10,7 +10,7 @@
 
   "login": {
     "title": "アカウントにログイン",
-    "email_label": "ユーザー名またはメールアドレス",
+    "email_label": "メール",
     "email_placeholder": "user@example.com",
     "password_label": "パスワード",
     "password_placeholder": "••••••••",
@@ -795,5 +795,11 @@
     "no": "いいえ、結構です",
     "permit": "許可する",
     "explicatio": "コーデの写真を撮っていただければ、改善のお手伝いをします。"
-  }
+  },
+  "multipleSearch": {
+    "subtitle": "複数の衣類が検出されました。処理したいものを選択してください：",
+    "title": "複数検索",
+    "close": "閉じる"
+  },
+  "reset_filters": "フィルターをリセット"
 }

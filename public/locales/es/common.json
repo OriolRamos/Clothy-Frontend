@@ -66,7 +66,7 @@
     },
     "login": {
         "title": "Inicia sesión en tu cuenta",
-        "email_label": "Usuario o correo electrónico",
+        "email_label": "Correo electrónico",
         "email_placeholder": "usuario@ejemplo.com",
         "password_label": "Contraseña",
         "password_placeholder": "••••••••",
@@ -834,5 +834,11 @@
         "no": "No, gracias",
         "permit": "Permitir",
         "explicatio": "Haz una foto a tu outfit y te ayudo a mejorarlo."
-    }
+    },
+    "multipleSearch": {
+        "subtitle": "Se han detectado varias prendas, selecciona cuál deseas procesar:",
+        "title": "Búsqueda Múltiple",
+        "close": "Cerrar"
+    },
+    "reset_filters": "Restablecer filtros"
 }

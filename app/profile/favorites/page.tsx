@@ -10,7 +10,7 @@ import {
     MenuItem,
 } from "@material-tailwind/react";
 import React, { useState, useEffect } from "react";
-import ImageModel from "../../components/ImageModal/index";
+import ImageModel from "@/app/components/ClothModal/index";
 import { useAuth } from "@/app/components/AuthContext";
 import { filters } from "../../components/Filters/cloth_filters";
 import { useTranslation } from "react-i18next";

@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { useParams } from "next/navigation";
 import { useAuth } from "@/app/components/AuthContext";
-import ImageModel from "@/app/components/ImageModal/index";
+import ImageModel from "@/app/components/ClothModal/index";
 import { useTranslation } from "react-i18next";
 import ErrorModal from "@/app/components/Notifications/ErrorModal";
 import { Cloth } from "@/app/components/Modals/Cloth";

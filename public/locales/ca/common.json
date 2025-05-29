@@ -9,7 +9,7 @@
     },
     "login": {
         "title": "Inicia sessió al teu compte",
-        "email_label": "Usuari o correu electrònic",
+        "email_label": "Correu electrònic",
         "email_placeholder": "usuari@exemple.com",
         "password_label": "Contrasenya",
         "password_placeholder": "••••••••",
@@ -777,5 +777,11 @@
         "no": "No, gràcies",
         "permit": "Permetre",
         "explicatio": "Fes una foto del teu outfit i t'ajudo a millorar-lo."
-    }
+    },
+    "multipleSearch": {
+        "subtitle": "S'han detectat més d'una peça de roba, selecciona quina vols processar:",
+        "title": "Cerca Múltiple",
+        "close": "Tancar"
+    },
+    "reset_filters": "Restablir filtres"
 }

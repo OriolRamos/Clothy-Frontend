@@ -10,7 +10,7 @@
 
     "login": {
         "title": "Log in to your account",
-        "email_label": "Username or Email",
+        "email_label": "Email",
         "email_placeholder": "user@example.com",
         "password_label": "Password",
         "password_placeholder": "••••••••",
@@ -836,5 +836,11 @@
         "no": "No, thanks",
         "permit": "Allow",
         "explicatio": "Take a photo of your outfit and I'll help you improve it."
-    }
+    },
+    "multipleSearch": {
+        "subtitle": "Multiple garments detected, please select which one you want to process:",
+        "title": "Multiple Search",
+        "close": "Close"
+    },
+    "reset_filters": "Reset filters"
 }

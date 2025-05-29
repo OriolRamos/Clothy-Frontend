@@ -10,7 +10,7 @@
 
   "login": {
     "title": "Hesabınıza giriş yapın",
-    "email_label": "Kullanıcı Adı veya E-posta",
+    "email_label": "E-posta",
     "email_placeholder": "user@example.com",
     "password_label": "Şifre",
     "password_placeholder": "••••••••",
@@ -869,5 +869,11 @@
     "no": "Hayır, teşekkürler",
     "permit": "İzin ver",
     "explicatio": "Kombininizin fotoğrafını çekin, gelişmesi için yardımcı olayım."
-  }
+  },
+  "multipleSearch": {
+    "subtitle": "Birden fazla giysi tespit edildi, lütfen işlemek istediğinizi seçin:",
+    "title": "Çoklu Arama",
+    "close": "Kapat"
+  },
+  "reset_filters": "Filtreleri sıfırla"
 }

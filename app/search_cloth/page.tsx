@@ -12,9 +12,10 @@ import RenderMultipleFilter from "../components/Filters/RenderMultipleFilter";
 import Head from "next/head";
 import Footer from "@/app/components/Footer"
 import debounce from "lodash.debounce";
-
 import dynamic from "next/dynamic";
 import { Dialog } from "@headlessui/react";
+// A dalt del fitxer CercaRoba:
+import MultipleSearchModal, { FilterItem } from "@/app/components/ClothModal/MultipleSearchModal";
 
 const FilterModal = dynamic(
     () => import("../components/Filters/FilterModal"),
@@ -27,7 +28,7 @@ const ImageUploadModal = dynamic(
 );
 
 const ImageModel = dynamic(
-    () => import("../components/ImageModal/index"),
+    () => import("@/app/components/ClothModal/index"),
     { ssr: false }
 );
 
@@ -54,6 +55,19 @@ const CercaRoba = () => {
     const apiUrl = process.env.NEXT_PUBLIC_API_URL;
     const [searchId, setSearchId]     = useState<string | null>(null);
     const [country, setCountry] = useState<string | null>(null);
+    const [multiItems, setMultiItems] = useState<FilterItem[]>([]);
+    const [isModalMultipleOpen, setIsModalMultipleOpen] = useState(false);
+
+
+    const resetFilters = () => {
+        setFiltersState({});
+        setSearchInitiated(false);
+        setResults([]);
+        setPage(1);
+        setHasMoreResults(true);
+        setSearchId(null);
+    };
+
 
 // 2. Al mount: només guardem country, no canviem encara filtersState
     useEffect(() => {
@@ -268,14 +282,11 @@ const CercaRoba = () => {
 
 
 
-    // Funció per gestionar la pujada de la imatge, tant des de la galeria com per càmera.
     const uploadImageFile = async (file: File) => {
         setImageFile(file);
-        // Marquem que la cerca s'ha iniciat
         setSearchInitiated(true);
         setLoading(true);
-        setSearching(true);
-        setResults([]); // Neteja els resultats previs
+        setResults([]);
         setPage(1);
         setHasMoreResults(true);
 
@@ -286,60 +297,116 @@ const CercaRoba = () => {
         try {
             const formData = new FormData();
             formData.append("image", file);
-            const response = await fetchWithAuth(`${apiUrl}/search/image`, {
-                method: "POST",
-                body: formData,
-            });
-            if (response.ok) {
-                const data = await response.json();
-                // Actualitzem la informació detectada
-                setDetectedInfo(data);
+            const response = await fetchWithAuth(`${apiUrl}/search/image`, { method: "POST", body: formData });
+            if (!response.ok) throw new Error();
+            const data = await response.json();
 
-                // Gestionem el camp google_response
-                let googleResponse;
-                if (data.google_response) {
-                    // Si és un string, el convertim; si no, el mantenim tal qual
-                    googleResponse =
-                        typeof data.google_response === "string"
-                            ? JSON.parse(data.google_response)
-                            : data.google_response;
-                } else {
-                    googleResponse = data;
-                }
+            // Obtenim google_response (pot ser array o objecte amb .results)
+            let googleResponse = typeof data.google_response === "string"
+                ? JSON.parse(data.google_response)
+                : data.google_response;
 
-                // Actualitzem els filtres amb tots els camps retornats, inclòs 'country'
-                setFiltersState((prevFilters) => ({
-                    ...prevFilters,
-                    ...googleResponse,
-                    // Si brand és null, utilitzem els filtres per defecte per a brand
-                    brand:
-                        googleResponse.brand !== null
-                            ? googleResponse.brand
-                            : defaultFilters.brand,
-                }));
+            // Normalitzem a un array de FilterItem
+            const items: FilterItem[] = Array.isArray(googleResponse)
+                ? googleResponse
+                : Array.isArray(googleResponse.results)
+                    ? googleResponse.results
+                    : [];
 
-                setResults(data.cloth_results);
-                // Incrementem la pàgina per la següent càrrega (ja que s'ha carregat la pàgina 1)
-                setPage(2);
-                setHasMoreResults(data.results.length > 0);
-                const { results: items, search_id } = data;
-                setHasMoreResults(items.length > 0);
-                setSearchId(search_id);
-
-            } else {
-                setErrorModalOpen(true);
-                setErrorModalText(
-                    "Error en el procesamiento de la imagen.\n" +
-                    "Vuelva a intentarlo más tarde o contacte con el administrador."
-                );
-                throw new Error("Error en el procesamiento de la imagen.");
+            // Si hi ha múltiples deteccions
+            if (items.length > 1) {
+                setMultiItems(items);
+                setIsModalMultipleOpen(true);
+                return;
             }
+
+            // Si només n'hi ha una, recollim el primer
+            const single = items[0] ?? {};
+
+            setFiltersState(prev => {
+                const merged = {
+                    ...prev,
+                    ...single,
+                    brand: single.brand ?? prev.brand,
+                };
+
+                const cleaned = Object.fromEntries(
+                    Object.entries(merged).filter(([_, value]) => value !== null)
+                ) as Record<string, string | string[]>;
+
+                return cleaned;
+            });
+
+            // Carreguem resultats de l'API
+            const clothItems = Array.isArray(data.cloth_results) ? data.cloth_results : [];
+            setResults(clothItems);
+            setSearchId(data.search_id);
+            setHasMoreResults(clothItems.length > 0);
+
         } catch (error) {
             console.error(error);
         } finally {
             setLoading(false);
         }
     };
+
+
+// Utilitat per netejar filtres abans d’enviar-los
+    function cleanFilters(filters: Record<string, any>): Record<string, any> {
+        const cleaned: Record<string, any> = {};
+
+        for (const [key, value] of Object.entries(filters)) {
+            if (
+                value !== null &&
+                value !== undefined &&
+                value !== '' &&
+                !(Array.isArray(value) && value.length === 0)
+            ) {
+                cleaned[key] = value;
+            }
+        }
+
+        return cleaned;
+    }
+
+    const onSelectItem = async (item: FilterItem) => {
+        setIsModalOpen(false);
+        setLoading(true);
+
+        // Força que certs camps siguin arrays (evitem errors com ['b','l','a','c','k'])
+        const normalizedItem = {
+            ...item,
+            color: item.color
+                ? Array.isArray(item.color)
+                    ? item.color
+                    : [item.color]
+                : [],
+            brand: item.brand
+                ? Array.isArray(item.brand)
+                    ? item.brand
+                    : [item.brand]
+                : [],
+        };
+
+        const cleanedItem = Object.fromEntries(
+            Object.entries(normalizedItem).filter(([_, value]) => value !== null)
+        ) as Record<string, string | string[]>;
+
+        const updatedFilters = {
+            ...filtersState,
+            ...cleanedItem,
+            brand: normalizedItem.brand ?? filtersState.brand,
+        };
+
+        const cleanedFilters = cleanFilters(updatedFilters);
+
+        setFiltersState(cleanedFilters);
+        setIsModalMultipleOpen(false);
+    };
+
+
+
+
 
 
 // Aquesta funció es crida quan s'obté la imatge des de la càmera (el fitxer ja és un File)
@@ -456,6 +523,14 @@ const CercaRoba = () => {
                             {t("searchcloth.more_filters")}
                             <span className="ml-2 text-sm transform transition-transform duration-200">▼</span>
                         </button>
+
+                        <button onClick={resetFilters}
+                                className="flex items-center cursor-pointer text-black dark:text-white text-sm font-medium transition-transform duration-200 hover:scale-105 focus:outline-none"
+                        >
+                            {t("searchcloth.reset_filters", "Restablir filtres")}
+                        </button>
+
+
                     </div>
 
                     {/* Vista per a pantalles petites */}
@@ -511,6 +586,13 @@ const CercaRoba = () => {
                     <ImageUploadModal onFileSelect={onFileSelect} onClose={() => setModalVisible(false)} />
                 )}
 
+                <MultipleSearchModal
+                    isOpen={isModalMultipleOpen}
+                    onClose={() => setIsModalMultipleOpen(false)}
+                    items={multiItems}
+                    onSelect={onSelectItem}
+                />
+
                 <FilterModal
                     isOpen={isModalOpen}
                     onClose={() => setIsModalOpen(false)}
@@ -525,7 +607,7 @@ const CercaRoba = () => {
                             <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
                         </div>
                     )}
-                    {results.length > 0 && (
+                    {results?.length > 0 && (
                         <>
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 justify-center place-items-center mx-auto max-w-[1200px]">
                                 {results.map((result) => (

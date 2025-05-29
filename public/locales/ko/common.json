@@ -197,7 +197,7 @@
 
   "login": {
     "title": "계정에 로그인",
-    "email_label": "사용자 이름 또는 이메일",
+    "email_label": "이메일",
     "email_placeholder": "user@example.com",
     "password_label": "비밀번호",
     "password_placeholder": "••••••••",
@@ -734,5 +734,11 @@
     "no": "아니요, 괜찮습니다",
     "permit": "허용",
     "explicatio": "룩 사진을 찍으면 개선을 도와드릴게요."
-  }
+  },
+  "multipleSearch": {
+    "subtitle": "여러 개의 의류가 감지되었습니다. 처리할 항목을 선택하세요:",
+    "title": "다중 검색",
+    "close": "닫기"
+  },
+  "reset_filters": "필터 재설정"
 }

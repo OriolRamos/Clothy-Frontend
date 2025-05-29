@@ -10,7 +10,7 @@
 
   "login": {
     "title": "登录您的账户",
-    "email_label": "用户名或电子邮件",
+    "email_label": "电子邮件",
     "email_placeholder": "user@example.com",
     "password_label": "密码",
     "password_placeholder": "••••••••",
@@ -834,5 +834,11 @@
     "no": "不，谢谢",
     "permit": "允许",
     "explicatio": "拍摄您的搭配照片，我会帮助您改进它。"
-  }
+  },
+  "multipleSearch": {
+    "subtitle": "检测到多件衣物，请选择您想处理的那一件：",
+    "title": "多重搜索",
+    "close": "关闭"
+  },
+  "reset_filters": "重置筛选器"
 }

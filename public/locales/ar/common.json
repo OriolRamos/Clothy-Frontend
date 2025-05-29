@@ -10,7 +10,7 @@
 
   "login": {
     "title": "تسجيل الدخول إلى حسابك",
-    "email_label": "اسم المستخدم أو البريد الإلكتروني",
+    "email_label": "البريد الإلكتروني",
     "email_placeholder": "user@example.com",
     "password_label": "كلمة المرور",
     "password_placeholder": "••••••••",
@@ -794,5 +794,11 @@
     "no": "لا، شكرًا",
     "permit": "السماح",
     "explicatio": "التقط صورة لإطلالتك وسأساعدك على تحسينها."
-  }
+  },
+  "multipleSearch": {
+    "subtitle": "تم اكتشاف أكثر من قطعة ملابس، يرجى اختيار أي واحدة تريد معالجتها:",
+    "title": "بحث متعدد",
+    "close": "إغلاق"
+  },
+  "reset_filters": "إعادة تعيين الفلاتر"
 }
