@@ -270,7 +270,7 @@ const CercaRoba = () => {
             if (!searchInitiated) return;
             if (
                 window.innerHeight + window.scrollY >=
-                document.documentElement.offsetHeight - 100 &&
+                document.documentElement.offsetHeight - 600 &&
                 hasMoreResults
             ) {
                 loadMoreResults(filtered); // 🔁 Passar `filtered` explícitament

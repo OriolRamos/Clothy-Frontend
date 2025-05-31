@@ -6,6 +6,8 @@ import Image from "next/image";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import HistoryPriceModal from "./../HistoryPriceModal/index";
+import ImageViewerModal from "./ImageViewerModal"; // Importa el nou component del visor d'imatges
+
 interface ExternalPageModalProps {
     cloth: Cloth;
     country: string | null;
@@ -18,6 +20,8 @@ const ExternalPageModal: React.FC<ExternalPageModalProps> = ({ cloth, country, i
     const { t } = useTranslation("common");
     const [isHistoryOpen, setIsHistoryOpen] = useState(false);
     const [imgLoading, setImgLoading] = useState(true);
+    const [isImageViewerOpen, setIsImageViewerOpen] = useState(false); // Nou estat per al visor d'imatges
+    const [currentImageForViewer, setCurrentImageForViewer] = useState<string>(''); // Imatge a mostrar al visor
 
     useEffect(() => {
         const logView = async () => {
@@ -50,6 +54,17 @@ const ExternalPageModal: React.FC<ExternalPageModalProps> = ({ cloth, country, i
         };
     }, [isOpen]);
 
+    // També gestionar overflow quan s'obri el visor d'imatges
+    useEffect(() => {
+        document.body.style.overflow = isImageViewerOpen ? "hidden" : (isOpen ? "hidden" : "auto");
+        return () => {
+            if (!isOpen && !isImageViewerOpen) {
+                document.body.style.overflow = "auto";
+            }
+        };
+    }, [isImageViewerOpen, isOpen]);
+
+
     const currencyList = filters.currency ?? [];
     const currencySymbol =
         (country
@@ -74,6 +89,18 @@ const ExternalPageModal: React.FC<ExternalPageModalProps> = ({ cloth, country, i
         }
     };
 
+    // Funció per obrir el visor d'imatges
+    const openImageViewer = (imageUrl: string) => {
+        setCurrentImageForViewer(imageUrl);
+        setIsImageViewerOpen(true);
+    };
+
+    // Funció per tancar el visor d'imatges
+    const closeImageViewer = () => {
+        setIsImageViewerOpen(false);
+        setCurrentImageForViewer('');
+    };
+
 
     return (
         <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
@@ -94,7 +121,10 @@ const ExternalPageModal: React.FC<ExternalPageModalProps> = ({ cloth, country, i
                             <div className="w-16 h-16 border-4 border-black dark:border-white border-t-blue-500 rounded-full animate-spin"></div>
                         </div>
                     )}
-                    <div className="relative w-full lg:w-1/2 aspect-[3/4] min-h-[400px]">
+                    <div
+                        className="relative w-full lg:w-1/2 aspect-[3/4] min-h-[400px] cursor-pointer" // Afegit cursor-pointer
+                        onClick={() => cloth.image_url && openImageViewer(cloth.image_url)} // Nou onClick
+                    >
                         <Image
                             src={cloth.image_url || "/images/image-not-found.png"}
                             alt={cloth.title || "No Image"}
@@ -210,6 +240,15 @@ const ExternalPageModal: React.FC<ExternalPageModalProps> = ({ cloth, country, i
                     <HistoryPriceModal
                         clothId={cloth.id}
                         onClose={() => setIsHistoryOpen(false)}
+                    />
+                )}
+
+                {/* AFEGEIX AQUEST BLOC PER RENDERITZAR EL ImageViewerModal */}
+                {isImageViewerOpen && (
+                    <ImageViewerModal
+                        imageUrl={currentImageForViewer}
+                        altText={cloth.title || "Imatge de la peça de roba"}
+                        onClose={closeImageViewer}
                     />
                 )}
             </div>
