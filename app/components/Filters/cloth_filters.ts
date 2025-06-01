@@ -79,7 +79,7 @@ export const filters: { [key: string]: { value: string; translation: string; col
     ],
     brand: [
         { value: "zara", translation: "Zara" },
-        { value: "mango", translation: "Mango" },
+        { value: "oysho", translation: "Oysho" },
         { value: "bershka", translation: "Bershka" },
         { value: "stradivarius", translation: "Stradivarius" },
 
@@ -110,7 +110,7 @@ Future implementations of filters:
         { value: "pullbear", translation: "Pull&Bear" },
         { value: "oysho", translation: "Oysho" },
         { value: "uniglo", translation: "Uniqlo" },
-    
+        { value: "mango", translation: "Mango" },
         { value: "nike", translation: "Nike" },
         { value: "adidas", translation: "Adidas" },
         { value: "zara", translation: "Zara" },
