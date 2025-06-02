@@ -81,7 +81,6 @@ export const filters: { [key: string]: { value: string; translation: string; col
         { value: "zara", translation: "Zara" },
         { value: "oysho", translation: "Oysho" },
         { value: "bershka", translation: "Bershka" },
-        { value: "stradivarius", translation: "Stradivarius" },
 
     ],
     country: [

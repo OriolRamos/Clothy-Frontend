@@ -170,12 +170,14 @@ return (
                     </label>
                     <div className="grid grid-cols-2 gap-4">
                         <label className="flex items-center mb-4">
-                            <div
-                                className={`px-4 py-2 rounded-md border transition-all duration-300 transform hover:scale-105 ${filtersState.onlyOfferts ? "bg-faqblue text-white dark:bg-blue-500" : "bg-gray-200 dark:bg-gray-700"}`}
+                            <button
+                                type="button"
+                                className={`px-4 py-2 rounded-md border transition-all duration-300 transform hover:scale-105 ${filtersState.onlyOffers ? "bg-faqblue text-white dark:bg-blue-500" : "bg-gray-200 dark:bg-gray-700"}`}
                                 onClick={() => toggleBooleanFilter("onlyOffers")}
                             >
                                 {t("filtermodal.soloOfferts", "Solo ofertas")}
-                            </div>
+                            </button>
+
                         </label>
                     </div>
                 </div>
