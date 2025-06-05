@@ -14,7 +14,7 @@ const Digital = () => {
 
     return (
         <div className="mx-2">
-            <div className="mx-auto max-w-7xl px-4 my-40 pb-20 lg:pb-40 lg:px-8 bg-digital rounded-3xl bg-blue relative">
+            <div className="mx-auto max-w-7xl px-4 my-40 pb-20 lg:pb-40 lg:px-8 bg-digital rounded-3xl bg-faqblue relative">
                 <div className="grid grid-cols-1 lg:grid-cols-2 my-16">
                     {/* COLUMN-1 */}
                     <div className="pt-24 lg:pl-24">

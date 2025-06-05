@@ -30,7 +30,7 @@ const Beliefs = () => {
                     </h5>
                     <div className="text-center sm:text-start">
                         <button
-                            className="text-xl py-5 px-14 mt-5 font-semibold text-white bg-blue dark:bg-blue-700 border border-blue dark:border-blue hover:bg-hoblue dark:hover:bg-blue-600 rounded-full"
+                            className="text-xl py-5 px-14 mt-5 font-semibold text-white bg-faqblue dark:bg-faqblue border border-blue dark:border-blue hover:bg-hoblue dark:hover:bg-blue-600 rounded-full"
                             onClick={handleLogin}
                         >
                             {t("beliefs.section1.button")}
@@ -51,7 +51,7 @@ const Beliefs = () => {
                     </h5>
                     <div className="text-center sm:text-start">
                         <button
-                            className="text-xl py-5 px-14 mt-5 font-semibold text-white bg-blue dark:bg-blue-700 border border-blue dark:border-blue hover:bg-hoblue dark:hover:bg-blue-600 rounded-full"
+                            className="text-xl py-5 px-14 mt-5 font-semibold text-white bg-faqblue dark:bg-faqblue border border-blue dark:border-blue hover:bg-hoblue dark:hover:bg-blue-600 rounded-full"
                             onClick={handleJoinUs}
                         >
                             {t("beliefs.section2.button")}

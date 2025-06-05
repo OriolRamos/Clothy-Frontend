@@ -4,29 +4,41 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da1a1d65-fd44-4e09-8dc4-bd35cbb307fe" name="Changes" comment="Arreglar peticions de gemini i millores">
-      <change afterPath="$PROJECT_DIR$/app/components/ClothModal/MultipleSearchModal.tsx" afterDir="false" />
+    <list default="true" id="da1a1d65-fd44-4e09-8dc4-bd35cbb307fe" name="Changes" comment="Arreglar errors i mostrar imatge en gran al clicar">
+      <change afterPath="$PROJECT_DIR$/app/subscription-canceled/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/subscription-plans/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/subscription-success/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/ImageModal/ExternalPageModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/ClothModal/ExternalPageModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/ImageModal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/ClothModal/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/history/historial_search/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/history/historial_search/[id]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/profile/favorites/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/profile/favorites/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/search_cloth/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/search_cloth/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/locales/ar/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/ar/common.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/locales/bn/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/bn/common.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/locales/ca/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/ca/common.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/locales/ch/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/ch/common.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/locales/de/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/de/common.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/locales/en/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/en/common.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/locales/es/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/es/common.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/locales/fr/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/fr/common.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/locales/hi/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/hi/common.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/locales/ja/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/ja/common.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/locales/ko/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/ko/common.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/locales/pt/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/pt/common.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/locales/ru/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/ru/common.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/locales/tr/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/tr/common.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Beliefs/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Beliefs/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Digital/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Digital/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Featured/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Featured/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Insta/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/articles/article.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/articles/article2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/articles/article3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/banner/banner.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/insta/insta1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/insta/insta2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/insta/insta3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/insta/insta4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/insta/instagram.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/testimonial/boy.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/testimonial/girl.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/testimonial/user1.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/testimonial/user2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/testimonial/user3.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/wework/avatar.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/wework/avatar2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/wework/avatar3.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/wework/avatar4.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/wework/avatar5.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/wework/elipse.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/wework/linkedin.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/wework/vector.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,6 +75,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="Security Analysis" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 6
@@ -94,6 +109,11 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="QodanaReportsService">
+    <option name="descriptions">
+      <ReportDescription localRun="true" path="C:\Users\oriol\AppData\Local\Temp\qodana_output\qodana.sarif.json" reportGuid="1b86660c-8a3e-435b-9edc-1a9c15de7719" reportId="Clothy-Frontend/qodana/2025-06-04" />
+    </option>
+  </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\oriol\Desktop\Clothy\Clothy-Frontend\public" />
@@ -219,55 +239,15 @@
       <workItem from="1748278474085" duration="8745000" />
       <workItem from="1748446872713" duration="2910000" />
       <workItem from="1748449899981" duration="5606000" />
-      <workItem from="1748526484659" duration="9156000" />
-    </task>
-    <task id="LOCAL-00008" summary="v2.2">
-      <option name="closed" value="true" />
-      <created>1735400277440</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1735400277441</updated>
-    </task>
-    <task id="LOCAL-00009" summary="v2.3">
-      <option name="closed" value="true" />
-      <created>1735576801560</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1735576801560</updated>
-    </task>
-    <task id="LOCAL-00010" summary="v2.3">
-      <option name="closed" value="true" />
-      <created>1736449491164</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1736449491164</updated>
-    </task>
-    <task id="LOCAL-00011" summary="v2.3">
-      <option name="closed" value="true" />
-      <created>1736450378618</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1736450378618</updated>
-    </task>
-    <task id="LOCAL-00012" summary="v2.4">
-      <option name="closed" value="true" />
-      <created>1736512588985</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1736512588985</updated>
-    </task>
-    <task id="LOCAL-00013" summary="v2.5">
-      <option name="closed" value="true" />
-      <created>1736515848144</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1736515848144</updated>
+      <workItem from="1748526484659" duration="10024000" />
+      <workItem from="1748684118167" duration="1535000" />
+      <workItem from="1748709983444" duration="858000" />
+      <workItem from="1748767033778" duration="806000" />
+      <workItem from="1748788838551" duration="3773000" />
+      <workItem from="1748895700550" duration="24000" />
+      <workItem from="1748895738238" duration="115000" />
+      <workItem from="1748965759781" duration="5558000" />
+      <workItem from="1749050012421" duration="13397000" />
     </task>
     <task id="LOCAL-00014" summary="v2.6">
       <option name="closed" value="true" />
@@ -613,15 +593,61 @@
       <option name="project" value="LOCAL" />
       <updated>1748455593239</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="Afegir selector multiple al carregar imatge">
+      <option name="closed" value="true" />
+      <created>1748539305424</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1748539305425</updated>
+    </task>
+    <task id="LOCAL-00058" summary="Arreglar errors i mostrar imatge en gran al clicar">
+      <option name="closed" value="true" />
+      <created>1748685610775</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1748685610775</updated>
+    </task>
+    <task id="LOCAL-00059" summary="Arreglar errors i mostrar imatge en gran al clicar">
+      <option name="closed" value="true" />
+      <created>1748767155926</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1748767155926</updated>
+    </task>
+    <task id="LOCAL-00060" summary="Arreglar errors i mostrar imatge en gran al clicar">
+      <option name="closed" value="true" />
+      <created>1748814628733</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1748814628733</updated>
+    </task>
+    <task id="LOCAL-00061" summary="Arreglar errors i mostrar imatge en gran al clicar">
+      <option name="closed" value="true" />
+      <created>1748893378389</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1748893378389</updated>
+    </task>
+    <task id="LOCAL-00062" summary="Arreglar errors i mostrar imatge en gran al clicar">
+      <option name="closed" value="true" />
+      <created>1748895845549</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1748895845549</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="v2.4" />
-    <MESSAGE value="v2.5" />
     <MESSAGE value="v2.6" />
     <MESSAGE value="v2.7 (Profile Settings added)" />
     <MESSAGE value="v2.7 (MIU millorat en menu usuaris)" />
@@ -645,6 +671,8 @@
     <MESSAGE value="Canvis logo reds socials" />
     <MESSAGE value="Noves traducions i canvis doptimitzacio" />
     <MESSAGE value="Arreglar peticions de gemini i millores" />
-    <option name="LAST_COMMIT_MESSAGE" value="Arreglar peticions de gemini i millores" />
+    <MESSAGE value="Afegir selector multiple al carregar imatge" />
+    <MESSAGE value="Arreglar errors i mostrar imatge en gran al clicar" />
+    <option name="LAST_COMMIT_MESSAGE" value="Arreglar errors i mostrar imatge en gran al clicar" />
   </component>
 </project>
