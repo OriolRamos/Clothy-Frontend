@@ -66,8 +66,21 @@ const PricingPlansPage = () => {
                 borderColorClass: "border-transparent",
                 highlight: false,
             };
-
-            if (planData.name.toLowerCase().includes("fan") || index === 1) {
+             if (planData.name.toLowerCase().includes("founder") || index === 2) {
+                 planSpecifics = {
+                     features: [
+                         {text: "Totes les funcions del pla Fan", icon_name: "Award"},
+                         {text: "Suport prioritari VIP", icon_name: "ShieldCheck"},
+                         {text: "Accés anticipat a novetats", icon_name: "Gift"},
+                         {text: "Esdeveniments exclusius Clothy", icon_name: "CalendarHeart"},
+                     ],
+                     bgColorClass: "bg-white dark:bg-teal-600",
+                     textColorClass: "text-black dark:bg-white",
+                     buttonColorClass: "bg-white hover:bg-slate-100 text-teal-600",
+                     borderColorClass: "border-gold",
+                 };
+             }
+            else if (planData.name.toLowerCase().includes("fan") || index === 1) {
                 planSpecifics = {
                     features: [
                         { text: "Tot el del pla Supporter", icon_name: "PlusCircle" },
@@ -79,21 +92,6 @@ const PricingPlansPage = () => {
                     textColorClass: "text-white",
                     buttonColorClass: "bg-white hover:bg-slate-100 text-sky-600",
                     borderColorClass: "border-sky-400",
-                    highlight: true,
-                };
-            } else if (planData.name.toLowerCase().includes("founder") || index === 2) {
-                planSpecifics = {
-                    features: [
-                        { text: "Totes les funcions del pla Fan", icon_name: "Award" },
-                        { text: "Suport prioritari VIP", icon_name: "ShieldCheck" },
-                        { text: "Accés anticipat a novetats", icon_name: "Gift" },
-                        { text: "Esdeveniments exclusius Clothy", icon_name: "CalendarHeart" },
-                    ],
-                    bgColorClass: "bg-teal-400 dark:bg-teal-600",
-                    textColorClass: "text-white",
-                    buttonColorClass: "bg-white hover:bg-slate-100 text-teal-600",
-                    borderColorClass: "border-teal-400",
-                    highlight: true,
                 };
             } else { // Pla Bàsic/Supporter
                 planSpecifics = {
@@ -106,8 +104,7 @@ const PricingPlansPage = () => {
                     bgColorClass: "bg-teal-400 dark:bg-teal-600",
                     textColorClass: "text-white",
                     buttonColorClass: "bg-white hover:bg-slate-100 text-red-500",
-                    borderColorClass: "border-gold",
-                    highlight: true,
+                    borderColorClass: "border-teal-400",
                 };
             }
 
