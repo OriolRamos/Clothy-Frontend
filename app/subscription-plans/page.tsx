@@ -74,10 +74,6 @@ const PricingPlansPage = () => {
                          {text: "Accés anticipat a novetats", icon_name: "Gift"},
                          {text: "Esdeveniments exclusius Clothy", icon_name: "CalendarHeart"},
                      ],
-                     bgColorClass: "bg-white dark:bg-teal-600",
-                     textColorClass: "text-black dark:bg-white",
-                     buttonColorClass: "bg-white hover:bg-slate-100 text-teal-600",
-                     borderColorClass: "border-gold",
                  };
              }
             else if (planData.name.toLowerCase().includes("fan") || index === 1) {
@@ -88,10 +84,6 @@ const PricingPlansPage = () => {
                         { text: "Historial de cerques complet", icon_name: "Archive" },
                         { text: "Descomptes exclusius", icon_name: "Percent" },
                     ],
-                    bgColorClass: "bg-sky-600 dark:bg-sky-700",
-                    textColorClass: "text-white",
-                    buttonColorClass: "bg-white hover:bg-slate-100 text-sky-600",
-                    borderColorClass: "border-sky-400",
                 };
             } else { // Pla Bàsic/Supporter
                 planSpecifics = {
@@ -101,10 +93,6 @@ const PricingPlansPage = () => {
                         { text: "Alerta de preus avançada", icon_name: "Bell" },
                         { text: "Historial de cerques (15 dies)", icon_name: "History" },
                     ],
-                    bgColorClass: "bg-teal-400 dark:bg-teal-600",
-                    textColorClass: "text-white",
-                    buttonColorClass: "bg-white hover:bg-slate-100 text-red-500",
-                    borderColorClass: "border-teal-400",
                 };
             }
 
@@ -151,7 +139,7 @@ const PricingPlansPage = () => {
         if (!isAuthenticated) {
             loadPageData();
         }
-    }, [isAuthenticated, isAuthenticated, fetchWithAuth]);
+    }, [isAuthenticated, fetchWithAuth]);
 
 
 
