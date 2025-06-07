@@ -46,7 +46,7 @@ interface Plan {
 }
 
 const PricingPlansPage = () => {
-    const { isAuthenticated, fetchWithAuth } = useAuth();
+    const { isAuthenticated, isLoading: authIsLoading, fetchWithAuth } = useAuth();
     const [plans, setPlans] = useState<Plan[]>([]);
     const [isLoadingPlans, setIsLoadingPlans] = useState(true);
     const [errorLoadingPlans, setErrorLoadingPlans] = useState<string | null>(null);
@@ -69,26 +69,30 @@ const PricingPlansPage = () => {
             setErrorLoadingPlans(null);
 
             try {
-                // Sempre carreguem els plans disponibles
+                // Executem les crides en paral·lel per eficiència
                 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-                const plansResponse = await fetch(`${apiUrl}/subscriptions/plans`);
-                if (!plansResponse.ok) throw new Error('No s\'ha pogut carregar els plans.');
-                console.log("PLANS", plansResponse);
-                const plansData = await plansResponse.json();
-                setPlans(getStyledPlans(plansData)); // Estilitzem i desem els plans
-                console.log("[PricingPlans] Plans carregats i estilitzats.");
+                const plansPromise = fetch(`${apiUrl}/subscriptions/plans`);
 
-                // Si l'usuari està autenticat, comprovem el seu estat de subscripció
-                if (isAuthenticated) {
-                    console.log("[PricingPlans] Usuari autenticat. Comprovant estat de subscripció...");
-                    const subResponse = await fetchWithAuth(`${apiUrl}/subscriptions/my-subscription`);
+                // La crida a la subscripció només es fa si l'usuari està autenticat
+                const subscriptionPromise = isAuthenticated
+                    ? fetchWithAuth(`${apiUrl}/subscriptions/my-subscription`)
+                    : Promise.resolve(null);
+
+                const [plansResponse, subResponse] = await Promise.all([plansPromise, subscriptionPromise]);
+
+                // Processar plans
+                if (!plansResponse.ok) throw new Error('No s\'ha pogut carregar els plans.');
+                const plansData = await plansResponse.json();
+                // setPlans(getStyledPlans(plansData)); // La teva funció d'estils
+                setPlans(plansData); // O directament si el backend ja ho gestiona
+
+                // Processar l'estat de la subscripció si s'ha fet la crida
+                if (subResponse) {
                     if (!subResponse.ok) throw new Error("No s'ha pogut obtenir l'estat de la teva subscripció.");
                     const subData: UserSubscriptionStatus = await subResponse.json();
                     setSubscriptionStatus(subData);
-                    console.log("[PricingPlans] Estat de subscripció obtingut:", subData);
                 } else {
-                    // Si no està autenticat, resetejem l'estat de subscripció
-                    setSubscriptionStatus(null);
+                    setSubscriptionStatus(null); // Assegura que l'estat és nul si l'usuari no està autenticat
                 }
             } catch (err: any) {
                 setErrorLoadingPlans(err.message || "Error desconegut carregant les dades.");
@@ -98,11 +102,11 @@ const PricingPlansPage = () => {
             }
         };
 
-        // Només carreguem si l'estat d'autenticació no està carregant
-        if (!isAuthenticated) {
+        if (!authIsLoading) {
             loadPageData();
         }
-    }, [isAuthenticated, fetchWithAuth]);
+
+    }, [isAuthenticated, authIsLoading, fetchWithAuth]);
 
 
 
@@ -155,7 +159,7 @@ const PricingPlansPage = () => {
     };
 
     // Estats de Càrrega i Error (pots estilitzar-los més si vols)
-    if (isLoadingPlans) {
+    if (authIsLoading || isLoadingPlans) {
         return (
             <div className="flex justify-center items-center min-h-screen bg-slate-100 dark:bg-slate-900">
                 <Loader2 className="h-16 w-16 animate-spin text-teal-500" />

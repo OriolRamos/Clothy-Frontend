@@ -7,6 +7,7 @@ import SessionExpiredModal from "../SessionExpiredModal/index"; // Modal separat
 interface AuthContextType {
     isAuthenticated: boolean;
     userInitial: string;
+    isLoading: boolean;
     login: (token: string) => void;
     logout: () => void;
     fetchWithAuth: (url: string, options?: RequestInit) => Promise<Response>;
@@ -16,6 +17,7 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType>({
     isAuthenticated: false,
     userInitial: "",
+    isLoading: true,
     login: () => {},
     logout: () => {},
     fetchWithAuth: async () => {
@@ -50,7 +52,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [userInitial, setUserInitial] = useState("");
     const [showSessionExpiredModal, setShowSessionExpiredModal] = useState(false);
-
+    const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
         async function checkToken() {
             const token = localStorage.getItem("authToken");
@@ -63,6 +65,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
                     logout(); // Elimina el token si no és vàlid
                 }
             }
+            setIsLoading(false);
         }
         checkToken();
     }, []);
@@ -112,8 +115,17 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         }
     };
 
+    const contextValue = {
+        isAuthenticated,
+        userInitial,
+        isLoading,
+        login,
+        logout,
+        fetchWithAuth,
+    };
+
     return (
-        <AuthContext.Provider value={{ isAuthenticated, userInitial, login, logout, fetchWithAuth }}>
+        <AuthContext.Provider value={ contextValue }>
             {children}
             <SessionExpiredModal
                 show={showSessionExpiredModal}
