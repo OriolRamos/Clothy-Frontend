@@ -10,6 +10,7 @@ import {
     Search, History, Mail, Archive, TrendingUp, Sparkles, Gift, PlusCircle, Wand2, Percent, Award, CalendarHeart, Camera, Bell
 } from 'lucide-react';
 import Footer from "@/app/components/Footer"; // Importa el teu Footer
+import DonationsSection from '@/app/donaciones/DonationSection';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || "");
 
@@ -328,6 +329,7 @@ const PricingPlansPage = () => {
                                 );
                             })}
                         </div>
+                        <DonationsSection />
                     </div>
                 </div>
             </main>

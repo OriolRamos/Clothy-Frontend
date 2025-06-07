@@ -8,7 +8,17 @@ import { useTranslation } from "react-i18next";
 import RenderFilter from "../components/Filters/RenderFilter"; // Importem el component de filtres
 import { filters } from "../components/Filters/cloth_filters";
 import Head from "next/head";
+import Link from 'next/link'; // [AFEGIT] Per al botó de subscripció
+import { Loader2, Star, ShieldCheck, Zap } from 'lucide-react'; // [AFEGIT] Icones per a la secció de subscripció
 
+interface UserSubscriptionStatus {
+    has_active_subscription: boolean;
+    status?: string;
+    current_plan_id?: string;
+    current_period_end?: string;
+    cancel_at_period_end?: boolean;
+    plan_name?: string; // Podries afegir el nom del pla des del backend
+}
 
 const UserProfile = () => {
     const { t } = useTranslation('common');
@@ -31,6 +41,48 @@ const UserProfile = () => {
     // Estats per gestionar el RenderFilter del país
     const [expandedFilter, setExpandedFilter] = React.useState<string>(""); // Estat a nivell global
     const [filtersState, setFiltersState] = useState<Record<string, string>>({ country: userData.country });
+    const [subscriptionInfo, setSubscriptionInfo] = useState<UserSubscriptionStatus | null>(null);
+    const [isLoadingSubscription, setIsLoadingSubscription] = useState(true);
+    const [isManagingSubscription, setIsManagingSubscription] = useState(false);
+
+    useEffect(() => {
+        const fetchUserData = async () => {
+            setIsLoadingSubscription(true); // Comença la càrrega
+            try {
+                const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
+                // Fem les dues crides en paral·lel per a més eficiència
+                const profilePromise = fetchWithAuth(`${apiUrl}/users/profile`);
+                const subscriptionPromise = fetchWithAuth(`${apiUrl}/subscriptions/my-subscription`);
+
+                const [profileResponse, subscriptionResponse] = await Promise.all([profilePromise, subscriptionPromise]);
+
+                // Processar el perfil de l'usuari
+                if (profileResponse.ok) {
+                    const data = await profileResponse.json();
+                    setUserData(prev => ({ ...prev, ...data }));
+                } else {
+                    console.error("Error obtenint el perfil de l'usuari.");
+                }
+
+                // Processar l'estat de la subscripció
+                if (subscriptionResponse.ok) {
+                    const subData = await subscriptionResponse.json();
+                    setSubscriptionInfo(subData);
+                } else {
+                    console.error("Error obtenint l'estat de la subscripció.");
+                    setSubscriptionInfo({ has_active_subscription: false }); // Assumeix que no hi ha subscripció si falla
+                }
+
+            } catch (error) {
+                console.error("Error fetching user data:", error);
+            } finally {
+                setIsLoadingSubscription(false); // Acaba la càrrega
+            }
+        };
+
+        fetchUserData();
+    }, [fetchWithAuth]);
 
     // Sincronitzar el valor de userData.country amb filtersState quan es carrega el perfil
     useEffect(() => {
@@ -92,6 +144,25 @@ const UserProfile = () => {
     const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
     const handleCloseErrorModal = () => {
         setIsErrorModalOpen(false);
+    };
+
+    const handleManageSubscription = async () => {
+        setIsManagingSubscription(true);
+        try {
+            const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+            const response = await fetchWithAuth(`${apiUrl}/subscriptions/create-customer-portal-session`, {
+                method: 'POST',
+            });
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.detail || "No s'ha pogut obrir el portal de gestió.");
+            }
+            const data = await response.json();
+            window.location.href = data.url; // Redirigeix l'usuari al portal de Stripe
+        } catch (error: any) {
+            alert(`Error: ${error.message}`);
+            setIsManagingSubscription(false);
+        }
     };
 
     const saveChanges = () => {
@@ -333,6 +404,64 @@ const UserProfile = () => {
                                         />
                                     </div>
                                 </div>
+                            </div>
+
+                            {/* [SECCIÓ NOVA] - Apartat de Subscripció */}
+                            <div className="rounded-lg p-8 bg-gray-100 dark:bg-gray-800 shadow-lg mt-12">
+                                <h2 className="text-3xl font-semibold text-blue-600 dark:text-blue-400 mb-6">{t('profile.subscription')}</h2>
+
+                                {isLoadingSubscription ? (
+                                    <div className="flex items-center justify-center h-24">
+                                        <Loader2 className="h-8 w-8 animate-spin text-gray-500" />
+                                        <p className="ml-4 text-gray-600 dark:text-gray-400">{t('profile.loadingSubscription')}</p>
+                                    </div>
+                                ) : subscriptionInfo && subscriptionInfo.has_active_subscription ? (
+                                    // Vista per a usuaris amb subscripció activa
+                                    <div>
+                                        <div className="bg-green-100 dark:bg-green-900/30 border border-green-400 dark:border-green-600 rounded-lg p-4 flex items-center space-x-4">
+                                            <div className="flex-shrink-0">
+                                                <Star className="h-10 w-10 text-green-500" />
+                                            </div>
+                                            <div className="flex-grow">
+                                                <p className="font-semibold text-lg text-gray-800 dark:text-white">
+                                                    {t('profile.currentPlan')}: <span className="font-bold text-green-600 dark:text-green-400">{subscriptionInfo.plan_name || 'Premium'}</span>
+                                                </p>
+                                                {subscriptionInfo.cancel_at_period_end ? (
+                                                    <p className="text-sm text-orange-600 dark:text-orange-400">
+                                                        {t('profile.subscriptionWillEnd', { date: new Date(subscriptionInfo.current_period_end!).toLocaleDateString('ca-ES') })}
+                                                    </p>
+                                                ) : (
+                                                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                                                        {t('profile.renewsOn', { date: new Date(subscriptionInfo.current_period_end!).toLocaleDateString('ca-ES') })}
+                                                    </p>
+                                                )}
+                                            </div>
+                                        </div>
+                                        <button
+                                            onClick={handleManageSubscription}
+                                            disabled={isManagingSubscription}
+                                            className="mt-6 w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:focus:ring-offset-gray-800 disabled:opacity-50 disabled:cursor-wait"
+                                        >
+                                            {isManagingSubscription ? (
+                                                <Loader2 className="h-5 w-5 animate-spin mr-3" />
+                                            ) : (
+                                                <ShieldCheck className="h-5 w-5 mr-3" />
+                                            )}
+                                            {t('profile.manageSubscription')}
+                                        </button>
+                                    </div>
+                                ) : (
+                                    // Vista per a usuaris sense subscripció activa
+                                    <div>
+                                        <p className="text-gray-700 dark:text-gray-300 mb-4">{t('profile.noActiveSubscription')}</p>
+                                        <Link href="/subscription-plans" legacyBehavior>
+                                            <a className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-teal-500 hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 dark:focus:ring-offset-gray-800">
+                                                <Zap className="h-5 w-5 mr-3" />
+                                                {t('profile.viewPlans')}
+                                            </a>
+                                        </Link>
+                                    </div>
+                                )}
                             </div>
 
                             {/* Save Button */}
