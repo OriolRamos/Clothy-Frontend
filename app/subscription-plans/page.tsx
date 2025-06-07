@@ -89,9 +89,10 @@ const PricingPlansPage = () => {
                         { text: "Accés anticipat a novetats", icon_name: "Gift" },
                         { text: "Esdeveniments exclusius Clothy", icon_name: "CalendarHeart" },
                     ],
-                    bgColorClass: "bg-slate-800 dark:bg-slate-900",
+                    bgColorClass: "bg-gradient-to-br from-gray-900 via-black to-red-900/50 dark:from-black dark:to-red-900/30",
                     textColorClass: "text-white",
-                    buttonColorClass: "bg-gradient-to-r from-teal-400 to-sky-500 hover:from-teal-500 hover:to-sky-600 text-white",
+                    buttonColorClass: "bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-700 hover:to-pink-700 text-white",
+                    borderColorClass: "border-red-500/50",
                 };
             } else { // Pla Bàsic/Supporter
                 planSpecifics = {
@@ -101,8 +102,9 @@ const PricingPlansPage = () => {
                         { text: "Alerta de preus avançada", icon_name: "Bell" },
                         { text: "Historial de cerques (15 dies)", icon_name: "History" },
                     ],
-                    buttonColorClass: "bg-teal-500 hover:bg-teal-600 text-white",
-                    textColorClass: "text-black"
+                    bgColorClass: "bg-teal-400 hover:bg-teal-600 text-white",
+                    buttonColorClass: "bg-white",
+                    textColorClass: "text-teal-600"
                 };
             }
 
