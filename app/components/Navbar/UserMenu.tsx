@@ -60,7 +60,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ userInitial, logout }) => {
                     { key: "profile", label: t("usermenu.profile"), href: "/profile" },
                     { key: "history", label: t("usermenu.history"), href: "/history" },
                     { key: "favorites", label: t("usermenu.favorites"), href: "/profile/favorites" },
-                    { key: "subscription", label: t("usermenu.subscription"), href: "/donaciones" },
+                    { key: "subscription", label: t("usermenu.subscription"), href: "/subscription-plans" },
                 ].map((item) => {
                     const isActive = pathname === item.href;
                     return (

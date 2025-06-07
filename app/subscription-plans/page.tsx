@@ -17,6 +17,14 @@ const iconMap: { [key: string]: React.ElementType } = {
     Search, History, Mail, Star, Zap, Archive, TrendingUp, Sparkles, ShieldCheck, Gift, Check, PlusCircle, Wand2, Percent, Award, CalendarHeart, Camera, Bell
 };
 
+interface UserSubscriptionStatus {
+    has_active_subscription: boolean;
+    status?: string;
+    current_plan_id?: string;
+    current_period_end?: string; // Stripe retorna una data, la gestionarem com a string
+    cancel_at_period_end?: boolean;
+}
+
 interface PlanFeature {
     text: string;
     icon_name?: string;
@@ -43,98 +51,120 @@ const PricingPlansPage = () => {
     const [isLoadingPlans, setIsLoadingPlans] = useState(true);
     const [errorLoadingPlans, setErrorLoadingPlans] = useState<string | null>(null);
     const [isSubscribing, setIsSubscribing] = useState<string | null>(null);
+    const [subscriptionStatus, setSubscriptionStatus] = useState<UserSubscriptionStatus | null>(null);
+    const [isProcessingAction, setIsProcessingAction] = useState<string | null>(null); // Per a 'Subscriure's' o 'Gestionar'
 
+
+    // [MILLORA] Lògica per estilitzar plans, extreta a una funció auxiliar per a més claredat
+    const getStyledPlans = (plansData: any[]): Plan[] => {
+        return plansData.map((planData, index) => {
+            let planSpecifics: Partial<Plan> = {
+                features: [{ text: "Característica base", icon_name: "Check" }],
+                bgColorClass: "bg-white dark:bg-slate-800",
+                textColorClass: "text-slate-700 dark:text-slate-300",
+                buttonColorClass: "bg-teal-500 hover:bg-teal-600 text-white",
+                borderColorClass: "border-transparent",
+                highlight: false,
+            };
+
+            if (planData.name.toLowerCase().includes("fan") || index === 1) {
+                planSpecifics = {
+                    features: [
+                        { text: "Tot el del pla Supporter", icon_name: "PlusCircle" },
+                        { text: "Assistent d'outfit amb IA", icon_name: "Wand2" },
+                        { text: "Historial de cerques complet", icon_name: "Archive" },
+                        { text: "Descomptes exclusius", icon_name: "Percent" },
+                    ],
+                    bgColorClass: "bg-sky-600 dark:bg-sky-700",
+                    textColorClass: "text-white",
+                    buttonColorClass: "bg-white hover:bg-slate-100 text-sky-600",
+                    borderColorClass: "border-sky-400",
+                    highlight: true,
+                };
+            } else if (planData.name.toLowerCase().includes("founder") || index === 2) {
+                planSpecifics = {
+                    features: [
+                        { text: "Totes les funcions del pla Fan", icon_name: "Award" },
+                        { text: "Suport prioritari VIP", icon_name: "ShieldCheck" },
+                        { text: "Accés anticipat a novetats", icon_name: "Gift" },
+                        { text: "Esdeveniments exclusius Clothy", icon_name: "CalendarHeart" },
+                    ],
+                    bgColorClass: "bg-slate-800 dark:bg-slate-900",
+                    textColorClass: "text-white",
+                    buttonColorClass: "bg-gradient-to-r from-teal-400 to-sky-500 hover:from-teal-500 hover:to-sky-600 text-white",
+                };
+            } else { // Pla Bàsic/Supporter
+                planSpecifics = {
+                    features: [
+                        { text: "Accés complet a cerques", icon_name: "Search" },
+                        { text: "Cerques il·limitades per imatge", icon_name: "Camera" },
+                        { text: "Alerta de preus avançada", icon_name: "Bell" },
+                        { text: "Historial de cerques (15 dies)", icon_name: "History" },
+                    ],
+                    buttonColorClass: "bg-teal-500 hover:bg-teal-600 text-white",
+                };
+            }
+
+            return { ...planData, ...planSpecifics } as Plan;
+        });
+    };
+
+    // [CORRECCIÓ] Un únic useEffect per carregar totes les dades necessàries
     useEffect(() => {
-        const fetchPlansFromBackend = async () => {
+        const loadPageData = async () => {
             setIsLoadingPlans(true);
             setErrorLoadingPlans(null);
+
             try {
+                // Sempre carreguem els plans disponibles
                 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-                const response = await fetch(`${apiUrl}/subscriptions/plans`);
-                if (!response.ok) {
-                    const err = await response.json();
-                    throw new Error(err.detail || 'No s\'ha pogut carregar els plans.');
+                const plansResponse = await fetch(`${apiUrl}/subscriptions/plans`);
+                if (!plansResponse.ok) throw new Error('No s\'ha pogut carregar els plans.');
+                const plansData = await plansResponse.json();
+                setPlans(getStyledPlans(plansData)); // Estilitzem i desem els plans
+                console.log("[PricingPlans] Plans carregats i estilitzats.");
+
+                // Si l'usuari està autenticat, comprovem el seu estat de subscripció
+                if (isAuthenticated) {
+                    console.log("[PricingPlans] Usuari autenticat. Comprovant estat de subscripció...");
+                    const subResponse = await fetchWithAuth(`${apiUrl}/subscriptions/my-subscription`);
+                    if (!subResponse.ok) throw new Error("No s'ha pogut obtenir l'estat de la teva subscripció.");
+                    const subData: UserSubscriptionStatus = await subResponse.json();
+                    setSubscriptionStatus(subData);
+                    console.log("[PricingPlans] Estat de subscripció obtingut:", subData);
+                } else {
+                    // Si no està autenticat, resetejem l'estat de subscripció
+                    setSubscriptionStatus(null);
                 }
-                const dataFromBackend: Omit<Plan, 'features' | 'bgColorClass' | 'textColorClass' | 'buttonColorClass' | 'highlight' | 'borderColorClass'>[] = await response.json();
-
-                // Aquesta part és crucial i hauria d'estar al backend o ser molt més robusta
-                // Es manté per coherència amb la teva petició anterior
-                const styledPlans: Plan[] = dataFromBackend.map((planData, index) => {
-                    let planSpecifics: Partial<Plan> = { // Fem els camps opcionals per a la base
-                        features: [{ text: "Característica base", icon_name: "Check" }],
-                        bgColorClass: "bg-white dark:bg-slate-800",
-                        textColorClass: "text-slate-700 dark:text-slate-300",
-                        buttonColorClass: "bg-teal-500 hover:bg-teal-600 text-white",
-                        borderColorClass: "border-transparent",
-                        highlight: false,
-                    };
-
-                    // Lògica per assignar estils basant-se en el nom o ID del pla
-                    // AQUESTA LÒGICA HAURIA D'ESTAR PREFERIBLEMENT AL BACKEND
-                    if (planData.name.toLowerCase().includes("supporter") || index === 0) {
-                        planSpecifics = {
-                            ...planSpecifics, // Mantenim defaults si no es sobreescriuen
-                            features: [
-                                { text: "Accés complet a cerques", icon_name: "Search" },
-                                { text: "Cerques il·limitades per imatge", icon_name: "Camera" },
-                                { text: "Alerta de preus avançada", icon_name: "Bell" },
-                                { text: "Historial de cerques (15 dies)", icon_name: "History" },
-                            ],
-                            bgColorClass: "bg-white dark:bg-slate-800", // Ja és el default
-                            textColorClass: "text-black dark:text-white", // Ja és el default
-                            buttonColorClass: "bg-teal-500 hover:bg-teal-600 text-black",
-                        };
-                    } else if (planData.name.toLowerCase().includes("fan") || index === 1) {
-                        planSpecifics = {
-                            features: [
-                                { text: "Tot el del pla Supporter", icon_name: "PlusCircle" },
-                                { text: "Assistent d'outfit amb IA", icon_name: "Wand2" },
-                                { text: "Historial de cerques complet", icon_name: "Archive" },
-                                { text: "Descomptes exclusius", icon_name: "Percent" },
-                            ],
-                            bgColorClass: "bg-sky-600 dark:bg-sky-700", // Blau/Turquesa més intens
-                            textColorClass: "text-black",
-                            buttonColorClass: "bg-black hover:bg-slate-100 text-sky-600",
-                            borderColorClass: "border-sky-400", // Vora per destacar
-                            highlight: true,
-                        };
-                    } else if (planData.name.toLowerCase().includes("founder") || index === 2) {
-                        planSpecifics = {
-                            features: [
-                                { text: "Totes les funcions del pla Fan", icon_name: "Award" },
-                                { text: "Suport prioritari VIP", icon_name: "ShieldCheck" },
-                                { text: "Accés anticipat a novetats", icon_name: "Gift" },
-                                { text: "Esdeveniments exclusius Clothy", icon_name: "CalendarHeart" },
-                            ],
-                            bgColorClass: "bg-slate-800 dark:bg-slate-900", // Més fosc
-                            textColorClass: "text-white",
-                            buttonColorClass: "bg-gradient-to-r from-teal-400 to-sky-500 hover:from-teal-500 hover:to-sky-600 text-black",
-                            borderColorClass: "border-transparent",
-                        };
-                    }
-                    // Assegurem que tots els camps de Plan estan presents
-                    return {
-                        ...planData,
-                        name:  planData.name, // Utilitza el nom del backend si no hi ha frontend_name
-                        description:  planData.description,
-                        features: planSpecifics.features || [],
-                        bgColorClass: planSpecifics.bgColorClass || "bg-white dark:bg-slate-800",
-                        textColorClass: planSpecifics.textColorClass || "text-slate-700 dark:text-slate-300",
-                        buttonColorClass: planSpecifics.buttonColorClass || "bg-teal-500 hover:bg-teal-600 text-white",
-                        borderColorClass: planSpecifics.borderColorClass || "border-transparent",
-                        highlight: planSpecifics.highlight || false,
-                    } as Plan; // Forcem el tipus Plan
-                });
-                setPlans(styledPlans);
-
-            } catch (error: any) {
-                setErrorLoadingPlans(error.message || "Error desconegut carregant plans.");
+            } catch (err: any) {
+                setErrorLoadingPlans(err.message || "Error desconegut carregant les dades.");
+                console.error("Error a loadPageData:", err);
             } finally {
                 setIsLoadingPlans(false);
             }
         };
-        fetchPlansFromBackend();
-    }, []);
+
+        // Només carreguem si l'estat d'autenticació no està carregant
+        if (!isAuthenticated) {
+            loadPageData();
+        }
+    }, [isAuthenticated, isAuthenticated, fetchWithAuth]);
+
+
+
+    const handleManageSubscription = async () => {
+        setIsProcessingAction('manage');
+        try {
+            const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+            const response = await fetchWithAuth(`${apiUrl}/subscriptions/create-customer-portal-session`, { method: 'POST' });
+            if (!response.ok) throw new Error("No s'ha pogut obrir el portal de gestió.");
+            const data = await response.json();
+            window.location.href = data.url;
+        } catch (error: any) {
+            alert(`Error: ${error.message}`);
+            setIsProcessingAction(null);
+        }
+    };
 
     const handleSubscribeClick = async (priceId: string, planName: string) => {
         setIsSubscribing(priceId);
@@ -205,6 +235,56 @@ const PricingPlansPage = () => {
                 <Link href="/" legacyBehavior>
                     <a className="text-teal-500 hover:text-teal-400 text-lg">{"Tornar a l'inici"}</a>
                 </Link>
+            </div>
+        );
+    }
+
+    // [NOVA VISTA] Si l'usuari ja té una subscripció activa
+    if (isAuthenticated && subscriptionStatus?.has_active_subscription) {
+        const currentPlan = plans.find(p => p.id === subscriptionStatus.current_plan_id);
+        const periodEndDate = subscriptionStatus.current_period_end
+            ? new Date(subscriptionStatus.current_period_end).toLocaleDateString('ca-ES', { day: 'numeric', month: 'long', year: 'numeric' })
+            : '';
+
+        return (
+            <div className="flex flex-col min-h-screen">
+                <main className="flex-grow flex items-center justify-center bg-gradient-to-br from-sky-100 via-teal-50 to-green-100 dark:from-slate-900 dark:via-teal-900 dark:to-green-900 py-12 px-4">
+                    <div className="w-full max-w-lg text-center">
+                        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl p-8">
+                            <Star className="mx-auto h-16 w-16 text-yellow-400 mb-4" />
+                            <h1 className="text-3xl font-extrabold text-slate-800 dark:text-white mb-2">
+                                El Teu Pla Actual
+                            </h1>
+                            {currentPlan ? (
+                                <p className="text-2xl font-semibold text-teal-600 dark:text-teal-400 mb-6">{currentPlan.name}</p>
+                            ) : (
+                                <p className="text-lg text-slate-500 mb-6">Pla actiu</p>
+                            )}
+
+                            {subscriptionStatus.cancel_at_period_end ? (
+                                <div className="bg-orange-100 dark:bg-orange-800 border-l-4 border-orange-500 text-orange-700 dark:text-orange-200 p-4 rounded-md mb-6">
+                                    La teva subscripció ha estat cancel·lada i **finalitzarà el {periodEndDate}**.
+                                </div>
+                            ) : (
+                                <p className="text-slate-600 dark:text-slate-300 mb-6">
+                                    El teu accés es renovarà el **{periodEndDate}**.
+                                </p>
+                            )}
+
+                            <button
+                                onClick={handleManageSubscription}
+                                disabled={isProcessingAction === 'manage'}
+                                className="w-full font-semibold py-3.5 px-6 rounded-lg text-lg shadow-md transition-all duration-300 ease-in-out bg-slate-700 hover:bg-slate-600 text-white focus:outline-none focus:ring-2 focus:ring-slate-500 disabled:opacity-50 disabled:cursor-wait"
+                            >
+                                {isProcessingAction === 'manage' ? <Loader2 className="animate-spin h-6 w-6 mx-auto" /> : "Gestionar Subscripció"}
+                            </button>
+                            <p className="text-xs text-slate-500 mt-3">
+                                Canvia de pla, actualitza el mètode de pagament o cancel·la la teva subscripció.
+                            </p>
+                        </div>
+                    </div>
+                </main>
+                <Footer />
             </div>
         );
     }
