@@ -58,45 +58,7 @@ const PricingPlansPage = () => {
     // [MILLORA] Lògica per estilitzar plans, extreta a una funció auxiliar per a més claredat
     const getStyledPlans = (plansData: any[]): Plan[] => {
         return plansData.map((planData, index) => {
-            let planSpecifics: Partial<Plan> = {
-                features: [{ text: "Característica base", icon_name: "Check" }],
-                bgColorClass: "bg-white dark:bg-slate-800",
-                textColorClass: "text-slate-700 dark:text-slate-300",
-                buttonColorClass: "bg-teal-500 hover:bg-teal-600 text-white",
-                borderColorClass: "border-transparent",
-                highlight: false,
-            };
-             if (planData.name.toLowerCase().includes("founder") || index === 2) {
-                 planSpecifics = {
-                     features: [
-                         {text: "Totes les funcions del pla Fan", icon_name: "Award"},
-                         {text: "Suport prioritari VIP", icon_name: "ShieldCheck"},
-                         {text: "Accés anticipat a novetats", icon_name: "Gift"},
-                         {text: "Esdeveniments exclusius Clothy", icon_name: "CalendarHeart"},
-                     ],
-                 };
-             }
-            else if (planData.name.toLowerCase().includes("fan") || index === 1) {
-                planSpecifics = {
-                    features: [
-                        { text: "Tot el del pla Supporter", icon_name: "PlusCircle" },
-                        { text: "Assistent d'outfit amb IA", icon_name: "Wand2" },
-                        { text: "Historial de cerques complet", icon_name: "Archive" },
-                        { text: "Descomptes exclusius", icon_name: "Percent" },
-                    ],
-                };
-            } else { // Pla Bàsic/Supporter
-                planSpecifics = {
-                    features: [
-                        { text: "Accés complet a cerques", icon_name: "Search" },
-                        { text: "Cerques il·limitades per imatge", icon_name: "Camera" },
-                        { text: "Alerta de preus avançada", icon_name: "Bell" },
-                        { text: "Historial de cerques (15 dies)", icon_name: "History" },
-                    ],
-                };
-            }
-
-            return { ...planData, ...planSpecifics } as Plan;
+            return { ...planData } as Plan;
         });
     };
 
@@ -111,6 +73,7 @@ const PricingPlansPage = () => {
                 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
                 const plansResponse = await fetch(`${apiUrl}/subscriptions/plans`);
                 if (!plansResponse.ok) throw new Error('No s\'ha pogut carregar els plans.');
+                console.log("PLANS", plansResponse);
                 const plansData = await plansResponse.json();
                 setPlans(getStyledPlans(plansData)); // Estilitzem i desem els plans
                 console.log("[PricingPlans] Plans carregats i estilitzats.");
