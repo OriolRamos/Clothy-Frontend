@@ -102,6 +102,7 @@ const PricingPlansPage = () => {
                         { text: "Historial de cerques (15 dies)", icon_name: "History" },
                     ],
                     buttonColorClass: "bg-teal-500 hover:bg-teal-600 text-white",
+                    textColorClass: "text-black"
                 };
             }
 
