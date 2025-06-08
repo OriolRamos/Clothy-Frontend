@@ -22,7 +22,7 @@ const DonationsSection = () => {
                                 Vols Donar Suport al Projecte?
                             </h2>
                             <p className="mt-3 text-lg text-slate-300">
-                                Si Clothy.es t'és útil, considera fer una donació. Cada contribució, per petita que sigui, ens ajuda a mantenir i millorar la plataforma.
+                                Si Clothy.es t&apos;és útil, considera fer una donació. Cada contribució, per petita que sigui, ens ajuda a mantenir i millorar la plataforma.
                             </p>
                         </div>
                         <div className="flex-shrink-0 w-full md:w-auto mt-4 md:mt-0">
