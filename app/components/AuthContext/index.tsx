@@ -8,6 +8,7 @@ interface AuthContextType {
     isAuthenticated: boolean;
     userInitial: string;
     isLoading: boolean;
+    subscription: SubscriptionInfo | null;
     login: (token: string) => void;
     logout: () => void;
     fetchWithAuth: (url: string, options?: RequestInit) => Promise<Response>;
@@ -18,12 +19,18 @@ const AuthContext = createContext<AuthContextType>({
     isAuthenticated: false,
     userInitial: "",
     isLoading: true,
+    subscription: null,
     login: () => {},
     logout: () => {},
     fetchWithAuth: async () => {
         throw new Error("fetchWithAuth no implementat");
     },
 });
+
+interface SubscriptionInfo {
+    plan_name?: string;
+    status?: string;
+}
 
 async function validateToken(token: string): Promise<{ valid: boolean; email?: string }> {
     try {
@@ -53,6 +60,34 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const [userInitial, setUserInitial] = useState("");
     const [showSessionExpiredModal, setShowSessionExpiredModal] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
+    const [subscription, setSubscription] = useState<SubscriptionInfo | null>(null);
+
+    const fetchSubscriptionStatus = async (token: string) => {
+        try {
+            const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+            const response = await fetch(`${apiUrl}/subscriptions/my-subscription`, {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            if (response.ok) {
+                const data = await response.json();
+                if (data.has_active_subscription) {
+                    // Obtenim el nom del pla des del backend
+                    const planResponse = await fetch(`${apiUrl}/subscriptions/plans`);
+                    const plans = await planResponse.json();
+                    const currentPlan = plans.find((p: any) => p.id === data.current_plan_id);
+                    setSubscription({ plan_name: currentPlan?.name || data.status, status: data.status });
+                } else {
+                    setSubscription(null);
+                }
+            } else {
+                setSubscription(null);
+            }
+        } catch (error) {
+            console.error("Error obtenint l'estat de la subscripció a AuthContext:", error);
+            setSubscription(null);
+        }
+    };
+
     useEffect(() => {
         async function checkToken() {
             const token = localStorage.getItem("authToken");
@@ -61,6 +96,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
                 if (result.valid && result.email) {
                     setUserInitial(result.email.charAt(0).toUpperCase());
                     setIsAuthenticated(true);
+                    await fetchSubscriptionStatus(token); // <--- AFEGIT: Carrega la subscripció
                 } else {
                     logout(); // Elimina el token si no és vàlid
                 }
@@ -76,6 +112,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         if (result.valid && result.email) {
             setUserInitial(result.email.charAt(0).toUpperCase());
             setIsAuthenticated(true);
+            await fetchSubscriptionStatus(token); // <--- AFEGIT: Carrega la subscripció en fer login
         } else {
             logout();
         }
@@ -85,6 +122,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         localStorage.removeItem("authToken");
         setIsAuthenticated(false);
         setUserInitial("");
+        setSubscription(null); // <--- AFEGIT: Neteja la subscripció en fer logout
     };
 
     const handle401Error = () => {
@@ -119,6 +157,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         isAuthenticated,
         userInitial,
         isLoading,
+        subscription,
         login,
         logout,
         fetchWithAuth,

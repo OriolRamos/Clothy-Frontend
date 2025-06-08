@@ -149,9 +149,7 @@ const Navbar: React.FC = () => {
                         </div>
 
                         {isAuthenticated ? (
-                            <UserMenu userInitial={userInitial}   // Per exemple, les inicials de l'usuari
-                                      logout={logout}
-                            />
+                            <UserMenu/>
                         ) : (
                             <>
                                 <Link href="/login" {...({} as any)}>
@@ -169,7 +167,7 @@ const Navbar: React.FC = () => {
                 <Collapse open={open}>
                     <div className="container mx-auto mt-3 border-t border-gray-200 px-2 pt-4">
                         <ul className="flex flex-col gap-4">
-                            {NAV_MENU.map(({name, link, icon: Icon}) => (
+                            {NAV_MENU.map(({ name, link, icon: Icon }) => (
                                 <li key={name}>
                                     <Link href={link} passHref>
                                         <Typography
@@ -177,9 +175,10 @@ const Navbar: React.FC = () => {
                                             variant="paragraph"
                                             color="gray"
                                             className="flex items-center gap-2 font-medium text-gray-900"
+                                            onClick={() => setOpen(false)} // [CANVI] Afegeix això per tancar el menú
                                             {...({} as any)}
                                         >
-                                            <Icon className="h-5 w-5"/>
+                                            <Icon className="h-5 w-5" />
                                             {name}
                                         </Typography>
                                     </Link>
@@ -193,9 +192,10 @@ const Navbar: React.FC = () => {
                                             variant="paragraph"
                                             color="gray"
                                             className="flex items-center gap-2 font-medium text-gray-900"
+                                            onClick={() => setOpen(false)} // [CANVI] Afegeix això per tancar el menú
                                             {...({} as any)}
                                         >
-                                            <MagnifyingGlassIcon className="h-5 w-5"/>
+                                            <MagnifyingGlassIcon className="h-5 w-5" />
                                             {t("navbar.search")}
                                         </Typography>
                                     </Link>
@@ -210,12 +210,10 @@ const Navbar: React.FC = () => {
                                             variant="paragraph"
                                             color="gray"
                                             className="flex items-center gap-2 font-medium text-gray-900"
-                                            {...({} as any)} // Ignora altres propietats no passades
+                                            onClick={() => setOpen(false)} // [CANVI] Afegeix això per tancar el menú
+                                            {...({} as any)}
                                         >
-                                            {/* Icona des de Lucide */}
                                             <ShirtIcon className="h-5 w-5" />
-                                            {/* O un logo personalitzat */}
-                                            {/* <img src="/images/outfit-assistant-icon.png" alt="Outfit Assistant" className="h-5 w-5" /> */}
                                             {t("navbar.outfitAssistant", "Outfit Assistant")}
                                         </Typography>
                                     </Link>
@@ -223,7 +221,6 @@ const Navbar: React.FC = () => {
                             )}
                         </ul>
                     </div>
-
                 </Collapse>
             </div>
         </div>
