@@ -1,7 +1,8 @@
 "use client";
 
 import React, { createContext, useState, useContext, useEffect } from "react";
-import SessionExpiredModal from "../SessionExpiredModal/index"; // Modal separat
+import SessionExpiredModal from "../SessionExpiredModal/index"; // Modal existent
+import RateLimitModal from "../Notifications/RateLimitModal"; // PAS 1: Importa el nou modal
 
 // Definim el tipus per al context
 interface AuthContextType {
@@ -59,19 +60,20 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [userInitial, setUserInitial] = useState("");
     const [showSessionExpiredModal, setShowSessionExpiredModal] = useState(false);
+    const [showRateLimitModal, setShowRateLimitModal] = useState(false); // PAS 2: Afegeix un estat per al nou modal
     const [isLoading, setIsLoading] = useState(true);
     const [subscription, setSubscription] = useState<SubscriptionInfo | null>(null);
 
     const fetchSubscriptionStatus = async (token: string) => {
         try {
             const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+            // Utilitzem fetchWithAuth per si aquesta crida també necessita autenticació
             const response = await fetch(`${apiUrl}/subscriptions/my-subscription`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             if (response.ok) {
                 const data = await response.json();
                 if (data.has_active_subscription) {
-                    // Obtenim el nom del pla des del backend
                     const planResponse = await fetch(`${apiUrl}/subscriptions/plans`);
                     const plans = await planResponse.json();
                     const currentPlan = plans.find((p: any) => p.id === data.current_plan_id);
@@ -96,9 +98,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
                 if (result.valid && result.email) {
                     setUserInitial(result.email.charAt(0).toUpperCase());
                     setIsAuthenticated(true);
-                    await fetchSubscriptionStatus(token); // <--- AFEGIT: Carrega la subscripció
+                    await fetchSubscriptionStatus(token);
                 } else {
-                    logout(); // Elimina el token si no és vàlid
+                    logout();
                 }
             }
             setIsLoading(false);
@@ -112,7 +114,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         if (result.valid && result.email) {
             setUserInitial(result.email.charAt(0).toUpperCase());
             setIsAuthenticated(true);
-            await fetchSubscriptionStatus(token); // <--- AFEGIT: Carrega la subscripció en fer login
+            await fetchSubscriptionStatus(token);
         } else {
             logout();
         }
@@ -122,7 +124,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         localStorage.removeItem("authToken");
         setIsAuthenticated(false);
         setUserInitial("");
-        setSubscription(null); // <--- AFEGIT: Neteja la subscripció en fer logout
+        setSubscription(null);
     };
 
     const handle401Error = () => {
@@ -142,14 +144,20 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
             const response = await fetch(url, { ...options, headers });
 
             if (response.status === 401) {
-                handle401Error(); // Gestiona l'error 401
+                handle401Error();
                 throw new Error("Sessió expirada.");
+            }
+
+            // PAS 3: Afegeix la lògica per a l'error 429
+            if (response.status === 429) {
+                setShowRateLimitModal(true); // Mostra el modal de límit de peticions
+                throw new Error("Límit de peticions del pla assolit."); // Llança l'error per aturar l'execució
             }
 
             return response;
         } catch (error) {
             console.error("Error a fetchWithAuth:", error);
-            throw error;
+            throw error; // Propaga l'error perquè el component que fa la crida sàpiga que ha fallat
         }
     };
 
@@ -169,6 +177,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
             <SessionExpiredModal
                 show={showSessionExpiredModal}
                 onClose={() => setShowSessionExpiredModal(false)}
+            />
+            {/* PAS 4: Renderitza el nou modal */}
+            <RateLimitModal
+                show={showRateLimitModal}
+                onClose={() => setShowRateLimitModal(false)}
             />
         </AuthContext.Provider>
     );
