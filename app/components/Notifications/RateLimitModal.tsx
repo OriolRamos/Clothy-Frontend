@@ -16,7 +16,7 @@ const RateLimitModal: React.FC<RateLimitModalProps> = ({ show, onClose }) => {
     }
 
     const handleUpgrade = () => {
-        router.push('/donaciones'); // URL on l'usuari pot millorar el pla
+        router.push('/subscription-plans'); // URL on l'usuari pot millorar el pla
         onClose(); // Tanca el modal un cop es redirigeix
     };
 
