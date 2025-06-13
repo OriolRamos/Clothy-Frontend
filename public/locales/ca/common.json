@@ -7,6 +7,43 @@
         "signIn": "Inicia sessió",
         "imageAlt": "Imatge del banner"
     },
+    "subscription_succes": {
+        "succes": "Subscripció Iniciada amb Èxit!",
+        "verify": "Verificant l'estat de la subscripció...",
+        "thank": "Gràcies per subscriure't a Clothy.es. Estem processant la teva subscripció.",
+        "activate": "La teva subscripció ha estat confirmada i ja està activa!",
+        "activating": "La teva subscripció s'està activant. Normalment triga uns segons.",
+        "confirmating": "Rebràs una confirmació quan estigui llesta (o ja pots revisar el teu perfil). La confirmació final depèn del processament del nostre sistema (webhooks).",
+        "problem": "Hi ha hagut un problema verificant l'estat de la teva subscripció immediatament.",
+        "dont_worry": "No et preocupis, si el pagament ha estat correcte, el nostre sistema l'activarà aviat. Si us plau, revisa el teu perfil en uns minuts.",
+        "return": "Tornar a la pàgina principal",
+        "profile": "Anar al meu Perfil",
+        "charging": "Carregant..."
+    },
+    "subscription_canceled": {
+        "canceled": "Procés de Subscripció Cancel·lat",
+        "problem": "Sembla que el procés de subscripció no s'ha completat o ha estat cancel·lat.",
+        "canceled_charge": "No se t'ha realitzat cap càrrec. Pots intentar subscriure't de nou quan vulguis.",
+        "see_plans": "Veure els Plans de Subscripció",
+        "return": "Tornar a la pàgina principal"
+    },
+    "subscription_plans": {
+        "charging": "Carregant plans...",
+        "error": "Error Carregant Plans",
+        "reintent": "Reintentar",
+        "no_plans": "No hi ha Plans Disponibles",
+        "no_plans_actualy": "Actualment no tenim plans de subscripció disponibles. Si us plau, torna a intentar-ho més tard.",
+        "return": "Tornar a l'inici",
+        "your_plan": "El Teu Pla Actual",
+        "active_plan": "Pla actiu",
+        "subs_cancel": "La teva subscripció ha estat cancel·lada i finalitzarà a la data establerta.",
+        "renew": "El teu accés es renovarà a la data establerta.",
+        "change_plan": "Canvia de pla, actualitza el mètode de pagament o cancel·la la teva subscripció.",
+        "choice": "Escull el pla que millor s'adapti a les teves necessitats i desbloqueja tot el potencial de la moda intel·ligent.",
+        "popular": "Popular",
+        "start_now": "Comença ara",
+        "month": "mes"
+    },
     "login": {
         "title": "Inicia sessió al teu compte",
         "email_label": "Correu electrònic",
@@ -305,6 +342,7 @@
         }
     },
     "profile": {
+        "country_info": "Especificar el país és essencial per poder obtenir la roba disponible al teu país i oferir una millor experiència a l'usuari.",
         "title": "Perfil d'Usuari",
         "subtitle": "Personalitza la teva experiència i millora les cerques.",
         "personalInfo": "Informació Personal",

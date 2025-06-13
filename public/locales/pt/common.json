@@ -7,7 +7,43 @@
     "signIn": "Entrar",
     "imageAlt": "Imagem do banner"
   },
-
+  "subscription_succes": {
+    "succes": "Assinatura Iniciada com Sucesso!",
+    "verify": "A verificar o estado da assinatura...",
+    "thank": "Obrigado por assinar o Clothy.es. Estamos a processar a sua assinatura.",
+    "activate": "A sua assinatura foi confirmada e está agora ativa!",
+    "activating": "A sua assinatura está a ser ativada. Normalmente, demora alguns segundos.",
+    "confirmating": "Receberá uma confirmação quando estiver pronta (ou pode verificar o seu perfil). A confirmação final depende do processamento do nosso sistema (webhooks).",
+    "problem": "Ocorreu um problema ao verificar imediatamente o estado da sua assinatura.",
+    "dont_worry": "Não se preocupe, se o pagamento foi bem-sucedido, o nosso sistema irá ativá-la em breve. Por favor, verifique o seu perfil dentro de alguns minutos.",
+    "return": "Voltar à página principal",
+    "profile": "Ir para o meu Perfil",
+    "charging": "A carregar..."
+  },
+  "subscription_canceled": {
+    "canceled": "Processo de Assinatura Cancelado",
+    "problem": "Parece que o processo de assinatura não foi concluído ou foi cancelado.",
+    "canceled_charge": "Não lhe foi cobrado nenhum valor. Pode tentar assinar novamente quando quiser.",
+    "see_plans": "Ver Planos de Assinatura",
+    "return": "Voltar à página principal"
+  },
+  "subscription_plans": {
+    "charging": "A carregar planos...",
+    "error": "Erro ao Carregar Planos",
+    "reintent": "Tentar novamente",
+    "no_plans": "Nenhum Plano Disponível",
+    "no_plans_actualy": "De momento, não temos planos de assinatura disponíveis. Por favor, tente novamente mais tarde.",
+    "return": "Voltar ao início",
+    "your_plan": "O Seu Plano Atual",
+    "active_plan": "Plano ativo",
+    "subs_cancel": "A sua assinatura foi cancelada e terminará na data especificada.",
+    "renew": "O seu acesso será renovado na data especificada.",
+    "change_plan": "Mude de plano, atualize o seu método de pagamento ou cancele a sua assinatura.",
+    "choice": "Escolha o plano que melhor se adapta às suas necessidades e desbloqueie todo o potencial da moda inteligente.",
+    "popular": "Popular",
+    "start_now": "Começar agora",
+    "month": "mês"
+  },
   "login": {
     "title": "Faça login na sua conta",
     "email_label": "E-mail",
@@ -306,6 +342,7 @@
     }
   },
   "profile": {
+    "country_info": "Especificar o seu país é essencial para obter as roupas disponíveis na sua região e proporcionar uma melhor experiência de utilizador.",
     "title": "Perfil do Usuário",
     "subtitle": "Personalize sua experiência e aprimore suas buscas.",
     "personalInfo": "Informações Pessoais",

@@ -1,4 +1,42 @@
 {
+
+    "subscription_succes": {
+        "succes": "¡Suscripción Iniciada con Éxito!",
+        "verify": "Verificando el estado de la suscripción...",
+        "thank": "Gracias por suscribirte a Clothy.es. Estamos procesando tu suscripción.",
+        "activate": "¡Tu suscripción ha sido confirmada y ya está activa!",
+        "activating": "Tu suscripción se está activando. Normalmente tarda unos segundos.",
+        "confirmating": "Recibirás una confirmación cuando esté lista (o ya puedes revisar tu perfil). La confirmación final depende del procesamiento de nuestro sistema (webhooks).",
+        "problem": "Ha habido un problema verificando el estado de tu suscripción inmediatamente.",
+        "dont_worry": "No te preocupes, si el pago ha sido correcto, nuestro sistema la activará pronto. Por favor, revisa tu perfil en unos minutos.",
+        "return": "Volver a la página principal",
+        "profile": "Ir a mi Perfil",
+        "charging": "Cargando..."
+    },
+    "subscription_canceled": {
+        "canceled": "Proceso de Suscripción Cancelado",
+        "problem": "Parece que el proceso de suscripción no se ha completado o ha sido cancelado.",
+        "canceled_charge": "No se te ha realizado ningún cargo. Puedes intentar suscribirte de nuevo cuando quieras.",
+        "see_plans": "Ver los Planes de Suscripción",
+        "return": "Volver a la página principal"
+    },
+    "subscription_plans": {
+        "charging": "Cargando planes...",
+        "error": "Error Cargando Planes",
+        "reintent": "Reintentar",
+        "no_plans": "No hay Planes Disponibles",
+        "no_plans_actualy": "Actualmente no tenemos planes de suscripción disponibles. Por favor, vuelve a intentarlo más tarde.",
+        "return": "Volver al inicio",
+        "your_plan": "Tu Plan Actual",
+        "active_plan": "Plan activo",
+        "subs_cancel": "Tu suscripción ha sido cancelada y finalizará en la fecha establecida.",
+        "renew": "Tu acceso se renovará en la fecha establecida.",
+        "change_plan": "Cambia de plan, actualiza el método de pago o cancela tu suscripción.",
+        "choice": "Elige el plan que mejor se adapte a tus necesidades y desbloquea todo el potencial de la moda inteligente.",
+        "popular": "Popular",
+        "start_now": "Empezar ahora",
+        "month": "mes"
+    },
     "termsandconditions": {
         "title": "TÉRMINOS Y CONDICIONES DE USO DE CLOTHY",
         "lastUpdated": "Última actualización: [04/03/2025]",
@@ -368,6 +406,7 @@
         }
     },
     "profile": {
+        "country_info": "Especificar el país es esencial para poder obtener la ropa disponible en tu país y brindar al usuario una mejor experiencia.",
         "title": "Perfil de Usuario",
         "subtitle": "Personaliza tu experiencia y mejora las búsquedas.",
         "personalInfo": "Información Personal",

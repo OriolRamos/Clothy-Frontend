@@ -7,7 +7,46 @@
     "signIn": "登录",
     "imageAlt": "横幅图片"
   },
-
+  "profile": {
+    "country_info": "指定您所在的国家对于获取您所在地区的可用服装并提供更好的用户体验至关重要。"
+  },
+  "subscription_succes": {
+    "succes": "订阅已成功启动！",
+    "verify": "正在验证订阅状态...",
+    "thank": "感谢您订阅 Clothy.es。我们正在处理您的订阅。",
+    "activate": "您的订阅已确认并已激活！",
+    "activating": "您的订阅正在激活中。这通常需要几秒钟。",
+    "confirmating": "准备就绪后您将收到确认（或者您可以检查您的个人资料）。最终确认取决于我们系统的处理（webhooks）。",
+    "problem": "立即验证您的订阅状态时出现问题。",
+    "dont_worry": "不用担心，如果付款成功，我们的系统会很快激活它。请在几分钟后检查您的个人资料。",
+    "return": "返回主页",
+    "profile": "转到我的个人资料",
+    "charging": "加载中..."
+  },
+  "subscription_canceled": {
+    "canceled": "订阅过程已取消",
+    "problem": "订阅过程似乎未完成或已取消。",
+    "canceled_charge": "我们没有向您收取任何费用。您可以随时重新尝试订阅。",
+    "see_plans": "查看订阅计划",
+    "return": "返回主页"
+  },
+  "subscription_plans": {
+    "charging": "正在加载计划...",
+    "error": "加载计划时出错",
+    "reintent": "重试",
+    "no_plans": "无可用计划",
+    "no_plans_actualy": "我们目前没有任何可用的订阅计划。请稍后再试。",
+    "return": "返回首页",
+    "your_plan": "您当前的计划",
+    "active_plan": "有效计划",
+    "subs_cancel": "您的订阅已被取消，并将在指定日期结束。",
+    "renew": "您的访问权限将在指定日期续订。",
+    "change_plan": "更改您的计划、更新您的付款方式或取消您的订阅。",
+    "choice": "选择最适合您需求的计划，释放智能时尚的全部潜力。",
+    "popular": "热门",
+    "start_now": "立即开始",
+    "month": "月"
+  },
   "login": {
     "title": "登录您的账户",
     "email_label": "电子邮件",

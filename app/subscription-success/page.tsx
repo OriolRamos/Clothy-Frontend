@@ -6,8 +6,8 @@ import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { CheckCircle, AlertTriangle, Loader2 } from 'lucide-react';
 import { useAuth } from '../components/AuthContext'; // Ajusta la ruta si cal
-// ELIMINA LA IMPORTACIÓ DEL FOOTER AQUÍ SI NO ES FA SERVIR DIRECTAMENT A SuccessContent
-// import Footer from "@/app/components/Footer"; // Si el Footer està al layout, no cal aquí
+import { useTranslation } from "react-i18next";
+
 
 // Component Intern que utilitza useSearchParams
 const SuccessContent = () => {
@@ -21,6 +21,7 @@ const SuccessContent = () => {
 
     const [verificationStatus, setVerificationStatus] = useState<'pending' | 'verified' | 'error' | 'not_checked'>('not_checked');
     const [isLoading, setIsLoading] = useState(false);
+    const { t } = useTranslation("common");
 
     useEffect(() => {
         // Comprovem que sessionId existeix i que tenim el token (o isAuthenticated és true) abans de fer la crida.
@@ -81,17 +82,20 @@ const SuccessContent = () => {
             <div>
                 <CheckCircle className="mx-auto h-16 w-16 text-green-500" />
                 <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900 dark:text-white">
-                    Subscripció Iniciada amb Èxit!
+                    {t("subscription_succes.succes") || "Subscripció Iniciada amb Èxit!"}
                 </h2>
                 <p className="mt-2 text-center text-sm text-gray-600 dark:text-gray-300">
-                    {"Gràcies per subscriure't a Clothy.es. Estem processant la teva subscripció."}
+                    {t("subscription_succes.thank") || "Gràcies per subscriure't a Clothy.es. Estem processant la teva subscripció."}
                 </p>
             </div>
 
             {isLoading && (
                 <div className="flex justify-center items-center space-x-2 mt-6">
                     <Loader2 className="h-5 w-5 animate-spin text-blue-600" />
-                    <p className="text-sm text-gray-500 dark:text-gray-400">{"Verificant l'estat de la subscripció..."}</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">
+                        {t("subscription_succes.verify") || "Verificant l'estat de la subscripció..."}
+
+                    </p>
                 </div>
             )}
 
@@ -103,7 +107,8 @@ const SuccessContent = () => {
                         </div>
                         <div className="ml-3">
                             <p className="text-sm font-medium text-green-700 dark:text-green-50">
-                                {"La teva subscripció ha estat confirmada i ja està activa!"}
+                                {t("subscription_succes.activate") || "La teva subscripció ha estat confirmada i ja està activa!"}
+
                             </p>
                         </div>
                     </div>
@@ -118,10 +123,12 @@ const SuccessContent = () => {
                         </div>
                         <div className="ml-3">
                             <p className="text-sm font-medium text-yellow-700 dark:text-yellow-50">
-                                {"La teva subscripció s'està activant. Normalment triga uns segons. "}
+                                {t("subscription_succes.activating") || "La teva subscripció s'està activant. Normalment triga uns segons. "}
+
                             </p>
                             <p className="mt-1 text-sm text-yellow-600 dark:text-yellow-200">
-                                {"Rebràs una confirmació quan estigui llesta (o ja pots revisar el teu perfil). La confirmació final depèn del processament del nostre sistema (webhooks)."}
+                                {t("subscription_succes.confirmating") || "Rebràs una confirmació quan estigui llesta (o ja pots revisar el teu perfil). La confirmació final depèn del processament del nostre sistema (webhooks)."}
+
                             </p>
                         </div>
                     </div>
@@ -136,10 +143,11 @@ const SuccessContent = () => {
                         </div>
                         <div className="ml-3">
                             <p className="text-sm font-medium text-red-700 dark:text-red-50">
-                                {"Hi ha hagut un problema verificant l'estat de la teva subscripció immediatament."}
+                                {t("subscription_succes.problem") || "Hi ha hagut un problema verificant l'estat de la teva subscripció immediatament."}
+
                             </p>
                             <p className="mt-1 text-sm text-red-600 dark:text-red-200">
-                                {"No et preocupis, si el pagament ha estat correcte, el nostre sistema l'activarà aviat. Si us plau, revisa el teu perfil en uns minuts."}
+                                {t("subscription_succes.dont_worry") || "No et preocupis, si el pagament ha estat correcte, el nostre sistema l'activarà aviat. Si us plau, revisa el teu perfil en uns minuts."}
                             </p>
                         </div>
                     </div>
@@ -151,7 +159,7 @@ const SuccessContent = () => {
                     href="/"
                     className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-semibold rounded-lg text-white bg-faqblue hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:focus:ring-offset-gray-800 transition-colors"
                 >
-                    Tornar a la pàgina principal
+                    {t("subscription_succes.return") || "Tornar a la pàgina principal"}
                 </Link>
             </div>
             <div className="mt-4">
@@ -159,7 +167,7 @@ const SuccessContent = () => {
                     href="/profile"
                     className="group relative w-full flex justify-center py-3 px-4 border border-gray-300 dark:border-gray-600 text-sm font-semibold rounded-lg text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800 transition-colors"
                 >
-                    Anar al meu Perfil
+                    {t("subscription_succes.profile") || "Anar al meu Perfil"}
                 </Link>
             </div>
         </div>
@@ -168,6 +176,7 @@ const SuccessContent = () => {
 
 // Component principal de la pàgina
 const SubscriptionSuccessPage = () => {
+    const { t } = useTranslation("common");
     return (
         // Contenidor principal que ocupa tota l'alçada i centra el contingut
         <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-sky-100 via-teal-50 to-green-100 dark:from-slate-900 dark:via-teal-900 dark:to-green-900 py-12 px-4 sm:px-6 lg:px-8">
@@ -175,7 +184,9 @@ const SubscriptionSuccessPage = () => {
                 fallback={ // El que es mostra mentre SuccessContent (i useSearchParams) es carrega
                     <div className="flex flex-col items-center">
                         <Loader2 className="h-12 w-12 animate-spin text-blue-600 dark:text-sky-400" />
-                        <p className="mt-4 text-gray-600 dark:text-gray-300">Carregant...</p>
+                        <p className="mt-4 text-gray-600 dark:text-gray-300">
+                            {t("subscription_succes.charging") || "Carregant..."}
+                        </p>
                     </div>
                 }
             >

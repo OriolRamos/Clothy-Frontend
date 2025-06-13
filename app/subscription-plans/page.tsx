@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import Footer from "@/app/components/Footer"; // Importa el teu Footer
 import DonationsSection from '@/app/donaciones/DonationSection';
+import { useTranslation } from "react-i18next";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || "");
 
@@ -54,6 +55,7 @@ const PricingPlansPage = () => {
     const [isSubscribing, setIsSubscribing] = useState<string | null>(null);
     const [subscriptionStatus, setSubscriptionStatus] = useState<UserSubscriptionStatus | null>(null);
     const [isProcessingAction, setIsProcessingAction] = useState<string | null>(null); // Per a 'Subscriure's' o 'Gestionar'
+    const { t } = useTranslation("common");
 
 
     // [MILLORA] Lògica per estilitzar plans, extreta a una funció auxiliar per a més claredat
@@ -164,7 +166,10 @@ const PricingPlansPage = () => {
         return (
             <div className="flex justify-center items-center min-h-screen bg-slate-100 dark:bg-slate-900">
                 <Loader2 className="h-16 w-16 animate-spin text-teal-500" />
-                <p className="ml-4 text-xl text-slate-700 dark:text-slate-300">Carregant plans...</p>
+                <p className="ml-4 text-xl text-slate-700 dark:text-slate-300">
+
+                    {t("subscription_plans.charging") || "Carregant plans..."}
+                </p>
             </div>
         );
     }
@@ -172,13 +177,15 @@ const PricingPlansPage = () => {
         return (
             <div className="flex flex-col justify-center items-center min-h-screen text-center px-4 bg-slate-100 dark:bg-slate-900">
                 <AlertTriangle className="h-16 w-16 text-red-500 mb-4" />
-                <h2 className="text-3xl font-semibold mb-3 text-slate-800 dark:text-white">Error Carregant Plans</h2>
+                <h2 className="text-3xl font-semibold mb-3 text-slate-800 dark:text-white">
+                    {t("subscription_plans.error") || "Error Carregant Plans"}
+                </h2>
                 <p className="text-red-600 dark:text-red-400 mb-8">{errorLoadingPlans}</p>
                 <button
                     onClick={() => window.location.reload()}
                     className="bg-teal-500 hover:bg-teal-600 text-white font-bold py-3 px-8 rounded-lg text-lg"
                 >
-                    Reintentar
+                    {t("subscription_plans.reintent") || "Reintentar"}
                 </button>
             </div>
         );
@@ -187,12 +194,16 @@ const PricingPlansPage = () => {
         return (
             <div className="flex flex-col justify-center items-center min-h-screen text-center px-4 bg-slate-100 dark:bg-slate-900">
                 <AlertTriangle className="h-16 w-16 text-yellow-500 mb-4" />
-                <h2 className="text-3xl font-semibold mb-3 text-slate-800 dark:text-white">No hi ha Plans Disponibles</h2>
+                <h2 className="text-3xl font-semibold mb-3 text-slate-800 dark:text-white">
+                    {t("subscription_plans.no_plans") || "No hi ha Plans Disponibles"}
+                </h2>
                 <p className="text-gray-600 dark:text-gray-400 mb-8">
-                    {"Actualment no tenim plans de subscripció disponibles. Si us plau, torna a intentar-ho més tard."}
+                    {t("subscription_plans.no_plans_actualy") || "Actualment no tenim plans de subscripció disponibles. Si us plau, torna a intentar-ho més tard."}
                 </p>
                 <Link href="/" legacyBehavior>
-                    <a className="text-teal-500 hover:text-teal-400 text-lg">{"Tornar a l'inici"}</a>
+                    <a className="text-teal-500 hover:text-teal-400 text-lg">
+                        {t("subscription_plans.return") || "Tornar a l'inici"}
+                    </a>
                 </Link>
             </div>
         );
@@ -212,21 +223,27 @@ const PricingPlansPage = () => {
                         <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl p-8">
                             <Star className="mx-auto h-16 w-16 text-yellow-400 mb-4" />
                             <h1 className="text-3xl font-extrabold text-slate-800 dark:text-white mb-2">
-                                El Teu Pla Actual
+
+                                {t("subscription_plans.your_plan") || "El Teu Pla Actual"}
                             </h1>
                             {currentPlan ? (
                                 <p className="text-2xl font-semibold text-teal-600 dark:text-teal-400 mb-6">{currentPlan.name}</p>
                             ) : (
-                                <p className="text-lg text-slate-500 mb-6">Pla actiu</p>
+                                <p className="text-lg text-slate-500 mb-6">
+
+                                    {t("subscription_plans.active_plan") || "Pla actiu"}
+                                </p>
                             )}
 
                             {subscriptionStatus.cancel_at_period_end ? (
                                 <div className="bg-orange-100 dark:bg-orange-800 border-l-4 border-orange-500 text-orange-700 dark:text-orange-200 p-4 rounded-md mb-6">
-                                    La teva subscripció ha estat cancel·lada i **finalitzarà el {periodEndDate}**.
+                                    {t("subscription_plans.subs_cancel") || "La teva subscripció ha estat cancel·lada i finalitzarà a la data establerta."}
+
                                 </div>
                             ) : (
                                 <p className="text-slate-600 dark:text-slate-300 mb-6">
-                                    El teu accés es renovarà el **{periodEndDate}**.
+                                    {t("subscription_plans.renew") || "El teu accés es renovarà a la data establerta."}
+
                                 </p>
                             )}
 
@@ -238,7 +255,8 @@ const PricingPlansPage = () => {
                                 {isProcessingAction === 'manage' ? <Loader2 className="animate-spin h-6 w-6 mx-auto" /> : "Gestionar Subscripció"}
                             </button>
                             <p className="text-xs text-slate-500 mt-3">
-                                Canvia de pla, actualitza el mètode de pagament o cancel·la la teva subscripció.
+                                {t("subscription_plans.change_plan") || "Canvia de pla, actualitza el mètode de pagament o cancel·la la teva subscripció."}
+
                             </p>
                         </div>
                     </div>
@@ -262,7 +280,8 @@ const PricingPlansPage = () => {
                                 </span>
                             </h1>
                             <p className="mt-8 max-w-2xl mx-auto text-xl text-slate-600 dark:text-slate-300">
-                                {"Escull el pla que millor s'adapti a les teves necessitats i desbloqueja tot el potencial de la moda intel·ligent."}
+                                {t("subscription_plans.choice") || "Escull el pla que millor s'adapti a les teves necessitats i desbloqueja tot el potencial de la moda intel·ligent."}
+
                             </p>
                         </header>
 
@@ -286,14 +305,15 @@ const PricingPlansPage = () => {
                                     >
                                         {plan.highlight && (
                                             <div className="absolute top-0 -right-10 transform rotate-45 bg-pink-500 text-white text-xs font-semibold py-1.5 px-12 shadow-md">
-                                                Popular
+
+                                                {t("subscription_plans.popular") || "Popular"}
                                             </div>
                                         )}
                                         <div className={`mb-8 ${plan.textColorClass}`}>
                                             <h3 className="text-2xl sm:text-3xl font-bold mb-2 tracking-tight">{plan.name}</h3>
                                             <p className="text-4xl sm:text-5xl font-extrabold mb-3">
                                                 {plan.price_display.split('/')[0]}
-                                                <span className="text-lg sm:text-xl font-medium opacity-70">/{plan.price_display.split('/')[1] || 'mes'}</span>
+                                                <span className="text-lg sm:text-xl font-medium opacity-70">/{plan.price_display.split('/')[1] || (t("subscription_plans.month") || "mes")}</span>
                                             </p>
                                             <p className="text-sm opacity-80 min-h-[40px] sm:min-h-[60px]">{plan.description}</p>
                                         </div>
@@ -323,7 +343,7 @@ const PricingPlansPage = () => {
                                         >
                                             {isSubscribing === plan.id ? (
                                                 <Loader2 className="animate-spin h-6 w-6 mx-auto" />
-                                            ) : "Començar Ara"}
+                                            ) : (t("subscription_plans.start_now") || "Comença ara")}
                                         </button>
                                     </div>
                                 );

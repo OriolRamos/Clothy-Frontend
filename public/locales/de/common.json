@@ -7,7 +7,43 @@
     "signIn": "Anmelden",
     "imageAlt": "Bannerbild"
   },
-
+  "subscription_succes": {
+    "succes": "Abonnement erfolgreich gestartet!",
+    "verify": "Abonnementstatus wird überprüft...",
+    "thank": "Vielen Dank für Ihr Abonnement bei Clothy.es. Wir bearbeiten Ihre Anfrage.",
+    "activate": "Ihr Abonnement wurde bestätigt und ist jetzt aktiv!",
+    "activating": "Ihr Abonnement wird aktiviert. Dies dauert normalerweise einige Sekunden.",
+    "confirmating": "Sie erhalten eine Bestätigung, sobald es fertig ist (oder Sie können Ihr Profil überprüfen). Die endgültige Bestätigung hängt von der Verarbeitung unseres Systems (Webhooks) ab.",
+    "problem": "Bei der sofortigen Überprüfung Ihres Abonnementstatus ist ein Problem aufgetreten.",
+    "dont_worry": "Keine Sorge, wenn die Zahlung erfolgreich war, wird unser System es bald aktivieren. Bitte überprüfen Sie Ihr Profil in wenigen Minuten.",
+    "return": "Zurück zur Hauptseite",
+    "profile": "Zu meinem Profil",
+    "charging": "Laden..."
+  },
+  "subscription_canceled": {
+    "canceled": "Abonnementvorgang abgebrochen",
+    "problem": "Der Abonnementvorgang wurde anscheinend nicht abgeschlossen oder abgebrochen.",
+    "canceled_charge": "Ihnen wurde nichts berechnet. Sie können jederzeit erneut versuchen, sich anzumelden.",
+    "see_plans": "Abonnementpläne anzeigen",
+    "return": "Zurück zur Hauptseite"
+  },
+  "subscription_plans": {
+    "charging": "Lade Pläne...",
+    "error": "Fehler beim Laden der Pläne",
+    "reintent": "Erneut versuchen",
+    "no_plans": "Keine Pläne verfügbar",
+    "no_plans_actualy": "Derzeit sind keine Abonnementpläne verfügbar. Bitte versuchen Sie es später erneut.",
+    "return": "Zurück zur Startseite",
+    "your_plan": "Ihr aktueller Plan",
+    "active_plan": "Aktiver Plan",
+    "subs_cancel": "Ihr Abonnement wurde gekündigt und endet zum angegebenen Datum.",
+    "renew": "Ihr Zugang wird zum angegebenen Datum verlängert.",
+    "change_plan": "Ändern Sie Ihren Plan, aktualisieren Sie Ihre Zahlungsmethode oder kündigen Sie Ihr Abonnement.",
+    "choice": "Wählen Sie den Plan, der am besten zu Ihren Bedürfnissen passt, und entfalten Sie das volle Potenzial intelligenter Mode.",
+    "popular": "Beliebt",
+    "start_now": "Jetzt starten",
+    "month": "Monat"
+  },
   "login": {
     "title": "Melden Sie sich in Ihrem Konto an",
     "email_label": "E-Mail",
@@ -320,6 +356,7 @@
     }
   },
   "profile": {
+    "country_info": "Die Angabe Ihres Landes ist unerlässlich, um in Ihrer Region verfügbare Kleidung zu erhalten und eine bessere Benutzererfahrung zu bieten.",
     "title": "Benutzerprofil",
     "subtitle": "Passen Sie Ihre Erfahrung an und verbessern Sie Ihre Suchen.",
     "personalInfo": "Persönliche Informationen",

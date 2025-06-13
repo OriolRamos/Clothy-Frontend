@@ -8,10 +8,7 @@ import Link from "next/link";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 import { useTranslation } from "react-i18next";
 import Footer from "@/app/components/Footer";
-import { Eye, EyeOff } from "lucide-react"; // o usa icones que prefereixis
-
-
-
+import { Eye, EyeOff } from "lucide-react";
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -22,7 +19,7 @@ const Login = () => {
     const { t } = useTranslation('common');
     const [showPassword, setShowPassword] = useState(false);
 
-
+    // Les teves funcions handleSubmit i handleGoogleSuccess es mantenen igual
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
@@ -85,94 +82,107 @@ const Login = () => {
 
     return (
         <GoogleOAuthProvider clientId="677361179666-ae2o6mhsi2fq7g6ri1hiktap6mjrkaqs.apps.googleusercontent.com">
-            <div className="relative h-screen flex items-center bg-gray-100 dark:bg-gray-900">
-                <div className="absolute inset-0 lg:grid grid-cols-2">
-                    <div className="relative h-[900px] w-[900px] max-w-full hidden lg:block">
-                        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-tr from-blue-400 to-blue-600 clip-path-diagonal">
-                            <Image
-                                src="/images/login.png"
-                                alt={t("login.image_alt")}
-                                width={800}
-                                height={800}
-                                style={{ objectFit: "cover" }}
-                                className="opacity-90 max-w-full max-h-full"
-                            />
-                        </div>
-                    </div>
-                    <div className="relative flex justify-center items-start pt-24">
-                        <div className="rounded-2xl p-10 w-full max-w-lg bg-white dark:bg-gray-800 shadow-md">
-                            <h2 className="text-3xl font-bold text-blue-600 dark:text-blue-400 text-center mb-6">
-                                {t("login.title")}
-                            </h2>
-                            <form className="space-y-6" onSubmit={handleSubmit}>
-                                <div>
-                                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                        {t("login.email_label")}
-                                    </label>
-                                    <input
-                                        type="email"
-                                        id="email"
-                                        name="email"
-                                        required
-                                        value={email}
-                                        onChange={e => setEmail(e.target.value)}
-                                        className="mt-2 block w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-black dark:text-gray-100"
-                                        placeholder={t("login.email_placeholder")}
+            <div className="flex flex-col min-h-screen bg-gray-100 dark:bg-gray-900">
+
+                {/* [CORRECCIÓ] El contingut principal creix per ocupar l'espai i centra els elements */}
+                <main className="flex-grow flex items-center justify-center ">
+                    <div className="container mx-auto">
+                        <div className="grid lg:grid-cols-2 gap-8 items-center">
+
+                            {/* Columna Esquerra: Imatge (el teu disseny original) */}
+                            <div className="relative h-full min-h-[600px] hidden lg:block">
+                                <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-tr from-blue-400 to-blue-600 clip-path-diagonal">
+                                    <Image
+                                        src="/images/login.png"
+                                        alt={t("login.image_alt")}
+                                        layout="fill"
+                                        objectFit="cover"
+                                        className="opacity-90"
+                                        priority
                                     />
                                 </div>
-                                <div className="relative">
-                                    <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                        {t("login.password_label")}
-                                    </label>
-                                    <input
-                                        type={showPassword ? "text" : "password"}
-                                        id="password"
-                                        name="password"
-                                        required
-                                        value={password}
-                                        onChange={e => setPassword(e.target.value)}
-                                        className="mt-2 block w-full px-4 py-2 pr-10 border rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-black dark:text-gray-100"
-                                        placeholder={t("login.password_placeholder")}
-                                    />
-                                    <button
-                                        type="button"
-                                        onClick={() => setShowPassword(prev => !prev)}
-                                        className="absolute top-1/2 right-3 -translate-y-1/2 text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-white mt-3"
-                                        aria-label={showPassword ? "Oculta la contrasenya" : "Mostra la contrasenya"}
-                                    >
-                                        {showPassword ? <Eye size={20} /> : <EyeOff size={20} />}
-                                    </button>
-                                </div>
-                                {error && <p className="text-red-500 text-sm">{error}</p>}
-                                <button
-                                    type="submit"
-                                    className="block w-full text-center py-3 px-6 text-white bg-faqblue dark:bg-blue-700 rounded-lg font-medium shadow-lg hover:scale-105 hover:bg-faqblue/90 dark:hover:bg-blue-600 transition-transform duration-200 border border-black"
-                                >
-                                    {t("login.submit_button")}
-                                </button>
-                            </form>
-                            <Link href="/reset-password">
-                                <p className="mt-4 text-sm text-gray-500 dark:text-gray-400 text-center hover:text-blue-500 cursor-pointer">
-                                    {t("login.forgot_password")}
-                                </p>
-                            </Link>
-                            <div className="flex items-center my-6">
-                                <hr className="flex-grow border-t border-gray-300 dark:border-gray-600" />
-                                <span className="px-4 text-sm text-gray-500 dark:text-gray-400">O</span>
-                                <hr className="flex-grow border-t border-gray-300 dark:border-gray-600" />
                             </div>
-                            {/* Botón de Google */}
-                            <div className="border border-black rounded-lg overflow-hidden">
-                                <GoogleLogin
-                                    onSuccess={handleGoogleSuccess}
-                                    onError={() => setError(t("login.google_error"))}
-                                />
+
+                            {/* Columna Dreta: Formulari */}
+                            <div className="flex justify-center items-center py-12 lg:py-0">
+                                <div className="w-full max-w-md bg-white dark:bg-gray-800 p-10 rounded-2xl shadow-xl">
+                                    <h2 className="text-3xl font-bold text-blue-600 dark:text-blue-400 text-center mb-6">
+                                        {t("login.title")}
+                                    </h2>
+                                    {/* El teu formulari es manté igual */}
+                                    <form className="space-y-6" onSubmit={handleSubmit}>
+                                        {/* ... (camps d'email, password, etc.) ... */}
+                                        <div>
+                                            <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                                {t("login.email_label")}
+                                            </label>
+                                            <input
+                                                type="email"
+                                                id="email"
+                                                name="email"
+                                                required
+                                                value={email}
+                                                onChange={e => setEmail(e.target.value)}
+                                                className="mt-2 block w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+                                                placeholder={t("login.email_placeholder")}
+                                            />
+                                        </div>
+                                        <div className="relative">
+                                            <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                                {t("login.password_label")}
+                                            </label>
+                                            <div className="relative mt-2">
+                                                <input
+                                                    type={showPassword ? "text" : "password"}
+                                                    id="password"
+                                                    name="password"
+                                                    required
+                                                    value={password}
+                                                    onChange={e => setPassword(e.target.value)}
+                                                    className="block w-full px-4 py-2 pr-10 border rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+                                                    placeholder={t("login.password_placeholder")}
+                                                />
+                                                <button
+                                                    type="button"
+                                                    onClick={() => setShowPassword(prev => !prev)}
+                                                    className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-white"
+                                                    aria-label={showPassword ? "Oculta la contrasenya" : "Mostra la contrasenya"}
+                                                >
+                                                    {showPassword ? <Eye size={20} /> : <EyeOff size={20} />}
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <button
+                                            type="submit"
+                                            className="block w-full text-center py-3 px-6 text-white bg-faqblue dark:bg-blue-700 rounded-lg font-medium shadow-lg hover:scale-105 hover:bg-faqblue/90 dark:hover:bg-blue-600 transition-transform duration-200 border border-black"
+                                        >
+                                            {t("login.submit_button")}
+                                        </button>
+                                    </form>
+                                    <Link href="/reset-password">
+                                        <p className="mt-4 text-sm text-gray-500 dark:text-gray-400 text-center hover:text-blue-500 cursor-pointer">
+                                            {t("login.forgot_password")}
+                                        </p>
+                                    </Link>
+                                    <div className="flex items-center my-6">
+                                        <hr className="flex-grow border-t border-gray-300 dark:border-gray-600" />
+                                        <span className="px-4 text-sm text-gray-500 dark:text-gray-400">O</span>
+                                        <hr className="flex-grow border-t border-gray-300 dark:border-gray-600" />
+                                    </div>
+                                    <div className="flex justify-center">
+                                        <GoogleLogin
+                                            onSuccess={handleGoogleSuccess}
+                                            onError={() => setError(t("login.google_error"))}
+                                        />
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </main>
+
+                <Footer />
             </div>
-            <Footer />
         </GoogleOAuthProvider>
     );
 };

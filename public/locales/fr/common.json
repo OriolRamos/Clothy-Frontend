@@ -8,6 +8,44 @@
     "imageAlt": "Image de la bannière"
   },
 
+  "subscription_succes": {
+    "succes": "Abonnement Démarré avec Succès !",
+    "verify": "Vérification du statut de l'abonnement...",
+    "thank": "Merci de vous être abonné à Clothy.es. Nous traitons votre abonnement.",
+    "activate": "Votre abonnement a été confirmé et est maintenant actif !",
+    "activating": "Votre abonnement est en cours d'activation. Cela prend généralement quelques secondes.",
+    "confirmating": "Vous recevrez une confirmation dès qu'il sera prêt (ou vous pouvez consulter votre profil). La confirmation finale dépend du traitement de notre système (webhooks).",
+    "problem": "Un problème est survenu lors de la vérification immédiate du statut de votre abonnement.",
+    "dont_worry": "Ne vous inquiétez pas, si le paiement a été effectué avec succès, notre système l'activera bientôt. Veuillez consulter votre profil dans quelques minutes.",
+    "return": "Retour à la page d'accueil",
+    "profile": "Aller à mon Profil",
+    "charging": "Chargement..."
+  },
+  "subscription_canceled": {
+    "canceled": "Processus d'Abonnement Annulé",
+    "problem": "Il semble que le processus d'abonnement n'a pas été complété ou a été annulé.",
+    "canceled_charge": "Aucun frais ne vous a été facturé. Vous pouvez réessayer de vous abonner quand vous le souhaitez.",
+    "see_plans": "Voir les Formules d'Abonnement",
+    "return": "Retour à la page d'accueil"
+  },
+  "subscription_plans": {
+    "charging": "Chargement des formules...",
+    "error": "Erreur de Chargement des Formules",
+    "reintent": "Réessayer",
+    "no_plans": "Aucune Formule Disponible",
+    "no_plans_actualy": "Nous n'avons actuellement aucune formule d'abonnement disponible. Veuillez réessayer plus tard.",
+    "return": "Retour à l'accueil",
+    "your_plan": "Votre Formule Actuelle",
+    "active_plan": "Formule active",
+    "subs_cancel": "Votre abonnement a été annulé et prendra fin à la date spécifiée.",
+    "renew": "Votre accès sera renouvelé à la date spécifiée.",
+    "change_plan": "Changez de formule, mettez à jour votre mode de paiement ou annulez votre abonnement.",
+    "choice": "Choisissez la formule qui correspond le mieux à vos besoins et libérez tout le potentiel de la mode intelligente.",
+    "popular": "Populaire",
+    "start_now": "Commencer maintenant",
+    "month": "mois"
+  },
+
   "login": {
     "title": "Connectez-vous à votre compte",
     "email_label": "Email",
@@ -319,6 +357,7 @@
     }
   },
   "profile": {
+    "country_info": "Spécifier votre pays est essentiel pour obtenir les vêtements disponibles dans votre région et offrir une meilleure expérience utilisateur.",
     "title": "Profil de l'utilisateur",
     "subtitle": "Personnalisez votre expérience et améliorez vos recherches.",
     "personalInfo": "Informations personnelles",

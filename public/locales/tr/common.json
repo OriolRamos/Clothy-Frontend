@@ -8,6 +8,43 @@
     "imageAlt": "Afiş resmi"
   },
 
+  "subscription_succes": {
+    "succes": "Abonelik Başarıyla Başlatıldı!",
+    "verify": "Abonelik durumu doğrulanıyor...",
+    "thank": "Clothy.es'e abone olduğunuz için teşekkür ederiz. Aboneliğinizi işliyoruz.",
+    "activate": "Aboneliğiniz onaylandı ve şimdi aktif!",
+    "activating": "Aboneliğiniz etkinleştiriliyor. Bu genellikle birkaç saniye sürer.",
+    "confirmating": "Hazır olduğunda bir onay alacaksınız (veya profilinizi kontrol edebilirsiniz). Son onay, sistemimizin işlemesine (webhook'lar) bağlıdır.",
+    "problem": "Abonelik durumunuzu hemen doğrulamada bir sorun oluştu.",
+    "dont_worry": "Endişelenmeyin, ödeme başarılı olduysa sistemimiz yakında etkinleştirecektir. Lütfen birkaç dakika içinde profilinizi kontrol edin.",
+    "return": "Ana sayfaya dön",
+    "profile": "Profilime git",
+    "charging": "Yükleniyor..."
+  },
+  "subscription_canceled": {
+    "canceled": "Abonelik İşlemi İptal Edildi",
+    "problem": "Görünüşe göre abonelik işlemi tamamlanmadı veya iptal edildi.",
+    "canceled_charge": "Sizden herhangi bir ücret alınmadı. İstediğiniz zaman tekrar abone olmayı deneyebilirsiniz.",
+    "see_plans": "Abonelik Planlarını Görüntüle",
+    "return": "Ana sayfaya dön"
+  },
+  "subscription_plans": {
+    "charging": "Planlar yükleniyor...",
+    "error": "Planlar Yüklenirken Hata Oluştu",
+    "reintent": "Yeniden dene",
+    "no_plans": "Mevcut Plan Yok",
+    "no_plans_actualy": "Şu anda mevcut abonelik planımız bulunmamaktadır. Lütfen daha sonra tekrar deneyin.",
+    "return": "Anasayfaya dön",
+    "your_plan": "Mevcut Planınız",
+    "active_plan": "Aktif plan",
+    "subs_cancel": "Aboneliğiniz iptal edildi ve belirtilen tarihte sona erecek.",
+    "renew": "Erişiminiz belirtilen tarihte yenilenecektir.",
+    "change_plan": "Planınızı değiştirin, ödeme yönteminizi güncelleyin veya aboneliğinizi iptal edin.",
+    "choice": "İhtiyaçlarınıza en uygun planı seçin ve akıllı modanın tüm potansiyelini ortaya çıkarın.",
+    "popular": "Popüler",
+    "start_now": "Şimdi başla",
+    "month": "ay"
+  },
   "login": {
     "title": "Hesabınıza giriş yapın",
     "email_label": "E-posta",
@@ -319,6 +356,7 @@
     }
   },
   "profile": {
+    "country_info": "Bölgenizde mevcut olan giysileri almak ve daha iyi bir kullanıcı deneyimi sağlamak için ülkenizi belirtmeniz önemlidir.",
     "title": "Kullanıcı Profili",
     "subtitle": "Deneyiminizi kişiselleştirin ve aramalarınızı geliştirin.",
     "personalInfo": "Kişisel Bilgiler",

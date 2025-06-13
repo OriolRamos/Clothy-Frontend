@@ -8,6 +8,43 @@
         "imageAlt": "Banner image"
     },
 
+    "subscription_succes": {
+        "succes": "Subscription Started Successfully!",
+        "verify": "Verifying subscription status...",
+        "thank": "Thank you for subscribing to Clothy.es. We are processing your subscription.",
+        "activate": "Your subscription has been confirmed and is now active!",
+        "activating": "Your subscription is being activated. This usually takes a few seconds.",
+        "confirmating": "You will receive a confirmation when it's ready (or you can check your profile). The final confirmation depends on our system's processing (webhooks).",
+        "problem": "There was a problem verifying your subscription status immediately.",
+        "dont_worry": "Don't worry, if the payment was successful, our system will activate it soon. Please check your profile in a few minutes.",
+        "return": "Return to the main page",
+        "profile": "Go to my Profile",
+        "charging": "Loading..."
+    },
+    "subscription_canceled": {
+        "canceled": "Subscription Process Canceled",
+        "problem": "It seems the subscription process was not completed or has been canceled.",
+        "canceled_charge": "You have not been charged. You can try to subscribe again whenever you want.",
+        "see_plans": "View Subscription Plans",
+        "return": "Return to the main page"
+    },
+    "subscription_plans": {
+        "charging": "Loading plans...",
+        "error": "Error Loading Plans",
+        "reintent": "Retry",
+        "no_plans": "No Plans Available",
+        "no_plans_actualy": "We currently do not have any subscription plans available. Please try again later.",
+        "return": "Back to home",
+        "your_plan": "Your Current Plan",
+        "active_plan": "Active plan",
+        "subs_cancel": "Your subscription has been canceled and will end on the specified date.",
+        "renew": "Your access will be renewed on the specified date.",
+        "change_plan": "Change your plan, update your payment method, or cancel your subscription.",
+        "choice": "Choose the plan that best suits your needs and unlock the full potential of smart fashion.",
+        "popular": "Popular",
+        "start_now": "Start now",
+        "month": "month"
+    },
     "login": {
         "title": "Log in to your account",
         "email_label": "Email",
@@ -306,6 +343,7 @@
         }
     },
     "profile": {
+        "country_info": "Specifying your country is essential to get clothing available in your region and provide a better user experience.",
         "title": "User Profile",
         "subtitle": "Customize your experience and enhance your searches.",
         "personalInfo": "Personal Information",
