@@ -274,9 +274,12 @@ const PricingPlansPage = () => {
                     <div className="container mx-auto">
                         <header className="text-center mb-20">
                             <h1 className="text-5xl font-extrabold tracking-tight sm:text-6xl xl:text-7xl">
-                                <span className="block text-black dark:text-white">Plans Flexibles per a</span>
+                                <span className="block text-black dark:text-white">
+
+                                    {t("subscription_plans.flex_plans") || "Plans Flexibles per a"}
+                                </span>
                                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-sky-500 to-green-400 mt-2">
-                                    Clothy.es
+                                    Clothy
                                 </span>
                             </h1>
                             <p className="mt-8 max-w-2xl mx-auto text-xl text-slate-600 dark:text-slate-300">

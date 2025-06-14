@@ -13,6 +13,32 @@
         "profile": "Ir a mi Perfil",
         "charging": "Cargando..."
     },
+    "plans": {
+        "supporter": {
+            "name": "Clothy Supporter",
+            "description": "Ideal para empezar a descubrir el poder de la búsqueda de moda inteligente.",
+            "feature1": "Acceso completo a búsquedas sin limitaciones",
+            "feature2": "Búsquedas ilimitadas por imagen",
+            "feature3": "Alerta de precios avanzada",
+            "feature4": "Historial de búsquedas limitado (15 días)"
+        },
+        "fan": {
+            "name": "Clothy Fan",
+            "description": "Perfecto para los entusiastas de la moda que quieren el máximo de nuestro asistente.",
+            "feature1": "Todo lo del plan Supporter",
+            "feature2": "Asistente de outfit con IA (peticiones ilimitadas)",
+            "feature3": "Historial de búsquedas completo",
+            "feature4": "Acceso a descuentos exclusivos en tiendas"
+        },
+        "founder": {
+            "name": "Clothy Founder",
+            "description": "La experiencia definitiva para los pioneros de la moda, con ventajas únicas.",
+            "feature1": "Todas las funciones del plan Fan",
+            "feature2": "Soporte prioritario VIP 24/7",
+            "feature3": "Acceso anticipado a nuevas funcionalidades",
+            "feature4": "Acceso exclusivo a eventos de la marca Clothy"
+        }
+    },
     "subscription_canceled": {
         "canceled": "Proceso de Suscripción Cancelado",
         "problem": "Parece que el proceso de suscripción no se ha completado o ha sido cancelado.",
@@ -21,6 +47,7 @@
         "return": "Volver a la página principal"
     },
     "subscription_plans": {
+        "flex_plans": "Planes Flexibles para",
         "charging": "Cargando planes...",
         "error": "Error Cargando Planes",
         "reintent": "Reintentar",
@@ -327,6 +354,9 @@
         }
     },
     "donations": {
+        "title": "¿Quieres Apoyar el Proyecto?",
+        "description": "Si Clothy.es te es útil, considera hacer una donación. Cada contribución, por pequeña que sea, nos ayuda a mantener y mejorar la plataforma.",
+        "button": "Hacer una Donación",
         "header": {
             "title": "¡Apóyanos en nuestra fase de desarrollo!",
             "subtitle": "Tu colaboración es clave para seguir mejorando nuestros servicios."

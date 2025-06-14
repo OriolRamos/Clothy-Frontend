@@ -7,7 +7,32 @@
     "signIn": "Giriş Yap",
     "imageAlt": "Afiş resmi"
   },
-
+  "plans": {
+    "supporter": {
+      "name": "Clothy Destekçisi",
+      "description": "Akıllı moda aramasının gücünü keşfetmeye başlamak için ideal.",
+      "feature1": "Sınırsız aramalara tam erişim",
+      "feature2": "Sınırsız resimle arama",
+      "feature3": "Gelişmiş fiyat uyarıları",
+      "feature4": "Sınırlı arama geçmişi (15 gün)"
+    },
+    "fan": {
+      "name": "Clothy Hayranı",
+      "description": "Asistanımızdan en iyi şekilde yararlanmak isteyen moda tutkunları için mükemmel.",
+      "feature1": "Destekçi planındaki her şey",
+      "feature2": "Yapay zeka destekli kıyafet asistanı (sınırsız istek)",
+      "feature3": "Tam arama geçmişi",
+      "feature4": "Mağazalarda özel indirimlere erişim"
+    },
+    "founder": {
+      "name": "Clothy Kurucusu",
+      "description": "Eşsiz avantajlarla moda öncüleri için nihai deneyim.",
+      "feature1": "Hayran planının tüm özellikleri",
+      "feature2": "7/24 VIP öncelikli destek",
+      "feature3": "Yeni özelliklere erken erişim",
+      "feature4": "Clothy marka etkinliklerine özel erişim"
+    }
+  },
   "subscription_succes": {
     "succes": "Abonelik Başarıyla Başlatıldı!",
     "verify": "Abonelik durumu doğrulanıyor...",
@@ -29,6 +54,7 @@
     "return": "Ana sayfaya dön"
   },
   "subscription_plans": {
+    "flex_plans": "İçin Esnek Planlar",
     "charging": "Planlar yükleniyor...",
     "error": "Planlar Yüklenirken Hata Oluştu",
     "reintent": "Yeniden dene",
@@ -277,6 +303,9 @@
     }
   },
   "donations": {
+    "title": "Projeyi Desteklemek İster misiniz?",
+    "description": "Eğer Clothy.es'i faydalı buluyorsanız, bağış yapmayı düşünebilirsiniz. Her katkı, ne kadar küçük olursa olsun, platformu sürdürmemize ve geliştirmemize yardımcı olur.",
+    "button": "Bağış Yap",
     "header": {
       "title": "Gelişim Aşamasında Bize Destek Olun!",
       "subtitle": "İşbirliğiniz, hizmetlerimizi geliştirmek için çok önemlidir."

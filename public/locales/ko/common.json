@@ -29,6 +29,9 @@
     }
   },
   "donations": {
+    "title": "프로젝트를 후원하시겠습니까?",
+    "description": "Clothy.es가 유용하다고 생각하시면 기부를 고려해 보세요. 작은 기부 하나하나가 저희가 플랫폼을 유지하고 개선하는 데 큰 도움이 됩니다.",
+    "button": "기부하기",
     "header": {
       "title": "개발 단계에서 우리를 지원해주세요!",
       "subtitle": "여러분의 협력이 우리의 서비스를 개선하는 데 중요합니다."
@@ -288,6 +291,32 @@
     "termsConditions": "이용 약관",
     "cookies": "쿠키 정책"
   },
+  "plans": {
+    "supporter": {
+      "name": "Clothy 서포터",
+      "description": "스마트 패션 검색의 힘을 발견하기 시작하기에 이상적입니다.",
+      "feature1": "무제한 검색에 대한 전체 액세스",
+      "feature2": "무제한 이미지 검색",
+      "feature3": "고급 가격 알림",
+      "feature4": "제한된 검색 기록(15일)"
+    },
+    "fan": {
+      "name": "Clothy 팬",
+      "description": "저희 어시스턴트를 최대한 활용하고 싶은 패션 애호가에게 적합합니다.",
+      "feature1": "서포터 플랜의 모든 것",
+      "feature2": "AI 기반 의상 어시스턴트(무제한 요청)",
+      "feature3": "전체 검색 기록",
+      "feature4": "상점 독점 할인 이용"
+    },
+    "founder": {
+      "name": "Clothy 파운더",
+      "description": "독특한 혜택을 제공하는 패션 선구자를 위한 궁극적인 경험.",
+      "feature1": "팬 플랜의 모든 기능",
+      "feature2": "연중무휴 VIP 우선 지원",
+      "feature3": "새로운 기능에 대한 조기 액세스",
+      "feature4": "Clothy 브랜드 이벤트 독점 액세스"
+    }
+  },
   "subscription_succes": {
     "succes": "구독이 성공적으로 시작되었습니다!",
     "verify": "구독 상태를 확인 중입니다...",
@@ -309,6 +338,7 @@
     "return": "메인 페이지로 돌아가기"
   },
   "subscription_plans": {
+    "flex_plans": "를 위한 유연한 플랜",
     "charging": "요금제 로드 중...",
     "error": "요금제 로드 오류",
     "reintent": "재시도",

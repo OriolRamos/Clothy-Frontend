@@ -7,6 +7,32 @@
         "signIn": "Inicia sessió",
         "imageAlt": "Imatge del banner"
     },
+    "plans": {
+        "supporter": {
+            "name": "Clothy Supporter",
+            "description": "Ideal per començar a descobrir el poder de la cerca intel·ligent de moda.",
+            "feature1": "Accés complet a cerques sense limitacions",
+            "feature2": "Cerques il·limitades per imatge",
+            "feature3": "Alerta de preus avançada",
+            "feature4": "Historial de cerques limitat (15 dies)"
+        },
+        "fan": {
+            "name": "Clothy Fan",
+            "description": "Perfecte per als entusiastes de la moda que volen el màxim del nostre assistent.",
+            "feature1": "Tot el del pla Supporter",
+            "feature2": "Assistent d'outfit amb IA (peticions il·limitades)",
+            "feature3": "Historial de cerques complet",
+            "feature4": "Accés a descomptes exclusius a botigues"
+        },
+        "founder": {
+            "name": "Clothy Founder",
+            "description": "L'experiència definitiva per als pioners de la moda, amb avantatges únics.",
+            "feature1": "Totes les funcions del pla Fan",
+            "feature2": "Suport prioritari VIP 24/7",
+            "feature3": "Accés anticipat a noves funcionalitats",
+            "feature4": "Accés exclusiu a esdeveniments de la marca Clothy"
+        }
+    },
     "subscription_succes": {
         "succes": "Subscripció Iniciada amb Èxit!",
         "verify": "Verificant l'estat de la subscripció...",
@@ -28,6 +54,7 @@
         "return": "Tornar a la pàgina principal"
     },
     "subscription_plans": {
+        "flex_plans": "Plans Flexibles per a",
         "charging": "Carregant plans...",
         "error": "Error Carregant Plans",
         "reintent": "Reintentar",
@@ -263,6 +290,9 @@
       }
     },
     "donations": {
+        "title": "Vols Donar Suport al Projecte?",
+        "description": "Si Clothy.es t'és útil, considera fer una donació. Cada contribució, per petita que sigui, ens ajuda a mantenir i millorar la plataforma.",
+        "button": "Fer una Donació",
         "header": {
             "title": "Recolza’ns durant la nostra fase de desenvolupament!",
             "subtitle": "La teva col·laboració és clau per millorar els nostres serveis."

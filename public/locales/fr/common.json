@@ -7,7 +7,32 @@
     "signIn": "Se connecter",
     "imageAlt": "Image de la bannière"
   },
-
+  "plans": {
+    "supporter": {
+      "name": "Clothy Supporter",
+      "description": "Idéal pour commencer à découvrir la puissance de la recherche de mode intelligente.",
+      "feature1": "Accès complet aux recherches sans limitations",
+      "feature2": "Recherches d'images illimitées",
+      "feature3": "Alerte de prix avancée",
+      "feature4": "Historique de recherche limité (15 jours)"
+    },
+    "fan": {
+      "name": "Clothy Fan",
+      "description": "Parfait pour les passionnés de mode qui veulent tirer le meilleur parti de notre assistant.",
+      "feature1": "Tout ce qui est inclus dans le plan Supporter",
+      "feature2": "Assistant de tenue avec IA (demandes illimitées)",
+      "feature3": "Historique de recherche complet",
+      "feature4": "Accès à des réductions exclusives en magasin"
+    },
+    "founder": {
+      "name": "Clothy Founder",
+      "description": "L'expérience ultime pour les pionniers de la mode, avec des avantages uniques.",
+      "feature1": "Toutes les fonctionnalités du plan Fan",
+      "feature2": "Support prioritaire VIP 24/7",
+      "feature3": "Accès anticipé aux nouvelles fonctionnalités",
+      "feature4": "Accès exclusif aux événements de la marque Clothy"
+    }
+  },
   "subscription_succes": {
     "succes": "Abonnement Démarré avec Succès !",
     "verify": "Vérification du statut de l'abonnement...",
@@ -29,6 +54,7 @@
     "return": "Retour à la page d'accueil"
   },
   "subscription_plans": {
+    "flex_plans": "Formules Flexibles pour",
     "charging": "Chargement des formules...",
     "error": "Erreur de Chargement des Formules",
     "reintent": "Réessayer",
@@ -278,6 +304,9 @@
     }
   },
   "donations": {
+    "title": "Voulez-vous Soutenir le Projet ?",
+    "description": "Si Clothy.es vous est utile, envisagez de faire un don. Chaque contribution, aussi petite soit-elle, nous aide à maintenir et à améliorer la plateforme.",
+    "button": "Faire un Don",
     "header": {
       "title": "Soutenez-nous pendant notre phase de développement !",
       "subtitle": "Votre collaboration est essentielle pour améliorer nos services."

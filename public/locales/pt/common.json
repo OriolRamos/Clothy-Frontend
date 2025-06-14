@@ -7,6 +7,32 @@
     "signIn": "Entrar",
     "imageAlt": "Imagem do banner"
   },
+  "plans": {
+    "supporter": {
+      "name": "Clothy Supporter",
+      "description": "Ideal para começar a descobrir o poder da busca de moda inteligente.",
+      "feature1": "Acesso completo a buscas sem limitações",
+      "feature2": "Buscas por imagem ilimitadas",
+      "feature3": "Alerta de preços avançado",
+      "feature4": "Histórico de buscas limitado (15 dias)"
+    },
+    "fan": {
+      "name": "Clothy Fan",
+      "description": "Perfeito para os entusiastas da moda que querem o máximo do nosso assistente.",
+      "feature1": "Tudo do plano Supporter",
+      "feature2": "Assistente de outfit com IA (pedidos ilimitados)",
+      "feature3": "Histórico de buscas completo",
+      "feature4": "Acesso a descontos exclusivos em lojas"
+    },
+    "founder": {
+      "name": "Clothy Founder",
+      "description": "A experiência definitiva para os pioneiros da moda, com vantagens únicas.",
+      "feature1": "Todas as funcionalidades do plano Fan",
+      "feature2": "Suporte prioritário VIP 24/7",
+      "feature3": "Acesso antecipado a novas funcionalidades",
+      "feature4": "Acesso exclusivo a eventos da marca Clothy"
+    }
+  },
   "subscription_succes": {
     "succes": "Assinatura Iniciada com Sucesso!",
     "verify": "A verificar o estado da assinatura...",
@@ -28,6 +54,7 @@
     "return": "Voltar à página principal"
   },
   "subscription_plans": {
+    "flex_plans": "Planos Flexíveis para",
     "charging": "A carregar planos...",
     "error": "Erro ao Carregar Planos",
     "reintent": "Tentar novamente",
@@ -263,6 +290,9 @@
     }
   },
   "donations": {
+    "title": "Quer Apoiar o Projeto?",
+    "description": "Se o Clothy.es lhe é útil, considere fazer uma doação. Cada contribuição, por menor que seja, ajuda-nos a manter e a melhorar a plataforma.",
+    "button": "Fazer uma Doação",
     "header": {
       "title": "Apoie-nos Durante Nossa Fase de Desenvolvimento!",
       "subtitle": "Sua colaboração é fundamental para melhorar nossos serviços."

@@ -7,6 +7,32 @@
     "signIn": "Anmelden",
     "imageAlt": "Bannerbild"
   },
+  "plans": {
+    "supporter": {
+      "name": "Clothy Supporter",
+      "description": "Ideal, um die Leistungsfähigkeit der intelligenten Modesuche zu entdecken.",
+      "feature1": "Voller Zugriff auf unbegrenzte Suchen",
+      "feature2": "Unbegrenzte Bildsuchen",
+      "feature3": "Erweiterte Preisalarme",
+      "feature4": "Begrenzter Suchverlauf (15 Tage)"
+    },
+    "fan": {
+      "name": "Clothy Fan",
+      "description": "Perfekt für Modebegeisterte, die das Beste aus unserem Assistenten herausholen möchten.",
+      "feature1": "Alles aus dem Supporter-Plan",
+      "feature2": "KI-gestützter Outfit-Assistent (unbegrenzte Anfragen)",
+      "feature3": "Vollständiger Suchverlauf",
+      "feature4": "Zugang zu exklusiven Ladenrabatten"
+    },
+    "founder": {
+      "name": "Clothy Founder",
+      "description": "Das ultimative Erlebnis für Modepioniere mit einzigartigen Vorteilen.",
+      "feature1": "Alle Funktionen des Fan-Plans",
+      "feature2": "24/7 VIP-Prioritätssupport",
+      "feature3": "Frühzeitiger Zugang zu neuen Funktionen",
+      "feature4": "Exklusiver Zugang zu Clothy-Markenveranstaltungen"
+    }
+  },
   "subscription_succes": {
     "succes": "Abonnement erfolgreich gestartet!",
     "verify": "Abonnementstatus wird überprüft...",
@@ -28,6 +54,7 @@
     "return": "Zurück zur Hauptseite"
   },
   "subscription_plans": {
+    "flex_plans": "Flexible Pläne für",
     "charging": "Lade Pläne...",
     "error": "Fehler beim Laden der Pläne",
     "reintent": "Erneut versuchen",
@@ -277,6 +304,9 @@
     }
   },
   "donations": {
+    "title": "Möchten Sie das Projekt unterstützen?",
+    "description": "Wenn Sie Clothy.es nützlich finden, ziehen Sie eine Spende in Betracht. Jeder Beitrag, egal wie klein, hilft uns, die Plattform zu pflegen und zu verbessern.",
+    "button": "Spenden",
     "header": {
       "title": "Unterstützen Sie uns während unserer Entwicklungsphase!",
       "subtitle": "Ihre Zusammenarbeit ist entscheidend für die Verbesserung unserer Dienste."

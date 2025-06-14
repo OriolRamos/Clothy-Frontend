@@ -4,13 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da1a1d65-fd44-4e09-8dc4-bd35cbb307fe" name="Changes" comment="Arreglar errors i mostrar imatge en gran al clicar">
+    <list default="true" id="da1a1d65-fd44-4e09-8dc4-bd35cbb307fe" name="Changes" comment="Canvis de traducio i millora de loging i signup">
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/AuthContext/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/AuthContext/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Navbar/UserMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Navbar/UserMenu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Navbar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Navbar/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/donaciones/DonationSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/donaciones/DonationSection.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/subscription-plans/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/subscription-plans/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/locales/ar/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/ar/common.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/locales/bn/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/bn/common.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/locales/ca/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/ca/common.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/locales/ch/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/ch/common.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/locales/de/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/de/common.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/locales/en/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/en/common.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/locales/es/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/es/common.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/locales/fr/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/fr/common.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/locales/hi/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/hi/common.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/locales/ja/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/ja/common.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/locales/ko/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/ko/common.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/locales/pt/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/pt/common.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/locales/ru/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/ru/common.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/locales/tr/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/tr/common.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -220,47 +231,9 @@
       <workItem from="1748895738238" duration="115000" />
       <workItem from="1748965759781" duration="5558000" />
       <workItem from="1749050012421" duration="15241000" />
-      <workItem from="1749195478539" duration="21049000" />
-    </task>
-    <task id="LOCAL-00028" summary="v0.0.5">
-      <option name="closed" value="true" />
-      <created>1740525418721</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1740525418721</updated>
-    </task>
-    <task id="LOCAL-00029" summary="v0.0.6">
-      <option name="closed" value="true" />
-      <created>1743516371373</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1743516371373</updated>
-    </task>
-    <task id="LOCAL-00030" summary="v0.0.7(Afegit historial de cerques)">
-      <option name="closed" value="true" />
-      <created>1743519941253</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1743519941253</updated>
-    </task>
-    <task id="LOCAL-00031" summary="v0.0.8">
-      <option name="closed" value="true" />
-      <created>1743805951953</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1743805951953</updated>
-    </task>
-    <task id="LOCAL-00032" summary="v0.0.9(Pre producction)">
-      <option name="closed" value="true" />
-      <created>1744219379717</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1744219379717</updated>
+      <workItem from="1749195478539" duration="23385000" />
+      <workItem from="1749742594003" duration="5641000" />
+      <workItem from="1749836027772" duration="8889000" />
     </task>
     <task id="LOCAL-00033" summary="v0.0.9(Pre producction)">
       <option name="closed" value="true" />
@@ -614,14 +587,53 @@
       <option name="project" value="LOCAL" />
       <updated>1749367201747</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="Arreglar errors i mostrar imatge en gran al clicar">
+      <option name="closed" value="true" />
+      <created>1749375937206</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1749375937206</updated>
+    </task>
+    <task id="LOCAL-00078" summary="Arreglar errors i mostrar imatge en gran al clicar">
+      <option name="closed" value="true" />
+      <created>1749377608056</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1749377608056</updated>
+    </task>
+    <task id="LOCAL-00079" summary="Arreglar errors i mostrar imatge en gran al clicar">
+      <option name="closed" value="true" />
+      <created>1749744841964</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1749744841964</updated>
+    </task>
+    <task id="LOCAL-00080" summary="Arreglar errors i mostrar imatge en gran al clicar">
+      <option name="closed" value="true" />
+      <created>1749746228231</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1749746228231</updated>
+    </task>
+    <task id="LOCAL-00081" summary="Canvis de traducio i millora de loging i signup">
+      <option name="closed" value="true" />
+      <created>1749839903093</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1749839903095</updated>
+    </task>
+    <option name="localTasksCounter" value="82" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="v2.6" />
     <MESSAGE value="v2.7 (Profile Settings added)" />
     <MESSAGE value="v2.7 (MIU millorat en menu usuaris)" />
     <MESSAGE value="v2.7 (s'ha afegit logo per search)" />
@@ -646,6 +658,7 @@
     <MESSAGE value="Arreglar peticions de gemini i millores" />
     <MESSAGE value="Afegir selector multiple al carregar imatge" />
     <MESSAGE value="Arreglar errors i mostrar imatge en gran al clicar" />
-    <option name="LAST_COMMIT_MESSAGE" value="Arreglar errors i mostrar imatge en gran al clicar" />
+    <MESSAGE value="Canvis de traducio i millora de loging i signup" />
+    <option name="LAST_COMMIT_MESSAGE" value="Canvis de traducio i millora de loging i signup" />
   </component>
 </project>

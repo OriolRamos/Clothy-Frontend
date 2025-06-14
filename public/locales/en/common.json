@@ -7,7 +7,32 @@
         "signIn": "Sign In",
         "imageAlt": "Banner image"
     },
-
+    "plans": {
+        "supporter": {
+            "name": "Clothy Supporter",
+            "description": "Ideal for starting to discover the power of smart fashion search.",
+            "feature1": "Full access to unlimited searches",
+            "feature2": "Unlimited image searches",
+            "feature3": "Advanced price alerts",
+            "feature4": "Limited search history (15 days)"
+        },
+        "fan": {
+            "name": "Clothy Fan",
+            "description": "Perfect for fashion enthusiasts who want the most out of our assistant.",
+            "feature1": "Everything in the Supporter plan",
+            "feature2": "AI-powered outfit assistant (unlimited requests)",
+            "feature3": "Complete search history",
+            "feature4": "Access to exclusive store discounts"
+        },
+        "founder": {
+            "name": "Clothy Founder",
+            "description": "The ultimate experience for fashion pioneers, with unique benefits.",
+            "feature1": "All features of the Fan plan",
+            "feature2": "24/7 VIP priority support",
+            "feature3": "Early access to new features",
+            "feature4": "Exclusive access to Clothy brand events"
+        }
+    },
     "subscription_succes": {
         "succes": "Subscription Started Successfully!",
         "verify": "Verifying subscription status...",
@@ -29,6 +54,7 @@
         "return": "Return to the main page"
     },
     "subscription_plans": {
+        "flex_plans": "Flexible Plans for",
         "charging": "Loading plans...",
         "error": "Error Loading Plans",
         "reintent": "Retry",
@@ -264,6 +290,9 @@
         }
     },
     "donations": {
+        "title": "Want to Support the Project?",
+        "description": "If you find Clothy.es useful, consider making a donation. Every contribution, no matter how small, helps us maintain and improve the platform.",
+        "button": "Make a Donation",
         "header": {
             "title": "Support Us During Our Development Phase!",
             "subtitle": "Your collaboration is key to improving our services."

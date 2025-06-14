@@ -7,8 +7,31 @@
     "signIn": "登录",
     "imageAlt": "横幅图片"
   },
-  "profile": {
-    "country_info": "指定您所在的国家对于获取您所在地区的可用服装并提供更好的用户体验至关重要。"
+  "plans": {
+    "supporter": {
+      "name": "Clothy 支持者",
+      "description": "开始探索智能时尚搜索力量的理想选择。",
+      "feature1": "无限制的完全搜索权限",
+      "feature2": "无限次图像搜索",
+      "feature3": "高级价格提醒",
+      "feature4": "有限的搜索历史（15天）"
+    },
+    "fan": {
+      "name": "Clothy 粉丝",
+      "description": "非常适合希望充分利用我们助手的时尚爱好者。",
+      "feature1": "包含支持者计划的所有内容",
+      "feature2": "人工智能服装助手（无限制请求）",
+      "feature3": "完整的搜索历史",
+      "feature4": "享受商店独家折扣"
+    },
+    "founder": {
+      "name": "Clothy 创始人",
+      "description": "为时尚先锋提供独特优势的终极体验。",
+      "feature1": "包含粉丝计划的所有功能",
+      "feature2": "24/7 VIP优先支持",
+      "feature3": "抢先体验新功能",
+      "feature4": "独家参与Clothy品牌活动"
+    }
   },
   "subscription_succes": {
     "succes": "订阅已成功启动！",
@@ -30,7 +53,9 @@
     "see_plans": "查看订阅计划",
     "return": "返回主页"
   },
+
   "subscription_plans": {
+    "flex_plans": "灵活的计划，专为",
     "charging": "正在加载计划...",
     "error": "加载计划时出错",
     "reintent": "重试",
@@ -266,6 +291,9 @@
     }
   },
   "donations": {
+    "title": "想要支持这个项目吗？",
+    "description": "如果您觉得 Clothy.es 有用，请考虑捐款。每一份贡献，无论大小，都能帮助我们维护和改进平台。",
+    "button": "进行捐赠",
     "header": {
       "title": "在我们的开发阶段支持我们！",
       "subtitle": "您的合作是改善我们服务的关键。"
@@ -345,6 +373,8 @@
     }
   },
   "profile": {
+    "country_info": "指定您所在的国家对于获取您所在地区的可用服装并提供更好的用户体验至关重要。",
+
     "title": "用户个人资料",
     "subtitle": "定制您的体验并提升搜索结果。",
     "personalInfo": "个人信息",
